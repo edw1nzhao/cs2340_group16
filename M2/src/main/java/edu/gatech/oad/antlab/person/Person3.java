@@ -4,13 +4,12 @@ package edu.gatech.oad.antlab.person;
  *  returns their name and a
  *  reversed string 
  *  
- *  @author  Bob
+ *  @author  Justin So
  *  @version 1.1
  */
 public class Person3 {
    /** Holds the persons real name */  
 	private String name;
-	
 	/**
 	 * The constructor, takes in the persons
 	 * name
@@ -43,6 +42,6 @@ public class Person3 {
 	 */
 	private String calc(String input) {
 	  //Person 3 put your implementation here
-	  return null;
+		return new StringBuilder(input).reverse().toString();
 	}
 }
