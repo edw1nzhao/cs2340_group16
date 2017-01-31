@@ -16,4 +16,5 @@ jar {
     }
 
     destinationDir = file('.')
+    archiveName = 'AntLab.jar'
 }
