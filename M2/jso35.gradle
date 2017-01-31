@@ -18,3 +18,9 @@ jar {
     destinationDir = file('.')
     archiveName = 'AntLab.jar'
 }
+
+task deleteFile(type: Delete) {
+    delete file(new File(jar.destinationDir, jar.archiveName))
+}
+
+clean.dependsOn deleteFile
