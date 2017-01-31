@@ -6,7 +6,6 @@ dependencies {
 
 sourceCompatibility = 1.8
 version = '1.0'
-
 jar {
     manifest {
         attributes 'Main-Class': 'edu.gatech.oad.antlab.pkg1.AntLabMain',
@@ -18,3 +17,9 @@ jar {
     destinationDir = file('.')
     archiveName = 'AntLab.jar'
 }
+
+task deleteItem(type: Delete) {
+    delete file(new File(jar.destinationDir, jar.archiveName))
+}
+
+clean.dependsOn deleteItem
