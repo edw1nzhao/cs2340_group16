@@ -10,12 +10,12 @@ version = '1.0'
 jar {
     manifest {
         attributes 'Main-Class': 'edu.gatech.oad.antlab.pkg1.AntLabMain',
-                   'Class-Path': 'lib/resources.jar',
+                   'Class-Path': '../../lib/resources.jar',
                    'Implementation-Title': 'Ant Lab',
                    'Implementation-Version': version
     }
 
-    destinationDir = file('.')
+    destinationDir = file('build/libs')
     archiveName = 'AntLab.jar'
 }
 
@@ -24,3 +24,4 @@ task deleteStuff(type: Delete) {
 }
 
 clean.dependsOn deleteStuff
+
