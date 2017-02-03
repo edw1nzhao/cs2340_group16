@@ -15,7 +15,7 @@ jar {
                    'Implementation-Version': version
     }
 
-    destinationDir = file('.')
+    destinationDir = file('build/libs')
     archiveName = 'AntLab.jar'
 }
 
