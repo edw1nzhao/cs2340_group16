@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="433f4d6aa5f21f19552afe0e6c5eff0fedba73ad">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-10.0.1_ec9d96e319ad0f1d12507c58b4f1e3b4f5258d83/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c14f0c89f28cf782e42581ab0aba5f63af39b3d2">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-plus-10.0.1_d5ea0646fdc370ed0dab1eeb22ef59bd7d7be1ba/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="771267c5b0c7a5b348d3205dcfa1f871af7e0177">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-cast-10.0.1_0391382c8c722f001422a8275ff6e8ac17fbce99/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="971509bbe30bb7b971fc1c49d7b23d0d818830ac">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tagmanager-10.0.1_588fd2a4bd47a82d3f62b03dbe9824a80cf52615/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics-impl/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e871881b36b32e6bfd271a830c6eeb54ff0fc185">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-analytics-impl-10.0.1_fe8f483f406a51a4fa50b17395959fdc873af363/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-instantapps/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="45305e6af414dab5aba6c3225081c2f15c3bdd1e">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-instantapps-10.0.1_9eff1134b3ffb9c82f6160c65697d9222e9ce375/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="668eb2fd329dc319153368432f23c8ae161a42bd">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_7a0ccfc09089a5c5343d1a89996ebf0164187314/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44a694d4095be84c2888764b1f7256b385c030ad">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-location-10.0.1_f88dff2f9107e099cc6204fb4d861f0aa019c6ad/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="27777b3cad3c20b1acab19f6e37fe3e03371bf6e">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-maps-10.0.1_a89b33f0fa8f2d6e8562f4db1a947560ea657a97/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage-common/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="09cf6aa1390f95157e8295d02be7868f568825fc">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-storage-common-10.0.1_e9909a6b99228d4024ebc4019b1e310a3cdd2046/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/transition/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="15b049fedbd8e3926bf99d9e45dfc9b2a1043bb9">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-transition-25.1.1_785dac3d135b1e2658330dc1d5f489a4927e26b4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-awareness/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4385ccc0a88b33d182a836eadb47be55c8eb1107">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-awareness-10.0.1_a4f17dc40307fed5b201dd1c37732f419683c235/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4c829ff0ccfecb28a999ee46d9e75948dfc777a4">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-analytics-10.0.1_a8b0632c1af79041bbbc07bb89abd36f2bbdc61f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="9cca2818594cc5348806d6662133491e7ea0fa8d">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-auth-10.0.1_7adec9ebf23d2d55f962f46dd54fd002de9a8372/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.firebase/firebase-config/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ffc15e965a9e8c28f24455eedd4cac215c45d1fc">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-config-10.0.1_4f1887fe6a93a505bc71845936798df8ee169125/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-clearcut/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1d193729baf37df3d902a423291423a0df7e3779">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-clearcut-10.0.1_8386e3c4deee0a42d6e67ea5511a64ca548eadc3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-places/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f3e51e9c5233b8897f61e08a6a27bc36283c2724">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-places-10.0.1_626ad7d05a00f9e9e18f8d08beeb0ca7ed24be6b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/design/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cd7951e04cfb9a8bf008d544a478d9a8d8192d38">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-25.1.1_1d526f6d26bc7f6991370cf93072f1c751ed99d8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="dd39827d2067497e60e21da48a7926000b6d4b0c">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-storage-10.0.1_615fb1279729acb35b70062623ebc3d58827d0b2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.firebase/firebase-messaging/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4b17463c814bdc562fb0392fa3494063623a0904">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-messaging-10.0.1_625f2bd0876b881bf8db77d912e14f2b1326f140/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads-lite/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b955cb3a1ad6f1b6ff728ce1e0cd592c1717b440">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-lite-10.0.1_cbe8f9d0fde6b1f5309e3180b1ff196de35c42cc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d0460bf07cc3657e0be518ca01c174493951c6b8">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-10.0.1_4d304fc847fcd77841f609c24746bfae0711b7ab/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.firebase/firebase-crash/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="de29a39f9260f88151b1ef453140e71c76b6c415">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-crash-10.0.1_d9c0852fbaf4ccf033b206289a59efcebd6b2f77/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8308ed003522a2ee8958311afcc4cfd0470377cd">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-gcm-10.0.1_b7f491c2930f64c2841a660fd1552e518bd29792/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="df1cb17511aabbb63264a0024949d1e42502a512">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-cast-framework-10.0.1_a87f0a293703e3dbcdb5ff48e9212c5efecb74e5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.firebase/firebase-appindexing/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ae80d328a8548b4610ead6c624bab8c6a6984f5b">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-appindexing-10.0.1_f2464544adb33000847d6905a6c412bea59382a6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.1.1_0e169a69ded5aad565f94c125a2a50f7c38eed2f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="209b4e57dab04a1c72a32484185b3dd9190e5dba">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_7856666afc89318366e4d92adfbe664d6e9a1b2d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6116e0e7069de7fc259aac8e08b84f32c2038231">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-impl-10.0.1_15f05c395eebbd770d7b9eaa3adee9314374c7b9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7a64bf6dc775198eed9db9468a133adf7dfe6562">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-fitness-10.0.1_66eda45f76e4e509d2f13da205902102b7880083/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.1.1_78feff82b26e0c5d014a7e0def22ae581616414f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="486371f97baad8e607f332f20fee1d3dd00a731a">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-iid-10.0.1_5e3d20854aaf1e3bb4857150db86084a38c3ca49/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="92c871a22463a247e8a77a9f3fd231c278788c4a">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-panorama-10.0.1_81883ca78d0c2a13933fa1e686c3664148483bd6/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="408a599ac77cd17fe8e8919326bec617b3d005bd">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wearable-10.0.1_f42500b6fd9f4f070f8b70c6911a66816ade3073/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8f128aeeb7e31271b28a7adb9dac1f3a6ed9f5e7">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-10.0.1_c9f824425a01444b1a639259f49dc1f139a5fe1b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="39907d5c8f5902fffef30160ca7447c93b82405c">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appinvite-10.0.1_44421cddfa12c2575ca7249906ab1ae461319c66/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.1.1_bff734795e9cd0f98d92d0570eaec3f186c4316a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.1_95a2adf0a97d41f7206edd700b35549f416e8b4b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth-base/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e96c6974cf924e7ee3b230e6847d5731423388c9">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-base-10.0.1_1d8db8e687e76903f9603e1be10bbca8ebfd2acc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e2185aff89caeb337b1ffc36d5e525d8318e7cfe">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-10.0.1_6a3fe0720181dd30abde34f57fd3bf7766a6316b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8010ae6ed32828a145b25ec97bc07b7a83c6318f">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-connection-10.0.1_578fd0ab0fd51b7e03d4c913c580c7882ceaa5ee/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager-v4-impl/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f23ad0f8e58713ff4b55f61c0bbde3830378347c">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tagmanager-v4-impl-10.0.1_007333fa890545264add066edf2a396c99d6cb25/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ba6aa5e69ef31dee57208125323cee958fc67565">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-vision-10.0.1_b6d58cd40df1f73a0188011f7b2614b9bcb47e55/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-10.0.1_cfce6a8dd320a959e4bf62345e06aee505005452/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6bb5d347ebc0c6ef3c83a905222a688da5d2f7b4">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-iid-10.0.1_e8ce7364f8c4aac0f1318c26d1b5d15bdb4dd82e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c9649557905bf7a80fca9e0d54cbcb7662627860">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-25.1.1_cb71bb6cc3d2d4427b6bcedf7dad1708ffff0abc/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2d5d113b0352ab60946fc44c518cf68fd26cbb79">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wallet-10.0.1_d69682935b58ce1f780ece2b926ede1d5f9de632/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.1.1_509a09b287077b4ecc2f9edf8d14cce519fcd3d4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_b479a36bf73adeb13d4c39a52b0dc1bf4379fad1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b327fbe2fad414bc38cf0ce8f7efe1a38f572837">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-mediarouter-v7-24.0.0_9097c2780e281d5a11cb3050eb0ebc5d2894b7c9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager-api/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b1df8fa3d372a27e4e969ce00b00689ee1eed031">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tagmanager-api-10.0.1_4bb9de040e97ef4037b89fbb5a0645a2048e991a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1e11c68fec92a17c84dd8d1dd80e74c4e67b12e2">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-games-10.0.1_972b1acf98987667754b44ee8d9b24c2274f2123/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gass/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="57c2eceb8548de84509d1ebc293fedec53231f6c">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-gass-10.0.1_810f16d911c3fc8fd61fb970f6d2f22439405435/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.1_0013579fff8c79de74b2d92b5515460c60ac79f9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-common-10.0.1_7a07dbc792e03b45a8b784689676bc68e8756ed5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.1.1_11d5d028b0ddd5de1c75befdd6602d3f604439a1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.1/support-annotations-25.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.1_5e5177b3f814f530044e7b38eacce66caaeb699b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c6e1f361e9d61aece9dac39b77fcc98a337a144d">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-nearby-10.0.1_7a624f75f2a80521902c25d372f70cbe84582d24/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.1.1_de80d2dcc27bb5f8c8153cf930e6bdfa3c2ba796/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="028f8255cb977b29cdffbfcf05caa0459686120c">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-drive-10.0.1_d3f46a811a46c169c7616a447c183d1a1d1761f1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f6cf557be4dbd0282ea2388633e5378634423226">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-safetynet-10.0.1_8ec53a15a0ad283952e7dc0ccdab976ee3481b4b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a48dc0b148059764d32500be558702d5ff932058">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-identity-10.0.1_41ed86b49d173367004a962bba10f9128413d11b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-10.0.1_82c1186a39dba42bde8afbd1f305d1ee281963a9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/palette-v7/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="734e80dffea7bd76c18ae256822a124c30d85850">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-palette-v7-24.0.0_20dd575e6d1b516f435436b7fefa7211d5386636/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.1.1_a3e6124a8c48126fdbe4c53b6f5ca1f0ea80bef7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="25438f55fc6d906a0e72f30b21487541430ede43">
+        <dex dex="/Users/voltageShift/repository/cs2340_group16/WaterSourcingProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-10.0.1_384f9336d4eb472416d3f4b90c34b3c49b1c2ec8/classes.dex" />
+    </item>
+
+</items>
