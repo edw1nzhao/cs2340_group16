@@ -25,6 +25,9 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
+branches:
+  except:
+  - M2
 env:
   - SAMPLE=admob
   - SAMPLE=app-indexing
