@@ -27,7 +27,6 @@ cache:
 
 env:
   - SAMPLE=admob
-  - SAMPLE=analytics
   - SAMPLE=app-indexing
   - SAMPLE=auth
   - SAMPLE=config
