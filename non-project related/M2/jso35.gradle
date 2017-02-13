@@ -1,0 +1,26 @@
+apply plugin: 'java'
+
+dependencies {
+    compile files('lib/resources.jar')
+}
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'edu.gatech.oad.antlab.pkg1.AntLabMain',
+                   'Class-Path': '../../lib/resources.jar',
+                   'Implementation-Title': 'Ant Lab',
+                   'Implementation-Version': version
+    }
+
+    destinationDir = file('build/libs')
+    archiveName = 'AntLab.jar'
+}
+
+task deleteFile(type: Delete) {
+    delete file(new File(jar.destinationDir, jar.archiveName))
+}
+
+clean.dependsOn deleteFile
