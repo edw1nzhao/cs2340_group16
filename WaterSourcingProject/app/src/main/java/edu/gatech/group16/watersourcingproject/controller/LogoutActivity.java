@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.view.View.OnClickListener;
 
 import edu.gatech.group16.watersourcingproject.R;
-import edu.gatech.group16.watersourcingproject.controller.LoginActivity.java;
+import edu.gatech.group16.watersourcingproject.controller.LoginActivity;
 
 public class LogoutActivity extends AppCompatActivity implements OnClickListener {
 
