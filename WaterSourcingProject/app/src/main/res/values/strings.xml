@@ -30,7 +30,7 @@
     <string name="auth_failed">Authentication failed</string>
 
     <string name="title_activity_logout">LogoutActivity</string>
-    <string name="dummy_button">Dummy Button</string>
+    <string name="logout_button">Logout</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>
