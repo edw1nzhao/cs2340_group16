@@ -1,6 +1,5 @@
 package edu.gatech.group16.watersourcingproject.controller;
 
-<<<<<<< HEAD
 import android.annotation.SuppressLint;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -85,30 +84,10 @@ public class LogoutActivity extends AppCompatActivity {
             return false;
         }
     };
-=======
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.content.Intent;
-import android.widget.TextView;
-import android.view.View.OnClickListener;
-
-import edu.gatech.group16.watersourcingproject.R;
-import edu.gatech.group16.watersourcingproject.controller.LoginActivity;
-
-public class LogoutActivity extends AppCompatActivity implements OnClickListener {
-
-
-    private TextView helloText;
->>>>>>> 358b37326f6e6861c6ffc2269b067eed38a14e1b
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-<<<<<<< HEAD
 
         setContentView(R.layout.activity_logout2);
 
@@ -183,32 +162,4 @@ public class LogoutActivity extends AppCompatActivity implements OnClickListener
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
     }
-=======
-        setContentView(R.layout.activity_logout);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        Bundle bundle = getIntent().getExtras();
-        helloText = (TextView) findViewById(R.id.hello);
-        helloText.setText("Hello, " + bundle.getString("NAME"));
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-    }
-    @Override
-    public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.logout_button) {
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-        }
-    }
-
->>>>>>> 358b37326f6e6861c6ffc2269b067eed38a14e1b
 }
