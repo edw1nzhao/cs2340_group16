@@ -24,9 +24,14 @@
         </activity>
         <activity
             android:name=".controller.LogoutActivity"
+<<<<<<< HEAD
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_logout"
             android:theme="@style/FullscreenTheme"></activity>
+=======
+            android:label="@string/title_activity_logout"
+            android:theme="@style/AppTheme"></activity>
+>>>>>>> 358b37326f6e6861c6ffc2269b067eed38a14e1b
     </application>
 
 </manifest>

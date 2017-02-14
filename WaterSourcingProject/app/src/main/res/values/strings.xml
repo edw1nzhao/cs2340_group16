@@ -28,6 +28,7 @@
     <string name="signed_out">Signed Out</string>
     <string name="verify_email">Verify Email</string>
     <string name="auth_failed">Authentication failed</string>
+    <string name="title_activity_logout">LogoutActivity</string>
 
     <string name="title_activity_logout">LogoutActivity</string>
     <string name="dummy_button">Dummy Button</string>
