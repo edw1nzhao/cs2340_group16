@@ -8,4 +8,6 @@
     <color name="grey_300">#E0E0E0</color>
 
     <color name="blue_300">#47CEFF</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>
