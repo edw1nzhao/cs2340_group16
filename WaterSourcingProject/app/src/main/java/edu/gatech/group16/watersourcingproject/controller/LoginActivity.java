@@ -29,6 +29,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 import android.util.Log;
 
@@ -266,6 +267,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
         } else if (i == R.id.email_sign_in_button) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
+            Intent intent = new Intent(this, LogoutActivity.class);
+            String[] split = str.split('@');
+            intent.putExtra("NAME", split[0]);
+            startActivity(intent);
         } else if (i == R.id.sign_out_button) {
             signOut();
         } else if (i == R.id.verify_email_button) {
