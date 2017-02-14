@@ -45,7 +45,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/sign_in"
-                    android:theme="@style/ThemeOverlay.Button" />
+                    android:theme="@style/ThemeOverlay.Button"
+                    tools:ignore="ButtonStyle" />
 
                 <Button
                     android:id="@+id/email_create_account_button"
@@ -53,7 +54,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/create_account"
-                    android:theme="@style/ThemeOverlay.Button" />
+                    android:theme="@style/ThemeOverlay.Button"
+                    tools:ignore="ButtonStyle" />
             </LinearLayout>
 
             <LinearLayout
@@ -73,7 +75,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:text="@string/sign_out"
-                    android:theme="@style/ThemeOverlay.Button" />
+                    android:theme="@style/ThemeOverlay.Button"
+                    tools:ignore="ButtonStyle" />
 
                 <Button
                     android:id="@+id/verify_email_button"
@@ -81,7 +84,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:text="@string/verify_email"
-                    android:theme="@style/ThemeOverlay.Button" />
+                    android:theme="@style/ThemeOverlay.Button"
+                    tools:ignore="ButtonStyle" />
 
             </LinearLayout>
 
@@ -102,7 +106,8 @@
                     android:layout_weight="1"
                     android:hint="@string/hint_email"
                     android:inputType="textEmailAddress"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/white" />
 
                 <EditText
                     android:id="@+id/field_password"
@@ -110,7 +115,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:hint="@string/hint_password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColorHint="@android:color/white"
+                    android:textColor="@android:color/black" />
             </LinearLayout>
 
         </RelativeLayout>
