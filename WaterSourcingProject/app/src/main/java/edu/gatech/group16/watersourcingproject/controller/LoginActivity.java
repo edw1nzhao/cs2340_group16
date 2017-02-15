@@ -24,6 +24,7 @@ import com.google.firebase.auth.AuthResult;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.ProviderQueryResult;
 
 import edu.gatech.group16.watersourcingproject.R;
 
@@ -35,7 +36,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         private static final String TAG = "EmailPassword";
 
         private TextView mStatusTextView;
-        private TextView mDetailTextView;
         private EditText emailField;
         private EditText passwordField;
 
@@ -66,10 +66,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                     FirebaseUser user = firebaseAuth.getCurrentUser();
                     if (user != null) {
-                        // User is signed in
                         Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
                     } else {
-                        // User is signed out
                         Log.d(TAG, "onAuthStateChanged:signed_out");
                     }
                     updateUI(user);
@@ -95,9 +93,23 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             Log.d(TAG, "createAccount:" + email);
             if (!validateForm()) {
                 return;
-        }
+            }
 
-        mAuth.createUserWithEmailAndPassword(email, password)
+            mAuth.fetchProvidersForEmail(email).addOnCompleteListener(
+                    this, new OnCompleteListener<ProviderQueryResult>() {
+                @Override
+                public void onComplete(@NonNull Task<ProviderQueryResult> task) {
+                    Log.d(TAG, "userAlreadyExists:" + task.isSuccessful());
+                    if (task.getResult().getProviders().size() != 1) {
+                        sendEmailVerification();
+                    } else {
+                        Toast.makeText(LoginActivity.this,
+                                "User already exists. Try signing in!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -117,7 +129,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             return;
         }
 
-        final Intent login_intent = new Intent(this, LogoutActivity.class);
+        final Intent login_intent = new Intent(this, HomeActivity.class);
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -150,10 +162,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void sendEmailVerification() {
-        // Disable button
         findViewById(R.id.verify_email_button).setEnabled(false);
 
-        // Send verification email
         final FirebaseUser user = mAuth.getCurrentUser();
         user.sendEmailVerification()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
@@ -218,8 +228,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             signIn(emailField.getText().toString(), passwordField.getText().toString());
         } else if (i == R.id.sign_out_button) {
             signOut();
-        } else if (i == R.id.verify_email_button) {
-            sendEmailVerification();
         }
     }
 
