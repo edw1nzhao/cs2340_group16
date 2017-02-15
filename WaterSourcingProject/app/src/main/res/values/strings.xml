@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Water Sourcing Project</string>
 
+    <string name="dummy_content">dummy content</string>
+    <string name="dummy_button">dummy button</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -34,11 +37,10 @@
     <string name="logout_button">Logout</string>
 
     <string name="title_activity_load_screen">LoadScreen</string>
-
     <string name="title_activity_login_screen">LoginScreenActivity</string>
-
     <string name="title_activity_registration">RegistrationActivity</string>
 
-    <string name="dummy_content">dummy content</string>
-    <string name="dummy_button">dummy button</string>
+
+    <!-- Strings related to home screen -->
+    <string name="home_welcome_textview"></string>
 </resources>
