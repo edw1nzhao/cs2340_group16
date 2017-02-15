@@ -119,7 +119,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        findViewById(R.id.logout_button).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.sign_out_button).setOnClickListener(this);
+        findViewById(R.id.back_button).setOnClickListener(this);
     }
 
     @Override
@@ -128,6 +129,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         if (i == R.id.logout_button) {
             Intent logoutIntent = new Intent(this, LoginActivity.class);
             startActivity(logoutIntent);
+            this.finish();
+        } else if (i == R.id.back_button){
+            Intent backIntent = new Intent(this, LoginActivity.class);
+            startActivity(backIntent);
             this.finish();
         }
     }

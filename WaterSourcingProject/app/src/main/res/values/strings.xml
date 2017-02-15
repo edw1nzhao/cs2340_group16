@@ -20,6 +20,8 @@
 
     <string name="sign_in">Sign In</string>
     <string name="login_registration_button">Create Account</string>
+    <string name="submit">Submit</string>
+    <string name="back">Back</string>
 
     <string name="title_text">Water Sourcing Project</string>
 

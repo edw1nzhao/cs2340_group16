@@ -12,17 +12,17 @@ import edu.gatech.group16.watersourcingproject.R;
 /**
  * Screen the appears when app first loads.
  */
-public class RegistrationActivity extends AppCompatActivity implements OnClickListener {
+public class LoadScreenActivity extends AppCompatActivity implements OnClickListener {
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.activity_loadscreen);
 
         // Buttons
-        findViewById(R.id.back_button).setOnClickListener(this);
-        findViewById(R.id.submit_button).setOnClickListener(this);
+        findViewById(R.id.signin_button).setOnClickListener(this);
+        findViewById(R.id.registration_button).setOnClickListener(this);
     }
 
     @Override
@@ -38,11 +38,12 @@ public class RegistrationActivity extends AppCompatActivity implements OnClickLi
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.back_button) {
+        if (i == R.id.signin_button) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-        } else if (i == R.id.submit_button) {
-            //TO DO
+        } else if (i == R.id.signin_button) {
+            Intent intent2 = new Intent(this, RegistrationActivity.class);
+            startActivity(intent2);
         }
     }
 }

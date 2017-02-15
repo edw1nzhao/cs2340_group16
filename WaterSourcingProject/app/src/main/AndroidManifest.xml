@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".controller.LoginActivity"
+            android:name=".controller.LoadScreenActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,12 @@
         <activity
             android:name=".controller.HomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_logout"
+            android:label="HomeActivity"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".controller.LoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="LoginActivity"
             android:theme="@style/FullscreenTheme" />
         <activity
             android:name=".controller.RegistrationActivity"

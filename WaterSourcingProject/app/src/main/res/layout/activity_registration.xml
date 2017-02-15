@@ -8,43 +8,93 @@
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <TextView
-        android:id="@+id/fullscreen_content"
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:text="@string/dummy_content"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold" />
+        android:id="@+id/main_layout">
+
+        <Button
+            android:text="@string/back"
+            android:layout_width="71dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="false"
+            android:layout_marginEnd="328dp"
+            android:id="@+id/back_button"
+            android:background="#0099cc" />
+
+        <TextView
+            android:text="@string/login_registration_button"
+            android:layout_width="match_parent"
+            android:id="@+id/textView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:textAllCaps="false"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="80dp"
+            android:layout_height="100dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:background="@color/grey_300"
+                android:layout_height="200dp"
+                android:id="@+id/linearLayout"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:id="@+id/name_field"
+                    android:hint="Name"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/white" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/email_field"
+                    android:hint="Email"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/white" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/password_field"
+                    android:hint="Password"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/white" />
+
+                <Button
+                    android:text="@string/submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/submit_button"
+                    android:background="?attr/colorAccent"
+                    android:elevation="0dp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
-
-        <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="?metaButtonBarStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
-
-            <Button
-                android:id="@+id/dummy_button"
-                style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/dummy_button" />
-
-        </LinearLayout>
-    </FrameLayout>
 
 </FrameLayout>

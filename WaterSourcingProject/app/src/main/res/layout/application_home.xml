@@ -29,19 +29,49 @@
 
         </LinearLayout>
 
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/home_textview" />
-
-        <Button
-            android:text="@string/logout_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/logout_button"
-            android:layout_gravity="top|right" />
-
     </FrameLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:text="@string/logout_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/logout_button"
+                android:layout_gravity="top|right"
+                android:layout_marginBottom="228dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:background="?attr/colorAccent" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/home_textview"
+                android:layout_weight="1"
+                android:layout_marginBottom="66dp"
+                android:layout_above="@+id/logout_button"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="20dp"
+                android:textSize="30sp" />
+
+            <Button
+                android:text="@string/back"
+                android:layout_width="71dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:id="@+id/back_button"
+                android:background="#0099cc" />
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </FrameLayout>
