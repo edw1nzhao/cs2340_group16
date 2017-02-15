@@ -43,4 +43,6 @@
 
     <string name="dummy_content">dummy content</string>
     <string name="dummy_button">dummy button</string>
+
+    <string name="facebook_app_id">212428892564515</string>
 </resources>

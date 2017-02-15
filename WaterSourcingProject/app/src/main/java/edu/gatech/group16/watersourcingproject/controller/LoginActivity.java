@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         private EditText passwordField;
 
         private FirebaseAuth mAuth;
-
         private FirebaseAuth.AuthStateListener mAuthListener;
 
         @Override
