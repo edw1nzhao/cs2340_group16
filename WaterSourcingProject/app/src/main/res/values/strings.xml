@@ -4,6 +4,9 @@
     <string name="dummy_content">dummy content</string>
     <string name="dummy_button">dummy button</string>
 
+    <string name="firebaseui_status_fmt">Firebase User: %s</string>
+    <string name="firebase_status_fmt">Firebase User: %s</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
@@ -18,16 +21,20 @@
     </string>
 
     <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
-    <string name="firebaseui_status_fmt">Firebase User: %s</string>
-    <string name="firebase_status_fmt">Firebase User: %s</string>
 
     <string name="sign_in">Sign In</string>
     <string name="login_registration_button">Create Account</string>
 
     <string name="title_text">Water Sourcing Project</string>
 
+    <string name="hint_name">Name</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
+    <string name="label_name">Name</string>
+    <string name="label_email">Email</string>
+    <string name="label_password">Password</string>
+
+
     <string name="sign_out">Sign Out</string>
     <string name="signed_out">Signed Out</string>
     <string name="verify_email">Verify Email</string>
