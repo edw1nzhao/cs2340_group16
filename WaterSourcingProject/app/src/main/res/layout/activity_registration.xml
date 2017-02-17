@@ -55,23 +55,6 @@
                     android:layout_height="0dp"
                     android:layout_width="match_parent">
 
-                    <TextView
-                        android:text="@string/label_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/registration_name_view"
-                        android:layout_weight="1"
-                        android:textAlignment="center"
-                        android:textStyle="normal|bold"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
-                        android:ems="10"
-                        android:id="@+id/registration_name"
-                        android:hint="@string/hint_name" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -79,25 +62,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:text="@string/label_email"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/registration_email_view"
-                        android:layout_weight="0.93"
-                        android:textStyle="normal|bold"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress"
-                        android:ems="10"
-                        android:id="@+id/registration_email"
-                        android:layout_weight="1"
-                        android:hint="@string/hint_email"
-                        android:background="@android:color/white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -105,25 +69,99 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:text="@string/label_password"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/registration_pass_view"
-                        android:layout_weight="1"
-                        android:textStyle="normal|bold"
-                        android:textAlignment="center"
-                        android:textSize="18sp" />
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:ems="10"
-                        android:id="@+id/registration_password"
-                        android:layout_weight="1"
-                        android:hint="@string/hint_password" />
                 </LinearLayout>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/registration_password"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_email"
+                    android:background="@android:color/white"
+                    android:layout_below="@+id/registration_email"
+                    android:layout_alignStart="@+id/registration_email"
+                    android:layout_marginTop="29dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/registration_email_view"
+                    tools:text="@string/label_email"
+                    android:layout_above="@+id/registration_email"
+                    android:layout_alignStart="@+id/registration_email" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/registration_email"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_email"
+                    android:background="@android:color/white"
+                    android:layout_centerVertical="true"
+                    android:layout_alignStart="@+id/registration_name" />
+
+                <TextView
+                    android:text="@string/label_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView"
+                    android:layout_below="@+id/registration_email"
+                    android:layout_alignStart="@+id/registration_password"
+                    android:layout_marginTop="13dp" />
+
+                <TextView
+                    android:text="@string/label_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/registration_name_view"
+                    android:layout_below="@+id/logo"
+                    android:layout_alignStart="@+id/registration_name" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/registration_name"
+                    android:layout_weight="1"
+                    android:hint="@string/hint_email"
+                    android:background="@android:color/white"
+                    android:layout_below="@+id/registration_name_view"
+                    android:layout_centerHorizontal="true" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="29dp"
+                    android:id="@+id/account_type_spinner"
+                    android:layout_below="@+id/registration_password"
+                    android:layout_alignStart="@+id/registration_password"
+                    android:layout_alignEnd="@+id/registration_password" />
+
+                <TextView
+                    android:text="@string/label_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2"
+                    android:layout_marginTop="13dp"
+                    android:layout_below="@+id/registration_password"
+                    android:layout_alignStart="@+id/account_type_spinner" />
+
+                <Button
+                    android:text="@string/login_registration_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/create_account_button"
+                    android:layout_marginTop="25dp"
+                    android:layout_below="@+id/account_type_spinner"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/colorButton"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" />
 
             </RelativeLayout>
 
