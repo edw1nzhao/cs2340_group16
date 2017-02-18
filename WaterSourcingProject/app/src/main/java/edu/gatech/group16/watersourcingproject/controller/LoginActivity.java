@@ -193,6 +193,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (TextUtils.isEmpty(email)) {
             emailField.setError("Required.");
             valid = false;
+        } else if (email.length() < 6) {
+            emailField.setError("Incorrect format.");
+            valid = false;
+        } else if (!email.substring(email.length() - 4).equals(".com")) {
+            emailField.setError("Incorrect format.");
+            valid = false;
+        } else if (email.substring(email.length() - 5).equals("@.com")) {
+            emailField.setError("Incorrect format.");
+            valid = false;
         } else {
             emailField.setError(null);
         }
@@ -200,6 +209,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         String password = passwordField.getText().toString();
         if (TextUtils.isEmpty(password)) {
             passwordField.setError("Required.");
+            valid = false;
+        } else if (password.length() < 6 || password.length() > 23) {
+            passwordField.setError("Password must be between 6 and 23 characters.");
             valid = false;
         } else {
             passwordField.setError(null);
@@ -223,7 +235,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.email_create_account_button) {
-            createAccount(emailField.getText().toString(), passwordField.getText().toString());
+            ////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////
+            //TO DO:
+            //Move this functionality to RegistrationActivity:
+
+            //createAccount(emailField.getText().toString(), passwordField.getText().toString());
+
+            ////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////
+            Intent intent = new Intent(this, RegistrationActivity.class);
+            startActivity(intent);
+
+
         } else if (i == R.id.email_sign_in_button) {
             signIn(emailField.getText().toString(), passwordField.getText().toString());
         } else if (i == R.id.sign_out_button) {
