@@ -44,9 +44,14 @@
     <string name="title_activity_logout">LogoutActivity</string>
     <string name="logout_button">Logout</string>
 
+    <string name="user_profile">User Profile</string>
+    <string name="report">Submit a Report</string>
+    <string name="available">View Available Water Sources</string>
+
     <string name="title_activity_load_screen">LoadScreen</string>
     <string name="title_activity_login_screen">LoginScreenActivity</string>
     <string name="title_activity_registration">RegistrationActivity</string>
+
 
 
     <!-- Strings related to home screen -->

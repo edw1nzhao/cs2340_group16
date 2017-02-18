@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0099cc"
+    android:background="@color/colorPrimary"
     tools:context="edu.gatech.group16.watersourcingproject.controller.HomeActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
@@ -12,36 +12,125 @@
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
 
-    <FrameLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
+        android:id="@+id/home_textview"
+        android:elevation="1dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
-            style="?metaButtonBarStyle"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
-            android:orientation="horizontal"
-            tools:ignore="UselessParent">
+            android:layout_height="match_parent">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/fullscreen_content_controls"
+                    style="?metaButtonBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:background="@color/black_overlay"
+                    android:orientation="horizontal"
+                    tools:ignore="UselessParent">
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="446dp"
+                    android:id="@+id/textView4"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true" />
+
+                <TextView
+                    android:text="@string/label_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/name_field"
+                    android:layout_alignStart="@+id/name_field"
+                    android:layout_marginTop="30dp"
+                    android:id="@+id/email_field" />
+
+                <TextView
+                    android:text="@string/label_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name_field"
+                    android:layout_above="@+id/textView4"
+                    android:layout_alignStart="@+id/textView3" />
+
+                <TextView
+                    android:text="@string/label_account"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/account_field"
+                    android:layout_below="@+id/password_field"
+                    android:layout_alignStart="@+id/password_field"
+                    android:layout_marginTop="24dp" />
+
+                <TextView
+                    android:text="@string/label_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="29dp"
+                    android:id="@+id/password_field"
+                    android:layout_below="@+id/email_field"
+                    android:layout_alignStart="@+id/email_field" />
+
+                <Button
+                    android:text="@string/available"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:id="@+id/available_button"
+                    android:layout_below="@+id/report_button"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="@color/colorButton"
+                    android:textSize="12sp" />
+
+                <Button
+                    android:text="@string/report"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="34dp"
+                    android:id="@+id/report_button"
+                    android:background="@color/colorButton"
+                    android:layout_below="@+id/account_field"
+                    android:layout_alignParentStart="true"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:text="@string/user_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView3"
+                    android:layout_marginStart="36dp"
+                    android:textSize="30sp"
+                    android:layout_above="@+id/name_field"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginBottom="34dp" />
+
+                <Button
+                    android:text="@string/logout_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/logout_button"
+                    android:layout_gravity="top|right"
+                    android:background="@color/colorPrimary"
+                    android:layout_alignBottom="@+id/textView3"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="10dp" />
+            </RelativeLayout>
         </LinearLayout>
-
-        <Button
-            android:text="@string/logout_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/logout_button"
-            android:layout_gravity="top|right" />
-
-        <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/home_textview" />
-
     </FrameLayout>
 
 </FrameLayout>
