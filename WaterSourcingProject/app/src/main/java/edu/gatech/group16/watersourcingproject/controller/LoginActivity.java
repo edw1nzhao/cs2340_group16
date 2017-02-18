@@ -40,7 +40,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         private EditText passwordField;
 
         private FirebaseAuth mAuth;
-
         private FirebaseAuth.AuthStateListener mAuthListener;
 
         @Override
@@ -121,7 +120,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         }
                     }
                 });
-    }
+        }
 
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
@@ -194,13 +193,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             emailField.setError("Required.");
             valid = false;
         } else if (email.length() < 6) {
-            emailField.setError("Incorrect format.");
+            emailField.setError("Incorrect email.");
             valid = false;
         } else if (!email.substring(email.length() - 4).equals(".com")) {
-            emailField.setError("Incorrect format.");
+            emailField.setError("Incorrect email.");
             valid = false;
         } else if (email.substring(email.length() - 5).equals("@.com")) {
-            emailField.setError("Incorrect format.");
+            emailField.setError("Incorrect email.");
             valid = false;
         } else {
             emailField.setError(null);
@@ -211,7 +210,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             passwordField.setError("Required.");
             valid = false;
         } else if (password.length() < 6 || password.length() > 23) {
-            passwordField.setError("Password must be between 6 and 23 characters.");
+            passwordField.setError("Incorrect password.");
             valid = false;
         } else {
             passwordField.setError(null);
