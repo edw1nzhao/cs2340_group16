@@ -1,14 +1,11 @@
 package edu.gatech.group16.watersourcingproject.controller;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Button;
 
 import edu.gatech.group16.watersourcingproject.R;
 
@@ -21,6 +18,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     TextView emailField;
     TextView passwordField;
     TextView accountTypeField;
+    Button editButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +26,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.application_home);
 
         findViewById(R.id.logout_button).setOnClickListener(this);
+        findViewById(R.id.save_changes).setOnClickListener(this);
 
         nameField = (TextView) findViewById(R.id.name_field);
         emailField = (TextView) findViewById(R.id.email_field);
         passwordField = (TextView) findViewById(R.id.password_field);
         accountTypeField = (TextView) findViewById(R.id.account_field);
 
+        editButton = (Button) findViewById(R.id.save_changes);
 
         Bundle bundle = getIntent().getExtras();
         String name = bundle.getString("NAME");
@@ -53,6 +53,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         if (i == R.id.logout_button) {
             Intent logoutIntent = new Intent(this, LoginActivity.class);
             startActivity(logoutIntent);
+            this.finish();
+        } else if (i == R.id.save_changes) {
+            Intent editUser = new Intent(this, EditProfileActivtiy.class);
+            startActivity(editUser);
             this.finish();
         }
     }

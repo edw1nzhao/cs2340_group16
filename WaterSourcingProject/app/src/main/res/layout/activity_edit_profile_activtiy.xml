@@ -85,20 +85,10 @@
                     android:layout_below="@+id/email_field"
                     android:layout_alignStart="@+id/email_field" />
 
-                <Button
-                    android:text="@string/available"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:id="@+id/available_button"
-                    android:layout_below="@+id/save_changes"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
-                    android:background="@color/colorButton"
-                    android:textSize="12sp" />
+
 
                 <Button
-                    android:text="@string/edit_user"
+                    android:text="@string/save_changes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="34dp"
@@ -109,7 +99,7 @@
                     android:textSize="12sp" />
 
                 <TextView
-                    android:text="@string/user_profile"
+                    android:text="@string/edit_user"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/textView3"
@@ -119,16 +109,55 @@
                     android:layout_alignParentStart="true"
                     android:layout_marginBottom="34dp" />
 
-                <Button
-                    android:text="@string/logout_button"
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/account_field"
+                    android:layout_toEndOf="@+id/account_field"
+                    android:layout_marginStart="18dp"
+
+                    android:id="@+id/spinner" />
+
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/logout_button"
-                    android:layout_gravity="top|right"
-                    android:background="@color/colorPrimary"
-                    android:layout_alignBottom="@+id/textView3"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:textColor="@android:color/black"
+                    android:layout_above="@+id/textView4"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginBottom="10dp" />
+                    android:id="@+id/editText3"
+                    android:background="@android:color/white"
+                    android:layout_below="@+id/textView3"
+                    android:textColorLink="@android:color/black" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:textColor="@android:color/black"
+                    android:ems="10"
+                    android:layout_alignParentEnd="true"
+                    android:background="@android:color/white"
+                    android:id="@+id/editText4"
+                    android:layout_above="@+id/password_field"
+                    android:layout_alignTop="@+id/email_field"
+                    android:textColorLink="@android:color/black" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:ems="10"
+                    android:layout_above="@+id/account_field"
+                    android:layout_alignStart="@+id/editText4"
+                    android:id="@+id/editText5"
+                    android:layout_alignTop="@+id/password_field"
+                    android:layout_alignParentEnd="true"
+                    android:textColorLink="@android:color/black" />
+
 
             </RelativeLayout>
         </LinearLayout>

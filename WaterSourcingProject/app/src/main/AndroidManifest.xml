@@ -31,7 +31,8 @@
             android:name=".controller.RegistrationActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_registration"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".controller.EditProfileActivtiy"></activity>
     </application>
 
 </manifest>
