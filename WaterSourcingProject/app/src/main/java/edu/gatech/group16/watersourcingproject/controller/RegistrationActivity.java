@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.content.Intent;
 import edu.gatech.group16.watersourcingproject.R;
-import edu.gatech.group16.watersourcingproject.controller.AccountType;
+import edu.gatech.group16.watersourcingproject.model.AccountType;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -24,7 +24,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_registration);
+        setContentView(R.layout.activity_registration_name);
 
         accountTypeSpinner = (Spinner) findViewById(R.id.account_type_spinner);
         nameField = (EditText) findViewById(R.id.registration_name);

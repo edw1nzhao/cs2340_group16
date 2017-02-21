@@ -190,32 +190,34 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         boolean valid = true;
 
         String email = emailField.getText().toString();
+        Log.d(TAG, email.substring(email.length() - 3));
         if (TextUtils.isEmpty(email)) {
             emailField.setError("Required.");
             valid = false;
         } else if (email.length() < 6) {
             emailField.setError("Incorrect format.");
             valid = false;
-        } else if (!email.substring(email.length() - 4).equals(".com")) {
-            emailField.setError("Incorrect format.");
+        } else if (!email.substring(email.length() - 4).equals(".com")
+                || !email.substring(email.length() - 4).equals(".net")) {
+            emailField.setError("Incorrect format!!!!.");
             valid = false;
-        } else if (email.substring(email.length() - 5).equals("@.com")) {
-            emailField.setError("Incorrect format.");
+        } else if (email.contains("@.")) {
+            emailField.setError("Incorrect format!!.");
             valid = false;
         } else {
             emailField.setError(null);
         }
 
         String password = passwordField.getText().toString();
-        if (TextUtils.isEmpty(password)) {
-            passwordField.setError("Required.");
-            valid = false;
-        } else if (password.length() < 6 || password.length() > 23) {
-            passwordField.setError("Password must be between 6 and 23 characters.");
-            valid = false;
-        } else {
-            passwordField.setError(null);
-        }
+//        if (TextUtils.isEmpty(password)) {
+//            passwordField.setError("Required.");
+//            valid = false;
+//        } else if (password.length() < 6 || password.length() > 23) {
+//            passwordField.setError("Password must be between 6 and 23 characters.");
+//            valid = false;
+//        } else {
+//            passwordField.setError(null);
+//        }
 
         return valid;
     }
