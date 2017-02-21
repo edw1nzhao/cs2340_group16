@@ -44,13 +44,6 @@
                 </LinearLayout>
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="446dp"
-                    android:id="@+id/textView4"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true" />
-
-                <TextView
                     android:text="@string/label_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -129,6 +122,13 @@
                     android:layout_alignBottom="@+id/textView3"
                     android:layout_alignParentEnd="true"
                     android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="446dp"
+                    android:id="@+id/textView4"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true" />
 
             </RelativeLayout>
         </LinearLayout>

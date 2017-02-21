@@ -37,7 +37,9 @@
     <string name="label_emailq">What's your email?</string>
     <string name="label_accq">What account type?</string>
     <string name="label_passwordq">What's your password?</string>
+    <string name="label_m5">Registration</string>
 
+    <string name="label_name">NAME</string>
     <string name="label_firstname">FIRST NAME</string>
     <string name="label_lastname">LAST NAME</string>
     <string name="label_uname">USERNAME</string>
