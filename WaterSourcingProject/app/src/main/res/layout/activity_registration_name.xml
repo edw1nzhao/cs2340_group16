@@ -90,7 +90,7 @@
                             android:id="@+id/reg_text_lastname" />
 
                         <Button
-                            android:text="@string/button_reg_name"
+                            android:text="@string/button_continue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/reg_button_name"

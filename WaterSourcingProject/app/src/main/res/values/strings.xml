@@ -22,6 +22,7 @@
 
     <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
 
+
     <string name="sign_in">Sign In</string>
     <string name="login_registration_button">Create Account</string>
 
@@ -48,6 +49,8 @@
 
     <string name="label_account">Account Type</string>
 
+    <string name="button_signin">Sign in</string>
+    <string name="button_signup">Sign up</string>
     <string name="button_reg_name">Sign up!</string>
     <string name="button_continue">Continue</string>
 

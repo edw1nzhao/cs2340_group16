@@ -1,0 +1,105 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_100"
+    android:orientation="vertical"
+    android:weightSum="4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:background="@color/colorPrimary"
+        android:weightSum="1"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.05"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:srcCompat="@mipmap/water_logo"
+                android:id="@+id/imageView"
+                android:layout_weight="0.22"
+                android:padding="15dp"
+                android:contentDescription=""
+                tools:ignore="ContentDescription,NestedWeights" />
+
+            <TextView
+                android:id="@+id/login_title"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/title_text"
+                android:theme="@style/ThemeOverlay.MyTitleText"
+                android:textSize="18sp"
+                android:layout_weight="0.04"
+                tools:ignore="NestedWeights" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="127dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="UselessParent"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
+
+                <LinearLayout
+                    android:id="@+id/email_password_buttons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="4.0dip"
+                    android:paddingRight="15dip"
+                    android:paddingBottom="1.0dip"
+                    android:paddingTop="5.0dip"
+                    android:gravity="bottom"
+                    android:layout_marginTop="10dp"
+                    tools:ignore="RtlHardcoded">
+
+                    <Button
+                        android:id="@+id/welcome_button_signin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/button_signin"
+                        android:theme="@style/ThemeOverlay.Button"
+                        tools:ignore="ButtonStyle"
+                        android:background="@color/colorButton"
+                        android:layout_marginStart="10dp" />
+
+                    <Button
+                        android:id="@+id/welcome_button_createacc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/button_signup"
+                        android:theme="@style/ThemeOverlay.Button"
+                        tools:ignore="ButtonStyle"
+                        android:background="@color/colorButton"
+                        android:layout_marginStart="15dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
