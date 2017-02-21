@@ -49,7 +49,7 @@
                     android:layout_marginTop="15dp">
 
                     <TextView
-                        android:text="@string/label_unameq"
+                        android:text="@string/label_emailq"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/reg_label_emailq"
@@ -63,7 +63,7 @@
                         android:layout_marginTop="60dp">
 
                         <TextView
-                            android:text="@string/label_uname"
+                            android:text="@string/label_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:id="@+id/reg_label_firstname" />
@@ -71,9 +71,9 @@
                         <EditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPersonName"
                             android:ems="10"
-                            android:id="@+id/reg_text_username" />
+                            android:id="@+id/reg_text_email"
+                            android:inputType="textEmailAddress" />
 
                         <Button
                             android:text="@string/button_continue"
@@ -81,7 +81,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/reg_button_name"
                             android:background="@color/colorButton"
-                            android:layout_marginTop="40dp" />
+                            android:layout_marginTop="20dp" />
                     </LinearLayout>
 
                 </LinearLayout>

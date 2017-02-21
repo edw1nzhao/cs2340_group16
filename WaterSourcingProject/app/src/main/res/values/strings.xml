@@ -33,12 +33,17 @@
     <string name="hint_password">Password</string>
 
     <string name="label_nameq">What's your name?</string>
+    <string name="label_unameq">What's your username?</string>
+    <string name="label_emailq">What's your email?</string>
+    <string name="label_accq">What account type?</string>
+    <string name="label_passwordq">What's your password?</string>
+
     <string name="label_firstname">FIRST NAME</string>
     <string name="label_lastname">LAST NAME</string>
-    <string name="label_accq">What account type?</string>
+    <string name="label_uname">USERNAME</string>
+    <string name="label_email">EMAIL</string>
+    <string name="label_password">PASSWORD</string>
 
-    <string name="label_email">Email</string>
-    <string name="label_password">Password</string>
     <string name="label_account">Account Type</string>
 
     <string name="button_reg_name">Sign up!</string>
