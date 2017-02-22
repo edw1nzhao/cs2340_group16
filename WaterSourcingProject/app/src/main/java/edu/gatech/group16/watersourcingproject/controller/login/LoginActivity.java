@@ -38,6 +38,7 @@ import java.util.List;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
+import edu.gatech.group16.watersourcingproject.model.AccountType;
 import edu.gatech.group16.watersourcingproject.model.User;
 
 /**
@@ -56,54 +57,54 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         private DatabaseReference dbReference;
 
         private User user;
-        private ArrayList<User> users;
+        //Inside: is the list of userIDs from firebase
+        private final List<User> users = new ArrayList<User>();
+        private final List<User> users2 = new ArrayList<User>();
 
-        private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
-        @Override
+
+    @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
 
-            //final List<User> users = new ArrayList<>();
             FirebaseDatabase db = FirebaseDatabase.getInstance();
             DatabaseReference dbRef = db.getReference();
 
-            final Spinner userSpinner = (Spinner) findViewById(R.id.spinner);
+//
+//            dbRef.child("users").addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    //Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+//
+//                    for (DataSnapshot child: dataSnapshot.getChildren()) {
+//                        User user = child.getValue(User.class);
+//                        users.add(user);
+//                    }
+//
+//                    Log.d("SIZE DURING: ", users.size() + "");
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//
+//                }
+//            });
 
-            dbRef.child("users").addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    final List<User> users = new ArrayList<User>();
-                    //Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+        users2.add(new User("edwin.zhao@gatech.edu", "asdfasdf", "Edwin Zhao", AccountType.ADMINISTRATOR));
+        users2.add(new User("feehan.tomonari@gmail.com", "password", "Tomonari", AccountType.ADMINISTRATOR));
 
-                    for (DataSnapshot child: dataSnapshot.getChildren()) {
-                        User user = child.getValue(User.class);
-                        users.add(user);
-                    }
-
-
-                    ArrayAdapter<User> userAdapter = new ArrayAdapter<User>(LoginActivity.this, android.R.layout.simple_spinner_item, users);
-                    userAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    userSpinner.setAdapter(userAdapter);
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
+            Log.d("SIZE AFTER: ", users.size() + ""); // Expect a number other than 0
             // Views
             mStatusTextView = (TextView) findViewById(R.id.status);
             emailField = (EditText) findViewById(R.id.field_email);
             passwordField = (EditText) findViewById(R.id.field_password);
 
             // Buttons
-            findViewById(R.id.email_sign_in_button).setOnClickListener(this);
             findViewById(R.id.email_create_account_button).setOnClickListener(this);
             findViewById(R.id.sign_out_button).setOnClickListener(this);
-            findViewById(R.id.verify_email_button).setOnClickListener(this);
+            findViewById(R.id.email_sign_in_button).setOnClickListener(this);
 
             mAuth = FirebaseAuth.getInstance();
 
@@ -137,10 +138,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
-        if (!validateForm()) {
+        if (!validForm()) {
             return;
         }
-
+        final String tempEmail = email;
         final Intent home_activity = new Intent(this, HomeActivity.class);
 
         mAuth.signInWithEmailAndPassword(email, password)
@@ -148,7 +149,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithEmail:failed", task.getException());
                             Toast.makeText(LoginActivity.this, R.string.auth_failed,
@@ -158,7 +158,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         if (!task.isSuccessful()) {
                             mStatusTextView.setText(R.string.auth_failed);
                         } else {
-                            home_activity.putExtra("USER", user);
+                            User tempUser = null;
+                            for (User u: users2) {
+                                if (u.getEmail().equals(tempEmail)) {
+                                    tempUser = u;
+                                }
+                            }
+
+                            home_activity.putExtra("USER", tempUser);
 
                             startActivity(home_activity);
                             finish();
@@ -195,43 +202,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 });
     }
 
-    private boolean validateForm() {
-        boolean valid = true;
-
-        String email = emailField.getText().toString();
-        Log.d(TAG, email.substring(email.length() - 3));
-        if (TextUtils.isEmpty(email)) {
-            emailField.setError("Required.");
-            valid = false;
-        }
-//        else if (email.length() < 6) {
-//            emailField.setError("Incorrect format.");
-//            valid = false;
-//        } else if (!email.substring(email.length() - 4).equals(".com")
-//                || !email.substring(email.length() - 4).equals(".net")) {
-//            emailField.setError("Incorrect format!!!!.");
-//            valid = false;
-//        } else if (email.contains("@.")) {
-//            emailField.setError("Incorrect format!!.");
-//            valid = false;
-//        } else {
-//            emailField.setError(null);
-//        }
-
-        String password = passwordField.getText().toString();
-//        if (TextUtils.isEmpty(password)) {
-//            passwordField.setError("Required.");
-//            valid = false;
-//        } else if (password.length() < 6 || password.length() > 23) {
-//            passwordField.setError("Password must be between 6 and 23 characters.");
-//            valid = false;
-//        } else {
-//            passwordField.setError(null);
-//        }
-
-        return valid;
-    }
-
     private void updateUI(FirebaseUser user) {
         if (user != null) {
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
@@ -248,12 +218,43 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int i = v.getId();
 
         if (i == R.id.email_create_account_button) {
-            Intent intent = new Intent(this, RegAccountTypeActivity.class);
-            startActivity(intent);
-
+            if (validForm()) {
+                Intent intent = new Intent(this, RegAccountTypeActivity.class);
+                startActivity(intent);
+            }
         } else if (i == R.id.email_sign_in_button) {
             signIn(emailField.getText().toString(), passwordField.getText().toString());
         }
+    }
+
+    public boolean validForm() {
+        boolean valid = true;
+        String email = emailField.getText().toString();
+        String password = passwordField.getText().toString();
+        if (TextUtils.isEmpty(email)) {
+            emailField.setError("Required.");
+            valid = false;
+        } else if (email.length() < 6){
+            emailField.setError("Incorrect email.");
+            valid = false;
+        } else if (!email.contains("@")
+                || email.contains("@.com")
+                || email.contains("@.edu")
+                || email.contains("@.net")) {
+            emailField.setError("Incorrect email.");
+            valid = false;
+        } else {
+            emailField.setError(null);
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            emailField.setError("Required.");
+            valid = false;
+        } else {
+            emailField.setError(null);
+        }
+
+        return valid;
     }
 
     @Override

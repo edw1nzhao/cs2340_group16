@@ -5,28 +5,38 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import edu.gatech.group16.watersourcingproject.R;
+import edu.gatech.group16.watersourcingproject.model.User;
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button saveButton;
-    Button cancelButton;
+    private Button saveButton;
+    private Button cancelButton;
+    private EditText emailField;
+    private EditText nameField;
+    private EditText passwordField;
+
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_activtiy);
 
-        cancelButton = (Button) findViewById(R.id.edit_button_cancel);
-        saveButton = (Button) findViewById(R.id.save_changes);
 
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        findViewById(R.id.edit_button_cancel).setOnClickListener(this);
+        findViewById(R.id.edit_button_save).setOnClickListener(this);
+
+
+
+        emailField = (EditText) findViewById(R.id.edit_text_email);
+        nameField = (EditText) findViewById(R.id.edit_text_name);
+        passwordField = (EditText) findViewById(R.id.edit_text_password);
+
+        user = (User) getIntent().getSerializableExtra("USER");
+
     }
 
     @Override
@@ -34,7 +44,18 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             int i = v.getId();
 
             if (i == R.id.edit_button_save) {
+                if (emailField.getText().length() != 0) {
+                    user.setEmail(emailField.getText().toString());
+                }
+                if (passwordField.getText().length() != 0) {
+                    user.setPassword(passwordField.getText().toString());
+                }
+                if (nameField.getText().length() != 0) {
+                    user.setName(nameField.getText().toString());
+                }
+
                 Intent saveChangesIntent = new Intent(this, HomeActivity.class);
+                saveChangesIntent.putExtra("USER", user);
                 startActivity(saveChangesIntent);
                 EditProfileActivity.this.finish();
                 return;
@@ -42,5 +63,9 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 EditProfileActivity.this.finish();
                 return;
             }
+    }
+
+    public void saveData() {
+
     }
 }

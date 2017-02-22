@@ -31,15 +31,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.logout_button).setOnClickListener(this);
         findViewById(R.id.save_changes).setOnClickListener(this);
 
+        user = (User) getIntent().getSerializableExtra("USER");
+
         nameField = (TextView) findViewById(R.id.name_field);
         emailField = (TextView) findViewById(R.id.email_field);
         passwordField = (TextView) findViewById(R.id.password_field);
         accountTypeField = (TextView) findViewById(R.id.account_field);
 
         editButton = (Button) findViewById(R.id.save_changes);
-
-        user = (User) getIntent().getSerializableExtra("USER");
-
 
         nameField.setText("Name: " + user.getName());
         emailField.setText("Email: " + user.getEmail());
@@ -55,6 +54,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(logoutIntent);
         } else if (i == R.id.save_changes) {
             Intent editUser = new Intent(this, EditProfileActivity.class);
+            editUser.putExtra("USER", user);
             startActivity(editUser);
         }
     }

@@ -97,7 +97,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
                             android:ems="10"
-                            android:id="@+id/editText5" />
+                            android:id="@+id/edit_text_password" />
 
                         <LinearLayout
                             android:orientation="horizontal"

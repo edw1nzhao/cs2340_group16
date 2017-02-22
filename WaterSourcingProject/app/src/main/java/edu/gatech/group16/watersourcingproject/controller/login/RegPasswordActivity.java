@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -58,13 +59,14 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
             if (createAccount(user.getEmail(), user.getPassword())) {
                 FirebaseDatabase db = FirebaseDatabase.getInstance();
                 DatabaseReference dbRef = db.getReference();
-                dbRef.child("users").push().setValue(user);
+                DatabaseReference newRef = dbRef.child("users").push();
+                newRef.setValue(user);
+
                 Intent intent = new Intent(this, HomeActivity.class);
                 intent.putExtra("USER", user);
                 startActivity(intent);
                 RegPasswordActivity.this.finish();
             }
-
         }
     }
     private boolean valid = false;
@@ -109,34 +111,16 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
 
     private boolean validateForm() {
         boolean valid = true;
-
-//        if (TextUtils.isEmpty(email)) {
-//            emailField.setError("Required.");
-//            valid = false;
-//        } else if (email.length() < 6) {
-//            emailField.setError("Incorrect format1.");
-//            valid = false;
-//        } else if (!email.substring(email.length() - 4).equals(".com")
-//                || !email.substring(email.length() - 4).equals(".net")) {
-//            emailField.setError("Incorrect format2.");
-//            valid = false;
-//        } else if (email.contains("@.")) {
-//            emailField.setError("Incorrect format3.");
-//            valid = false;
-//        } else {
-//            emailField.setError(null);
-//        }
-
         String password = passwordField.getText().toString();
-//        if (TextUtils.isEmpty(password)) {
-//            passwordField.setError("Required.");
-//            valid = false;
-//        } else if (password.length() < 6 || password.length() > 23) {
-//            passwordField.setError("Password must be between 6 and 23 characters.");
-//            valid = false;
-//        } else {
-//            passwordField.setError(null);
-//        }
+        if (TextUtils.isEmpty(password)) {
+            passwordField.setError("Required.");
+            valid = false;
+        } else if (password.length() < 6 || password.length() > 23) {
+            passwordField.setError("Password must be between 6 and 23 characters.");
+            valid = false;
+        } else {
+            passwordField.setError(null);
+        }
 
         return valid;
     }

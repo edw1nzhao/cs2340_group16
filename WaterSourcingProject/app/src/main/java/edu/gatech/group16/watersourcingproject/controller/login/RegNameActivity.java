@@ -3,6 +3,7 @@ package edu.gatech.group16.watersourcingproject.controller.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -33,12 +34,27 @@ public class RegNameActivity extends AppCompatActivity implements View.OnClickLi
         int i = v.getId();
 
         if (i == R.id.reg_button_continue) {
-            user.setName(nameField.getText().toString());
-            Intent intent = new Intent(this, RegEmailActivity.class);
-            intent.putExtra("USER", user);
-            startActivity(intent);
-            this.finish();
+            if (validForm()) {
+                user.setName(nameField.getText().toString());
+                Intent intent = new Intent(this, RegEmailActivity.class);
+                intent.putExtra("USER", user);
+                startActivity(intent);
+                this.finish();
+            }
         }
+    }
+
+    public boolean validForm() {
+        boolean valid = true;
+        String name = nameField.getText().toString();
+        if (TextUtils.isEmpty(name)) {
+            nameField.setError("Required.");
+            valid = false;
+        } else {
+            nameField.setError(null);
+        }
+
+        return valid;
     }
 
 }
