@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="edu.gatech.group16.watersourcingproject.controller.RegistrationActivity">
+    tools:context="edu.gatech.group16.watersourcingproject.controller.RegAccountTypeActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -63,37 +63,24 @@
                         android:layout_marginTop="60dp">
 
                         <TextView
-                            android:text="@string/label_firstname"
+                            android:text="@string/label_name"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/reg_label_firstname" />
+                            android:id="@+id/reg_label_name" />
 
                         <EditText
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:inputType="textPersonName"
                             android:ems="10"
-                            android:id="@+id/reg_text_firstname" />
-
-                        <TextView
-                            android:text="@string/label_lastname"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/reg_label_lastname"
-                            android:layout_marginTop="20dp" />
-
-                        <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textPersonName"
-                            android:ems="10"
-                            android:id="@+id/reg_text_lastname" />
+                            android:id="@+id/reg_text_name"
+                            tools:ignore="LabelFor" />
 
                         <Button
                             android:text="@string/button_continue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/reg_button_name"
+                            android:id="@+id/reg_button_continue"
                             android:background="@color/colorButton"
                             android:layout_marginTop="20dp" />
                     </LinearLayout>

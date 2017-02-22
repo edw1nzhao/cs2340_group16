@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context="edu.gatech.group16.watersourcingproject.controller.RegistrationActivity">
+    tools:context="edu.gatech.group16.watersourcingproject.controller.RegAccountTypeActivity">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
@@ -79,7 +79,7 @@
                             android:text="@string/button_continue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/reg_button_name"
+                            android:id="@+id/reg_button_continue"
                             android:background="@color/colorButton"
                             android:layout_marginTop="20dp" />
                     </LinearLayout>

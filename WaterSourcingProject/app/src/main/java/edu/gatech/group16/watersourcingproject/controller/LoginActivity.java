@@ -21,12 +21,21 @@ import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.ProviderQueryResult;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import edu.gatech.group16.watersourcingproject.R;
+import edu.gatech.group16.watersourcingproject.model.User;
 
 /**
  * A login screen that offers login via email/password.
@@ -40,12 +49,38 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         private EditText passwordField;
 
         private FirebaseAuth mAuth;
+        private DatabaseReference mDatabase;
 
         private FirebaseAuth.AuthStateListener mAuthListener;
+
+        private List<Integer> testlist = new ArrayList<Integer>();
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+
+            final List<User> users = new ArrayList<User>();
+
+            FirebaseDatabase db = FirebaseDatabase.getInstance();
+            DatabaseReference dbReference = db.getReference();
+            dbReference.child("users").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    //Gets all users
+                    Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+
+                    for (DataSnapshot child : children) {
+                        User user = child.getValue(User.class);
+                        users.add(user);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
             setContentView(R.layout.activity_login);
 
             // Views
@@ -129,7 +164,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             return;
         }
 
-        final Intent login_intent = new Intent(this, HomeActivity.class);
+        final Intent home_activity = new Intent(this, HomeActivity.class);
 
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -146,8 +181,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         if (!task.isSuccessful()) {
                             mStatusTextView.setText(R.string.auth_failed);
                         } else {
-                            login_intent.putExtra("EMAIL", emailField.getText().toString());
-                            startActivity(login_intent);
+
+                            home_activity.putExtra("ACCOUNTTYPE", "Stuff");
+                            home_activity.putExtra("EMAIL", "Stuff");
+                            home_activity.putExtra("NAME",  "Stuff");
+                            home_activity.putExtra("PASSWORD", "Stuff");
+
+                            startActivity(home_activity);
                             finish();
                         }
 
@@ -155,6 +195,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     }
                 });
     }
+
+
+//    private void writeNewUser(String email, String password, String name, AccountType accountType) {
+//        User user = new User(email, password, name, accountType);
+//
+//        mDatabase.child("users").child(userId).setValue(user);
+//    }
 
     private void signOut() {
         mAuth.signOut();
@@ -194,19 +241,20 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (TextUtils.isEmpty(email)) {
             emailField.setError("Required.");
             valid = false;
-        } else if (email.length() < 6) {
-            emailField.setError("Incorrect format.");
-            valid = false;
-        } else if (!email.substring(email.length() - 4).equals(".com")
-                || !email.substring(email.length() - 4).equals(".net")) {
-            emailField.setError("Incorrect format!!!!.");
-            valid = false;
-        } else if (email.contains("@.")) {
-            emailField.setError("Incorrect format!!.");
-            valid = false;
-        } else {
-            emailField.setError(null);
         }
+//        else if (email.length() < 6) {
+//            emailField.setError("Incorrect format.");
+//            valid = false;
+//        } else if (!email.substring(email.length() - 4).equals(".com")
+//                || !email.substring(email.length() - 4).equals(".net")) {
+//            emailField.setError("Incorrect format!!!!.");
+//            valid = false;
+//        } else if (email.contains("@.")) {
+//            emailField.setError("Incorrect format!!.");
+//            valid = false;
+//        } else {
+//            emailField.setError(null);
+//        }
 
         String password = passwordField.getText().toString();
 //        if (TextUtils.isEmpty(password)) {
@@ -236,19 +284,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     public void onClick(View v) {
         int i = v.getId();
+
         if (i == R.id.email_create_account_button) {
-            ////////////////////////////////////////////////////
-            ////////////////////////////////////////////////////
-            //TO DO:
-            //Move this functionality to RegistrationActivity:
-
-            //createAccount(emailField.getText().toString(), passwordField.getText().toString());
-
-            ////////////////////////////////////////////////////
-            ////////////////////////////////////////////////////
-            Intent intent = new Intent(this, RegistrationActivity.class);
+            Intent intent = new Intent(this, RegAccountTypeActivity.class);
             startActivity(intent);
-
 
         } else if (i == R.id.email_sign_in_button) {
             signIn(emailField.getText().toString(), passwordField.getText().toString());

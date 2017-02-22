@@ -20,147 +20,133 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
         <LinearLayout
-            android:orientation="vertical"
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|center_horizontal"
+            android:orientation="vertical"
+            tools:ignore="UselessParent"
+            android:weightSum="1">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:id="@+id/fullscreen_content_controls"
-                    style="?metaButtonBarStyle"
-                    android:layout_width="match_parent"
+                    android:orientation="vertical"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
-                    android:background="@color/black_overlay"
-                    android:orientation="horizontal"
-                    tools:ignore="UselessParent">
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp">
+
+                    <TextView
+                        android:text="@string/label_edit_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edit_label_title"
+                        android:layout_marginTop="50dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="60dp">
+
+                        <TextView
+                            android:text="@string/label_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/edit_label_name" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName"
+                            android:ems="10"
+                            android:id="@+id/edit_text_name" />
+
+                        <TextView
+                            android:text="@string/label_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/edit_label_email"
+                            android:layout_marginTop="20dp" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textEmailAddress"
+                            android:ems="10"
+                            android:id="@+id/edit_text_email" />
+
+                        <TextView
+                            android:text="@string/label_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/edit_label_password" />
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            android:ems="10"
+                            android:id="@+id/editText5" />
+
+                        <TextView
+                            android:text="@string/label_account"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:id="@+id/edit_label_acctype"
+                            android:layout_weight="1" />
+
+                        <Spinner
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/edit_spinner_acctype" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
+
+                            <Button
+                                android:text="@string/button_cancel"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/edit_button_cancel"
+                                android:layout_weight="1"
+                                android:background="@color/colorButton"
+                                tools:ignore="ButtonStyle"
+                                android:layout_marginEnd="7dp" />
+
+                            <Button
+                                android:text="@string/button_save"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/edit_button_save"
+                                android:background="@color/colorButton"
+                                android:layout_weight="1"
+                                tools:ignore="ButtonStyle"
+                                android:layout_marginStart="7dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="446dp"
-                    android:id="@+id/textView4"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true" />
-
-                <TextView
-                    android:text="@string/label_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/name_field"
-                    android:layout_alignStart="@+id/name_field"
-                    android:layout_marginTop="30dp"
-                    android:id="@+id/email_field" />
-
-                <TextView
-                    android:text="@string/label_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/name_field"
-                    android:layout_above="@+id/textView4"
-                    android:layout_alignStart="@+id/textView3" />
-
-                <TextView
-                    android:text="@string/label_account"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/account_field"
-                    android:layout_below="@+id/password_field"
-                    android:layout_alignStart="@+id/password_field"
-                    android:layout_marginTop="24dp" />
-
-                <TextView
-                    android:text="@string/label_password"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="29dp"
-                    android:id="@+id/password_field"
-                    android:layout_below="@+id/email_field"
-                    android:layout_alignStart="@+id/email_field" />
-
-
-
-                <Button
-                    android:text="@string/save_changes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="34dp"
-                    android:id="@+id/save_changes"
-                    android:background="@color/colorButton"
-                    android:layout_below="@+id/account_field"
-                    android:layout_alignParentStart="true"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:text="@string/edit_user"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView3"
-                    android:layout_marginStart="36dp"
-                    android:textSize="30sp"
-                    android:layout_above="@+id/name_field"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginBottom="34dp" />
-
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/account_field"
-                    android:layout_toEndOf="@+id/account_field"
-                    android:layout_marginStart="18dp"
-
-                    android:id="@+id/spinner" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:textColor="@android:color/black"
-                    android:layout_above="@+id/textView4"
-                    android:layout_alignParentEnd="true"
-                    android:id="@+id/editText3"
-                    android:background="@android:color/white"
-                    android:layout_below="@+id/textView3"
-                    android:textColorLink="@android:color/black" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:textColor="@android:color/black"
-                    android:ems="10"
-                    android:layout_alignParentEnd="true"
-                    android:background="@android:color/white"
-                    android:id="@+id/editText4"
-                    android:layout_above="@+id/password_field"
-                    android:layout_alignTop="@+id/email_field"
-                    android:textColorLink="@android:color/black" />
-
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:background="@android:color/white"
-                    android:textColor="@android:color/black"
-                    android:ems="10"
-                    android:layout_above="@+id/account_field"
-                    android:layout_alignStart="@+id/editText4"
-                    android:id="@+id/editText5"
-                    android:layout_alignTop="@+id/password_field"
-                    android:layout_alignParentEnd="true"
-                    android:textColorLink="@android:color/black" />
-
-
             </RelativeLayout>
+
         </LinearLayout>
+
     </FrameLayout>
 
 </FrameLayout>

@@ -1,24 +1,7 @@
 <resources>
     <string name="app_name">Water Sourcing Project</string>
 
-    <string name="dummy_content">dummy content</string>
-    <string name="dummy_button">dummy button</string>
-
-    <string name="firebaseui_status_fmt">Firebase User: %s</string>
-    <string name="firebase_status_fmt">Firebase User: %s</string>
-
     <!-- Strings related to login -->
-    <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
 
     <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
 
@@ -28,32 +11,26 @@
 
     <string name="title_text">Water Sourcing Project</string>
 
-    <string name="hint_firstname">First Name</string>
-    <string name="hint_lastname">Last Name</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
 
-    <string name="label_nameq">What's your name?</string>
-    <string name="label_unameq">What's your username?</string>
-    <string name="label_emailq">What's your email?</string>
+    <string name="label_nameq">What is your name?</string>
+    <string name="label_emailq">What is your email?</string>
     <string name="label_accq">What account type?</string>
-    <string name="label_passwordq">What's your password?</string>
-    <string name="label_m5">Registration</string>
+    <string name="label_passwordq">What is your password?</string>
+    <string name="label_edit_title">Edit User Profile</string>
 
     <string name="label_name">NAME</string>
-    <string name="label_firstname">FIRST NAME</string>
-    <string name="label_lastname">LAST NAME</string>
-    <string name="label_uname">USERNAME</string>
     <string name="label_email">EMAIL</string>
     <string name="label_password">PASSWORD</string>
 
-    <string name="label_account">Account Type</string>
+    <string name="label_account">ACCOUNT TYPE</string>
 
-    <string name="button_signin">Sign in</string>
-    <string name="button_signup">Sign up</string>
-    <string name="button_reg_name">Sign up!</string>
     <string name="button_continue">Continue</string>
+    <string name="button_signup">Sign up!</string>
 
+    <string name="button_save">Save</string>
+    <string name="button_cancel">Cancel</string>
     <string name="sign_out">Sign Out</string>
     <string name="signed_out">Signed Out</string>
     <string name="verify_email">Verify Email</string>
@@ -64,15 +41,11 @@
 
     <string name="user_profile">User Profile</string>
     <string name="edit_user">Edit User Profile</string>
-    <string name="save_changes">Save Changes</string>
-    <string name="report">Submit a Report</string>
     <string name="available">View Available Water Sources</string>
 
-    <string name="title_activity_load_screen">LoadScreen</string>
-    <string name="title_activity_login_screen">LoginScreenActivity</string>
     <string name="title_activity_registration">RegistrationActivity</string>
+    <string name="title_activity_home">Home</string>
 
 
     <!-- Strings related to home screen -->
-    <string name="home_welcome_textview"></string>
 </resources>

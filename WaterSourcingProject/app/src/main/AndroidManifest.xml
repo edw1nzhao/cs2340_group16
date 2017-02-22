@@ -25,10 +25,25 @@
         <activity
             android:name=".controller.HomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_logout"
+            android:label="@string/title_activity_home"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".controller.RegistrationActivity"
+            android:name=".controller.RegAccountTypeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_registration"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".controller.RegNameActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_registration"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".controller.RegEmailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_registration"
+            android:theme="@style/FullscreenTheme" />
+        <activity
+            android:name=".controller.RegPasswordActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_registration"
             android:theme="@style/FullscreenTheme" />

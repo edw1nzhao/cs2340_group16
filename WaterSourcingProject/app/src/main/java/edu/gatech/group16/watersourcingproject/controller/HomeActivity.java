@@ -8,17 +8,19 @@ import android.widget.TextView;
 import android.widget.Button;
 
 import edu.gatech.group16.watersourcingproject.R;
+import edu.gatech.group16.watersourcingproject.model.User;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView nameField;
-    TextView emailField;
-    TextView passwordField;
-    TextView accountTypeField;
-    Button editButton;
+    private TextView nameField;
+    private TextView emailField;
+    private TextView passwordField;
+    private TextView accountTypeField;
+    private Button editButton;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +37,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         editButton = (Button) findViewById(R.id.save_changes);
 
-        Bundle bundle = getIntent().getExtras();
-        String name = bundle.getString("NAME");
-        String email = bundle.getString("EMAIL");
-        String password = bundle.getString("PASSWORD");
-        String accountType = bundle.getString("ACCOUNT TYPE");
+        user = (User) getIntent().getSerializableExtra("USER");
 
-        nameField.setText("Name: " + name);
-        emailField.setText("Email: " + email);
-        passwordField.setText("Password: " + password);
-        accountTypeField.setText("Account Type: " + accountType);
+
+        nameField.setText("Name: " + user.getName());
+        emailField.setText("Email: " + user.getEmail());
+        passwordField.setText("Password: " + user.getPassword());
+        accountTypeField.setText("Account Type: " + user.getAccountType().toString());
     }
 
     @Override
