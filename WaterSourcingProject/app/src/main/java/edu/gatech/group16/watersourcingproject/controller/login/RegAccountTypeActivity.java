@@ -1,17 +1,10 @@
-package edu.gatech.group16.watersourcingproject.controller;
+package edu.gatech.group16.watersourcingproject.controller.login;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.content.Intent;
-
-import com.google.firebase.auth.FirebaseAuth;
-
-import java.io.Serializable;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.model.AccountType;

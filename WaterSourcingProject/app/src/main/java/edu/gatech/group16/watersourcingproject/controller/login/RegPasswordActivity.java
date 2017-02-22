@@ -1,16 +1,13 @@
-package edu.gatech.group16.watersourcingproject.controller;
+package edu.gatech.group16.watersourcingproject.controller.login;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -23,7 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import edu.gatech.group16.watersourcingproject.R;
-import edu.gatech.group16.watersourcingproject.model.AccountType;
+import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
 
 /**
@@ -59,6 +56,9 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
             user.setPassword(passwordField.getText().toString());
 
             if (createAccount(user.getEmail(), user.getPassword())) {
+                FirebaseDatabase db = FirebaseDatabase.getInstance();
+                DatabaseReference dbRef = db.getReference();
+                dbRef.child("users").push().setValue(user);
                 Intent intent = new Intent(this, HomeActivity.class);
                 intent.putExtra("USER", user);
                 startActivity(intent);
@@ -100,12 +100,6 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
                         Toast.makeText(RegPasswordActivity.this, R.string.auth_failed,
                                 Toast.LENGTH_SHORT).show();
                         valid = false;
-                    } else {
-                        FirebaseDatabase db = FirebaseDatabase.getInstance();
-                        DatabaseReference dbRef = db.getReference();
-                        dbRef.child("users").push().setValue(user);
-                        sendEmailVerification();
-                        valid = true;
                     }
                 }
             });

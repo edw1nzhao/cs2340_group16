@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Button;
 
 import edu.gatech.group16.watersourcingproject.R;
+import edu.gatech.group16.watersourcingproject.controller.login.LoginActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
 
 /**
@@ -54,7 +55,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(logoutIntent);
             this.finish();
         } else if (i == R.id.save_changes) {
-            Intent editUser = new Intent(this, EditProfileActivtiy.class);
+            Intent editUser = new Intent(this, EditProfileActivity.class);
             startActivity(editUser);
             this.finish();
         }

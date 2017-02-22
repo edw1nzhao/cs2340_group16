@@ -14,40 +14,48 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".controller.LoginActivity"
-            android:label="@string/app_name">
+            android:name=".controller.login.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".controller.login.LoginActivity"
+            android:label="@string/app_name">
         </activity>
         <activity
             android:name=".controller.HomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustNothing"
             android:label="@string/title_activity_home"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".controller.RegAccountTypeActivity"
+            android:name=".controller.login.RegAccountTypeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustNothing"
             android:label="@string/title_activity_registration"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".controller.RegNameActivity"
+            android:name=".controller.login.RegNameActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustNothing"
             android:label="@string/title_activity_registration"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".controller.RegEmailActivity"
+            android:name=".controller.login.RegEmailActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustNothing"
             android:label="@string/title_activity_registration"
             android:theme="@style/FullscreenTheme" />
         <activity
-            android:name=".controller.RegPasswordActivity"
+            android:name=".controller.login.RegPasswordActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:windowSoftInputMode="adjustNothing"
             android:label="@string/title_activity_registration"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".controller.EditProfileActivtiy"></activity>
+        <activity android:name=".controller.EditProfileActivity"></activity>
     </application>
 
 </manifest>

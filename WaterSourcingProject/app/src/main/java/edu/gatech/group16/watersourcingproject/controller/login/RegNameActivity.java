@@ -1,4 +1,4 @@
-package edu.gatech.group16.watersourcingproject.controller;
+package edu.gatech.group16.watersourcingproject.controller.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,15 +12,15 @@ import edu.gatech.group16.watersourcingproject.model.User;
 /**
  * Created by Edwin Zhao on 2017/02/22.
  */
-public class RegEmailActivity extends AppCompatActivity implements View.OnClickListener {
-    private EditText emailField;
+public class RegNameActivity extends AppCompatActivity implements View.OnClickListener {
+    private EditText nameField;
     private User user;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registration_email);
+        setContentView(R.layout.activity_registration_name);
 
-        emailField = (EditText) findViewById(R.id.reg_text_email);
+        nameField = (EditText) findViewById(R.id.reg_text_name);
 
         findViewById(R.id.reg_button_continue).setOnClickListener(this);
 
@@ -33,10 +33,11 @@ public class RegEmailActivity extends AppCompatActivity implements View.OnClickL
         int i = v.getId();
 
         if (i == R.id.reg_button_continue) {
-            user.setEmail(emailField.getText().toString());
-            Intent intent = new Intent(this, RegPasswordActivity.class);
+            user.setName(nameField.getText().toString());
+            Intent intent = new Intent(this, RegEmailActivity.class);
             intent.putExtra("USER", user);
             startActivity(intent);
         }
     }
+
 }

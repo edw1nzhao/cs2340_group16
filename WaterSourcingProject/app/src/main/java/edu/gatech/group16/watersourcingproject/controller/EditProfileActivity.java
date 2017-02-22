@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import edu.gatech.group16.watersourcingproject.R;
 
-public class EditProfileActivtiy extends AppCompatActivity implements View.OnClickListener {
+public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
         Button saveButton;
 

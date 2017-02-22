@@ -1,4 +1,4 @@
-package edu.gatech.group16.watersourcingproject.controller;
+package edu.gatech.group16.watersourcingproject.controller.login;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -21,13 +21,13 @@ import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.ProviderQueryResult;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.group16.watersourcingproject.R;
+import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
 
 /**
@@ -49,27 +50,29 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         private EditText passwordField;
 
         private FirebaseAuth mAuth;
-        private DatabaseReference mDatabase;
+        private FirebaseDatabase mDatabase;
+        private DatabaseReference dbReference;
+
+        private User user;
+        private ArrayList<User> users;
 
         private FirebaseAuth.AuthStateListener mAuthListener;
-
-        private List<Integer> testlist = new ArrayList<Integer>();
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_login);
 
-            final List<User> users = new ArrayList<User>();
-
+            final List<User> users = new ArrayList<>();
             FirebaseDatabase db = FirebaseDatabase.getInstance();
-            DatabaseReference dbReference = db.getReference();
-            dbReference.child("users").addValueEventListener(new ValueEventListener() {
+            DatabaseReference dbRef = db.getReference();
+
+            dbRef.child("users").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    //Gets all users
                     Iterable<DataSnapshot> children = dataSnapshot.getChildren();
 
-                    for (DataSnapshot child : children) {
+                    for (DataSnapshot child: children) {
                         User user = child.getValue(User.class);
                         users.add(user);
                     }
@@ -80,8 +83,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                 }
             });
-
-            setContentView(R.layout.activity_login);
 
             // Views
             mStatusTextView = (TextView) findViewById(R.id.status);
@@ -124,40 +125,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         }
 
-        private void createAccount(String email, String password) {
-            Log.d(TAG, "createAccount:" + email);
-            if (!validateForm()) {
-                return;
-            }
-
-            mAuth.fetchProvidersForEmail(email).addOnCompleteListener(
-                    this, new OnCompleteListener<ProviderQueryResult>() {
-                @Override
-                public void onComplete(@NonNull Task<ProviderQueryResult> task) {
-                    Log.d(TAG, "userAlreadyExists:" + task.isSuccessful());
-                    if (task.getResult().getProviders().size() != 1) {
-                        sendEmailVerification();
-                    } else {
-                        Toast.makeText(LoginActivity.this,
-                                "User already exists. Try signing in!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-
-            mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
-
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(LoginActivity.this, R.string.auth_failed,
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
-
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
         if (!validateForm()) {
@@ -182,10 +149,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                             mStatusTextView.setText(R.string.auth_failed);
                         } else {
 
-                            home_activity.putExtra("ACCOUNTTYPE", "Stuff");
-                            home_activity.putExtra("EMAIL", "Stuff");
-                            home_activity.putExtra("NAME",  "Stuff");
-                            home_activity.putExtra("PASSWORD", "Stuff");
+                            home_activity.putExtra("USER", user);
 
                             startActivity(home_activity);
                             finish();
@@ -197,16 +161,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
 
-//    private void writeNewUser(String email, String password, String name, AccountType accountType) {
-//        User user = new User(email, password, name, accountType);
-//
-//        mDatabase.child("users").child(userId).setValue(user);
-//    }
 
-    private void signOut() {
-        mAuth.signOut();
-        updateUI(null);
-    }
 
     private void sendEmailVerification() {
         findViewById(R.id.verify_email_button).setEnabled(false);
@@ -291,8 +246,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         } else if (i == R.id.email_sign_in_button) {
             signIn(emailField.getText().toString(), passwordField.getText().toString());
-        } else if (i == R.id.sign_out_button) {
-            signOut();
         }
     }
 
