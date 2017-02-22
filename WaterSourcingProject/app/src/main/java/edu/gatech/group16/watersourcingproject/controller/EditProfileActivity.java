@@ -7,7 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import edu.gatech.group16.watersourcingproject.R;
+import edu.gatech.group16.watersourcingproject.controller.login.RegPasswordActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
@@ -53,6 +57,12 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 if (nameField.getText().length() != 0) {
                     user.setName(nameField.getText().toString());
                 }
+
+
+                FirebaseDatabase db = FirebaseDatabase.getInstance();
+                DatabaseReference dbRef = db.getReference();
+                DatabaseReference newRef = dbRef.child("users").push();
+                newRef.setValue(user);
 
                 Intent saveChangesIntent = new Intent(this, HomeActivity.class);
                 saveChangesIntent.putExtra("USER", user);
