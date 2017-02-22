@@ -44,6 +44,7 @@ public class RegAccountTypeActivity extends AppCompatActivity implements View.On
             Intent intent = new Intent(this, RegNameActivity.class);
             intent.putExtra("USER", user);
             startActivity(intent);
+            this.finish();
         }
     }
 }

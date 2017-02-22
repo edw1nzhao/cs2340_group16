@@ -62,6 +62,7 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
                 Intent intent = new Intent(this, HomeActivity.class);
                 intent.putExtra("USER", user);
                 startActivity(intent);
+                RegPasswordActivity.this.finish();
             }
 
         }

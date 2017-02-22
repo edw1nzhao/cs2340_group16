@@ -20,28 +20,19 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.05"
-            tools:ignore="UseCompoundDrawables">
+            android:layout_height="match_parent"
+            tools:ignore="UselessParent"
+            android:layout_weight="0.90">
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="401dp"
                 app:srcCompat="@mipmap/water_logo"
                 android:id="@+id/imageView"
-                android:layout_weight="0.22"
                 android:padding="30dp"
                 android:contentDescription=""
-                tools:ignore="ContentDescription,NestedWeights" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="145dp"
-            tools:ignore="UselessParent"
-            android:layout_weight="0.08">
+                tools:ignore="ContentDescription,NestedWeights"
+                android:layout_weight="0.65" />
 
             <Button
                 android:id="@+id/welcome_button_signin"
@@ -63,11 +54,6 @@
                 android:theme="@style/ThemeOverlay.Button"
                 tools:ignore="ButtonStyle"
                 android:background="@color/colorButton" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="5.15" />
 
         </LinearLayout>
 

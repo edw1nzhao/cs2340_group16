@@ -37,6 +37,7 @@ public class RegEmailActivity extends AppCompatActivity implements View.OnClickL
             Intent intent = new Intent(this, RegPasswordActivity.class);
             intent.putExtra("USER", user);
             startActivity(intent);
+            this.finish();
         }
     }
 }

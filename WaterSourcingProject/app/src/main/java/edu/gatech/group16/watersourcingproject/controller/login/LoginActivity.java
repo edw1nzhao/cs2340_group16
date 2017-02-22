@@ -12,7 +12,9 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,19 +65,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_login);
 
-            final List<User> users = new ArrayList<>();
+            //final List<User> users = new ArrayList<>();
             FirebaseDatabase db = FirebaseDatabase.getInstance();
             DatabaseReference dbRef = db.getReference();
+
+            final Spinner userSpinner = (Spinner) findViewById(R.id.spinner);
 
             dbRef.child("users").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    Iterable<DataSnapshot> children = dataSnapshot.getChildren();
+                    final List<User> users = new ArrayList<User>();
+                    //Iterable<DataSnapshot> children = dataSnapshot.getChildren();
 
-                    for (DataSnapshot child: children) {
+                    for (DataSnapshot child: dataSnapshot.getChildren()) {
                         User user = child.getValue(User.class);
                         users.add(user);
                     }
+
+
+                    ArrayAdapter<User> userAdapter = new ArrayAdapter<User>(LoginActivity.this, android.R.layout.simple_spinner_item, users);
+                    userAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    userSpinner.setAdapter(userAdapter);
                 }
 
                 @Override
@@ -148,14 +158,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         if (!task.isSuccessful()) {
                             mStatusTextView.setText(R.string.auth_failed);
                         } else {
-
                             home_activity.putExtra("USER", user);
 
                             startActivity(home_activity);
                             finish();
                         }
-
-
                     }
                 });
     }

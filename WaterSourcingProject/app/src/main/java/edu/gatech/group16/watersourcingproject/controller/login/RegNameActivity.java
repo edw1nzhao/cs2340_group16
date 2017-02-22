@@ -37,6 +37,7 @@ public class RegNameActivity extends AppCompatActivity implements View.OnClickLi
             Intent intent = new Intent(this, RegEmailActivity.class);
             intent.putExtra("USER", user);
             startActivity(intent);
+            this.finish();
         }
     }
 
