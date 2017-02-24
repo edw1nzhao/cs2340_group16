@@ -28,6 +28,7 @@
     <string name="label_waterQuality">Water Quality</string>
 
     <string name="label_account">ACCOUNT TYPE</string>
+    <string name="label_view_report">Reports</string>
 
     <string name="button_continue">Continue</string>
     <string name="button_signup">Sign up!</string>
@@ -36,6 +37,8 @@
     <string name="button_cancel">Cancel</string>
     <string name="button_newWR">New Water Report</string>
 
+    <string name="button_user">User Reports</string>
+    <string name="button_all">All reports</string>
 
     <string name="sign_out">Sign Out</string>
     <string name="signed_out">Signed Out</string>

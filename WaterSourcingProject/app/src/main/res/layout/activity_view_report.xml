@@ -1,0 +1,142 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context="edu.gatech.group16.watersourcingproject.controller.HomeActivity">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/home_textview"
+        android:elevation="1dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom|center_horizontal"
+            android:orientation="vertical"
+            tools:ignore="UselessParent"
+            android:weightSum="1">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.FloatingActionButton
+                    android:src="@drawable/ic_collapse_00008"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    app:fabSize="mini"
+                    android:id="@+id/floatingActionButton"
+                    android:layout_marginEnd="14dp"
+                    android:layout_alignTop="@+id/linearLayout"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="24dp"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="40dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:text="@string/button_cancel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/button_back"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="250dp"
+                            android:layout_marginTop="25dp" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:text="@string/label_view_report"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/label_view_report"
+                        android:layout_marginTop="50dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="60dp">
+
+                        <TextView
+                            android:text="@string/label_watertype"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/label_watertype"
+                            android:layout_weight="1" />
+
+                        <TextView
+                            android:text="@string/label_waterQuality"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/label_waterQuality"
+                            android:layout_weight="1" />
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp">
+
+                            <Button
+                                android:text="@string/button_user"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/reports_user"
+                                android:background="@color/colorButton"
+                                android:layout_weight="1"
+                                tools:ignore="ButtonStyle" />
+
+                            <Button
+                                android:text="@string/button_all"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/reports_all"
+                                android:layout_weight="1"
+                                android:background="@color/colorButton"
+                                tools:ignore="ButtonStyle"
+                                android:layout_marginEnd="7dp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>
