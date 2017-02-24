@@ -12,9 +12,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,22 +21,18 @@ import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
-import edu.gatech.group16.watersourcingproject.model.AccountType;
+import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
 import edu.gatech.group16.watersourcingproject.model.User;
 
 /**
@@ -92,8 +86,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 //                }
 //            });
 
-        users2.add(new User("edwin.zhao@gatech.edu", "asdfasdf", "Edwin Zhao", AccountType.ADMINISTRATOR));
-        users2.add(new User("feehan.tomonari@gmail.com", "password", "Tomonari", AccountType.ADMINISTRATOR));
+        users2.add(new User("edwin.zhao@gatech.edu", "asdfasdf", "Edwin Zhao", AccountType.ADMINISTRATOR, null));
+        users2.add(new User("feehan.tomonari@gmail.com", "password", "Tomonari", AccountType.ADMINISTRATOR, null));
 
             Log.d("SIZE AFTER: ", users.size() + ""); // Expect a number other than 0
             // Views

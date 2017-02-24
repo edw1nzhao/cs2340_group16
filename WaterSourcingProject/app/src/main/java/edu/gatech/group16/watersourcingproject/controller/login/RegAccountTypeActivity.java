@@ -7,7 +7,7 @@ import android.widget.Spinner;
 import android.content.Intent;
 
 import edu.gatech.group16.watersourcingproject.R;
-import edu.gatech.group16.watersourcingproject.model.AccountType;
+import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
 import edu.gatech.group16.watersourcingproject.model.User;
 
 /**

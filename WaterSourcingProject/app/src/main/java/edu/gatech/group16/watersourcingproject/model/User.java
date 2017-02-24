@@ -1,17 +1,10 @@
 package edu.gatech.group16.watersourcingproject.model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import com.google.firebase.database.DatabaseReference;
-
-import edu.gatech.group16.watersourcingproject.model.AccountType;
+import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
 
 import java.io.Serializable;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Edwin Zhao on 2017/02/21.
@@ -23,14 +16,17 @@ public class User implements Serializable {
     public String email;
     public String password;
     public AccountType accountType;
+    public WaterSourceReport[] wsReport;
 
     public User() {
     }
-    public User(String email, String password, String name, AccountType accountType) {
+    public User(String email, String password, String name, AccountType accountType,
+                WaterSourceReport[] wsReport) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.accountType = accountType;
+        this.wsReport = wsReport;
     }
 
     public String getName() {
@@ -65,34 +61,12 @@ public class User implements Serializable {
         this.accountType = accountType;
     }
 
-//    @Override
-//    public int describeContents() {
-//        return 0;
-//    }
+    public WaterSourceReport[] getWaterSourceReport() {
+        return this.wsReport;
+    }
 
-//    private User(Parcel in) {
-//        accountType = (AccountType) in.readSerializable();
-//        name = in.readString();
-//        email =  in.readString();
-//        password = in.readString();
-//    }
-//
-//    @Override
-//    public void writeToParcel(Parcel dest, int flags) {
-//        dest.writeSerializable(accountType);
-//        dest.writeString(name);
-//        dest.writeString(email);
-//        dest.writeString(password);
-//    }
-
-//    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
-//        public User createFromParcel(Parcel in) {
-//            return new User(in);
-//        }
-//
-//        public User[] newArray(int size) {
-//            return new User[size];
-//        }
-//    };
+    public void setWaterSourceReports(WaterSourceReport wsReport[]) {
+        this.wsReport = wsReport;
+    }
 }
 

@@ -11,7 +11,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import edu.gatech.group16.watersourcingproject.R;
-import edu.gatech.group16.watersourcingproject.controller.login.RegPasswordActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
@@ -27,7 +26,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile_activtiy);
+        setContentView(R.layout.activity_edit_profile_activity);
 
 
         findViewById(R.id.edit_button_cancel).setOnClickListener(this);

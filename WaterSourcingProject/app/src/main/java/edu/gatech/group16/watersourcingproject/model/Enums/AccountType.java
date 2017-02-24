@@ -1,4 +1,4 @@
-package edu.gatech.group16.watersourcingproject.model;
+package edu.gatech.group16.watersourcingproject.model.Enums;
 
 /**
  * Created by Tomonari on 2/17/2017.

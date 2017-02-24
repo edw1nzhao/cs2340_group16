@@ -19,18 +19,24 @@
     <string name="label_accq">What account type?</string>
     <string name="label_passwordq">What is your password?</string>
     <string name="label_edit_title">Edit User Profile</string>
+    <string name="label_new_wsReport">New Water Report</string>
 
     <string name="label_name">NAME</string>
     <string name="label_email">EMAIL</string>
     <string name="label_password">PASSWORD</string>
+    <string name="label_watertype">Water Type</string>
+    <string name="label_waterQuality">Water Quality</string>
 
     <string name="label_account">ACCOUNT TYPE</string>
 
     <string name="button_continue">Continue</string>
     <string name="button_signup">Sign up!</string>
-
+    <string name="button_submit">Submit</string>
     <string name="button_save">Save</string>
     <string name="button_cancel">Cancel</string>
+    <string name="button_newWR">New Water Report</string>
+
+
     <string name="sign_out">Sign Out</string>
     <string name="signed_out">Signed Out</string>
     <string name="verify_email">Verify Email</string>
@@ -45,6 +51,11 @@
 
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="title_activity_home">Home</string>
+
+    <string name="wsReport_reminder">Your location will be automatically stored for this report!</string>
+    <string name="title_activity_edit_water_source_report">EditWaterSourceReport</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 
     <!-- Strings related to home screen -->
