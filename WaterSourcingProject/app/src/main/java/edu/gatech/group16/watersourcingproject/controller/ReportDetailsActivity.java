@@ -1,8 +1,8 @@
 package edu.gatech.group16.watersourcingproject.controller;
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import edu.gatech.group16.watersourcingproject.R;
+
 public class ReportDetailsActivity extends AppCompatActivity {
 
     @Override
