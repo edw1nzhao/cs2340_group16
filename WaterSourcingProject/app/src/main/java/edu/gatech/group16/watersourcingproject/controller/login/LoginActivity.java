@@ -212,12 +212,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int i = v.getId();
 
         if (i == R.id.email_create_account_button) {
-            if (validForm()) {
-                Intent intent = new Intent(this, RegAccountTypeActivity.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(this, RegAccountTypeActivity.class);
+            startActivity(intent);
         } else if (i == R.id.email_sign_in_button) {
-            signIn(emailField.getText().toString(), passwordField.getText().toString());
+            if (validForm()) {
+                signIn(emailField.getText().toString(), passwordField.getText().toString());
+
+            }
         }
     }
 

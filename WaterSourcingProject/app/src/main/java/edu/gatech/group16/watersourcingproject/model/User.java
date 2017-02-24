@@ -16,12 +16,12 @@ public class User implements Serializable {
     public String email;
     public String password;
     public AccountType accountType;
-    public WaterSourceReport[] wsReport;
+    public List<WaterSourceReport> wsReport;
 
     public User() {
     }
     public User(String email, String password, String name, AccountType accountType,
-                WaterSourceReport[] wsReport) {
+                List<WaterSourceReport> wsReport) {
         this.email = email;
         this.password = password;
         this.name = name;
@@ -61,11 +61,11 @@ public class User implements Serializable {
         this.accountType = accountType;
     }
 
-    public WaterSourceReport[] getWaterSourceReport() {
+    public List<WaterSourceReport> getWaterSourceReport() {
         return this.wsReport;
     }
 
-    public void setWaterSourceReports(WaterSourceReport wsReport[]) {
+    public void setWaterSourceReports(List<WaterSourceReport> wsReport) {
         this.wsReport = wsReport;
     }
 }
