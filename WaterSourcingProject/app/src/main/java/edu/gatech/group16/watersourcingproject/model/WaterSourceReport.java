@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import edu.gatech.group16.watersourcingproject.model.Enums.WaterQuality;
+import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterType;
 
 /**
@@ -16,13 +16,13 @@ import edu.gatech.group16.watersourcingproject.model.Enums.WaterType;
 
 public class WaterSourceReport {
     public static List<WaterType> legalTypes = Arrays.asList(WaterType.values());
-    public static List<WaterQuality> legalQuality = Arrays.asList(WaterQuality.values());
+    public static List<WaterCondition> legalConditions = Arrays.asList(WaterCondition.values());
 
     private int reportNumber;
     private Date date;
     private Location location;
     private WaterType waterType;
-    private WaterQuality waterQuality;
+    private WaterCondition waterCondition;
     private String submittedBy;
 
 
@@ -31,13 +31,13 @@ public class WaterSourceReport {
     }
 
     public WaterSourceReport(int reportNumber, Date date, Location location,
-                             WaterType waterType, WaterQuality waterQuality,
+                             WaterType waterType, WaterCondition waterCondition,
                              String submittedBy) {
         this.reportNumber = reportNumber;
         this.date = date;
         this.location = location;
         this.waterType = waterType;
-        this.waterQuality = waterQuality;
+        this.waterCondition = waterCondition;
         this.submittedBy = submittedBy;
     }
 
@@ -83,12 +83,12 @@ public class WaterSourceReport {
         this.waterType = waterType;
     }
 
-    public WaterQuality getWaterQuality() {
-        return waterQuality;
+    public WaterCondition getWaterQuality() {
+        return waterCondition;
     }
 
-    public void setWaterQuality(WaterQuality waterQuality) {
-        this.waterQuality = waterQuality;
+    public void setWaterQuality(WaterCondition waterQuality) {
+        this.waterCondition = waterQuality;
     }
 
     @Override
@@ -98,7 +98,7 @@ public class WaterSourceReport {
                 ", date=" + date +
                 ", location=" + location +
                 ", waterType=" + waterType +
-                ", waterQuality=" + waterQuality +
+                ", waterQuality=" + waterCondition +
                 ", submittedBy='" + submittedBy + '\'' +
                 '}';
     }
