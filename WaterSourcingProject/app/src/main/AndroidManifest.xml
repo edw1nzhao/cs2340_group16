@@ -62,7 +62,8 @@
         <activity
             android:name=".controller.ViewWaterSourcesActivity"
             android:label="@string/title_activity_view_water_sources"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".controller.ReportDetailsActivity"></activity>
     </application>
 
 </manifest>
