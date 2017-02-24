@@ -11,7 +11,7 @@ public enum WaterCondition {
     WaterCondition(String accountType) {
         this.waterCondition = accountType;
     }
-    public String getWaterQuality() {
+    public String getWaterCondition() {
         return waterCondition;
     }
 }
