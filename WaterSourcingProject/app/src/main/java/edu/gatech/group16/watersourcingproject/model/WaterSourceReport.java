@@ -87,7 +87,7 @@ public class WaterSourceReport {
         return waterCondition;
     }
 
-    public void setWaterCondition(WaterCondition waterQuality) { this.waterCondition = waterCondition; }
+    public void setWaterCondition(WaterCondition waterCondition) { this.waterCondition = waterCondition; }
 
     @Override
     public String toString() {
