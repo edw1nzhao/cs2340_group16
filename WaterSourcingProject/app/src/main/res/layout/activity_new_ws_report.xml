@@ -63,7 +63,7 @@
                             android:text="@string/wsReport_reminder"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/ new_label_reminder"
+                            android:id="@+id/new_label_reminder"
                             android:layout_weight="1"
                             android:layout_marginBottom="50dp" />
 
