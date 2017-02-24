@@ -59,6 +59,7 @@
     <string name="title_activity_edit_water_source_report">EditWaterSourceReport</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_view_water_sources">ViewWaterSourcesActivity</string>
 
 
     <!-- Strings related to home screen -->
