@@ -3,12 +3,17 @@ package edu.gatech.group16.watersourcingproject.controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.model.User;
@@ -22,7 +27,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     private EditText passwordField;
 
     private User user;
-
+    private String oldEmail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +42,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         emailField = (EditText) findViewById(R.id.edit_text_email);
         nameField = (EditText) findViewById(R.id.edit_text_name);
         passwordField = (EditText) findViewById(R.id.edit_text_password);
-
         user = (User) getIntent().getSerializableExtra("USER");
+        oldEmail = user.getEmail();
 
     }
 
@@ -60,6 +65,21 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
                 FirebaseDatabase db = FirebaseDatabase.getInstance();
                 DatabaseReference dbRef = db.getReference();
+
+                db.getReference("users").orderByChild("email").equalTo(oldEmail).addListenerForSingleValueEvent(
+                        new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                dataSnapshot.getRef().setValue(null);
+                            }
+
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+                                Log.w("TodoApp", "getUser:onCancelled", databaseError.toException());
+                            }
+                        });
+
                 DatabaseReference newRef = dbRef.child("users").push();
                 newRef.setValue(user);
 
