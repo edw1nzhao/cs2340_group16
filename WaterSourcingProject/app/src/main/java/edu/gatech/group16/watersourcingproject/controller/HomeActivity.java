@@ -23,6 +23,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private Button editButton;
     private User user;
 
+    /**
+     * OnCreate method required to load activity and loads everything that
+     * is needed for the page while setting the view.
+     *
+     *
+     * @param savedInstanceState Takes in a bundle that may contain an object
+     *                           for use within this class
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +56,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         accountTypeField.setText("Account Type: " + user.getAccountType().toString());
     }
 
+    /**
+     * OnClick method that will listen for clicks on the
+     * view that is taken in and proceed with actions.
+     *
+     *
+     * @param v Takes in a view that will contain buttons
+     *          for the onClick method to listen to.
+     */
     @Override
     public void onClick(View v) {
         int i = v.getId();
@@ -68,5 +84,4 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(editUser);
         }
     }
-
 }

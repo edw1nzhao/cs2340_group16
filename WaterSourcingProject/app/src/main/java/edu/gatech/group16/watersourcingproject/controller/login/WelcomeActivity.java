@@ -12,6 +12,31 @@ import edu.gatech.group16.watersourcingproject.R;
  */
 
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
+    /**
+     * OnCreate method required to load activity and loads everything that
+     * is needed for the page while setting the view.
+     *
+     *
+     * @param savedInstanceState Takes in a bundle that may contain an object
+     *                           for use within this class
+     */
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_welcome);
+
+        findViewById(R.id.welcome_button_signin).setOnClickListener(this);
+        findViewById(R.id.welcome_button_signup).setOnClickListener(this);
+    }
+
+    /**
+     * OnClick method that will listen for clicks on the
+     * view that is taken in and proceed with actions.
+     *
+     *
+     * @param v Takes in a view that will contain buttons
+     *          for the onClick method to listen to.
+     */
     @Override
     public void onClick(View v) {
         int i = v.getId();
@@ -26,13 +51,5 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         }
 
     }
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_welcome);
-
-        findViewById(R.id.welcome_button_signin).setOnClickListener(this);
-        findViewById(R.id.welcome_button_signup).setOnClickListener(this);
-
-    }
 }

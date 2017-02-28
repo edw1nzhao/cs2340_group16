@@ -40,31 +40,38 @@ import edu.gatech.group16.watersourcingproject.model.User;
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>, OnClickListener {
 
-        private static final String TAG = "EmailPassword";
+    private static final String TAG = "EmailPassword";
 
-        private TextView mStatusTextView;
-        private EditText emailField;
-        private EditText passwordField;
+    private TextView mStatusTextView;
+    private EditText emailField;
+    private EditText passwordField;
 
-        private FirebaseAuth mAuth;
-        private FirebaseDatabase mDatabase;
-        private DatabaseReference dbReference;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference dbReference;
 
-        private User user;
-        //Inside: is the list of userIDs from firebase
-        private final List<User> users = new ArrayList<User>();
-        private final List<User> users2 = new ArrayList<User>();
+    private User user;
+    //Inside: is the list of userIDs from firebase
+    private final List<User> users = new ArrayList<User>();
+    private final List<User> users2 = new ArrayList<User>();
 
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-
+    /**
+     * OnCreate method required to load activity and loads everything that
+     * is needed for the page while setting the view.
+     *
+     *
+     * @param savedInstanceState Takes in a bundle that may contain an object
+     *                           for use within this class
+     */
     @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_login);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
-            FirebaseDatabase db = FirebaseDatabase.getInstance();
-            DatabaseReference dbRef = db.getReference();
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        DatabaseReference dbRef = db.getReference();
 
 //
 //            dbRef.child("users").addValueEventListener(new ValueEventListener() {
@@ -89,47 +96,63 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         users2.add(new User("edwin.zhao@gatech.edu", "asdfasdf", "Edwin Zhao", AccountType.ADMINISTRATOR, null));
         users2.add(new User("feehan.tomonari@gmail.com", "password", "Tomonari", AccountType.ADMINISTRATOR, null));
 
-            Log.d("SIZE AFTER: ", users.size() + ""); // Expect a number other than 0
-            // Views
-            mStatusTextView = (TextView) findViewById(R.id.status);
-            emailField = (EditText) findViewById(R.id.field_email);
-            passwordField = (EditText) findViewById(R.id.field_password);
+        Log.d("SIZE AFTER: ", users.size() + ""); // Expect a number other than 0
+        // Views
+        mStatusTextView = (TextView) findViewById(R.id.status);
+        emailField = (EditText) findViewById(R.id.field_email);
+        passwordField = (EditText) findViewById(R.id.field_password);
 
-            // Buttons
-            findViewById(R.id.email_create_account_button).setOnClickListener(this);
-            findViewById(R.id.sign_out_button).setOnClickListener(this);
-            findViewById(R.id.email_sign_in_button).setOnClickListener(this);
+        // Buttons
+        findViewById(R.id.email_create_account_button).setOnClickListener(this);
+        findViewById(R.id.sign_out_button).setOnClickListener(this);
+        findViewById(R.id.email_sign_in_button).setOnClickListener(this);
 
-            mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
 
-            mAuthListener = new FirebaseAuth.AuthStateListener() {
-                @Override
-                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                    FirebaseUser user = firebaseAuth.getCurrentUser();
-                    if (user != null) {
-                        Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                    } else {
-                        Log.d(TAG, "onAuthStateChanged:signed_out");
-                    }
-                    updateUI(user);
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                } else {
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-            };
-        }
-
-        @Override
-        public void onStart() {
-            super.onStart();
-            mAuth.addAuthStateListener(mAuthListener);
-        }
-
-        @Override
-        public void onStop() {
-            super.onStop();
-            if (mAuthListener != null) {
-                mAuth.removeAuthStateListener(mAuthListener);
+                updateUI(user);
             }
-        }
+        };
+    }
 
+    /**
+     * Tells application it's onstart and tells
+     * Firebase Authentication to start listening
+     */
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    /**
+     * Tells application it's on end and tells
+     * Firebase Authentication to stop listening
+     */
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+
+    /**
+     * Sign in method that takes in two parameters (email and password)
+     * Connects to Firebase and checks authentication
+     *
+     * @param email String email that was used to sign in
+     * @param password String password
+     */
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
         if (!validForm()) {
@@ -138,39 +161,40 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         final String tempEmail = email;
         final Intent home_activity = new Intent(this, HomeActivity.class);
 
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "signInWithEmail:failed", task.getException());
-                            Toast.makeText(LoginActivity.this, R.string.auth_failed,
-                                    Toast.LENGTH_SHORT).show();
-                        }
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(
+                this, new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
+                if (!task.isSuccessful()) {
+                    Log.w(TAG, "signInWithEmail:failed", task.getException());
+                    Toast.makeText(LoginActivity.this, R.string.auth_failed,
+                            Toast.LENGTH_SHORT).show();
+                }
 
-                        if (!task.isSuccessful()) {
-                            mStatusTextView.setText(R.string.auth_failed);
-                        } else {
-                            User tempUser = null;
-                            for (User u: users2) {
-                                if (u.getEmail().equals(tempEmail)) {
-                                    tempUser = u;
-                                }
-                            }
-
-                            home_activity.putExtra("USER", tempUser);
-
-                            startActivity(home_activity);
-                            finish();
+                if (!task.isSuccessful()) {
+                    mStatusTextView.setText(R.string.auth_failed);
+                } else {
+                    User tempUser = null;
+                    for (User u: users2) {
+                        if (u.getEmail().equals(tempEmail)) {
+                            tempUser = u;
                         }
                     }
-                });
+
+                    home_activity.putExtra("USER", tempUser);
+
+                    startActivity(home_activity);
+                    finish();
+                }
+            }
+        });
     }
 
-
-
-
+    /**
+     * Currently not called.
+     * Sends email to user for email verification.
+     */
     private void sendEmailVerification() {
         findViewById(R.id.verify_email_button).setEnabled(false);
 
@@ -196,17 +220,29 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 });
     }
 
+
+    /**
+     * Updates text on login for login/logout confirmation
+     *
+     * @param user takes in a firebase user to get the user information.
+     */
     private void updateUI(FirebaseUser user) {
         if (user != null) {
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
                     user.getEmail(), user.isEmailVerified()));
-
         } else {
             mStatusTextView.setText(R.string.signed_out);
-
         }
     }
 
+    /**
+     * OnClick method that will listen for clicks on the
+     * view that is taken in and proceed with actions.
+     *
+     *
+     * @param v Takes in a view that will contain buttons
+     *          for the onClick method to listen to.
+     */
     @Override
     public void onClick(View v) {
         int i = v.getId();
@@ -217,11 +253,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else if (i == R.id.email_sign_in_button) {
             if (validForm()) {
                 signIn(emailField.getText().toString(), passwordField.getText().toString());
-
             }
         }
     }
 
+    /**
+     * Tells application it's onstart and tells
+     * Firebase Authentication to start listening
+     *
+     * @return valid true or false depending on if the form inputted is valid.
+     */
     public boolean validForm() {
         boolean valid = true;
         String email = emailField.getText().toString();
@@ -241,14 +282,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             emailField.setError(null);
         }
-
         if (TextUtils.isEmpty(password)) {
             emailField.setError("Required.");
             valid = false;
         } else {
             emailField.setError(null);
         }
-
         return valid;
     }
 
@@ -259,11 +298,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-
     }
 
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
-
     }
 }

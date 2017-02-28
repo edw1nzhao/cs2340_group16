@@ -17,6 +17,14 @@ public class RegNameActivity extends AppCompatActivity implements View.OnClickLi
     private EditText nameField;
     private User user;
 
+    /**
+     * OnCreate method required to load activity and loads everything that
+     * is needed for the page while setting the view.
+     *
+     *
+     * @param savedInstanceState Takes in a bundle that may contain an object
+     *                           for use within this class
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_name);
@@ -29,6 +37,14 @@ public class RegNameActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    /**
+     * OnClick method that will listen for clicks on the
+     * view that is taken in and proceed with actions.
+     *
+     *
+     * @param v Takes in a view that will contain buttons
+     *          for the onClick method to listen to.
+     */
     @Override
     public void onClick(View v) {
         int i = v.getId();
@@ -44,6 +60,12 @@ public class RegNameActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
+    /**
+     * Tells application it's onstart and tells
+     * Firebase Authentication to start listening
+     *
+     * @return valid true or false depending on if the form inputted is valid.
+     */
     public boolean validForm() {
         boolean valid = true;
         String name = nameField.getText().toString();
@@ -53,8 +75,6 @@ public class RegNameActivity extends AppCompatActivity implements View.OnClickLi
         } else {
             nameField.setError(null);
         }
-
         return valid;
     }
-
 }

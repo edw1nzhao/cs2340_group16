@@ -20,6 +20,14 @@ public class RegAccountTypeActivity extends AppCompatActivity implements View.On
 
     private static final String TAG = "AccountTypeReg";
 
+    /**
+     * OnCreate method required to load activity and loads everything that
+     * is needed for the page while setting the view.
+     *
+     *
+     * @param savedInstanceState Takes in a bundle that may contain an object
+     *                           for use within this class
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +42,17 @@ public class RegAccountTypeActivity extends AppCompatActivity implements View.On
 
     }
 
+    /**
+     * OnClick method that will listen for clicks on the
+     * view that is taken in and proceed with actions.
+     *
+     *
+     * @param v Takes in a view that will contain buttons
+     *          for the onClick method to listen to.
+     */
     @Override
     public void onClick(View v) {
-
         int i = v.getId();
-
         if (i == R.id.reg_button_continue) {
             user.setAccountType((AccountType) accTypeSpinner.getSelectedItem());
             Intent intent = new Intent(this, RegNameActivity.class);

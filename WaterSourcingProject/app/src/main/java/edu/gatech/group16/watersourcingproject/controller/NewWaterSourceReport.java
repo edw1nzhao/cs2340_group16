@@ -26,6 +26,14 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     private String currentDateTimeString;
     private List<WaterSourceReport> wsReports;
 
+    /**
+     * OnCreate method required to load activity and loads everything that
+     * is needed for the page while setting the view.
+     *
+     *
+     * @param savedInstanceState Takes in a bundle that may contain an object
+     *                           for use within this class
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +51,14 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         findViewById(R.id.edit_button_save).setOnClickListener(this);
     }
 
+    /**
+     * OnClick method that will listen for clicks on the
+     * view that is taken in and proceed with actions.
+     *
+     *
+     * @param v Takes in a view that will contain buttons
+     *          for the onClick method to listen to.
+     */
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onClick(View v) {
@@ -61,6 +77,12 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         }
     }
 
+    /**
+     * compileReport method which will create a new report and put
+     * all of the
+     *
+     * @return wsReport will
+     */
     @RequiresApi(api = Build.VERSION_CODES.N)
     public WaterSourceReport compileReport() {
         currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());

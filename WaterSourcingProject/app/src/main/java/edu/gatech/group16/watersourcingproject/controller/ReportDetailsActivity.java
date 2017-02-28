@@ -5,6 +5,14 @@ import edu.gatech.group16.watersourcingproject.R;
 
 public class ReportDetailsActivity extends AppCompatActivity {
 
+    /**
+     * OnCreate method required to load activity and loads everything that
+     * is needed for the page while setting the view.
+     *
+     *
+     * @param savedInstanceState Takes in a bundle that may contain an object
+     *                           for use within this class
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
