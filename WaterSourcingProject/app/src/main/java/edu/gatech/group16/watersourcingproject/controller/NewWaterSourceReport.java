@@ -42,20 +42,26 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_ws_report);
-        // Fills the spinners with ENUM
-        ArrayAdapter<AccountType> adaptWaterCondition
-                = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalConditions);
-        ArrayAdapter<AccountType> adaptWaterType
-                = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalTypes);
 
-
-        user = (User) getIntent().getSerializableExtra("USER");
+        waterType = (Spinner) findViewById(R.id.spinner_watertype);
+        waterCondition = (Spinner) findViewById(R.id.spinner_watercondition);
 
         findViewById(R.id.edit_button_cancel).setOnClickListener(this);
         findViewById(R.id.edit_button_save).setOnClickListener(this);
 
-        waterType = (Spinner) findViewById(R.id.spinner_watertype);
-        waterCondition = (Spinner) findViewById(R.id.spinner_watercondition);
+        // Fills the spinners with ENUM
+        ArrayAdapter<WaterCondition> adaptWaterCondition
+                = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalConditions);
+        ArrayAdapter<WaterType> adaptWaterType
+                = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalTypes);
+
+        findViewById(R.id.button_submit).setOnClickListener(this);
+
+        waterType.setAdapter(adaptWaterType);
+        waterCondition.setAdapter(adaptWaterCondition);
+
+        user = (User) getIntent().getSerializableExtra("USER");
+
     }
 
     /**
@@ -70,11 +76,11 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.edit_button_cancel) {
+        if (i == R.id.button_cancel) {
             Intent cancelIntent = new Intent(this, HomeActivity.class);
             cancelIntent.putExtra("USER", user);
             startActivity(cancelIntent);
-        } else if (i == R.id.edit_button_save) {
+        } else if (i == R.id.button_submit) {
             Intent saveIntent = new Intent(this, HomeActivity.class);
             wsReports = user.getWaterSourceReport();
             wsReports.add(compileReport());

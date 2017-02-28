@@ -132,7 +132,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-
     /**
      * Sign in method that takes in two parameters (email and password)
      * Connects to Firebase and checks authentication
@@ -175,7 +174,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                     startActivity(home_activity);
                                     finish();
                                 }
-                                //users.add(temp);
                             }
                         }
 
@@ -184,16 +182,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                         }
                     });
-
-//                    for (User u: users) {
-//                        if (u.getEmail().equals(tempEmail)) {
-//                            user = u;
-//                        }
-//                    }
-//
-//                    home_activity.putExtra("USER", user);
-
-
                 }
             }
         });

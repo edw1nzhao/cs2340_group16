@@ -50,8 +50,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         findViewById(R.id.edit_button_cancel).setOnClickListener(this);
         findViewById(R.id.edit_button_save).setOnClickListener(this);
 
-
-
         emailField = (EditText) findViewById(R.id.edit_text_email);
         nameField = (EditText) findViewById(R.id.edit_text_name);
         passwordField = (EditText) findViewById(R.id.edit_text_password);
@@ -75,6 +73,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         if (i == R.id.edit_button_save) {
             if (emailField.getText().length() != 0) {
                 user.setEmail(emailField.getText().toString());
+
             }
             if (passwordField.getText().length() != 0) {
                 user.setPassword(passwordField.getText().toString());
@@ -88,25 +87,39 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             final Intent home_activity = new Intent(this, HomeActivity.class);
 
 
-            dbRef.child("users").addValueEventListener(new ValueEventListener() {
+            dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                         User temp = postSnapshot.getValue(User.class);
-                        if (temp.getEmail().equals(oldEmail)) {
-                            //snapshot.getRef().removeValue();
-                            temp = user;
-                            snapshot.getRef().setValue(temp);
-
-                            home_activity.putExtra("USER", temp);
-                            startActivity(home_activity);
-                            finish();
-                        }
+                        snapshot.getRef().removeValue();
 
                         users.add(temp);
                     }
-                }
 
+                    int i = 0;
+                    int marker = -1;
+                    for (User u: users) {
+                        if (u.getEmail().equals(oldEmail)) {
+                            users.set(i, user);
+                            marker = i;
+                        }
+                        i++;
+                    }
+
+                    FirebaseDatabase db = FirebaseDatabase.getInstance();
+                    DatabaseReference dbRef = db.getReference();
+                    DatabaseReference newRef = dbRef.child("users").push();
+
+                    User pushedUser = users.get(marker);
+                    newRef.setValue(pushedUser);
+
+
+
+                    home_activity.putExtra("USER", user);
+                    startActivity(home_activity);
+                    finish();
+                }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 
@@ -118,9 +131,5 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             EditProfileActivity.this.finish();
             return;
         }
-    }
-
-    public void saveData() {
-
     }
 }
