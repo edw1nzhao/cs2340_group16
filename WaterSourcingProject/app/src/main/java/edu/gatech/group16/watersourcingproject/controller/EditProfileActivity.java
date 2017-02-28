@@ -15,6 +15,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.model.User;
 
@@ -28,6 +31,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
     private User user;
     private String oldEmail;
+    private final List<User> users = new ArrayList<User>();
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -66,49 +70,54 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
      */
     @Override
     public void onClick(View v) {
-            int i = v.getId();
+        int i = v.getId();
 
-            if (i == R.id.edit_button_save) {
-                if (emailField.getText().length() != 0) {
-                    user.setEmail(emailField.getText().toString());
-                }
-                if (passwordField.getText().length() != 0) {
-                    user.setPassword(passwordField.getText().toString());
-                }
-                if (nameField.getText().length() != 0) {
-                    user.setName(nameField.getText().toString());
-                }
-
-
-                FirebaseDatabase db = FirebaseDatabase.getInstance();
-                DatabaseReference dbRef = db.getReference();
-
-                db.getReference("users").orderByChild("email").equalTo(oldEmail).addListenerForSingleValueEvent(
-                        new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                dataSnapshot.getRef().setValue(null);
-                            }
-
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-                                Log.w("TodoApp", "getUser:onCancelled", databaseError.toException());
-                            }
-                        });
-
-                DatabaseReference newRef = dbRef.child("users").push();
-                newRef.setValue(user);
-
-                Intent saveChangesIntent = new Intent(this, HomeActivity.class);
-                saveChangesIntent.putExtra("USER", user);
-                startActivity(saveChangesIntent);
-                EditProfileActivity.this.finish();
-                return;
-            } else if (i == R.id.edit_button_cancel) {
-                EditProfileActivity.this.finish();
-                return;
+        if (i == R.id.edit_button_save) {
+            if (emailField.getText().length() != 0) {
+                user.setEmail(emailField.getText().toString());
             }
+            if (passwordField.getText().length() != 0) {
+                user.setPassword(passwordField.getText().toString());
+            }
+            if (nameField.getText().length() != 0) {
+                user.setName(nameField.getText().toString());
+            }
+
+            FirebaseDatabase db = FirebaseDatabase.getInstance();
+            final DatabaseReference dbRef = db.getReference();
+            final Intent home_activity = new Intent(this, HomeActivity.class);
+
+
+            dbRef.child("users").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                        User temp = postSnapshot.getValue(User.class);
+                        if (temp.getEmail().equals(oldEmail)) {
+                            //snapshot.getRef().removeValue();
+                            temp = user;
+                            snapshot.getRef().setValue(temp);
+
+                            home_activity.putExtra("USER", temp);
+                            startActivity(home_activity);
+                            finish();
+                        }
+
+                        users.add(temp);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+            return;
+        } else if (i == R.id.edit_button_cancel) {
+            EditProfileActivity.this.finish();
+            return;
+        }
     }
 
     public void saveData() {

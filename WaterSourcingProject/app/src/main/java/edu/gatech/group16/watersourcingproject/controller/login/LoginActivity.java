@@ -22,15 +22,20 @@ import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
@@ -75,32 +80,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        DatabaseReference dbRef = db.getReference();
-
-//
-//            dbRef.child("users").addValueEventListener(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    //Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-//
-//                    for (DataSnapshot child: dataSnapshot.getChildren()) {
-//                        User user = child.getValue(User.class);
-//                        users.add(user);
-//                    }
-//
-//                    Log.d("SIZE DURING: ", users.size() + "");
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//
-//                }
-//            });
-
-
-        users2.add(new User("edwin.zhao@gatech.edu", "asdfasdf", "Edwin Zhao", AccountType.ADMINISTRATOR, null));
-        users2.add(new User("feehan.tomonari@gmail.com", "password", "Tomonari", AccountType.ADMINISTRATOR, null));
+        //users2.add(new User("edwin.zhao@gatech.edu", "asdfasdf", "Edwin Zhao", AccountType.ADMINISTRATOR, null));
+        //users2.add(new User("feehan.tomonari@gmail.com", "password", "Tomonari", AccountType.ADMINISTRATOR, null));
 
         Log.d("SIZE AFTER: ", users.size() + ""); // Expect a number other than 0
         // Views
@@ -181,17 +162,38 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 if (!task.isSuccessful()) {
                     mStatusTextView.setText(R.string.auth_failed);
                 } else {
-                    User tempUser = null;
-                    for (User u: users2) {
-                        if (u.getEmail().equals(tempEmail)) {
-                            tempUser = u;
+                    FirebaseDatabase db = FirebaseDatabase.getInstance();
+                    DatabaseReference dbRef = db.getReference();
+
+                    dbRef.child("users").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot snapshot) {
+                            for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                                User temp = postSnapshot.getValue(User.class);
+                                if (temp.getEmail().equals(tempEmail)) {
+                                    home_activity.putExtra("USER", temp);
+                                    startActivity(home_activity);
+                                    finish();
+                                }
+                                //users.add(temp);
+                            }
                         }
-                    }
 
-                    home_activity.putExtra("USER", tempUser);
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
 
-                    startActivity(home_activity);
-                    finish();
+                        }
+                    });
+
+//                    for (User u: users) {
+//                        if (u.getEmail().equals(tempEmail)) {
+//                            user = u;
+//                        }
+//                    }
+//
+//                    home_activity.putExtra("USER", user);
+
+
                 }
             }
         });
