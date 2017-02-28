@@ -109,12 +109,14 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
                     DatabaseReference dbRef = db.getReference();
-                    DatabaseReference newRef = dbRef.child("users").push();
+                    DatabaseReference newRef = dbRef.push();
 
-                    User pushedUser = users.get(marker);
-                    newRef.setValue(pushedUser);
+//                    User pushedUser = users.get(marker);
+//                    newRef.setValue(pushedUser);
 
-
+                    for (User u: users) {
+                        newRef.setValue(u);
+                    }
 
                     home_activity.putExtra("USER", user);
                     startActivity(home_activity);

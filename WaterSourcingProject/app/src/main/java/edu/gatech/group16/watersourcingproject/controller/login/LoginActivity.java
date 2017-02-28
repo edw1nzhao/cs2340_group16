@@ -63,7 +63,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private User user;
     //Inside: is the list of userIDs from firebase
     private final List<User> users = new ArrayList<User>();
-    private final List<User> users2 = new ArrayList<User>();
 
     private FirebaseAuth.AuthStateListener mAuthListener;
 

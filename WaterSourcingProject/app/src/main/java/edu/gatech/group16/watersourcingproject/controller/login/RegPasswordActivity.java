@@ -20,9 +20,13 @@ import com.google.firebase.auth.ProviderQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
+import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
 /**
  * Created by Edwin Zhao on 2017/02/22.
@@ -71,6 +75,7 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
 
         if (i == R.id.reg_button_signup) {
             user.setPassword(passwordField.getText().toString());
+            user.setWaterSourceReports(new ArrayList<WaterSourceReport>());
 
             if (createAccount(user.getEmail(), user.getPassword())) {
                 FirebaseDatabase db = FirebaseDatabase.getInstance();

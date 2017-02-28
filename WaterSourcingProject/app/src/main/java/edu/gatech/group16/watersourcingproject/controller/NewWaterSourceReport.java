@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -46,8 +47,8 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         waterType = (Spinner) findViewById(R.id.spinner_watertype);
         waterCondition = (Spinner) findViewById(R.id.spinner_watercondition);
 
-        findViewById(R.id.edit_button_cancel).setOnClickListener(this);
-        findViewById(R.id.edit_button_save).setOnClickListener(this);
+        findViewById(R.id.button_cancel).setOnClickListener(this);
+        findViewById(R.id.button_submit).setOnClickListener(this);
 
         // Fills the spinners with ENUM
         ArrayAdapter<WaterCondition> adaptWaterCondition
@@ -80,13 +81,21 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
             Intent cancelIntent = new Intent(this, HomeActivity.class);
             cancelIntent.putExtra("USER", user);
             startActivity(cancelIntent);
+
         } else if (i == R.id.button_submit) {
-            Intent saveIntent = new Intent(this, HomeActivity.class);
+            Intent home_activity = new Intent(this, HomeActivity.class);
+
             wsReports = user.getWaterSourceReport();
+
+            if (wsReports == null) {
+                wsReports = new ArrayList<WaterSourceReport>();
+            }
+
             wsReports.add(compileReport());
             user.setWaterSourceReports(wsReports);
-            saveIntent.putExtra("USER", user);
-            startActivity(saveIntent);
+            home_activity.putExtra("USER", user);
+            this.startActivity(home_activity);
+            this.finish();
         }
     }
 
