@@ -1,15 +1,23 @@
 package edu.gatech.group16.watersourcingproject.controller;
 
 import android.content.Intent;
+import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.controller.login.LoginActivity;
+import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
+import edu.gatech.group16.watersourcingproject.model.Enums.WaterType;
 import edu.gatech.group16.watersourcingproject.model.User;
+import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -54,6 +62,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         emailField.setText("Email: " + user.getEmail());
         passwordField.setText("Password: " + user.getPassword());
         accountTypeField.setText("Account Type: " + user.getAccountType().toString());
+
+        Date date = new Date();
+        List<WaterSourceReport> reportList = new ArrayList<>();
+        Location location = new Location("LOCATION");
+        location.setLatitude(1.2345d);
+        location.setLongitude(1.2345d);
+        reportList.add(new WaterSourceReport(001, date, location, WaterType.BOTTLED, WaterCondition.POTABLE, user.getName()));
+
     }
 
     /**
