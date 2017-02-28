@@ -96,10 +96,10 @@
                             android:layout_weight="1" />
 
                         <TextView
-                            android:text="@string/label_waterQuality"
+                            android:text="@string/label_watercondition"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/label_waterQuality"
+                            android:id="@+id/label_watercondition"
                             android:layout_weight="1" />
 
                         <LinearLayout
