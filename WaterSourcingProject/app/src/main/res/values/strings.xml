@@ -25,7 +25,7 @@
     <string name="label_email">EMAIL</string>
     <string name="label_password">PASSWORD</string>
     <string name="label_watertype">Water Type</string>
-    <string name="label_waterQuality">Water Quality</string>
+    <string name="label_watercondition">Water Condition</string>
 
     <string name="label_account">ACCOUNT TYPE</string>
     <string name="label_view_report">Reports</string>
