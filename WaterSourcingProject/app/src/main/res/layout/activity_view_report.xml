@@ -96,11 +96,21 @@
                             android:layout_weight="1" />
 
                         <TextView
-                            android:text="@string/label_waterQuality"
+                            android:text="@string/label_waterCondition"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/label_waterQuality"
+                            android:id="@+id/label_waterCondition"
                             android:layout_weight="1" />
+
+                        <Button
+                            android:text="@string/button_all"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/reports_all"
+                            android:layout_weight="1"
+                            android:background="@color/colorButton"
+                            tools:ignore="ButtonStyle"
+                            android:layout_marginEnd="7dp" />
 
                         <LinearLayout
                             android:orientation="horizontal"
@@ -116,16 +126,6 @@
                                 android:background="@color/colorButton"
                                 android:layout_weight="1"
                                 tools:ignore="ButtonStyle" />
-
-                            <Button
-                                android:text="@string/button_all"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:id="@+id/reports_all"
-                                android:layout_weight="1"
-                                android:background="@color/colorButton"
-                                tools:ignore="ButtonStyle"
-                                android:layout_marginEnd="7dp" />
 
                         </LinearLayout>
 

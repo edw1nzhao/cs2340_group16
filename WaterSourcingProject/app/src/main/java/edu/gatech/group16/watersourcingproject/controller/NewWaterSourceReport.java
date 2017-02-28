@@ -9,14 +9,17 @@ import android.os.Bundle;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.ArrayAdapter;
-
+import android.widget.Spinner;
 
 import java.util.Date;
 import java.util.List;
+import android.location.Location;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
 import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
+import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
+import edu.gatech.group16.watersourcingproject.model.Enums.WaterType;
 import edu.gatech.group16.watersourcingproject.model.User;
 import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
@@ -25,6 +28,8 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     private User user;
     private String currentDateTimeString;
     private List<WaterSourceReport> wsReports;
+    private Spinner waterType;
+    private Spinner waterCondition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,9 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
         findViewById(R.id.edit_button_cancel).setOnClickListener(this);
         findViewById(R.id.edit_button_save).setOnClickListener(this);
+
+        waterType = (Spinner) findViewById(R.id.spinner_watertype);
+        waterCondition = (Spinner) findViewById(R.id.spinner_watercondition);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -63,9 +71,29 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public WaterSourceReport compileReport() {
-        currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+        int reportNumber = getReportNumber();
+        Date currentDate = new Date();
+        Location location = getUserLocation();
+        WaterType type = (WaterType) waterType.getSelectedItem();
+        WaterCondition condition = (WaterCondition) waterCondition.getSelectedItem();
+        String submittedBy = user.getName();
 
-        WaterSourceReport wsReport = new WaterSourceReport();
+
+
+        WaterSourceReport wsReport = new WaterSourceReport(reportNumber, currentDate, location, type, condition, submittedBy);
         return wsReport;
+    }
+
+    public static int getReportNumber() {
+        //TO DO: Retrieve number of reports from Firebase variable.
+        return 0;
+    }
+
+    public static Location getUserLocation() {
+        //TO DO: Retrieve actual location from phone.
+        Location location = new Location("Temp Location");
+        location.setLatitude(1.2345d);
+        location.setLongitude(1.2345d);
+        return location;
     }
 }

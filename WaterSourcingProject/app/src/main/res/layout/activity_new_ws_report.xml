@@ -82,16 +82,16 @@
                             android:layout_marginBottom="30dp" />
 
                         <TextView
-                            android:text="@string/label_waterQuality"
+                            android:text="@string/label_waterCondition"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/label_waterQuality"
+                            android:id="@+id/label_waterCondition"
                             android:layout_weight="1" />
 
                         <Spinner
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/spinner_waterquality"
+                            android:id="@+id/spinner_watercondition"
                             android:layout_weight="1"
                             android:layout_marginBottom="50dp" />
 
