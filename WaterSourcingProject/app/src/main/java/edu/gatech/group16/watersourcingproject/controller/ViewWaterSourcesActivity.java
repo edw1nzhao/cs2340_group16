@@ -73,12 +73,11 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         // ListView Item Click Listener
-        final Context context = this;
+        final Context context = listView.getContext();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 //                // ListView Clicked item index
 //                int itemPosition = position;
@@ -93,6 +92,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                 Intent reportDetailIntent = new Intent(context, ReportDetailsActivity.class);
                 reportDetailIntent.putExtra("USER", user);
                 reportDetailIntent.putExtra("POSITION", position);
+                startActivity(reportDetailIntent);
             }
         });
     }

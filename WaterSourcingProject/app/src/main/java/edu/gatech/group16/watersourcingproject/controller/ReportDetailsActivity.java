@@ -39,12 +39,11 @@ public class ReportDetailsActivity extends AppCompatActivity {
         reportWaterType = (TextView) findViewById(R.id.label_reportWT);
         reportAuthor = (TextView) findViewById(R.id.label_reportAuth);
 
-        for (WaterSourceReport item: user.getWaterSourceReport()) {
-            reportDate.setText(item.getDate().toString());
-            reportLocation.setText(item.getLocation().toString());
-            reportWaterType.setText(item.getWaterType().toString());
-        }
-        reportNumber.setText(position);
+        WaterSourceReport relevantReport = user.getWaterSourceReport().get(position - 1);
+        reportDate.setText(relevantReport.getDate().toString());
+        reportLocation.setText(relevantReport.getLocation().toString());
+        reportWaterType.setText(relevantReport.getWaterType().toString());
+        reportNumber.setText(position - 1);
         reportAuthor.setText(user.getName());
     }
 }
