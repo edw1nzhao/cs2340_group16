@@ -1,6 +1,7 @@
 package edu.gatech.group16.watersourcingproject.controller.login;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,10 +22,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
+import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
+import edu.gatech.group16.watersourcingproject.model.Enums.WaterType;
 import edu.gatech.group16.watersourcingproject.model.User;
 import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
@@ -34,10 +38,7 @@ import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 public class RegPasswordActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "EMAIL/PASSWORD";
     private EditText passwordField;
-    private Button continueButton;
-
     private FirebaseAuth mAuth;
-
     private User user;
 
     /**
@@ -75,8 +76,15 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
 
         if (i == R.id.reg_button_signup) {
             user.setPassword(passwordField.getText().toString());
-            user.setWaterSourceReports(new ArrayList<WaterSourceReport>());
+            List<WaterSourceReport> list = new ArrayList<WaterSourceReport>();
+            Location loc = new Location("TEMP");
+            String location = loc.toString();
+            list.add(new WaterSourceReport(001, new Date(), location, WaterType.BOTTLED,
+                    WaterCondition.POTABLE, "Edwin"));
 
+            user.setWaterSourceReports(list);
+
+            Log.d("FUCK THIS SHIT: ", user.toString());
             if (createAccount(user.getEmail(), user.getPassword())) {
                 FirebaseDatabase db = FirebaseDatabase.getInstance();
                 DatabaseReference dbRef = db.getReference();

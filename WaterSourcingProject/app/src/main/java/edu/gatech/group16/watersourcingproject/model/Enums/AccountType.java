@@ -1,10 +1,12 @@
 package edu.gatech.group16.watersourcingproject.model.Enums;
 
+import java.io.Serializable;
+
 /**
  * Created by Tomonari on 2/17/2017.
  */
 
-public enum AccountType {
+public enum AccountType implements Serializable {
     USER("User"),
     WORKER("Worker"),
     MANAGER("Manager"),

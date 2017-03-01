@@ -7,10 +7,17 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,6 +37,9 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     private String currentDateTimeString;
     private List<WaterSourceReport> wsReports;
     private Spinner waterType, waterCondition;
+
+    private String oldEmail;
+    private final List<User> users = new ArrayList<User>();
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -93,9 +103,60 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
             wsReports.add(compileReport());
             user.setWaterSourceReports(wsReports);
-            home_activity.putExtra("USER", user);
-            this.startActivity(home_activity);
-            this.finish();
+
+            ////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////
+            FirebaseDatabase db = FirebaseDatabase.getInstance();
+            final DatabaseReference dbRef = db.getReference();
+            final Intent home_test = new Intent(this, HomeActivity.class);
+
+
+            dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                        User temp = postSnapshot.getValue(User.class);
+                        snapshot.getRef().removeValue();
+
+                        users.add(temp);
+                    }
+
+                    int i = 0;
+                    int marker = -1;
+                    for (User u: users) {
+                        if (u.getEmail().equals(user.getEmail())) {
+                            users.set(i, user);
+                            marker = i;
+                        }
+                        i++;
+                    }
+
+                    FirebaseDatabase db = FirebaseDatabase.getInstance();
+                    DatabaseReference dbRef = db.getReference();
+                    DatabaseReference newRef = dbRef.child("users").push();
+
+                    User pushedUser = users.get(marker);
+
+                    for (int j = 0; j < users.size(); j++) {
+                        newRef.setValue(users.get(j));
+                    }
+                    newRef.setValue(pushedUser);
+
+                    home_test.putExtra("USER", user);
+                    startActivity(home_test);
+                    finish();
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+            ///////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////
+
+//            home_activity.putExtra("USER", user);
+//            this.startActivity(home_activity);
+//            this.finish();
         }
     }
 
@@ -109,10 +170,11 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     public WaterSourceReport compileReport() {
         int reportNumber = getReportNumber();
         Date currentDate = new Date();
-        Location location = getUserLocation();
+        String location = getUserLocation().toString();
         WaterType type = (WaterType) waterType.getSelectedItem();
         WaterCondition condition = (WaterCondition) waterCondition.getSelectedItem();
         String submittedBy = user.getName();
+
         WaterSourceReport wsReport = new WaterSourceReport(reportNumber, currentDate, location, type, condition, submittedBy);
         return wsReport;
     }

@@ -3,6 +3,7 @@ package edu.gatech.group16.watersourcingproject.model;
 import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class User implements Serializable {
     public List<WaterSourceReport> wsReport;
 
     public User() {
+
     }
     public User(String email, String password, String name, AccountType accountType,
                 List<WaterSourceReport> wsReport) {
@@ -67,6 +69,17 @@ public class User implements Serializable {
 
     public void setWaterSourceReports(List<WaterSourceReport> wsReport) {
         this.wsReport = wsReport;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", accountType=" + accountType +
+                ", wsReport=" + wsReport +
+                '}';
     }
 }
 

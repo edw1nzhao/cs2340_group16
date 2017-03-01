@@ -1,6 +1,8 @@
 package edu.gatech.group16.watersourcingproject.model.Enums;
 
-public enum WaterCondition {
+import java.io.Serializable;
+
+public enum WaterCondition implements Serializable {
     WASTE("Waste"),
     TREATABLECLEAR("Treatable-Clear"),
     TREATABLEMUDDY("Treatable-Muddy"),

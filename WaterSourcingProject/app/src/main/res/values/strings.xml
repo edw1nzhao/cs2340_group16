@@ -30,6 +30,15 @@
     <string name="label_account">ACCOUNT TYPE</string>
     <string name="label_view_report">Reports</string>
 
+    <string name="label_reportNum">Report Number</string>
+
+    <string name="label_reportDate">Date: </string>
+    <string name="label_reportLoc">Location: </string>
+    <string name="label_reportWT">Water Type: </string>
+    <string name="label_reportAuth">Author: </string>
+
+
+
     <string name="button_continue">Continue</string>
     <string name="button_signup">Sign up!</string>
     <string name="button_submit">Submit</string>

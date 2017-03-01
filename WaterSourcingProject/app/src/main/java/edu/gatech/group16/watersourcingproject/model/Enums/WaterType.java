@@ -1,11 +1,13 @@
 package edu.gatech.group16.watersourcingproject.model.Enums;
 
+import java.io.Serializable;
+
 /**
  * Created by Edwin Zhao on 2017/02/23.
  * Bottled, Well, Stream, Lake, Spring, Other
  */
 
-public enum WaterType {
+public enum WaterType implements Serializable {
     BOTTLED("Bottled"),
     WELL("Well"),
     STREAM("Stream"),

@@ -31,49 +31,132 @@
             style="?metaButtonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="bottom|center_horizontal"
             android:orientation="vertical"
             tools:ignore="UselessParent"
-            android:weightSum="1">
+            android:weightSum="1"
+            android:gravity="center_vertical|center_horizontal">
 
-            <RelativeLayout
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical|center_horizontal">
 
                 <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp">
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <TextView
-                        android:text="@string/label_accq"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/report_name"
-                        android:layout_marginTop="100dp"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                        android:layout_marginBottom="50dp" />
+                        android:text="@string/label_reportNum"
+                        android:layout_height="match_parent"
+                        android:id="@+id/label_reportNum"
+                        android:gravity="center_horizontal"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        android:layout_width="80dp" />
+
+                    <TextView
+                        android:id="@+id/val_reportNum"
+                        android:layout_weight="1"
+                        tools:ignore="HardcodedText"
+                        android:layout_height="match_parent"
+                        android:layout_width="75dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="@label_reportDate"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/label_reportDate"
+                        android:gravity="center_horizontal"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1" />
 
                     <TextView
                         android:text="TextView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView" />
+                        android:layout_width="75dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/val_reportDate"
+                        android:layout_weight="1" />
+                </LinearLayout>
 
-                    <Button
-                        android:text="@string/button_continue"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/reg_button_continue"
-                        android:layout_marginTop="50dp"
-                        android:background="@color/colorButton" />
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="@label_reportLoc"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/label_reportLoc"
+                        android:gravity="center_horizontal"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:text="TextView"
+                        android:layout_width="75dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/val_reportLoc"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="@label_reportWT"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/label_reportWT"
+                        android:gravity="center_horizontal"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:text="TextView"
+                        android:layout_width="75dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/val_reportWT"
+                        android:layout_weight="1" />
 
                 </LinearLayout>
 
-            </RelativeLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:text="@label_reportAuth"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/label_reportAuth"
+                        android:gravity="center_horizontal"
+                        android:layout_margin="10dp"
+                        android:layout_weight="1"
+                        tools:ignore="NestedWeights" />
+
+                    <TextView
+                        android:text="TextView"
+                        android:layout_width="75dp"
+                        android:layout_height="match_parent"
+                        android:id="@+id/val_reportAuth"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 

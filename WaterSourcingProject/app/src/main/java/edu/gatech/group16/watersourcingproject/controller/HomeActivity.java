@@ -68,7 +68,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         Location location = new Location("LOCATION");
         location.setLatitude(1.2345d);
         location.setLongitude(1.2345d);
-        reportList.add(new WaterSourceReport(001, date, location, WaterType.BOTTLED, WaterCondition.POTABLE, user.getName()));
+        String loc = location.toString();
+        reportList.add(new WaterSourceReport(001, date, loc, WaterType.BOTTLED, WaterCondition.POTABLE, user.getName()));
 
     }
 

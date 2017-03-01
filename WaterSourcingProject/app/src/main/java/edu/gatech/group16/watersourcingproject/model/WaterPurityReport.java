@@ -1,13 +1,15 @@
 package edu.gatech.group16.watersourcingproject.model;
 
 import android.location.Location;
+
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
 
-public class WaterPurityReport {
+public class WaterPurityReport implements Serializable {
     public static List<WaterCondition> legalConditions = Arrays.asList(WaterCondition.values());
 
     private int reportNumber;
@@ -20,7 +22,6 @@ public class WaterPurityReport {
 
 
     public WaterPurityReport() {
-
     }
 
     public WaterPurityReport(int reportNumber, Date date, Location location,
