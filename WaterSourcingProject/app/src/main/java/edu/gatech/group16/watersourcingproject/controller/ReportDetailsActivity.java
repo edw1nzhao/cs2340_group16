@@ -33,11 +33,11 @@ public class ReportDetailsActivity extends AppCompatActivity {
         user = (User) getIntent().getSerializableExtra("USER");
         position =  (int) getIntent().getSerializableExtra("POSITION");
 
-        reportNumber = (TextView) findViewById(R.id.label_reportNum);
-        reportDate = (TextView) findViewById(R.id.label_reportDate);
-        reportLocation = (TextView) findViewById(R.id.label_reportLoc);
-        reportWaterType = (TextView) findViewById(R.id.label_reportWT);
-        reportAuthor = (TextView) findViewById(R.id.label_reportAuth);
+        reportNumber = (TextView) findViewById(R.id.val_reportNum);
+        reportDate = (TextView) findViewById(R.id.val_reportDate);
+        reportLocation = (TextView) findViewById(R.id.val_reportLoc);
+        reportWaterType = (TextView) findViewById(R.id.val_reportWT);
+        reportAuthor = (TextView) findViewById(R.id.val_reportAuth);
 
         WaterSourceReport relevantReport = user.getWaterSourceReport().get(position - 1);
         reportDate.setText(relevantReport.getDate().toString());
