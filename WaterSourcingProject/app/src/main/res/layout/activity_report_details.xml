@@ -71,7 +71,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:text="@label_reportDate"
+                        android:text="@string/label_reportDate"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:id="@+id/label_reportDate"
@@ -93,13 +93,13 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:text="@label_reportLoc"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:id="@+id/label_reportLoc"
                         android:gravity="center_horizontal"
                         android:layout_margin="10dp"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:text="@string/label_reportLoc" />
 
                     <TextView
                         android:text="TextView"
@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
-                        android:text="@label_reportWT"
+                        android:text="@string/label_reportWT"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:id="@+id/label_reportWT"
@@ -139,7 +139,7 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:text="@label_reportAuth"
+                        android:text="@string/label_reportAuth"
                         android:layout_width="80dp"
                         android:layout_height="match_parent"
                         android:id="@+id/label_reportAuth"

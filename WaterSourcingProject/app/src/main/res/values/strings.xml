@@ -30,8 +30,7 @@
     <string name="label_account">ACCOUNT TYPE</string>
     <string name="label_view_report">Reports</string>
 
-    <string name="label_reportNum">Report Number</string>
-
+    <string name="label_reportNum">Report Number: </string>
     <string name="label_reportDate">Date: </string>
     <string name="label_reportLoc">Location: </string>
     <string name="label_reportWT">Water Type: </string>
