@@ -54,7 +54,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         for (WaterSourceReport item: reportList) {
 
 
-            reportNums.add("" + item.getReportNumber());
+            reportNums.add("Report Number: " + item.getReportNumber());
 
         }
 
@@ -89,7 +89,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(),
 //                    "Position :"+itemPosition+"  ListItem : " +itemValue , Toast.LENGTH_LONG)
 //                    .show();
-                Intent reportDetailIntent = new Intent(context, ReportDetailsActivity.class);
+                Intent reportDetailIntent = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
                 reportDetailIntent.putExtra("USER", user);
                 reportDetailIntent.putExtra("POSITION", position);
                 startActivity(reportDetailIntent);
