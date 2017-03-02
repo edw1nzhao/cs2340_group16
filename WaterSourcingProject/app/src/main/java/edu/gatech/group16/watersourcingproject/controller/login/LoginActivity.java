@@ -79,9 +79,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //users2.add(new User("edwin.zhao@gatech.edu", "asdfasdf", "Edwin Zhao", AccountType.ADMINISTRATOR, null));
-        //users2.add(new User("feehan.tomonari@gmail.com", "password", "Tomonari", AccountType.ADMINISTRATOR, null));
-
         Log.d("SIZE AFTER: ", users.size() + ""); // Expect a number other than 0
         // Views
         mStatusTextView = (TextView) findViewById(R.id.status);
@@ -161,7 +158,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     mStatusTextView.setText(R.string.auth_failed);
                 } else {
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference dbRef = db.getReference();
+                    final DatabaseReference dbRef = db.getReference();
+
 
                     dbRef.child("users").addValueEventListener(new ValueEventListener() {
                         @Override
@@ -169,7 +167,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 User temp = postSnapshot.getValue(User.class);
                                 if (temp.getEmail().equals(tempEmail)) {
+
+                                    String count = dbRef.getKey();
+
+                                    Log.d("FUCK THIS", "" + count);
+
+                                    //int position = Integer.parseInt(count);
                                     home_activity.putExtra("USER", temp);
+                                    //home_activity.putExtra("POSITION", position);
                                     startActivity(home_activity);
                                     finish();
                                 }

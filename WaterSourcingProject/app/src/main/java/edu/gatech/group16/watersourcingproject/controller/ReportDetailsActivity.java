@@ -17,6 +17,8 @@ public class ReportDetailsActivity extends AppCompatActivity {
     private TextView reportWaterType;
     private TextView reportAuthor;
     private int position;
+
+
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
