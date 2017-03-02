@@ -73,7 +73,6 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
         // ListView Item Click Listener
-        final Context context = listView.getContext();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
@@ -89,10 +88,20 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(),
 //                    "Position :"+itemPosition+"  ListItem : " +itemValue , Toast.LENGTH_LONG)
 //                    .show();
-                Intent reportDetailIntent = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
-                reportDetailIntent.putExtra("USER", user);
-                reportDetailIntent.putExtra("POSITION", position);
-                startActivity(reportDetailIntent);
+                switch(position) {
+                    case 0:
+                        Intent newActivity1 = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
+                        newActivity1.putExtra("USER", user);
+                        newActivity1.putExtra("POSITION", position);
+                        startActivity(newActivity1);
+                        break;
+                    default:
+                        Intent newActivity2 = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
+                        newActivity2.putExtra("USER", user);
+                        newActivity2.putExtra("POSITION", position);
+                        startActivity(newActivity2);
+                        break;
+                }
             }
         });
     }
