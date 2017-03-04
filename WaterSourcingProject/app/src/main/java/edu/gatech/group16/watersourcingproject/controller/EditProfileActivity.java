@@ -46,7 +46,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_activity);
 
-
         findViewById(R.id.edit_button_cancel).setOnClickListener(this);
         findViewById(R.id.edit_button_save).setOnClickListener(this);
 
@@ -56,6 +55,10 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         user = (User) getIntent().getSerializableExtra("USER");
         oldEmail = user.getEmail();
 
+
+        nameField.setHint(user.getName());
+        emailField.setHint(user.getEmail());
+        passwordField.setHint("*****");
     }
 
     /**
