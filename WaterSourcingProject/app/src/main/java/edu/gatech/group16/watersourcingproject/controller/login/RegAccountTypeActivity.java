@@ -1,6 +1,7 @@
 package edu.gatech.group16.watersourcingproject.controller.login;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -17,7 +18,7 @@ import edu.gatech.group16.watersourcingproject.model.User;
 public class RegAccountTypeActivity extends AppCompatActivity implements View.OnClickListener {
     private Spinner accTypeSpinner;
     private User user = new User();
-
+    private Toolbar toolbar;
     private static final String TAG = "AccountTypeReg";
 
     /**
@@ -39,7 +40,18 @@ public class RegAccountTypeActivity extends AppCompatActivity implements View.On
         ArrayAdapter<AccountType> adaptAcc
                 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, User.legalClass);
         accTypeSpinner.setAdapter(adaptAcc);
-
+        toolbar = (Toolbar) findViewById(R.id.type_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegAccountTypeActivity.this, LoginActivity.class);
+                intent.putExtra("USER", user);
+                startActivity(intent);
+            }
+        });
     }
 
     /**

@@ -1,26 +1,21 @@
 package edu.gatech.group16.watersourcingproject.controller;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.model.User;
 import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
-import edu.gatech.group16.watersourcingproject.controller.ReportDetailsActivity;
 
 public class ViewWaterSourcesActivity extends AppCompatActivity {
     private List<String> list = new ArrayList<String>();
@@ -59,7 +54,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
             reportNums.add("Report Number: " + item.getReportNumber());
 
         }
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.view_ws_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);

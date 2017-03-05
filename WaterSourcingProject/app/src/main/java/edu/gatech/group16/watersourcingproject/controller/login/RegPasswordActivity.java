@@ -5,6 +5,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -40,6 +41,7 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
     private EditText passwordField;
     private FirebaseAuth mAuth;
     private User user;
+    private Toolbar toolbar;
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -60,6 +62,18 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
         user = (User) getIntent().getSerializableExtra("USER");
 
         mAuth = FirebaseAuth.getInstance();
+        toolbar = (Toolbar) findViewById(R.id.password_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegPasswordActivity.this, RegEmailActivity.class);
+                intent.putExtra("USER", user);
+                startActivity(intent);
+            }
+        });
     }
 
     /**

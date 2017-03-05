@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content">
 
                 <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar"
+                    android:id="@+id/view_ws_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/colorPrimary"
@@ -43,7 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/report_list"
-                    android:layout_below="@+id/toolbar" />
+                    android:layout_below="@+id/view_ws_toolbar" />
                 <!--<android.support.design.widget.FloatingActionButton-->
                 <!--android:src="@drawable/ic_collapse_00008"-->
                 <!--android:layout_width="match_parent"-->

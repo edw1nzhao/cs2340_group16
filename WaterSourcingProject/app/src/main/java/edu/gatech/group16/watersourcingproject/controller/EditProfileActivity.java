@@ -3,6 +3,7 @@ package edu.gatech.group16.watersourcingproject.controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +29,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     private EditText emailField;
     private EditText nameField;
     private EditText passwordField;
-
+    private Toolbar toolbar;
     private User user;
     private String oldEmail;
     private final List<User> users = new ArrayList<User>();
@@ -46,7 +47,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_activity);
 
-        findViewById(R.id.edit_button_cancel).setOnClickListener(this);
+        //findViewById(R.id.edit_button_cancel).setOnClickListener(this);
         findViewById(R.id.edit_button_save).setOnClickListener(this);
 
         emailField = (EditText) findViewById(R.id.edit_text_email);
@@ -59,6 +60,18 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         nameField.setHint(user.getName());
         emailField.setHint(user.getEmail());
         passwordField.setHint("*****");
+        toolbar = (Toolbar) findViewById(R.id.edit_profile_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EditProfileActivity.this, HomeActivity.class);
+                intent.putExtra("USER", user);
+                startActivity(intent);
+            }
+        });
     }
 
     /**
@@ -131,9 +144,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 }
             });
 
-            return;
-        } else if (i == R.id.edit_button_cancel) {
-            EditProfileActivity.this.finish();
             return;
         }
     }

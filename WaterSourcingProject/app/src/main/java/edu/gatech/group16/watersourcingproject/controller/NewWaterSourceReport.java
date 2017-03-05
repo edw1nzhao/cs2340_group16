@@ -7,6 +7,7 @@ import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View.OnClickListener;
 import android.view.View;
@@ -37,7 +38,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     private String currentDateTimeString;
     private List<WaterSourceReport> wsReports;
     private Spinner waterType, waterCondition;
-
+    private Toolbar toolbar;
     private String oldEmail;
     private final List<User> users = new ArrayList<User>();
 
@@ -57,9 +58,21 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         waterType = (Spinner) findViewById(R.id.spinner_watertype);
         waterCondition = (Spinner) findViewById(R.id.spinner_watercondition);
 
-        findViewById(R.id.button_cancel).setOnClickListener(this);
+        //findViewById(R.id.button_cancel).setOnClickListener(this);
         findViewById(R.id.button_submit).setOnClickListener(this);
 
+        toolbar = (Toolbar) findViewById(R.id.new_report_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NewWaterSourceReport.this, HomeActivity.class);
+                intent.putExtra("USER", user);
+                startActivity(intent);
+            }
+        });
         // Fills the spinners with ENUM
         ArrayAdapter<WaterCondition> adaptWaterCondition
                 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalConditions);
@@ -87,70 +100,65 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.button_cancel) {
-            Intent cancelIntent = new Intent(this, HomeActivity.class);
-            cancelIntent.putExtra("USER", user);
-            startActivity(cancelIntent);
+        if (i == R.id.button_submit) {
+        Intent home_activity = new Intent(this, HomeActivity.class);
 
-        } else if (i == R.id.button_submit) {
-            Intent home_activity = new Intent(this, HomeActivity.class);
+        wsReports = user.getWaterSourceReport();
 
-            wsReports = user.getWaterSourceReport();
+        if (wsReports == null) {
+            wsReports = new ArrayList<WaterSourceReport>();
+        }
 
-            if (wsReports == null) {
-                wsReports = new ArrayList<WaterSourceReport>();
+        wsReports.add(compileReport());
+        user.setWaterSourceReports(wsReports);
+
+        ////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////
+        FirebaseDatabase db = FirebaseDatabase.getInstance();
+        final DatabaseReference dbRef = db.getReference();
+        final Intent home_test = new Intent(this, HomeActivity.class);
+
+
+        dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    User temp = postSnapshot.getValue(User.class);
+                    snapshot.getRef().removeValue();
+
+                    users.add(temp);
+                }
+
+                int i = 0;
+                int marker = -1;
+                for (User u: users) {
+                    if (u.getEmail().equals(user.getEmail())) {
+                        users.set(i, user);
+                        marker = i;
+                    }
+                    i++;
+                }
+
+                FirebaseDatabase db = FirebaseDatabase.getInstance();
+                DatabaseReference dbRef = db.getReference();
+                DatabaseReference newRef = dbRef.child("users").push();
+
+                User pushedUser = users.get(marker);
+
+                for (int j = 0; j < users.size(); j++) {
+                    newRef.setValue(users.get(j));
+                }
+                newRef.setValue(pushedUser);
+
+                home_test.putExtra("USER", user);
+                startActivity(home_test);
+                finish();
             }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-            wsReports.add(compileReport());
-            user.setWaterSourceReports(wsReports);
-
-            ////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////
-            FirebaseDatabase db = FirebaseDatabase.getInstance();
-            final DatabaseReference dbRef = db.getReference();
-            final Intent home_test = new Intent(this, HomeActivity.class);
-
-
-            dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot snapshot) {
-                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                        User temp = postSnapshot.getValue(User.class);
-                        snapshot.getRef().removeValue();
-
-                        users.add(temp);
-                    }
-
-                    int i = 0;
-                    int marker = -1;
-                    for (User u: users) {
-                        if (u.getEmail().equals(user.getEmail())) {
-                            users.set(i, user);
-                            marker = i;
-                        }
-                        i++;
-                    }
-
-                    FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference dbRef = db.getReference();
-                    DatabaseReference newRef = dbRef.child("users").push();
-
-                    User pushedUser = users.get(marker);
-
-                    for (int j = 0; j < users.size(); j++) {
-                        newRef.setValue(users.get(j));
-                    }
-                    newRef.setValue(pushedUser);
-
-                    home_test.putExtra("USER", user);
-                    startActivity(home_test);
-                    finish();
-                }
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
+            }
+        });
             ///////////////////////////////////////////////////////
             //////////////////////////////////////////////////////
 
