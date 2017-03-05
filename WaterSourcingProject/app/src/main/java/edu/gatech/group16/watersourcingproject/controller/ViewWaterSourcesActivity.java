@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +44,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
 
         user = (User) getIntent().getSerializableExtra("USER");
 
-        List<WaterSourceReport> reportList = user.getWaterSourceReport();
+        final List<WaterSourceReport> reportList = user.getWaterSourceReport();
 
         List<String> reportNums = new ArrayList<String>();
         Log.d("SO CLOSE", reportList.toString());
@@ -84,31 +85,34 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                WaterSourceReport clickedItem = reportList.get(position);
+                int itemPosition = position;
 
-//                // ListView Clicked item index
-//                int itemPosition = position;
-//
-//                // ListView Clicked item value
-//                String itemValue = (String) listView.getItemAtPosition(position);
-//
-//                // Show Alert
-//                Toast.makeText(getApplicationContext(),
-//                    "Position :"+itemPosition+"  ListItem : " +itemValue , Toast.LENGTH_LONG)
-//                    .show();
-                switch(position) {
-                    case 0:
-                        Intent newActivity1 = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
-                        newActivity1.putExtra("USER", user);
-                        newActivity1.putExtra("POSITION", position);
-                        startActivity(newActivity1);
-                        break;
-                    default:
-                        Intent newActivity2 = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
-                        newActivity2.putExtra("USER", user);
-                        newActivity2.putExtra("POSITION", position);
-                        startActivity(newActivity2);
-                        break;
-                }
+                String itemValue = (String) listView.getItemAtPosition(position);
+
+                // Show Alert
+                Toast.makeText(getApplicationContext(),
+                        "Submitted By: " + clickedItem.getSubmittedBy()
+                        + "\n\nDate: " + clickedItem.getDate()
+                        + "\n\nLocation: " + clickedItem.getLocation()
+                        + "\n\nWater Type: " + clickedItem.getWaterType()
+                        + "\n\nWater Condition: " + clickedItem.getWaterCondition() + "\n\n" , Toast.LENGTH_LONG)
+                        .show();
+
+//                switch(position) {
+//                    case 0:
+//                        Intent newActivity1 = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
+//                        newActivity1.putExtra("USER", user);
+//                        newActivity1.putExtra("POSITION", position);
+//                        startActivity(newActivity1);
+//                        break;
+//                    default:
+//                        Intent newActivity2 = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
+//                        newActivity2.putExtra("USER", user);
+//                        newActivity2.putExtra("POSITION", position);
+//                        startActivity(newActivity2);
+//                        break;
+//                }
             }
         });
     }

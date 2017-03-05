@@ -34,7 +34,7 @@ import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
 public class NewWaterSourceReport extends AppCompatActivity implements OnClickListener {
 
-    private User user;
+    private static User user;
     private String currentDateTimeString;
     private List<WaterSourceReport> wsReports;
     private Spinner waterType, waterCondition;
@@ -188,7 +188,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     }
     public static int getReportNumber() {
         //TO DO: Retrieve number of reports from Firebase variable.
-        return 0;
+        return user.getWaterSourceReport().size() + 1;
     }
 
     public static Location getUserLocation() {

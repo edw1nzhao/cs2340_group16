@@ -98,7 +98,6 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
 
             user.setWaterSourceReports(list);
 
-            Log.d("FUCK THIS SHIT: ", user.toString());
             if (createAccount(user.getEmail(), user.getPassword())) {
                 FirebaseDatabase db = FirebaseDatabase.getInstance();
                 DatabaseReference dbRef = db.getReference();
