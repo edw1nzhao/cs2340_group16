@@ -36,8 +36,6 @@
     <string name="label_reportWT">Water Type: </string>
     <string name="label_reportAuth">Author: </string>
 
-
-
     <string name="button_continue">Continue</string>
     <string name="button_signup">Sign up!</string>
     <string name="button_submit">Submit</string>
@@ -68,6 +66,11 @@
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_view_water_sources">ViewWaterSourcesActivity</string>
+
+    <string name="text_newReport">New</string>
+    <string name="text_viewMap">Map</string>
+    <string name="text_viewReports">View Reports</string>
+    <string name="text_settings">Settings</string>
 
 
     <!-- Strings related to home screen -->

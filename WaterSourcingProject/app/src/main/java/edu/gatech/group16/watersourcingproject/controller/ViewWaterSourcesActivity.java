@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,7 +18,7 @@ import edu.gatech.group16.watersourcingproject.model.User;
 import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
 public class ViewWaterSourcesActivity extends AppCompatActivity {
-    private List<String> list = new ArrayList<String>();
+    private List<String> list = new ArrayList<>();
     private ListView listView ;
     private User user;
     private String[] values;
@@ -46,10 +45,9 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
 
         final List<WaterSourceReport> reportList = user.getWaterSourceReport();
 
-        List<String> reportNums = new ArrayList<String>();
+        List<String> reportNums = new ArrayList<>();
 
         for (WaterSourceReport item: reportList) {
-
 
             reportNums.add("Report Number: " + item.getReportNumber());
 
@@ -75,7 +73,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         }
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, reportNums);
         listView.setAdapter(adapter);
 
@@ -85,7 +83,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 WaterSourceReport clickedItem = reportList.get(position);
-                int itemPosition = position;
+                //int itemPosition = position;
 
                 String itemValue = (String) listView.getItemAtPosition(position);
 

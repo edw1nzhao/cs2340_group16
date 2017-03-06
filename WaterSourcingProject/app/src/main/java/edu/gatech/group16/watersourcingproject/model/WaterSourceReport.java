@@ -1,7 +1,5 @@
 package edu.gatech.group16.watersourcingproject.model;
 
-import android.location.Location;
-
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
@@ -38,12 +36,12 @@ public class WaterSourceReport implements Serializable {
     /**
      * Constructor for a WaterSourceReport
      *
-     * @param reportNumber
-     * @param date
-     * @param location
-     * @param waterType
-     * @param waterCondition
-     * @param submittedBy
+     * @param reportNumber report number
+     * @param date date
+     * @param location location
+     * @param waterType water type
+     * @param waterCondition water condition
+     * @param submittedBy submitted by
      */
     public WaterSourceReport(int reportNumber, Date date, String location,
                              WaterType waterType, WaterCondition waterCondition,
@@ -68,7 +66,7 @@ public class WaterSourceReport implements Serializable {
     /**
      * Setter for submittedBy
      *
-     * @param submittedBy
+     * @param submittedBy user submitted by
      */
     public void setSubmittedBy(String submittedBy) {
         this.submittedBy = submittedBy;
@@ -77,7 +75,7 @@ public class WaterSourceReport implements Serializable {
     /**
      * Getter for reportNumber
      *
-     * @return reportNumber
+     * @return reportNumber number return
      */
     public int getReportNumber() {
         return reportNumber;
@@ -86,7 +84,7 @@ public class WaterSourceReport implements Serializable {
     /**
      * Setter for reportNumber
      *
-     * @param reportNumber
+     * @param reportNumber given report number
      */
     public void setReportNumber(int reportNumber) {
         this.reportNumber = reportNumber;
@@ -104,7 +102,7 @@ public class WaterSourceReport implements Serializable {
     /**
      * Setter for date
      *
-     * @param date
+     * @param date current date
      */
     public void setDate(Date date) {
         this.date = date;
@@ -122,14 +120,14 @@ public class WaterSourceReport implements Serializable {
     /**
      * Setter for location
      *
-     * @param location
+     * @param location current location
      */
     public void setLocation(String location) {
         this.location = location;
     }
 
     /**
-     * Getter for waterType
+     * Getter for waterTypes
      *
      * @return waterType
      */
@@ -140,7 +138,7 @@ public class WaterSourceReport implements Serializable {
     /**
      * Setter for waterType
      *
-     * @param waterType
+     * @param waterType the watertype
      */
     public void setWaterType(WaterType waterType) {
         this.waterType = waterType;
@@ -149,7 +147,7 @@ public class WaterSourceReport implements Serializable {
     /**
      * Getter for waterCondition
      *
-     * @return waterCondition
+     * @return waterCondition the water condition
      */
     public WaterCondition getWaterCondition() {
         return waterCondition;
