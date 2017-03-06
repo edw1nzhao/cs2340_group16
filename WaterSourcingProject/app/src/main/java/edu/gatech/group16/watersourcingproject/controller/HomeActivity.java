@@ -40,8 +40,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.logout_button).setOnClickListener(this);
         findViewById(R.id.save_changes).setOnClickListener(this);
-        findViewById(R.id.available_button).setOnClickListener(this);
-        findViewById(R.id.new_waterReport).setOnClickListener(this);
 
         botNavbar = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
@@ -106,14 +104,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             Intent editUser = new Intent(this, EditProfileActivity.class);
             editUser.putExtra("USER", user);
             startActivity(editUser);
-        } else if (i == R.id.available_button) {
-            Intent editUser = new Intent(this,ViewWaterSourcesActivity.class);
-            editUser.putExtra("USER", user);
-            startActivity(editUser);
-        } else if (i == R.id.new_waterReport) {
-            Intent editUser = new Intent(this, NewWaterSourceReport.class);
-            editUser.putExtra("USER", user);
-            startActivity(editUser);
         }
+//        } else if (i == R.id.available_button) {
+//            Intent editUser = new Intent(this,ViewWaterSourcesActivity.class);
+//            editUser.putExtra("USER", user);
+//            startActivity(editUser);
+//        } else if (i == R.id.new_waterReport) {
+//            Intent editUser = new Intent(this, NewWaterSourceReport.class);
+//            editUser.putExtra("USER", user);
+//            startActivity(editUser);
+//        }
     }
 }
