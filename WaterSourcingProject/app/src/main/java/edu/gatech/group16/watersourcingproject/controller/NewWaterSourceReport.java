@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +39,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     private String currentDateTimeString;
     private List<WaterSourceReport> wsReports;
     private Spinner waterType, waterCondition;
+    private EditText waterLocation;
     private Toolbar toolbar;
     private String oldEmail;
     private final List<User> users = new ArrayList<User>();
@@ -55,6 +57,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_ws_report);
 
+        waterLocation = (EditText) findViewById(R.id.text_location);
         waterType = (Spinner) findViewById(R.id.spinner_watertype);
         waterCondition = (Spinner) findViewById(R.id.spinner_watercondition);
 
@@ -101,58 +104,58 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.button_submit) {
-        Intent home_activity = new Intent(this, HomeActivity.class);
+            Intent home_activity = new Intent(this, HomeActivity.class);
 
-        wsReports = user.getWaterSourceReport();
+            wsReports = user.getWaterSourceReport();
 
-        if (wsReports == null) {
-            wsReports = new ArrayList<WaterSourceReport>();
-        }
+            if (wsReports == null) {
+                wsReports = new ArrayList<WaterSourceReport>();
+            }
 
-        wsReports.add(compileReport());
-        user.setWaterSourceReports(wsReports);
+            wsReports.add(compileReport());
+            user.setWaterSourceReports(wsReports);
 
-        ////////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////
-        FirebaseDatabase db = FirebaseDatabase.getInstance();
-        final DatabaseReference dbRef = db.getReference();
-        final Intent home_test = new Intent(this, HomeActivity.class);
+            ////////////////////////////////////////////////////////
+            ///////////////////////////////////////////////////////
+            FirebaseDatabase db = FirebaseDatabase.getInstance();
+            final DatabaseReference dbRef = db.getReference();
+            final Intent home_test = new Intent(this, HomeActivity.class);
 
 
-        dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    User temp = postSnapshot.getValue(User.class);
-                    snapshot.getRef().removeValue();
+            dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                        User temp = postSnapshot.getValue(User.class);
+                        snapshot.getRef().removeValue();
 
-                    users.add(temp);
-                }
-
-                int i = 0;
-                int marker = -1;
-                for (User u: users) {
-                    if (u.getEmail().equals(user.getEmail())) {
-                        users.set(i, user);
-                        marker = i;
+                        users.add(temp);
                     }
-                    i++;
-                }
 
-                FirebaseDatabase db = FirebaseDatabase.getInstance();
-                DatabaseReference dbRef = db.getReference();
-                DatabaseReference newRef = dbRef.child("users").push();
+                    int i = 0;
+                    int marker = -1;
+                    for (User u: users) {
+                        if (u.getEmail().equals(user.getEmail())) {
+                            users.set(i, user);
+                            marker = i;
+                        }
+                        i++;
+                    }
 
-                User pushedUser = users.get(marker);
+                    FirebaseDatabase db = FirebaseDatabase.getInstance();
+                    DatabaseReference dbRef = db.getReference();
+                    DatabaseReference newRef = dbRef.child("users").push();
 
-                for (int j = 0; j < users.size(); j++) {
-                    newRef.setValue(users.get(j));
-                }
-                newRef.setValue(pushedUser);
+                    User pushedUser = users.get(marker);
 
-                home_test.putExtra("USER", user);
-                startActivity(home_test);
-                finish();
+                    for (int j = 0; j < users.size(); j++) {
+                        newRef.setValue(users.get(j));
+                    }
+                    newRef.setValue(pushedUser);
+
+                    home_test.putExtra("USER", user);
+                    startActivity(home_test);
+                    finish();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -178,7 +181,8 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     public WaterSourceReport compileReport() {
         int reportNumber = getReportNumber();
         Date currentDate = new Date();
-        String location = getUserLocation().toString();
+        //String location = getUserLocation().toString();
+        String location = waterLocation.getText().toString();
         WaterType type = (WaterType) waterType.getSelectedItem();
         WaterCondition condition = (WaterCondition) waterCondition.getSelectedItem();
         String submittedBy = user.getName();
@@ -196,6 +200,8 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         Location location = new Location("Temp Location");
         location.setLatitude(1.2345d);
         location.setLongitude(1.2345d);
+        location.setAccuracy(100);
+        location.setElapsedRealtimeNanos(0);
         return location;
     }
 }

@@ -30,78 +30,89 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom|center_horizontal"
             android:orientation="vertical"
-            tools:ignore="UselessParent"
-            android:weightSum="1">
+            android:weightSum="1"
+            tools:ignore="UselessParent">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:orientation="vertical"
+                <TextView
+                    android:id="@+id/new_label_title"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp">
+                    android:layout_alignEnd="@+id/linearLayout2"
+                    android:layout_alignStart="@+id/linearLayout2"
+                    android:layout_below="@+id/new_report_toolbar"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/label_new_wsReport"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-                    <android.support.v7.widget.Toolbar
-                        android:id="@+id/new_report_toolbar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="?attr/colorPrimary"
-                        android:minHeight="?attr/actionBarSize"
-                        android:theme="?attr/actionBarTheme" />
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@+id/new_label_title"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="29dp">
 
                     <TextView
-                        android:text="@string/label_new_wsReport"
+                        android:id="@+id/new_location"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/new_label_title"
-                        android:layout_marginTop="50dp"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+                        android:layout_weight="0.28"
+                        android:text="Location" />
 
                     <LinearLayout
-                        android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="60dp">
+                        android:layout_marginTop="60dp"
+                        android:orientation="vertical">
+
+                        <EditText
+                            android:id="@+id/text_location"
+                            android:layout_width="match_parent"
+                            android:layout_height="31dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#ffffff"
+                            android:textColorHint="#FFFFFF" />
 
                         <TextView
-                            android:text="@string/wsReport_reminder"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/new_label_reminder"
-                            android:layout_weight="1"
-                            android:layout_marginBottom="50dp" />
-
-                        <TextView
-                            android:text="@string/label_watertype"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
                             android:id="@+id/new_label_watertype"
-                            android:layout_weight="1" />
-
-                        <Spinner
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/spinner_watertype"
                             android:layout_weight="1"
-                            android:layout_marginBottom="30dp" />
+                            android:text="@string/label_watertype" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                        </RelativeLayout>
+
+                        <Spinner
+                            android:id="@+id/spinner_watertype"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="30dp"
+                            android:layout_weight="1" />
 
                         <TextView
-                            android:text="@string/label_watercondition"
+                            android:id="@+id/label_watercondition"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/label_watercondition"
-                            android:layout_weight="1" />
+                            android:layout_weight="1"
+                            android:text="@string/label_watercondition" />
 
                         <Spinner
+                            android:id="@+id/spinner_watercondition"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/spinner_watercondition"
-                            android:layout_weight="1"
-                            android:layout_marginBottom="50dp" />
+                            android:layout_marginBottom="50dp"
+                            android:layout_weight="1" />
 
                         <Button
                             android:id="@+id/button_submit"
@@ -116,6 +127,16 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/new_report_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:background="?attr/colorPrimary"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme" />
 
             </RelativeLayout>
 
