@@ -20,10 +20,24 @@ public class WaterPurityReport implements Serializable {
     private int virusPPM;
     private int contaminantPPM;
 
-
+    /**
+     * Empty constructor for Firebase
+     *
+     */
     public WaterPurityReport() {
     }
 
+    /**
+     * Normal constructor for a WaterPurityReport
+     *
+     * @param reportNumber
+     * @param date
+     * @param location
+     * @param waterCondition
+     * @param submittedBy
+     * @param virusPPM
+     * @param contaminantPPM
+     */
     public WaterPurityReport(int reportNumber, Date date, Location location,
                              WaterCondition waterCondition, String submittedBy,
                              int virusPPM, int contaminantPPM) {
@@ -36,52 +50,120 @@ public class WaterPurityReport implements Serializable {
         this.contaminantPPM = contaminantPPM;
     }
 
-
-
+    /**
+     * Getter for submittedBy
+     *
+     * @return submittedBy
+     */
     public String getSubmittedBy() {
         return submittedBy;
     }
 
+    /**
+     * Setter for submittedBy
+     *
+     * @param submittedBy
+     */
     public void setSubmittedBy(String submittedBy) {
         this.submittedBy = submittedBy;
     }
 
+    /**
+     * Getter for reportNumber
+     *
+     * @return reportNumber
+     */
     public int getReportNumber() {
         return reportNumber;
     }
 
+    /**
+     * Setter for reportNumber
+     *
+     * @param reportNumber
+     */
     public void setReportNumber(int reportNumber) {
         this.reportNumber = reportNumber;
     }
 
+    /**
+     * Getter for date
+     *
+     * @return date
+     */
     public Date getDate() {
         return date;
     }
 
+    /**
+     * Setter for date
+     *
+     * @param date
+     */
     public void setDate(Date date) {
         this.date = date;
     }
 
+    /**
+     * Getter for location
+     *
+     * @return location
+     */
     public Location getLocation() {
         return location;
     }
 
+    /**
+     * Setter for location
+     *
+     * @param location
+     */
     public void setLocation(Location location) {
         this.location = location;
     }
 
+    /**
+     * Getter for waterCondition
+     *
+     * @return waterCondition
+     */
     public WaterCondition getWaterCondition() {
         return waterCondition;
     }
 
-    public void setWaterCondition(WaterCondition waterQuality) { this.waterCondition = waterCondition; }
+    /**
+     * Setter for waterCondition
+     *
+     * @param waterCondition
+     */
+    public void setWaterCondition(WaterCondition waterCondition) { this.waterCondition = waterCondition; }
 
+    /**
+     * Getter for virusPPM
+     *
+     * @return virusPPM
+     */
     public int getVirusPPM() { return virusPPM; }
 
+    /**
+     * Setter for virusPPM
+     *
+     * @param virusPPM
+     */
     public void setVirusPPM(int virusPPM) { this.virusPPM = virusPPM; }
 
+    /**
+     * Getter for contaminantPPM
+     *
+     * @return contaminantPPM
+     */
     public int getContaminantPPM() { return contaminantPPM; }
 
+    /**
+     * Setter for contaminantPPM
+     *
+     * @param contaminantPPM
+     */
     public void setContaminantPPM(int contaminantPPM) { this.contaminantPPM = contaminantPPM; }
 
     @Override
@@ -96,6 +178,4 @@ public class WaterPurityReport implements Serializable {
                 ", submittedBy='" + submittedBy + '\'' +
                 '}';
     }
-
-
 }

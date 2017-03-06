@@ -186,11 +186,24 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         WaterSourceReport wsReport = new WaterSourceReport(reportNumber, currentDate, location, type, condition, submittedBy);
         return wsReport;
     }
+
+    /**
+     * getReportNum method looks into users report size.
+     * TODO: Retrieve number of reports from Firebase variable.
+     *
+     * @return int the number of reports.
+     */
     public static int getReportNumber() {
-        //TO DO: Retrieve number of reports from Firebase variable.
         return user.getWaterSourceReport().size() + 1;
     }
 
+    /**
+     * Location method that gets the user's location
+     * Currently returns a fake location.
+     * TODO: Actually get the user location.
+     *
+     * @return Location returns the location of the user.
+     */
     public static Location getUserLocation() {
         //TO DO: Retrieve actual location from phone.
         Location location = new Location("Temp Location");

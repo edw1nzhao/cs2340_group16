@@ -19,9 +19,24 @@ public class User implements Serializable {
     public AccountType accountType;
     public List<WaterSourceReport> wsReport;
 
+
+    /**
+     * Empty constructor for Firebase
+     *
+     */
     public User() {
 
     }
+
+    /**
+     * Normal constructor for a user
+     *
+     * @param accountType
+     * @param email
+     * @param name
+     * @param password
+     * @param wsReport
+     */
     public User(String email, String password, String name, AccountType accountType,
                 List<WaterSourceReport> wsReport) {
         this.email = email;
@@ -31,42 +46,93 @@ public class User implements Serializable {
         this.wsReport = wsReport;
     }
 
+
+    /**
+     * Getter for name
+     *
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Setter for name
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Getter for email
+     *
+     * @return email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Setter for email
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Getter for password
+     *
+     * @return password
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * Setter for password
+     *
+     * @param password
+     */
     public void setPassword(String password) {
         this.password = password;
     }
 
+    /**
+     * Getter for AccountType
+     *
+     * @return AccountType
+     */
     public AccountType getAccountType() {
         return accountType;
     }
 
+    /**
+     * Setter for AccountType
+     *
+     * @param accountType
+     */
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
     }
 
+    /**
+     * Getter for WaterSourceReports
+     *
+     * @return WaterSourceReport[]
+     */
     public List<WaterSourceReport> getWaterSourceReport() {
         return this.wsReport;
     }
 
+    /**
+     * Setter for WaterSourceReports
+     *
+     * @param wsReport
+     */
     public void setWaterSourceReports(List<WaterSourceReport> wsReport) {
         this.wsReport = wsReport;
     }

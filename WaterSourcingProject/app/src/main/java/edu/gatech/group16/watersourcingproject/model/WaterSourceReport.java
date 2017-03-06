@@ -27,10 +27,24 @@ public class WaterSourceReport implements Serializable {
     private String submittedBy;
 
 
+    /**
+     * Empty constructor for Firebase
+     *
+     */
     public WaterSourceReport() {
 
     }
 
+    /**
+     * Constructor for a WaterSourceReport
+     *
+     * @param reportNumber
+     * @param date
+     * @param location
+     * @param waterType
+     * @param waterCondition
+     * @param submittedBy
+     */
     public WaterSourceReport(int reportNumber, Date date, String location,
                              WaterType waterType, WaterCondition waterCondition,
                              String submittedBy) {
@@ -42,52 +56,110 @@ public class WaterSourceReport implements Serializable {
         this.submittedBy = submittedBy;
     }
 
-
-
+    /**
+     * Getter for submittedBy
+     *
+     * @return submittedBy
+     */
     public String getSubmittedBy() {
         return submittedBy;
     }
 
+    /**
+     * Setter for submittedBy
+     *
+     * @param submittedBy
+     */
     public void setSubmittedBy(String submittedBy) {
         this.submittedBy = submittedBy;
     }
 
+    /**
+     * Getter for reportNumber
+     *
+     * @return reportNumber
+     */
     public int getReportNumber() {
         return reportNumber;
     }
 
+    /**
+     * Setter for reportNumber
+     *
+     * @param reportNumber
+     */
     public void setReportNumber(int reportNumber) {
         this.reportNumber = reportNumber;
     }
 
+    /**
+     * Getter for date
+     *
+     * @return date
+     */
     public Date getDate() {
         return date;
     }
 
+    /**
+     * Setter for date
+     *
+     * @param date
+     */
     public void setDate(Date date) {
         this.date = date;
     }
 
+    /**
+     * Getter for location
+     *
+     * @return location
+     */
     public String getLocation() {
         return location;
     }
 
+    /**
+     * Setter for location
+     *
+     * @param location
+     */
     public void setLocation(String location) {
         this.location = location;
     }
 
+    /**
+     * Getter for waterType
+     *
+     * @return waterType
+     */
     public WaterType getWaterType() {
         return waterType;
     }
 
+    /**
+     * Setter for waterType
+     *
+     * @param waterType
+     */
     public void setWaterType(WaterType waterType) {
         this.waterType = waterType;
     }
 
+    /**
+     * Getter for waterCondition
+     *
+     * @return waterCondition
+     */
     public WaterCondition getWaterCondition() {
         return waterCondition;
     }
 
+    /**
+     * Setter for waterCondition
+     *
+     * @param waterCondition
+     */
     public void setWaterCondition(WaterCondition waterCondition) { this.waterCondition = waterCondition; }
 
     @Override

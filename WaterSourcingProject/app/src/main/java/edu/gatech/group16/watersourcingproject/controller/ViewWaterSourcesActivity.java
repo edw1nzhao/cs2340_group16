@@ -47,7 +47,6 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         final List<WaterSourceReport> reportList = user.getWaterSourceReport();
 
         List<String> reportNums = new ArrayList<String>();
-        Log.d("SO CLOSE", reportList.toString());
 
         for (WaterSourceReport item: reportList) {
 

@@ -74,8 +74,7 @@ public class RegNameActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     /**
-     * Tells application it's onstart and tells
-     * Firebase Authentication to start listening
+     * Checks if form is of valid syntax.
      *
      * @return valid true or false depending on if the form inputted is valid.
      */

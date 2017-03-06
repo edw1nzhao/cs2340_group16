@@ -42,6 +42,7 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
     private FirebaseAuth mAuth;
     private User user;
     private Toolbar toolbar;
+    private boolean valid = false;
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -111,8 +112,16 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
             }
         }
     }
-    private boolean valid = false;
 
+    /**
+     * Create account method that takes in email and password
+     * to sign in the user.
+     *
+     *
+     * @param email Takes in the user's email that's inputted earlier screen.
+     * @param password Password taken in from this screen.
+     * @return boolean gives back false if not signed in.
+     */
     private boolean createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
@@ -151,6 +160,12 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
         return valid;
     }
 
+
+    /**
+     * Method that checks if form is of correct syntax
+     *
+     * @return boolean gives back true if form is of correct syntax.
+     */
     private boolean validateForm() {
         boolean valid = true;
         String password = passwordField.getText().toString();
@@ -167,6 +182,11 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
         return valid;
     }
 
+    /**
+     * Sends user an email for verification.
+     * Currently does nothing and is not called.
+     *
+     */
     private void sendEmailVerification() {
         final FirebaseUser user = mAuth.getCurrentUser();
         user.sendEmailVerification()
