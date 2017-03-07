@@ -170,8 +170,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                                     String count = dbRef.getKey();
 
-                                    Log.d("FUCK THIS", "" + count);
-
                                     //int position = Integer.parseInt(count);
                                     home_activity.putExtra("USER", temp);
                                     //home_activity.putExtra("POSITION", position);
@@ -267,7 +265,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         boolean valid = true;
         String email = emailField.getText().toString();
         String password = passwordField.getText().toString();
-        if (TextUtils.isEmpty(email)) {
+        if (email.length() == 0) {
             emailField.setError("Required.");
             valid = false;
         } else if (email.length() < 6){
@@ -282,11 +280,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             emailField.setError(null);
         }
-        if (TextUtils.isEmpty(password)) {
-            emailField.setError("Required.");
+        if (password.length() == 0) {
+            passwordField.setError("Required.");
+            valid = false;
+        } else if (password.length() < 6 || password.length() > 23){
+            passwordField.setError("Incorrect password.");
             valid = false;
         } else {
-            emailField.setError(null);
+            passwordField.setError(null);
         }
         return valid;
     }
