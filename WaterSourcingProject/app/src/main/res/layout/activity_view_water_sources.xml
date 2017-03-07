@@ -45,7 +45,7 @@
                     android:id="@+id/report_list"
                     android:layout_below="@+id/view_ws_toolbar"
                     android:divider="#FFFFFF"
-                    android:dividerHeight="1px"/>
+                    android:dividerHeight="2px"/>
                 <!--<android.support.design.widget.FloatingActionButton-->
                 <!--android:src="@drawable/ic_collapse_00008"-->
                 <!--android:layout_width="match_parent"-->
