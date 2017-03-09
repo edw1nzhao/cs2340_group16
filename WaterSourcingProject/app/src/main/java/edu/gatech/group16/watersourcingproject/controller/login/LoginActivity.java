@@ -39,6 +39,7 @@ import java.util.Map;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
+import edu.gatech.group16.watersourcingproject.controller.MapsActivity;
 import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterType;
@@ -246,7 +247,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int i = v.getId();
 
         if (i == R.id.email_create_account_button) {
-            Intent intent = new Intent(this, RegAccountTypeActivity.class);
+            Intent intent = new Intent(this, MapsActivity.class);
             startActivity(intent);
         } else if (i == R.id.email_sign_in_button) {
             if (validForm()) {
