@@ -47,9 +47,18 @@
                     android:id="@+id/view_ws_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?attr/colorPrimary"
+                    android:background="?attr/colorPrimaryDark"
                     android:minHeight="?attr/actionBarSize"
                     android:theme="?attr/actionBarTheme" />
+
+                <Spinner
+                    android:id="@+id/spinner_report_options"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="bottom|right"
+                    android:popupBackground="@color/colorPrimary"
+                    android:visibility="visible" />
 
                 <ListView
                     android:id="@+id/report_list"

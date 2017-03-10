@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -25,8 +26,10 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
     private ListView listView ;
     private User user;
     private String[] values;
-    private Toolbar toolbar;
+    private Spinner viewingOptionSpinner;
     private BottomNavigationView bottomNav;
+    private List<String> reportOptions = new ArrayList<>();
+
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
@@ -40,10 +43,18 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_water_sources);
+        reportOptions.add("Select Sorting Option");
+        reportOptions.add("Water Source Report");
+        reportOptions.add("Water Purity Report");
 
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.report_list);
         bottomNav = (BottomNavigationView) findViewById(R.id.view_ws_bottom_navbar);
+        viewingOptionSpinner = (Spinner) findViewById(R.id.spinner_report_options);
+        //Sets Spinner in for report viewing options
+        ArrayAdapter<String> adaptReportOptions
+                = new ArrayAdapter(this, android.R.layout.simple_spinner_item, this.reportOptions);
+        viewingOptionSpinner.setAdapter(adaptReportOptions);
 
         user = (User) getIntent().getSerializableExtra("USER");
 
@@ -58,19 +69,19 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         }
 
 
-        //Sets toolbar functionality on top of activity
-        toolbar = (Toolbar) findViewById(R.id.view_ws_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ViewWaterSourcesActivity.this, HomeActivity.class);
-                intent.putExtra("USER", user);
-                startActivity(intent);
-            }
-        });
+//        //Sets toolbar functionality on top of activity
+//        toolbar = (Toolbar) findViewById(R.id.view_ws_toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(ViewWaterSourcesActivity.this, HomeActivity.class);
+//                intent.putExtra("USER", user);
+//                startActivity(intent);
+//            }
+//        });
 
 
 
@@ -134,7 +145,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                         + "\n\nDate: " + clickedItem.getDate()
                         + "\n\nLocation: " + clickedItem.getLocation()
                         + "\n\nWater Type: " + clickedItem.getWaterType()
-                        + "\n\nWater Condition: " + clickedItem.getWaterCondition() + "\n\n" , Toast.LENGTH_LONG)
+                        + "\n\nWater Condition: " + clickedItem.getWaterCondition() + "\n\n" , Toast.LENGTH_SHORT)
                         .show();
 
 //                switch(position) {
