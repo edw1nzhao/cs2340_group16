@@ -18,6 +18,7 @@ public class User implements Serializable {
     public String password;
     public AccountType accountType;
     public List<WaterSourceReport> wsReport;
+    public String uid;
 
 
     /**
@@ -36,14 +37,16 @@ public class User implements Serializable {
      * @param name
      * @param password
      * @param wsReport
+     * @param uid
      */
     public User(String email, String password, String name, AccountType accountType,
-                List<WaterSourceReport> wsReport) {
+                List<WaterSourceReport> wsReport, String uid) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.accountType = accountType;
         this.wsReport = wsReport;
+        this.uid = uid;
     }
 
 
@@ -135,6 +138,24 @@ public class User implements Serializable {
      */
     public void setWaterSourceReports(List<WaterSourceReport> wsReport) {
         this.wsReport = wsReport;
+    }
+
+    /**
+     * Getter for WaterSourceReports
+     *
+     * @return uid
+     */
+    public String getUid() {
+        return this.uid;
+    }
+
+    /**
+     * Setter for WaterSourceReports
+     *
+     * @param uid
+     */
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     @Override

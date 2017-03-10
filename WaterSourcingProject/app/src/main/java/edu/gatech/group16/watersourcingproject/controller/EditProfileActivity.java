@@ -33,7 +33,10 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     private EditText passwordField;
     private Toolbar toolbar;
     private User user;
-    private String oldEmail;
+    private FirebaseAuth mAuth;
+
+
+
     private final List<User> users = new ArrayList<User>();
 
     /**
@@ -49,15 +52,12 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_activity);
 
-        //findViewById(R.id.edit_button_cancel).setOnClickListener(this);
         findViewById(R.id.edit_button_save).setOnClickListener(this);
 
         emailField = (EditText) findViewById(R.id.edit_text_email);
         nameField = (EditText) findViewById(R.id.edit_text_name);
         passwordField = (EditText) findViewById(R.id.edit_text_password);
         user = (User) getIntent().getSerializableExtra("USER");
-        oldEmail = user.getEmail();
-
 
         nameField.setHint(user.getName());
         emailField.setHint(user.getEmail());
@@ -104,13 +104,28 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             final DatabaseReference dbRef = db.getReference();
             final Intent home_activity = new Intent(this, HomeActivity.class);
 
-
             dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
-                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    String uid2 = mAuth.getInstance().getCurrentUser().getUid();
+                    Log.d("FUCKTHIS", uid2);
+                    String uid = user.getUid();
+                    List<User> listUsers = new ArrayList<>();
+
+                    for (DataSnapshot snap : snapshot.getChildren()) {
+                        User temp = snap.getValue(User.class);
+                        snapshot.getRef().removeValue();
+                        if (temp.getUid().equals(uid)) {
+                            temp = user;
+                        }
+
+                        listUsers.add(temp);
+                    }
+
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference dRef = database.getReference("users");
+                    for (int i = 0; i < listUsers.size(); i++) {
+                    }
                     dRef.child(uid).setValue(EditProfileActivity.this.user);
 
                     home_activity.putExtra("USER", user);

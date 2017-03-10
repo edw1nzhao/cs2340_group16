@@ -43,6 +43,9 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
     private User user;
     private Toolbar toolbar;
     private boolean valid = false;
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+
+
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -90,20 +93,14 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
         int i = v.getId();
 
         if (i == R.id.reg_button_signup) {
+            String uid = mAuth.getInstance().getCurrentUser().getUid();
             user.setPassword(passwordField.getText().toString());
-            List<WaterSourceReport> list = new ArrayList<WaterSourceReport>();
-            Location loc = new Location("TEMP");
-            String location = loc.toString();
-            list.add(new WaterSourceReport(001, new Date(), location, WaterType.BOTTLED,
-                    WaterCondition.POTABLE, "Edwin"));
-
-            user.setWaterSourceReports(list);
+            user.setUid(uid);
 
             if (createAccount(user.getEmail(), user.getPassword())) {
-                FirebaseDatabase db = FirebaseDatabase.getInstance();
                 DatabaseReference dbRef = db.getReference();
-                DatabaseReference newRef = dbRef.child("users").push();
-                newRef.setValue(user);
+
+                dbRef.child("users").child(uid).setValue(user);
 
                 Intent intent = new Intent(this, HomeActivity.class);
                 intent.putExtra("USER", user);
@@ -156,9 +153,10 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
                         valid = false;
                     } else {
                         // Save user data after authentication is proven
-                        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        DatabaseReference dRef = database.getReference("users");
+
+                        String uid = mAuth.getInstance().getCurrentUser().getUid();
+                        user.setUid(uid);
+                        DatabaseReference dRef = db.getReference("users");
                         dRef.child(uid).setValue(RegPasswordActivity.this.user);
 
                         Intent loginIntent = new Intent(RegPasswordActivity.this,
