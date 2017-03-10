@@ -2,6 +2,7 @@ package edu.gatech.group16.watersourcingproject.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -23,6 +24,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
     private User user;
     private String[] values;
     private Toolbar toolbar;
+    private BottomNavigationView bottomNav;
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -40,6 +42,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
 
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.report_list);
+        bottomNav = (BottomNavigationView) findViewById(R.id.view_ws_bottom_navbar);
 
         user = (User) getIntent().getSerializableExtra("USER");
 
@@ -52,6 +55,9 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
             reportNums.add("Report Number: " + item.getReportNumber());
 
         }
+
+
+        //Sets toolbar functionality on top of activity
         toolbar = (Toolbar) findViewById(R.id.view_ws_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -64,6 +70,9 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //Sets bottom navbar functionality
+
 
         // Defined Array values to show in ListView
         try {

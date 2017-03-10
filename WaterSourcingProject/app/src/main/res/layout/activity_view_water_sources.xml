@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     tools:context="edu.gatech.group16.watersourcingproject.controller.HomeActivity">
 
@@ -11,6 +12,17 @@
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/view_ws_bottom_navbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        app:itemBackground="@color/colorPrimaryDark"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_navigation_ws" />
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -24,8 +36,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="bottom|center_horizontal"
             android:orientation="vertical"
-            tools:ignore="UselessParent"
-            android:weightSum="1">
+            android:weightSum="1"
+            tools:ignore="UselessParent">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -40,12 +52,13 @@
                     android:theme="?attr/actionBarTheme" />
 
                 <ListView
+                    android:id="@+id/report_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/report_list"
                     android:layout_below="@+id/view_ws_toolbar"
                     android:divider="#FFFFFF"
-                    android:dividerHeight="2px"/>
+                    android:dividerHeight="2px" />
+
                 <!--<android.support.design.widget.FloatingActionButton-->
                 <!--android:src="@drawable/ic_collapse_00008"-->
                 <!--android:layout_width="match_parent"-->

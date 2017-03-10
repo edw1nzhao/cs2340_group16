@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_all_reports"
+        android:enabled="true"
+        android:title="@string/all_reports"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_empty"
+        android:enabled="true"
+        android:title=""
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_my_reports"
+        android:enabled="true"
+        android:title="@string/my_reports"
+        app:showAsAction="ifRoom" />
+</menu>
