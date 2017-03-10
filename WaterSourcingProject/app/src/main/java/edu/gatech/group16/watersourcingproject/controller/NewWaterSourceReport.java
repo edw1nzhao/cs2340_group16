@@ -198,6 +198,9 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
      * @return int the number of reports.
      */
     public static int getReportNumber() {
+        if (user.getWaterSourceReport() == null) {
+            return 1;
+        }
         return user.getWaterSourceReport().size() + 1;
     }
 
