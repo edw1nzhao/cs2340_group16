@@ -58,7 +58,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_viewMap:
-
+                                Intent mapIntent =  new Intent(HomeActivity.this, MapsActivity.class);
+                                mapIntent.putExtra("USER", user);
+                                startActivity(mapIntent);
+                                break;
                             case R.id.action_newReport:
                                 Intent newReportIntent = new Intent(HomeActivity.this, NewWaterSourceReport.class);
                                 newReportIntent.putExtra("USER", user);

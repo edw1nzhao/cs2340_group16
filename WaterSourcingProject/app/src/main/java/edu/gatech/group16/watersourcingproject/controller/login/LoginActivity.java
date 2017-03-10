@@ -80,7 +80,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Log.d("SIZE AFTER: ", users.size() + ""); // Expect a number other than 0
         // Views
         mStatusTextView = (TextView) findViewById(R.id.status);
         emailField = (EditText) findViewById(R.id.field_email);
@@ -247,7 +246,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int i = v.getId();
 
         if (i == R.id.email_create_account_button) {
-            Intent intent = new Intent(this, MapsActivity.class);
+            Intent intent = new Intent(this, RegAccountTypeActivity.class);
             startActivity(intent);
         } else if (i == R.id.email_sign_in_button) {
             if (validForm()) {

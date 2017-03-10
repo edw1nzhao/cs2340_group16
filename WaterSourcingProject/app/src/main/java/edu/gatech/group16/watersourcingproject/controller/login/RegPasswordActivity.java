@@ -154,10 +154,21 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
                         Toast.makeText(RegPasswordActivity.this, R.string.auth_failed,
                                 Toast.LENGTH_SHORT).show();
                         valid = false;
+                    } else {
+                        // Save user data after authentication is proven
+                        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference dRef = database.getReference("users");
+                        dRef.child(uid).setValue(RegPasswordActivity.this.user);
+
+                        Intent loginIntent = new Intent(RegPasswordActivity.this,
+                                HomeActivity.class);
+                        RegPasswordActivity.this.startActivity(loginIntent);
+                        RegPasswordActivity.this.finish();
                     }
                 }
             });
-        return valid;
+        return true;
     }
 
 
@@ -190,20 +201,20 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
     private void sendEmailVerification() {
         final FirebaseUser user = mAuth.getCurrentUser();
         user.sendEmailVerification()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(RegPasswordActivity.this,
-                                    "Verification email sent to " + user.getEmail(),
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            Log.e(TAG, "sendEmailVerification", task.getException());
-                            Toast.makeText(RegPasswordActivity.this,
-                                    "Failed to send verification email.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
+            .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(RegPasswordActivity.this,
+                                "Verification email sent to " + user.getEmail(),
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Log.e(TAG, "sendEmailVerification", task.getException());
+                        Toast.makeText(RegPasswordActivity.this,
+                                "Failed to send verification email.",
+                                Toast.LENGTH_SHORT).show();
                     }
-                });
+                }
+            });
     }
 }

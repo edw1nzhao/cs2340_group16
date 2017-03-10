@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.group16.watersourcingproject.R;
+import edu.gatech.group16.watersourcingproject.controller.login.RegPasswordActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
@@ -59,7 +61,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
         nameField.setHint(user.getName());
         emailField.setHint(user.getEmail());
-        passwordField.setHint("*****");
+        passwordField.setHint("******");
         toolbar = (Toolbar) findViewById(R.id.edit_profile_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -89,7 +91,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         if (i == R.id.edit_button_save) {
             if (emailField.getText().length() != 0) {
                 user.setEmail(emailField.getText().toString());
-
             }
             if (passwordField.getText().length() != 0) {
                 user.setPassword(passwordField.getText().toString());
@@ -99,6 +100,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             }
 
             FirebaseDatabase db = FirebaseDatabase.getInstance();
+
             final DatabaseReference dbRef = db.getReference();
             final Intent home_activity = new Intent(this, HomeActivity.class);
 
@@ -106,33 +108,10 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
-                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                        User temp = postSnapshot.getValue(User.class);
-                        snapshot.getRef().removeValue();
-
-                        users.add(temp);
-                    }
-
-                    int i = 0;
-                    int marker = -1;
-                    for (User u: users) {
-                        if (u.getEmail().equals(oldEmail)) {
-                            users.set(i, user);
-                            marker = i;
-                        }
-                        i++;
-                    }
-
-                    FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference dbRef = db.getReference();
-                    DatabaseReference newRef = dbRef.child("users").push();
-
-                    User pushedUser = users.get(marker);
-
-                    for (int j = 0; j < users.size(); j++) {
-                        newRef.setValue(users.get(j));
-                    }
-                    newRef.setValue(pushedUser);
+                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference dRef = database.getReference("users");
+                    dRef.child(uid).setValue(EditProfileActivity.this.user);
 
                     home_activity.putExtra("USER", user);
                     startActivity(home_activity);
