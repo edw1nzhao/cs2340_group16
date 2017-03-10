@@ -97,11 +97,18 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                 ArrayAdapter<String> newAdapter = new ArrayAdapter<>(ViewWaterSourcesActivity.this,
                                         android.R.layout.simple_list_item_1, android.R.id.text1, finalReportNums);
                                 listView.setAdapter(newAdapter);
+                                Toast.makeText(getApplicationContext(),
+                                        "Currently displaying all reports." , Toast.LENGTH_SHORT)
+                                        .show();
+
                                 break;
                             case R.id.action_my_reports:
                                 ArrayAdapter<String> newAdapter2 = new ArrayAdapter<>(ViewWaterSourcesActivity.this,
                                         android.R.layout.simple_list_item_1, android.R.id.text1, finalReportNums);
                                 listView.setAdapter(newAdapter2);
+                                Toast.makeText(getApplicationContext(),
+                                        "Currently displaying only your reports." , Toast.LENGTH_SHORT)
+                                        .show();
                                 break;
                             default:
                                 break;
