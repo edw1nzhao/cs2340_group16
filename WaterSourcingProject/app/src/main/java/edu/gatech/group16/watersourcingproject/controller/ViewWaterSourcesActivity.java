@@ -2,9 +2,11 @@ package edu.gatech.group16.watersourcingproject.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,7 +27,6 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
     private String[] values;
     private Toolbar toolbar;
     private BottomNavigationView bottomNav;
-
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
@@ -48,7 +49,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
 
         final List<WaterSourceReport> reportList = user.getWaterSourceReport();
 
-        List<String> reportNums = new ArrayList<>();
+        List<String> reportNums = new ArrayList<String>();
 
         for (WaterSourceReport item: reportList) {
 
@@ -71,7 +72,6 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
             }
         });
 
-        //Sets bottom navbar functionality
 
 
         // Defined Array values to show in ListView
@@ -80,11 +80,36 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         } catch (NullPointerException e) {
             values = new String[] {};
         }
-
-
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, reportNums);
         listView.setAdapter(adapter);
+
+        final List<String> finalReportNums = reportNums;
+        //Sets BottomNavigationView functionality
+        bottomNav.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_all_reports:
+                                //TO DO iterate through users and collect all reports; right now identical to MyReports tab
+
+                                ArrayAdapter<String> newAdapter = new ArrayAdapter<>(ViewWaterSourcesActivity.this,
+                                        android.R.layout.simple_list_item_1, android.R.id.text1, finalReportNums);
+                                listView.setAdapter(newAdapter);
+                                break;
+                            case R.id.action_my_reports:
+                                ArrayAdapter<String> newAdapter2 = new ArrayAdapter<>(ViewWaterSourcesActivity.this,
+                                        android.R.layout.simple_list_item_1, android.R.id.text1, finalReportNums);
+                                listView.setAdapter(newAdapter2);
+                                break;
+                            default:
+                                break;
+                        }
+                        return true;
+                    }
+
+                });
 
         // ListView Item Click Listener
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
