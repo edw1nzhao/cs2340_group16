@@ -103,7 +103,8 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        if (i == R.id.button_submit) {
+        if (i == R.id.button_submit && validCoordinate()) {
+
             Intent home_activity = new Intent(this, HomeActivity.class);
 
             wsReports = user.getWaterSourceReport();
@@ -156,12 +157,12 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                     home_test.putExtra("USER", user);
                     startActivity(home_test);
                     finish();
-            }
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                }
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
             ///////////////////////////////////////////////////////
             //////////////////////////////////////////////////////
 
@@ -187,8 +188,11 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         WaterCondition condition = (WaterCondition) waterCondition.getSelectedItem();
         String submittedBy = user.getName();
 
+
         WaterSourceReport wsReport = new WaterSourceReport(reportNumber, currentDate, location, type, condition, submittedBy);
         return wsReport;
+
+
     }
 
     /**
@@ -219,5 +223,23 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         location.setAccuracy(100);
         location.setElapsedRealtimeNanos(0);
         return location;
+    }
+
+    public boolean validCoordinate() {
+        String location = waterLocation.getText().toString();
+        boolean valid = true;
+        if (location.length() == 0) {
+            waterLocation.setError("Required.");
+            valid = false;
+        } else if (!location.contains(", ")) {
+            waterLocation.setError("Incorrect format.");
+            valid = false;
+        } else if (location.matches(".*[a-z].*")) {
+            waterLocation.setError("Incorrect format.");
+            valid = false;
+        } else {
+            waterLocation.setError(null);
+        }
+        return valid;
     }
 }
