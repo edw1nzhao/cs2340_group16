@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,7 +31,9 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
     private BottomNavigationView bottomNav;
     private List<String> reportOptions = new ArrayList<>();
     private Toolbar toolbar;
-
+    private String TAG = "ViewWaterSources";
+    private List<WaterSourceReport> reportList;
+    private List<String> reportNums;
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
@@ -52,6 +55,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.report_list);
         bottomNav = (BottomNavigationView) findViewById(R.id.view_ws_bottom_navbar);
         viewingOptionSpinner = (Spinner) findViewById(R.id.spinner_report_options);
+
         //Sets Spinner in for report viewing options
         ArrayAdapter<String> adaptReportOptions
                 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, this.reportOptions);
@@ -59,15 +63,18 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
 
         user = (User) getIntent().getSerializableExtra("USER");
 
-        final List<WaterSourceReport> reportList = user.getWaterSourceReport();
+        try {
+            reportList = user.getWaterSourceReport();
+            reportNums = new ArrayList<String>();
 
-        List<String> reportNums = new ArrayList<String>();
+            for (WaterSourceReport item: reportList) {
+                reportNums.add("Report Number: " + item.getReportNumber());
 
-        for (WaterSourceReport item: reportList) {
-
-            reportNums.add("Report Number: " + item.getReportNumber());
-
+            }
+        } catch (NullPointerException e){
+            Log.d(TAG, "NO USER REPORTS");
         }
+
 
 
         //Sets toolbar functionality on top of activity
