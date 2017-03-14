@@ -29,6 +29,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
     private Spinner viewingOptionSpinner;
     private BottomNavigationView bottomNav;
     private List<String> reportOptions = new ArrayList<>();
+    private Toolbar toolbar;
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -69,19 +70,19 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         }
 
 
-//        //Sets toolbar functionality on top of activity
-//        toolbar = (Toolbar) findViewById(R.id.view_ws_toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(ViewWaterSourcesActivity.this, HomeActivity.class);
-//                intent.putExtra("USER", user);
-//                startActivity(intent);
-//            }
-//        });
+        //Sets toolbar functionality on top of activity
+        toolbar = (Toolbar) findViewById(R.id.view_ws_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewWaterSourcesActivity.this, HomeActivity.class);
+                intent.putExtra("USER", user);
+                startActivity(intent);
+            }
+        });
 
 
 

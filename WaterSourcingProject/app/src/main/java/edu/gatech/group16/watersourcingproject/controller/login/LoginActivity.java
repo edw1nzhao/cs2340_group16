@@ -1,5 +1,6 @@
 package edu.gatech.group16.watersourcingproject.controller.login;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.location.Location;
 import android.support.annotation.NonNull;
@@ -140,6 +141,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (!validForm()) {
             return;
         }
+
+
         final String tempEmail = email;
         final Intent home_activity = new Intent(this, HomeActivity.class);
 
