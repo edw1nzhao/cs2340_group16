@@ -73,7 +73,7 @@
                         <EditText
                             android:id="@+id/text_location"
                             android:layout_width="match_parent"
-                            android:layout_height="31dp"
+                            android:layout_height="wrap_content"
                             android:ems="10"
                             android:inputType="textPersonName"
                             android:textColor="#ffffff"
