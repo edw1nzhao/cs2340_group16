@@ -2,18 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_all_reports"
+        android:id="@+id/action_my_reports"
         android:enabled="true"
-        android:title="@string/all_reports"
-        app:showAsAction="always" />
+        android:title="@string/my_reports"
+        android:icon="@drawable/ic_my_reports"
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_empty"
         android:enabled="true"
         android:title=""
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_my_reports"
+        android:id="@+id/action_all_reports"
         android:enabled="true"
-        android:title="@string/my_reports"
-        app:showAsAction="ifRoom" />
+        android:title="@string/all_reports"
+        android:icon="@drawable/ic_all_reports"
+        app:showAsAction="always" />
 </menu>
