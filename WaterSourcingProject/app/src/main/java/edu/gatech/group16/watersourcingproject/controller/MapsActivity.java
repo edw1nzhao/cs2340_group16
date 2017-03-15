@@ -3,6 +3,7 @@ package edu.gatech.group16.watersourcingproject.controller;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toolbar;
 
@@ -15,6 +16,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.model.User;
+import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -30,6 +32,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        user = (User) getIntent().getSerializableExtra("USER");
 
     }
 
@@ -47,9 +50,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        for (WaterSourceReport report: user.getWaterSourceReport()) {
+            String[] split = report.getLocation().split(",");
+            Log.d("FUCK", split.toString());
+            LatLng location = new LatLng(Double.parseDouble(split[0]), Double.parseDouble(split[1]));
+            mMap.addMarker(new MarkerOptions().position(location).title("Report Number: " + report.getReportNumber()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+        }
+
     }
 }

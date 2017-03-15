@@ -26,6 +26,7 @@
     <string name="label_password">PASSWORD</string>
     <string name="label_watertype">Water Type</string>
     <string name="label_watercondition">Water Condition</string>
+    <string name="label_contaminant_ppm"> Contaminant PPM</string>
 
     <string name="label_account">ACCOUNT TYPE</string>
     <string name="label_view_report">Reports</string>

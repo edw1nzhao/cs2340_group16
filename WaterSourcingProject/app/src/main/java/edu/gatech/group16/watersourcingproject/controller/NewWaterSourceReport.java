@@ -39,7 +39,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     private String currentDateTimeString;
     private List<WaterSourceReport> wsReports;
     private Spinner waterType, waterCondition;
-    private EditText waterLocation;
+    private EditText waterLocationLatitude, waterLocationLongitude;
     private Toolbar toolbar;
     private String oldEmail;
     private final List<User> users = new ArrayList<User>();
@@ -57,25 +57,27 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_ws_report);
 
-        waterLocation = (EditText) findViewById(R.id.text_location);
-        waterType = (Spinner) findViewById(R.id.spinner_watertype);
-        waterCondition = (Spinner) findViewById(R.id.spinner_watercondition);
+        waterLocationLatitude = (EditText) findViewById(R.id.text_latitude);
+        waterLocationLongitude = (EditText) findViewById(R.id.text_longitude);
+        waterType = (Spinner) findViewById(R.id.spinner_water_type);
+        waterCondition = (Spinner) findViewById(R.id.spinner_water_condition);
 
         //findViewById(R.id.button_cancel).setOnClickListener(this);
         findViewById(R.id.button_submit).setOnClickListener(this);
 
-        toolbar = (Toolbar) findViewById(R.id.new_report_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(NewWaterSourceReport.this, HomeActivity.class);
-                intent.putExtra("USER", user);
-                startActivity(intent);
-            }
-        });
+//        toolbar = (Toolbar) findViewById(R.id.new_report_toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(NewWaterSourceReport.this, HomeActivity.class);
+//                intent.putExtra("USER", user);
+//                startActivity(intent);
+//            }
+//        });
+
         // Fills the spinners with ENUM
         ArrayAdapter<WaterCondition> adaptWaterCondition
                 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalConditions);
@@ -183,7 +185,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         int reportNumber = getReportNumber();
         Date currentDate = new Date();
         //String location = getUserLocation().toString();
-        String location = waterLocation.getText().toString();
+        String location = waterLocationLatitude.getText().toString() + "," + waterLocationLongitude.getText().toString();
         WaterType type = (WaterType) waterType.getSelectedItem();
         WaterCondition condition = (WaterCondition) waterCondition.getSelectedItem();
         String submittedBy = user.getName();
@@ -226,19 +228,17 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     }
 
     public boolean validCoordinate() {
-        String location = waterLocation.getText().toString();
+        String latitude = waterLocationLatitude.getText().toString();
+        String longitude = waterLocationLongitude.getText().toString();
         boolean valid = true;
-        if (location.length() == 0) {
-            waterLocation.setError("Required.");
+        if (latitude.length() == 0 || longitude.length() == 0) {
+            waterLocationLatitude.setError("Required.");
             valid = false;
-        } else if (!location.contains(", ")) {
-            waterLocation.setError("Incorrect format.");
-            valid = false;
-        } else if (location.matches(".*[a-z].*")) {
-            waterLocation.setError("Incorrect format.");
+        } else if (latitude.matches(".*[a-z].*")) {
+            waterLocationLatitude.setError("Incorrect format.");
             valid = false;
         } else {
-            waterLocation.setError(null);
+            waterLocationLatitude.setError(null);
         }
         return valid;
     }
