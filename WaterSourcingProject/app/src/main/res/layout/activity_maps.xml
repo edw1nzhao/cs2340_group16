@@ -12,51 +12,56 @@ tools:context="edu.gatech.group16.watersourcingproject.controller.HomeActivity">
 <!-- This FrameLayout insets its children based on system windows using
      android:fitsSystemWindows. -->
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/home_textview"
-    android:elevation="1dp" />
-
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/map_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme" />
-
-    <LinearLayout
-        android:id="@+id/fullscreen_content_controls"
-        style="?metaButtonBarStyle"
+    <TextView
+        android:id="@+id/home_textview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="bottom|center_horizontal"
-        android:orientation="vertical"
-        android:weightSum="1"
-        tools:ignore="UselessParent">
+        android:elevation="1dp" />
 
-        <fragment
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_weight="0.46" />
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
 
-        <TextView
-            android:id="@+id/textview_report_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.46" />
+            <LinearLayout
+                android:id="@+id/fullscreen_content_controls"
+                style="?metaButtonBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom|center_horizontal"
+                android:orientation="vertical"
+                android:weightSum="1"
+                tools:ignore="UselessParent">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/map_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorPrimary"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme" />
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_weight="0.22" />
+
+                <TextView
+                    android:id="@+id/textview_report_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.46" />
 
 
-    </LinearLayout>
+            </LinearLayout>
 
-</FrameLayout>
+        </FrameLayout>
+    </RelativeLayout>
 
 </FrameLayout>

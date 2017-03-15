@@ -3,10 +3,12 @@ package edu.gatech.group16.watersourcingproject.controller;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toolbar;
+import android.support.v7.widget.Toolbar;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,7 +22,7 @@ import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.model.User;
 import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
     private User user = new User();
@@ -41,6 +43,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
         user = (User) getIntent().getSerializableExtra("USER");
+
+        toolbar = (Toolbar) findViewById(R.id.map_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MapsActivity.this, HomeActivity.class);
+                intent.putExtra("USER", user);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -73,11 +88,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 mMap.setOnMarkerClickListener(this);
                 //marker.showInfoWindow();
                 }
-
         } catch (NullPointerException e) {
             Log.d(TAG, "User has no reports");
         }
-
     }
 
     @Override

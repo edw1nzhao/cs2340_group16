@@ -231,7 +231,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         String latitude = waterLocationLatitude.getText().toString();
         String longitude = waterLocationLongitude.getText().toString();
         boolean valid = true;
-        if (latitude.length() == 0 || longitude.length() == 0) {
+        if (latitude.length() == 0) {
             waterLocationLatitude.setError("Required.");
             valid = false;
         } else if (latitude.matches(".*[a-z].*")) {
@@ -239,6 +239,16 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
             valid = false;
         } else {
             waterLocationLatitude.setError(null);
+        }
+
+        if (longitude.length() == 0) {
+            waterLocationLongitude.setError("Required.");
+            valid = false;
+        } else if (longitude.matches(".*[a-z].*")) {
+            waterLocationLongitude.setError("Incorrect format.");
+            valid = false;
+        } else {
+            waterLocationLongitude.setError(null);
         }
         return valid;
     }
