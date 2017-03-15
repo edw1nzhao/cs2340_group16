@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import edu.gatech.group16.watersourcingproject.R;
@@ -18,6 +19,7 @@ public class RegEmailActivity extends AppCompatActivity implements View.OnClickL
     private EditText emailField;
     private User user;
     private Toolbar toolbar;
+    private Button cancelButton;
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -32,6 +34,8 @@ public class RegEmailActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_registration_email);
 
         emailField = (EditText) findViewById(R.id.reg_text_email);
+        cancelButton = (Button) findViewById(R.id.cancel_button);
+        cancelButton.setOnClickListener(this);
 
         findViewById(R.id.reg_button_continue).setOnClickListener(this);
 
@@ -70,6 +74,11 @@ public class RegEmailActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 this.finish();
             }
+        } else if (i == R.id.cancel_button) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("USER", user);
+            startActivity(intent);
+            this.finish();
         }
     }
 

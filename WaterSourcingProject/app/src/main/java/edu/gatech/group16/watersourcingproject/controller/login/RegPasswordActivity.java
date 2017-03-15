@@ -33,19 +33,15 @@ import edu.gatech.group16.watersourcingproject.model.Enums.WaterType;
 import edu.gatech.group16.watersourcingproject.model.User;
 import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
-/**
- * Created by Edwin Zhao on 2017/02/22.
- */
 public class RegPasswordActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "EMAIL/PASSWORD";
     private EditText passwordField;
     private FirebaseAuth mAuth;
     private User user;
     private Toolbar toolbar;
+    private Button cancelButton;
     private boolean valid = false;
     FirebaseDatabase db = FirebaseDatabase.getInstance();
-
-
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -60,6 +56,8 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_password);
 
+        cancelButton = (Button) findViewById(R.id.cancel_button);
+        cancelButton.setOnClickListener(this);
         passwordField = (EditText) findViewById(R.id.reg_text_password);
         findViewById(R.id.reg_button_signup).setOnClickListener(this);
 
@@ -107,6 +105,11 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
                 startActivity(intent);
                 RegPasswordActivity.this.finish();
             }
+        } else if (i == R.id.cancel_button) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("USER", user);
+            startActivity(intent);
+            this.finish();
         }
     }
 

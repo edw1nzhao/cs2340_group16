@@ -45,38 +45,51 @@
             android:weightSum="1">
 
             <RelativeLayout
+                android:id="@+id/layout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content"
+                <Button
+                    android:id="@+id/cancel_button"
+                    style="?android:attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/linearLayout2"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="44dp"
+                    android:background="@color/colorPrimary"
+                    android:text="Cancel" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:text="@string/label_accq"
+                        android:id="@+id/reg_label_accq"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/reg_label_accq"
+                        android:layout_marginBottom="50dp"
                         android:layout_marginTop="100dp"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                        android:layout_marginBottom="50dp" />
+                        android:text="@string/label_accq"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
                     <Spinner
+                        android:id="@+id/reg_spin_acctype"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/reg_spin_acctype" />
+                        android:layout_height="wrap_content" />
 
                     <Button
-                        android:text="@string/button_continue"
+                        android:id="@+id/reg_button_continue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/reg_button_continue"
                         android:layout_marginTop="50dp"
-                        android:background="@color/colorButton" />
+                        android:background="@color/colorButton"
+                        android:text="@string/button_continue" />
 
                 </LinearLayout>
 

@@ -54,7 +54,8 @@
                     android:layout_width="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/linearLayout4">
 
                     <TextView
                         android:text="@string/label_emailq"
@@ -93,6 +94,17 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+                <Button
+                    android:id="@+id/cancel_button"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="13dp"
+                    android:layout_marginTop="45dp"
+                    android:text="Cancel"
+                    android:layout_alignTop="@+id/linearLayout4"
+                    android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
 

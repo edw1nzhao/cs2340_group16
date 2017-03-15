@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.content.Intent;
 
@@ -19,6 +20,7 @@ public class RegAccountTypeActivity extends AppCompatActivity implements View.On
     private Spinner accTypeSpinner;
     private User user = new User();
     private Toolbar toolbar;
+    private Button cancelButton;
     private static final String TAG = "AccountTypeReg";
 
     /**
@@ -35,6 +37,8 @@ public class RegAccountTypeActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_registration_account_type);
 
         accTypeSpinner = (Spinner) findViewById(R.id.reg_spin_acctype);
+        cancelButton = (Button) findViewById(R.id.cancel_button);
+        cancelButton.setOnClickListener(this);
 
         findViewById(R.id.reg_button_continue).setOnClickListener(this);
         ArrayAdapter<AccountType> adaptAcc
@@ -68,6 +72,11 @@ public class RegAccountTypeActivity extends AppCompatActivity implements View.On
         if (i == R.id.reg_button_continue) {
             user.setAccountType((AccountType) accTypeSpinner.getSelectedItem());
             Intent intent = new Intent(this, RegNameActivity.class);
+            intent.putExtra("USER", user);
+            startActivity(intent);
+            this.finish();
+        } else if (i == R.id.cancel_button) {
+            Intent intent = new Intent(this, LoginActivity.class);
             intent.putExtra("USER", user);
             startActivity(intent);
             this.finish();

@@ -1,23 +1,26 @@
 package edu.gatech.group16.watersourcingproject.controller.login;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import edu.gatech.group16.watersourcingproject.R;
+import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
 
-/**
- * Created by Edwin Zhao on 2017/02/22.
- */
 public class RegNameActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText nameField;
     private User user;
     private Toolbar toolbar;
+    private Button cancelButton;
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -32,10 +35,13 @@ public class RegNameActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_registration_name);
 
         nameField = (EditText) findViewById(R.id.reg_text_name);
+        cancelButton = (Button) findViewById(R.id.cancel_button);
 
+        cancelButton.setOnClickListener(this);
         findViewById(R.id.reg_button_continue).setOnClickListener(this);
 
         user = (User) getIntent().getSerializableExtra("USER");
+
         toolbar = (Toolbar) findViewById(R.id.name_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -48,6 +54,7 @@ public class RegNameActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent);
             }
         });
+
     }
 
     /**
@@ -70,6 +77,11 @@ public class RegNameActivity extends AppCompatActivity implements View.OnClickLi
                 startActivity(intent);
                 this.finish();
             }
+        } else if (i == R.id.cancel_button) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.putExtra("USER", user);
+            startActivity(intent);
+            this.finish();
         }
     }
 
