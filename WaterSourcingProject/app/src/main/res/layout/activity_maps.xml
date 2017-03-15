@@ -49,7 +49,7 @@ tools:context="edu.gatech.group16.watersourcingproject.controller.HomeActivity">
             android:layout_weight="0.46" />
 
         <TextView
-            android:id="@+id/quickInfo"
+            android:id="@+id/textview_report_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.46"
