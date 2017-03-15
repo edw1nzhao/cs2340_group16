@@ -26,6 +26,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private User user = new User();
     private Toolbar toolbar;
     private TextView reportInfo;
+    private static final String TAG = "MapsActivity";
 
 
     @Override
@@ -34,12 +35,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         reportInfo = (TextView) findViewById(R.id.textview_report_info);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         user = (User) getIntent().getSerializableExtra("USER");
-
-
     }
 
 
@@ -56,21 +57,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        for (WaterSourceReport report: user.getWaterSourceReport()) {
-            String[] split = report.getLocation().split(",");
-            LatLng location = new LatLng(Double.parseDouble(split[0]), Double.parseDouble(split[1]));
-            String snippetText =   "Submitted By: " + report.getSubmittedBy()
-                    + "\n\nDate: " + report.getDate()
-                    + "\n\nLocation: " + report.getLocation()
-                    + "\n\nWater Type: " + report.getWaterType()
-                    + "\n\nWater Condition: " + report.getWaterCondition() + "\n\n";
+        try {
+            for (WaterSourceReport report: user.getWaterSourceReport()) {
+                String[] split = report.getLocation().split(",");
+                LatLng location = new LatLng(Double.parseDouble(split[0]), Double.parseDouble(split[1]));
+                String snippetText =   "Submitted By: " + report.getSubmittedBy()
+                        + "\n\nDate: " + report.getDate()
+                        + "\n\nLocation: " + report.getLocation()
+                        + "\n\nWater Type: " + report.getWaterType()
+                        + "\n\nWater Condition: " + report.getWaterCondition() + "\n\n";
 
 
-            mMap.addMarker(new MarkerOptions().position(location).title("Report Number: " + report.getReportNumber()).snippet(snippetText));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
-            mMap.setOnMarkerClickListener(this);
-            //marker.showInfoWindow();
+                mMap.addMarker(new MarkerOptions().position(location).title("Report Number: " + report.getReportNumber()).snippet(snippetText));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+                mMap.setOnMarkerClickListener(this);
+                //marker.showInfoWindow();
+                }
+
+        } catch (NullPointerException e) {
+            Log.d(TAG, "User has no reports");
         }
+
     }
 
     @Override

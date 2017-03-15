@@ -17,7 +17,6 @@
         android:id="@+id/view_ws_bottom_navbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         app:itemBackground="@color/colorPrimaryDark"
         app:itemIconTint="@color/white"
@@ -39,15 +38,6 @@
             android:weightSum="1"
             tools:ignore="UselessParent">
 
-            <Spinner
-                android:id="@+id/spinner_report_options"
-                android:layout_width="197dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="bottom|right"
-                android:popupBackground="@color/colorPrimary"
-                android:visibility="visible" />
-
             <android.support.v7.widget.Toolbar
                 android:id="@+id/view_ws_toolbar"
                 android:layout_width="match_parent"
@@ -55,6 +45,16 @@
                 android:background="?attr/colorPrimaryDark"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme" />
+
+            <Spinner
+                android:id="@+id/spinner_report_options"
+                android:layout_width="197dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="bottom|right"
+                android:popupBackground="@color/colorPrimary"
+                android:visibility="visible"
+                tools:ignore="RtlHardcoded" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -66,7 +66,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/view_ws_toolbar"
                     android:divider="#FFFFFF"
-                    android:dividerHeight="2px" />
+                    android:dividerHeight="2dp"
+                    tools:ignore="NotSibling" />
 
                 <!--<android.support.design.widget.FloatingActionButton-->
                 <!--android:src="@drawable/ic_collapse_00008"-->
