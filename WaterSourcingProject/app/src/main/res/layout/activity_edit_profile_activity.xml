@@ -78,7 +78,8 @@
                             android:layout_height="wrap_content"
                             android:inputType="textPersonName"
                             android:ems="10"
-                            android:id="@+id/edit_text_name" />
+                            android:id="@+id/edit_text_name"
+                            tools:ignore="LabelFor" />
 
                         <TextView
                             android:text="@string/label_email"
@@ -92,7 +93,8 @@
                             android:layout_height="wrap_content"
                             android:inputType="textEmailAddress"
                             android:ems="10"
-                            android:id="@+id/edit_text_email" />
+                            android:id="@+id/edit_text_email"
+                            tools:ignore="LabelFor" />
 
                         <TextView
                             android:text="@string/label_password"
@@ -105,12 +107,13 @@
                             android:layout_height="wrap_content"
                             android:inputType="textPassword"
                             android:ems="10"
-                            android:id="@+id/edit_text_password" />
+                            android:id="@+id/edit_text_password"
+                            tools:ignore="LabelFor" />
 
                         <Button
                             android:id="@+id/edit_button_save"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="0dp"
                             android:layout_marginStart="7dp"
                             android:layout_weight="1"
                             android:background="@color/colorButton"

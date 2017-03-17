@@ -103,6 +103,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         if (i == R.id.logout_button) {
             Intent logoutIntent = new Intent(this, LoginActivity.class);
             startActivity(logoutIntent);
+            this.finish();
         } else if (i == R.id.save_changes) {
             Intent editUser = new Intent(this, EditProfileActivity.class);
             editUser.putExtra("USER", user);

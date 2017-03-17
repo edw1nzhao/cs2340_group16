@@ -27,7 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="235dp"
                 android:contentDescription=""
-                app:srcCompat="@mipmap/water_logo" />
+                app:srcCompat="@mipmap/water_logo"
+                tools:ignore="ContentDescription" />
         </LinearLayout>
 
         <LinearLayout
@@ -112,7 +113,7 @@
                     android:layout_marginTop="24dp"
                     android:background="@color/colorButton"
                     android:padding="12dp"
-                    android:text="Login" />
+                    android:text="@string/login" />
 
                 <TextView
                     android:id="@+id/email_create_account_button"
@@ -120,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="24dp"
                     android:gravity="center"
-                    android:text="No account yet? Create one"
+                    android:text="@string/newAccountLogin"
                     android:textSize="16sp" />
             </LinearLayout>
 

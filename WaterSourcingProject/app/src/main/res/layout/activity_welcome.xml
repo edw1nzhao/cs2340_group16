@@ -18,42 +18,42 @@
         android:padding="15dp">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:ignore="UselessParent"
-            android:layout_weight="0.90">
+            android:layout_height="0dp"
+            android:layout_weight="0.90"
+            android:orientation="vertical"
+            tools:ignore="UselessParent">
 
             <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="401dp"
-                app:srcCompat="@mipmap/water_logo"
-                android:id="@+id/imageView"
-                android:padding="30dp"
+                android:layout_weight="0.65"
                 android:contentDescription=""
-                tools:ignore="ContentDescription,NestedWeights"
-                android:layout_weight="0.65" />
+                android:padding="30dp"
+                app:srcCompat="@mipmap/water_logo"
+                tools:ignore="ContentDescription,NestedWeights" />
 
             <Button
                 android:id="@+id/welcome_button_signin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_weight="1"
+                android:background="@color/colorButton"
                 android:text="@string/sign_in"
                 android:theme="@style/ThemeOverlay.Button"
-                tools:ignore="ButtonStyle"
-                android:background="@color/colorButton"
-                android:layout_marginBottom="10dp" />
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:id="@+id/welcome_button_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@color/colorButton"
                 android:text="@string/button_signup"
                 android:theme="@style/ThemeOverlay.Button"
-                tools:ignore="ButtonStyle"
-                android:background="@color/colorButton" />
+                tools:ignore="ButtonStyle" />
 
         </LinearLayout>
 

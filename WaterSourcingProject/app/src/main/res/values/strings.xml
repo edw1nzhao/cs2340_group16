@@ -77,6 +77,15 @@
     <string name="all_reports">All Reports</string>
     <string name="my_reports">My Reports</string>
     <string name="email">Email</string>
+    <string name="latitude">Latitude</string>
+    <string name="location">Location</string>
+    <string name="longitude">Longitude</string>
+    <string name="waterPurity">Water Purity</string>
+    <string name="waterSourceReport">Water Source Report</string>
+    <string name="waterSource">Water Source</string>
+    <string name="login">Login</string>
+    <string name="newAccountLogin">No account yet? Create one</string>
+    <string name="cancel">Cancel</string>
 
 
     <!-- Strings related to home screen -->
