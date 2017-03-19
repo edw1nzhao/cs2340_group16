@@ -7,15 +7,16 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
+import edu.gatech.group16.watersourcingproject.model.Enums.OverallCondition;
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
 
 public class WaterPurityReport implements Serializable {
-    public static List<WaterCondition> legalConditions = Arrays.asList(WaterCondition.values());
+    public static List<OverallCondition> legalOveralConditions = Arrays.asList(OverallCondition.values());
 
     private int reportNumber;
     private Date date;
-    private Location location;
-    private WaterCondition waterCondition;
+    private String location;
+    private OverallCondition overallCondition;
     private String submittedBy;
     private int virusPPM;
     private int contaminantPPM;
@@ -33,18 +34,18 @@ public class WaterPurityReport implements Serializable {
      * @param reportNumber
      * @param date
      * @param location
-     * @param waterCondition
+     * @param overallCondition
      * @param submittedBy
      * @param virusPPM
      * @param contaminantPPM
      */
-    public WaterPurityReport(int reportNumber, Date date, Location location,
-                             WaterCondition waterCondition, String submittedBy,
+    public WaterPurityReport(int reportNumber, Date date, String location,
+                             OverallCondition overallCondition, String submittedBy,
                              int virusPPM, int contaminantPPM) {
         this.reportNumber = reportNumber;
         this.date = date;
         this.location = location;
-        this.waterCondition = waterCondition;
+        this.overallCondition = overallCondition;
         this.submittedBy = submittedBy;
         this.virusPPM = virusPPM;
         this.contaminantPPM = contaminantPPM;
@@ -109,7 +110,7 @@ public class WaterPurityReport implements Serializable {
      *
      * @return location
      */
-    public Location getLocation() {
+    public String getLocation() {
         return location;
     }
 
@@ -118,25 +119,25 @@ public class WaterPurityReport implements Serializable {
      *
      * @param location
      */
-    public void setLocation(Location location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 
     /**
      * Getter for waterCondition
      *
-     * @return waterCondition
+     * @return overallCondition
      */
-    public WaterCondition getWaterCondition() {
-        return waterCondition;
+    public OverallCondition getOverallCondition() {
+        return overallCondition;
     }
 
     /**
      * Setter for waterCondition
      *
-     * @param waterCondition
+     * @param overallCondition
      */
-    public void setWaterCondition(WaterCondition waterCondition) { this.waterCondition = waterCondition; }
+    public void setOverallCondition(OverallCondition overallCondition) { this.overallCondition = overallCondition; }
 
     /**
      * Getter for virusPPM
@@ -172,7 +173,7 @@ public class WaterPurityReport implements Serializable {
                 "reportNumber=" + reportNumber +
                 ", date=" + date +
                 ", location=" + location +
-                ", waterCondition=" + waterCondition +
+                ", waterCondition=" + overallCondition +
                 ", virusPPM=" + virusPPM +
                 ", contaminantPPM=" + contaminantPPM +
                 ", submittedBy='" + submittedBy + '\'' +

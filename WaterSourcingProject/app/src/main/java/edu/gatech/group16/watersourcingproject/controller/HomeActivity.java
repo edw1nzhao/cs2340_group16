@@ -49,9 +49,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         emailField = (TextView) findViewById(R.id.email_field);
         accountTypeField = (TextView) findViewById(R.id.account_field);
 
-        nameField.setText("Name: " + user.getName());
-        emailField.setText("Email: " + user.getEmail());
-        accountTypeField.setText("Account Type: " + user.getAccountType().toString());
+        nameField.setText("Name:  " + user.getName());
+        emailField.setText("Email:  " + user.getEmail());
+        accountTypeField.setText("Account Type:  " + user.getAccountType().toString());
         botNavbar.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override

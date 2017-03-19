@@ -10,8 +10,8 @@ public enum WaterCondition implements Serializable {
 
     private String waterCondition;
 
-    WaterCondition(String accountType) {
-        this.waterCondition = accountType;
+    WaterCondition(String waterCondition) {
+        this.waterCondition = waterCondition;
     }
     public String getWaterCondition() {
         return waterCondition;

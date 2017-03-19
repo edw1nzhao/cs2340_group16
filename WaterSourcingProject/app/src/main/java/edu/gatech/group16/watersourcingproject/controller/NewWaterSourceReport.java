@@ -1,19 +1,21 @@
 package edu.gatech.group16.watersourcingproject.controller;
 
 import android.content.Intent;
-import android.icu.text.DateFormat;
 import android.location.Location;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,11 +28,11 @@ import java.util.Date;
 import java.util.List;
 
 import edu.gatech.group16.watersourcingproject.R;
-import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
-import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
+import edu.gatech.group16.watersourcingproject.model.Enums.OverallCondition;
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterType;
 import edu.gatech.group16.watersourcingproject.model.User;
+import edu.gatech.group16.watersourcingproject.model.WaterPurityReport;
 import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
 public class NewWaterSourceReport extends AppCompatActivity implements OnClickListener {
@@ -38,8 +40,10 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     private static User user;
     private String currentDateTimeString;
     private List<WaterSourceReport> wsReports;
-    private Spinner waterType, waterCondition;
-    private EditText waterLocationLatitude, waterLocationLongitude;
+    private Spinner waterType, waterCondition, overallCondition;
+    private EditText waterLocationLatitude, waterLocationLongitude, waterVirusPPM, waterContaminantPPM;
+    private TextView reportTitle, contaminantTitle, waterTypeAndVirusPPMTitle, waterConditionAndOverallConditionTitle;
+    private Switch switchButton;
     private Toolbar toolbar;
     private String oldEmail;
     private final List<User> users = new ArrayList<User>();
@@ -56,41 +60,76 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_ws_report);
+        user = (User) getIntent().getSerializableExtra("USER");
 
+        //Shared UI
+        switchButton = (Switch) findViewById(R.id.report_switch);
+        reportTitle = (TextView) findViewById(R.id.text_report_title);
         waterLocationLatitude = (EditText) findViewById(R.id.text_latitude);
         waterLocationLongitude = (EditText) findViewById(R.id.text_longitude);
+        waterTypeAndVirusPPMTitle = (TextView) findViewById(R.id.title_water_type_and_virus_ppm);
+        waterConditionAndOverallConditionTitle = (TextView) findViewById(R.id.title_water_condition_and_overall_condition);
+
+        //Water Source Report UI
         waterType = (Spinner) findViewById(R.id.spinner_water_type);
         waterCondition = (Spinner) findViewById(R.id.spinner_water_condition);
 
-        //findViewById(R.id.button_cancel).setOnClickListener(this);
+        //Water Purity Report UI
+        overallCondition = (Spinner) findViewById(R.id.spinner_overall_condition);
+        waterVirusPPM = (EditText) findViewById(R.id.text_virus_ppm);
+        contaminantTitle = (TextView) findViewById(R.id.title_contaminant_ppm);
+        waterContaminantPPM = (EditText) findViewById(R.id.text_contaminant_ppm);
+
         findViewById(R.id.button_submit).setOnClickListener(this);
 
-//        toolbar = (Toolbar) findViewById(R.id.new_report_toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(NewWaterSourceReport.this, HomeActivity.class);
-//                intent.putExtra("USER", user);
-//                startActivity(intent);
-//            }
-//        });
 
         // Fills the spinners with ENUM
-        ArrayAdapter<WaterCondition> adaptWaterCondition
-                = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalConditions);
-        ArrayAdapter<WaterType> adaptWaterType
-                = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalTypes);
-
-        findViewById(R.id.button_submit).setOnClickListener(this);
+        ArrayAdapter<WaterCondition> adaptWaterCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalConditions);
+        ArrayAdapter<WaterType> adaptWaterType = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalTypes);
+        ArrayAdapter<OverallCondition> adaptOverallCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterPurityReport.legalOveralConditions);
 
         waterType.setAdapter(adaptWaterType);
         waterCondition.setAdapter(adaptWaterCondition);
+        overallCondition.setAdapter(adaptOverallCondition);
 
-        user = (User) getIntent().getSerializableExtra("USER");
+        //Switch
+        switchButton.setChecked(false);
 
+        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    reportTitle.setText("Water Purity Report");
+
+                    waterConditionAndOverallConditionTitle.setText("Overall Condition");
+                    waterCondition.setVisibility(View.INVISIBLE);
+                    overallCondition.setVisibility(View.VISIBLE);
+
+                    waterTypeAndVirusPPMTitle.setText("Virus PPM");
+                    waterType.setVisibility(View.INVISIBLE);
+                    waterVirusPPM.setVisibility(View.VISIBLE);
+
+                    contaminantTitle.setVisibility(View.VISIBLE);
+                    waterContaminantPPM.setVisibility(View.VISIBLE);
+                    Toast.makeText(getApplicationContext(), "Toggle is ON", Toast.LENGTH_SHORT).show();
+                } else {
+                    reportTitle.setText("Water Source Report");
+
+                    waterConditionAndOverallConditionTitle.setText("Water Condition");
+                    overallCondition.setVisibility(View.INVISIBLE);
+                    waterCondition.setVisibility(View.VISIBLE);
+
+                    waterTypeAndVirusPPMTitle.setText("Water Type");
+                    waterVirusPPM.setVisibility(View.INVISIBLE);
+                    waterType.setVisibility(View.VISIBLE);
+
+                    contaminantTitle.setVisibility(View.INVISIBLE);
+                    waterContaminantPPM.setVisibility(View.INVISIBLE);
+                    Toast.makeText(getApplicationContext(), "Toggle is OFF.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     /**
@@ -106,9 +145,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.button_submit && validCoordinate()) {
-
             Intent home_activity = new Intent(this, HomeActivity.class);
-
             wsReports = user.getWaterSourceReport();
 
             if (wsReports == null) {
@@ -118,12 +155,9 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
             wsReports.add(compileReport());
             user.setWaterSourceReports(wsReports);
 
-            ////////////////////////////////////////////////////////
-            ///////////////////////////////////////////////////////
             FirebaseDatabase db = FirebaseDatabase.getInstance();
             final DatabaseReference dbRef = db.getReference();
             final Intent home_test = new Intent(this, HomeActivity.class);
-
 
             dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -131,7 +165,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                     for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                         User temp = postSnapshot.getValue(User.class);
                         snapshot.getRef().removeValue();
-
                         users.add(temp);
                     }
 
@@ -148,7 +181,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
                     DatabaseReference dbRef = db.getReference();
                     DatabaseReference newRef = dbRef.child("users").push();
-
                     User pushedUser = users.get(marker);
 
                     for (int j = 0; j < users.size(); j++) {
@@ -162,15 +194,9 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                 }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-
+                    return;
                 }
             });
-            ///////////////////////////////////////////////////////
-            //////////////////////////////////////////////////////
-
-//            home_activity.putExtra("USER", user);
-//            this.startActivity(home_activity);
-//            this.finish();
         }
     }
 

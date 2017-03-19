@@ -9,17 +9,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.model.User;
 
-/**
- * Created by Edwin Zhao on 2017/02/22.
- */
 public class RegEmailActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText emailField;
     private User user;
     private Toolbar toolbar;
     private Button cancelButton;
+    private FirebaseAuth mAuth;
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -40,6 +42,8 @@ public class RegEmailActivity extends AppCompatActivity implements View.OnClickL
         findViewById(R.id.reg_button_continue).setOnClickListener(this);
 
         user = (User) getIntent().getSerializableExtra("USER");
+        mAuth = FirebaseAuth.getInstance();
+
         toolbar = (Toolbar) findViewById(R.id.email_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

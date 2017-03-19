@@ -14,17 +14,16 @@
             android:id="@+id/spinner_water_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/title_water_type_and_virus_ppm"
+            android:layout_above="@+id/title_contaminant_ppm"
             android:layout_alignStart="@+id/title_water_type_and_virus_ppm"
-            android:layout_below="@+id/spinner_water_condition"
-            android:layout_marginTop="35dp" />
+            android:layout_alignEnd="@+id/spinner_water_condition" />
 
         <EditText
             android:id="@+id/text_virus_ppm"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/spinner_water_type"
-            android:layout_alignTop="@+id/spinner_water_type"
+            android:layout_centerVertical="true"
             android:ems="10"
             android:inputType="textPersonName"
             android:textColor="#ffffff"
@@ -36,35 +35,34 @@
             android:id="@+id/text_contaminant_ppm"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/title_contaminant_ppm"
-            android:layout_below="@+id/title_contaminant_ppm"
             android:ems="10"
             android:inputType="textPersonName"
             android:textColor="#ffffff"
             android:textColorHint="#FFFFFF"
             android:visibility="invisible"
-            tools:ignore="LabelFor" />
+            tools:ignore="LabelFor"
+            android:layout_below="@+id/title_contaminant_ppm"
+            android:layout_alignStart="@+id/title_contaminant_ppm" />
 
         <Button
             android:id="@+id/button_submit"
-            tools:ignore="ButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_alignEnd="@+id/title_contaminant_ppm"
+            android:layout_alignEnd="@+id/spinner_water_type"
+            android:layout_alignParentBottom="true"
             android:layout_alignStart="@+id/text_contaminant_ppm"
-            android:layout_below="@+id/text_contaminant_ppm"
-            android:layout_marginTop="16dp"
+            android:layout_marginBottom="67dp"
             android:background="@color/colorButton"
-            android:text="@string/button_submit" />
+            android:text="@string/button_submit"
+            tools:ignore="ButtonStyle" />
 
         <TextView
             android:id="@+id/title_contaminant_ppm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/spinner_water_type"
             android:layout_alignStart="@+id/text_virus_ppm"
             android:layout_below="@+id/text_virus_ppm"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="38dp"
             android:text="@string/label_contaminant_ppm"
             android:visibility="invisible" />
 
@@ -90,10 +88,8 @@
             android:id="@+id/title_water_type_and_virus_ppm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/spinner_water_condition"
+            android:layout_above="@+id/text_virus_ppm"
             android:layout_alignStart="@+id/spinner_water_condition"
-            android:layout_below="@+id/spinner_overall_condition"
-            android:layout_marginTop="40dp"
             android:text="@string/label_watertype" />
 
         <TextView
@@ -106,7 +102,7 @@
             android:text="@string/label_watercondition" />
 
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/report_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -114,23 +110,25 @@
             android:layout_marginStart="35dp"
             android:layout_marginTop="16dp"
             android:background="@color/colorPrimaryDark"
-            android:textOff="@string/waterSource"
-            android:textOn="@string/waterPurity" />
+            android:textOff="WS"
+            android:textOn="WP"
+            android:text="Select Report Type"/>
 
         <TextView
             android:id="@+id/text_report_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/switch1"
+            android:layout_below="@+id/report_switch"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="17dp"
-            android:text="@string/waterSourceReport" />
+            android:text="@string/waterSourceReport"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/switch1"
+            android:layout_alignStart="@+id/report_switch"
             android:layout_below="@+id/text_report_title"
             android:layout_marginStart="15dp"
             android:layout_marginTop="26dp"
