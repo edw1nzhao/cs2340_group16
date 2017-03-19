@@ -92,14 +92,17 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         waterCondition.setAdapter(adaptWaterCondition);
         overallCondition.setAdapter(adaptOverallCondition);
 
-        //Switch
+        //Setting initial state of switch button
         switchButton.setChecked(false);
 
+        //Attaching changeListener() to switch button
         switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
                 if (isChecked) {
+                    //Updates UI for Water Purity Report
                     reportTitle.setText("Water Purity Report");
 
                     waterConditionAndOverallConditionTitle.setText("Overall Condition");
@@ -114,6 +117,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                     waterContaminantPPM.setVisibility(View.VISIBLE);
                     Toast.makeText(getApplicationContext(), "Toggle is ON", Toast.LENGTH_SHORT).show();
                 } else {
+                    //Updates UI for Water Source Report
                     reportTitle.setText("Water Source Report");
 
                     waterConditionAndOverallConditionTitle.setText("Water Condition");
@@ -152,7 +156,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                 wsReports = new ArrayList<WaterSourceReport>();
             }
 
-            wsReports.add(compileReport());
+            wsReports.add(compileWaterSourceReport());
             user.setWaterSourceReports(wsReports);
 
             FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -204,23 +208,33 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
      * compileReport method which will create a new report and put
      * all of the
      *
-     * @return wsReport will
+     * @return wsReport a newly created water source report
      */
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public WaterSourceReport compileReport() {
+    public WaterSourceReport compileWaterSourceReport() {
         int reportNumber = getReportNumber();
         Date currentDate = new Date();
-        //String location = getUserLocation().toString();
         String location = waterLocationLatitude.getText().toString() + "," + waterLocationLongitude.getText().toString();
         WaterType type = (WaterType) waterType.getSelectedItem();
         WaterCondition condition = (WaterCondition) waterCondition.getSelectedItem();
         String submittedBy = user.getName();
 
-
         WaterSourceReport wsReport = new WaterSourceReport(reportNumber, currentDate, location, type, condition, submittedBy);
         return wsReport;
+    }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public WaterPurityReport compileWaterPurityReport() {
+        int reportNumber = getReportNumber();
+        Date currentDate = new Date();
+        String location = waterLocationLatitude.getText().toString() + "," + waterLocationLongitude.getText().toString();
+        OverallCondition condition = (OverallCondition) overallCondition.getSelectedItem();
+        int vPPM = Integer.parseInt(waterVirusPPM.getText().toString());
+        int cPPM = Integer.parseInt(waterContaminantPPM.getText().toString());
+        String submittedBy = user.getName();
 
+        WaterPurityReport wpReport = new WaterPurityReport(reportNumber, currentDate, location, condition, submittedBy, vPPM, cPPM);
+        return wpReport;
     }
 
     /**
