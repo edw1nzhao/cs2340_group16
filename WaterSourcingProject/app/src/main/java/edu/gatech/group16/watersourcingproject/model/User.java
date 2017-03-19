@@ -7,10 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by Edwin Zhao on 2017/02/21.
- */
-
 public class User implements Serializable {
     public static List<AccountType> legalClass = Arrays.asList(AccountType.values());
     public String name;
@@ -18,6 +14,7 @@ public class User implements Serializable {
     public String password;
     public AccountType accountType;
     public List<WaterSourceReport> wsReport;
+    public List<WaterPurityReport> wpReport;
     public String uid;
 
 
@@ -37,15 +34,17 @@ public class User implements Serializable {
      * @param name
      * @param password
      * @param wsReport
+     * @param wpReport
      * @param uid
      */
     public User(String email, String password, String name, AccountType accountType,
-                List<WaterSourceReport> wsReport, String uid) {
+                List<WaterSourceReport> wsReport, List<WaterPurityReport> wpReport, String uid) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.accountType = accountType;
         this.wsReport = wsReport;
+        this.wpReport = wpReport;
         this.uid = uid;
     }
 
@@ -141,7 +140,25 @@ public class User implements Serializable {
     }
 
     /**
-     * Getter for WaterSourceReports
+     * Getter for WaterPurityReports
+     *
+     * @return WaterPurityReport[]
+     */
+    public List<WaterPurityReport> getWaterPurityReport() {
+        return wpReport;
+    }
+
+    /**
+     * Setter for WaterPurityReports
+     *
+     * @param wpReport
+     */
+    public void setWaterPurityReports(List<WaterPurityReport> wpReport) {
+        this.wpReport = wpReport;
+    }
+
+    /**
+     * Getter for User ID
      *
      * @return uid
      */
@@ -150,7 +167,7 @@ public class User implements Serializable {
     }
 
     /**
-     * Setter for WaterSourceReports
+     * Setter for User ID
      *
      * @param uid
      */
@@ -166,6 +183,7 @@ public class User implements Serializable {
                 ", password='" + password + '\'' +
                 ", accountType=" + accountType +
                 ", wsReport=" + wsReport +
+                ", wpReport=" + wpReport +
                 '}';
     }
 }
