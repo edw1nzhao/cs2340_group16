@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.group16.watersourcingproject.R;
+import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
 import edu.gatech.group16.watersourcingproject.model.User;
 import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
@@ -62,6 +63,12 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         viewingOptionSpinner.setAdapter(adaptReportOptions);
 
         user = (User) getIntent().getSerializableExtra("USER");
+
+        //Hides "Historical Report" tab if the accountType is not MANAGER
+        if (user.getAccountType() != AccountType.MANAGER) {
+            bottomNav.getMenu().findItem(R.id.action_empty).setTitle("");
+            bottomNav.getMenu().findItem(R.id.action_empty).setIcon(null);
+        }
 
         try {
             reportList = user.getWaterSourceReport();

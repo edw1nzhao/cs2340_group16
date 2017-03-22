@@ -10,7 +10,8 @@
     <item
         android:id="@+id/action_empty"
         android:enabled="true"
-        android:title=""
+        android:title="Historical Report"
+        android:icon="@drawable/ic_historical_report"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_all_reports"
