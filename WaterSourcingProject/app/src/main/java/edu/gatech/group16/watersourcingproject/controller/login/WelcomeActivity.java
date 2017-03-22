@@ -20,13 +20,14 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
      * @param savedInstanceState Takes in a bundle that may contain an object
      *                           for use within this class
      */
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_welcome);
-
-        findViewById(R.id.welcome_button_signin).setOnClickListener(this);
-        findViewById(R.id.welcome_button_signup).setOnClickListener(this);
+        findViewById(R.id.logo).setOnClickListener(this);
+//        findViewById(R.id.welcome_button_signin).setOnClickListener(this);
+//        findViewById(R.id.welcome_button_signup).setOnClickListener(this);
     }
 
     /**
@@ -39,16 +40,19 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
      */
     @Override
     public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.welcome_button_signin) {
-            Intent loginIntent = new Intent(this, LoginActivity.class);
-            startActivity(loginIntent);
-            this.finish();
-        } else if (i == R.id.welcome_button_signup) {
-            Intent signUpIntent = new Intent(this, RegAccountTypeActivity.class);
-            startActivity(signUpIntent);
-            this.finish();
-        }
+        //int i = v.getId();
+        Intent loginIntent = new Intent(this, LoginActivity.class);
+        startActivity(loginIntent);
+        this.finish();
+//        if (i == R.id.welcome_button_signin) {
+//            Intent loginIntent = new Intent(this, LoginActivity.class);
+//            startActivity(loginIntent);
+//            this.finish();
+//        } else if (i == R.id.welcome_button_signup) {
+//            Intent signUpIntent = new Intent(this, RegAccountTypeActivity.class);
+//            startActivity(signUpIntent);
+//            this.finish();
+//        }
 
     }
 

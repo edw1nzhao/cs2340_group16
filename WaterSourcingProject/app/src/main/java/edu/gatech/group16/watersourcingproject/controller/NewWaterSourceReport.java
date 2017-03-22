@@ -72,6 +72,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         waterTypeAndVirusPPMTitle = (TextView) findViewById(R.id.title_water_type_and_virus_ppm);
         waterConditionAndOverallConditionTitle = (TextView) findViewById(R.id.title_water_condition_and_overall_condition);
 
+
         //Water Source Report UI
         waterType = (Spinner) findViewById(R.id.spinner_water_type);
         waterCondition = (Spinner) findViewById(R.id.spinner_water_condition);
@@ -84,6 +85,18 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
         findViewById(R.id.button_submit).setOnClickListener(this);
 
+//        //Set up Toolbar
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayShowHomeEnabled(true);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(NewWaterSourceReport.this, HomeActivity.class);
+//                intent.putExtra("USER", user);
+//                startActivity(intent);
+//            }
+//        });
 
         // Fills the spinners with ENUM
         ArrayAdapter<WaterCondition> adaptWaterCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalConditions);
