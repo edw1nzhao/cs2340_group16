@@ -86,7 +86,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         // Fills the spinners with ENUM
         ArrayAdapter<WaterCondition> adaptWaterCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalConditions);
         ArrayAdapter<WaterType> adaptWaterType = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalTypes);
-        ArrayAdapter<OverallCondition> adaptOverallCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterPurityReport.legalOveralConditions);
+        ArrayAdapter<OverallCondition> adaptOverallCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterPurityReport.legalOverallConditions);
 
         waterType.setAdapter(adaptWaterType);
         waterCondition.setAdapter(adaptWaterCondition);
