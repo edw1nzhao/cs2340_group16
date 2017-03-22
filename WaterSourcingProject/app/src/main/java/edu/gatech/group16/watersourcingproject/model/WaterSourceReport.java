@@ -8,7 +8,7 @@ import java.util.List;
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterType;
 
-public class WaterSourceReport extends Report implements Serializable {
+public class WaterSourceReport implements Serializable {
     public static List<WaterType> legalTypes = Arrays.asList(WaterType.values());
     public static List<WaterCondition> legalConditions = Arrays.asList(WaterCondition.values());
 
@@ -41,6 +41,7 @@ public class WaterSourceReport extends Report implements Serializable {
     public WaterSourceReport(int reportNumber, Date date, String location,
                              WaterType waterType, WaterCondition waterCondition,
                              String submittedBy) {
+        //super(reportNumber, date, location, submittedBy);
         this.reportNumber = reportNumber;
         this.date = date;
         this.location = location;

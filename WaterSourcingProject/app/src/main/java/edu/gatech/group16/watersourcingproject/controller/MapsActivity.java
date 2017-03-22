@@ -14,12 +14,14 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.model.User;
+import edu.gatech.group16.watersourcingproject.model.WaterPurityReport;
 import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
@@ -72,11 +74,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        //Adds Google Map Markers for all Water Source Reports.
         try {
             for (WaterSourceReport report: user.getWaterSourceReport()) {
                 String[] split = report.getLocation().split(",");
                 LatLng location = new LatLng(Double.parseDouble(split[0]), Double.parseDouble(split[1]));
-                String snippetText =   "Submitted By: " + report.getSubmittedBy()
+                String snippetText = "Report Number: " + report.getReportNumber()
+                        + "\n\nSubmitted By: " + report.getSubmittedBy()
                         + "\n\nDate: " + report.getDate()
                         + "\n\nLocation: " + report.getLocation()
                         + "\n\nWater Type: " + report.getWaterType()
@@ -87,9 +91,35 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
                 mMap.setOnMarkerClickListener(this);
                 //marker.showInfoWindow();
-                }
+            }
         } catch (NullPointerException e) {
-            Log.d(TAG, "User has no reports");
+            Log.d(TAG, "User has no Water Source Reports.");
+        }
+
+        //Adds Google Map Markers for all Water Purity Reports.
+        try {
+            Log.d("FUCK", "" + user.getWaterPurityReport());
+            Log.d("FUCK3", "" + user.getWaterSourceReport());
+            for (WaterPurityReport report: user.getWaterPurityReport()) {
+                Log.d("FUCK8", "" + report.getLocation());
+                String[] split = report.getLocation().split(",");
+                LatLng location = new LatLng(Double.parseDouble(split[0]), Double.parseDouble(split[1]));
+                String snippetText = "Report Number: " + report.getReportNumber()
+                        + "\n\nSubmitted By: " + report.getSubmittedBy()
+                        + "\n\nDate: " + report.getDate()
+                        + "\n\nLocation: " + report.getLocation()
+                        + "\n\nOverall Condition: " + report.getOverallCondition()
+                        + "\n\nVirus PPM: " + report.getVirusPPM()
+                        + "\n\nContaminant PPM: " + report.getContaminantPPM() + "\n\n";
+
+
+                mMap.addMarker(new MarkerOptions().position(location).title("Report Number: " + report.getReportNumber()).snippet(snippetText).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+                mMap.setOnMarkerClickListener(this);
+                //marker.showInfoWindow();
+            }
+        } catch (NullPointerException e) {
+            Log.d(TAG, "User has no Water Purity Reports.");
         }
     }
 

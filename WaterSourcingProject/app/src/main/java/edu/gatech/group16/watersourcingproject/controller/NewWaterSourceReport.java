@@ -7,6 +7,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -72,7 +73,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         waterTypeAndVirusPPMTitle = (TextView) findViewById(R.id.title_water_type_and_virus_ppm);
         waterConditionAndOverallConditionTitle = (TextView) findViewById(R.id.title_water_condition_and_overall_condition);
 
-
         //Water Source Report UI
         waterType = (Spinner) findViewById(R.id.spinner_water_type);
         waterCondition = (Spinner) findViewById(R.id.spinner_water_condition);
@@ -85,18 +85,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
         findViewById(R.id.button_submit).setOnClickListener(this);
 
-//        //Set up Toolbar
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(NewWaterSourceReport.this, HomeActivity.class);
-//                intent.putExtra("USER", user);
-//                startActivity(intent);
-//            }
-//        });
 
         // Fills the spinners with ENUM
         ArrayAdapter<WaterCondition> adaptWaterCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalConditions);
@@ -182,11 +170,14 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
             } else {
                 wpReports = user.getWaterPurityReport();
+                Log.d("FUCK4", "" + wpReports);
                 if (wpReports == null) {
                     wpReports = new ArrayList<WaterPurityReport>();
                 }
-
+                Log.d("FUCK5", "" + wpReports);
                 wpReports.add(compileWaterPurityReport());
+                Log.d("FUCK6", "" + wpReports);
+                Log.d("FUCK7", "" + wpReports.get(0).getClass());
                 user.setWaterPurityReports(wpReports);
             }
 
@@ -263,9 +254,9 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         int vPPM = Integer.parseInt(waterVirusPPM.getText().toString());
         int cPPM = Integer.parseInt(waterContaminantPPM.getText().toString());
         String submittedBy = user.getName();
-
-        WaterPurityReport wpReport = new WaterPurityReport(reportNumber, currentDate, location, condition, submittedBy, vPPM, cPPM);
-        return wpReport;
+        Log.d("FUCK2", location);
+        WaterPurityReport purityReport = new WaterPurityReport(reportNumber, currentDate, location, condition, submittedBy, vPPM, cPPM);
+        return purityReport;
     }
 
     /**

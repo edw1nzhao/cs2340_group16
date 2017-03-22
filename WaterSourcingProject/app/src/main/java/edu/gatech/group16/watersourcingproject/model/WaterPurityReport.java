@@ -10,16 +10,16 @@ import java.util.List;
 import edu.gatech.group16.watersourcingproject.model.Enums.OverallCondition;
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
 
-public class WaterPurityReport extends Report implements Serializable {
+public class WaterPurityReport implements Serializable {
     public static List<OverallCondition> legalOverallConditions = Arrays.asList(OverallCondition.values());
 
     private int reportNumber;
     private Date date;
     private String location;
     private OverallCondition overallCondition;
+    private String submittedBy;
     private int virusPPM;
     private int contaminantPPM;
-    private String submittedBy;
 
     /**
      * Empty constructor for Firebase
@@ -42,10 +42,86 @@ public class WaterPurityReport extends Report implements Serializable {
     public WaterPurityReport(int reportNumber, Date date, String location,
                              OverallCondition overallCondition, String submittedBy,
                              int virusPPM, int contaminantPPM) {
-        super(reportNumber, date, location, submittedBy);
+        //super(reportNumber, date, location, submittedBy);
+        this.reportNumber = reportNumber;
+        this.date = date;
+        this.location = location;
         this.overallCondition = overallCondition;
+        this.submittedBy = submittedBy;
         this.virusPPM = virusPPM;
         this.contaminantPPM = contaminantPPM;
+    }
+
+    /**
+     * Getter for submittedBy
+     *
+     * @return submittedBy
+     */
+    public String getSubmittedBy() {
+        return submittedBy;
+    }
+
+    /**
+     * Setter for submittedBy
+     *
+     * @param submittedBy
+     */
+    public void setSubmittedBy(String submittedBy) {
+        this.submittedBy = submittedBy;
+    }
+
+    /**
+     * Getter for reportNumber
+     *
+     * @return reportNumber
+     */
+    public int getReportNumber() {
+        return reportNumber;
+    }
+
+    /**
+     * Setter for reportNumber
+     *
+     * @param reportNumber
+     */
+    public void setReportNumber(int reportNumber) {
+        this.reportNumber = reportNumber;
+    }
+
+    /**
+     * Getter for date
+     *
+     * @return date
+     */
+    public Date getDate() {
+        return date;
+    }
+
+    /**
+     * Setter for date
+     *
+     * @param date
+     */
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    /**
+     * Getter for location
+     *
+     * @return location
+     */
+    public String getLocation() {
+        return location;
+    }
+
+    /**
+     * Setter for location
+     *
+     * @param location
+     */
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     /**
