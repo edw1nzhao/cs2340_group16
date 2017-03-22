@@ -131,7 +131,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
                     contaminantTitle.setVisibility(View.INVISIBLE);
                     waterContaminantPPM.setVisibility(View.INVISIBLE);
-                    Toast.makeText(getApplicationContext(), "Toggle is OFF.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Toggle is OFF", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -294,6 +294,9 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         } else if (latitude.matches(".*[a-z].*")) {
             waterLocationLatitude.setError("Incorrect format.");
             valid = false;
+        } else if (Double.parseDouble(latitude) < -90 || Double.parseDouble(latitude) > 90) {
+            waterLocationLatitude.setError("Must be between 0° and (+/–)90°.");
+            valid = false;
         } else {
             waterLocationLatitude.setError(null);
         }
@@ -303,6 +306,9 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
             valid = false;
         } else if (longitude.matches(".*[a-z].*")) {
             waterLocationLongitude.setError("Incorrect format.");
+            valid = false;
+        }else if (Double.parseDouble(longitude) < -180 || Double.parseDouble(longitude) > 180) {
+            waterLocationLongitude.setError("Must be between 0° and (+/–)180°.");
             valid = false;
         } else {
             waterLocationLongitude.setError(null);
