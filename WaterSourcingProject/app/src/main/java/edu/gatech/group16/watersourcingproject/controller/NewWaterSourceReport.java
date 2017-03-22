@@ -40,6 +40,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     private static User user;
     private String currentDateTimeString;
     private List<WaterSourceReport> wsReports;
+    private List<WaterPurityReport> wpReports;
     private Spinner waterType, waterCondition, overallCondition;
     private EditText waterLocationLatitude, waterLocationLongitude, waterVirusPPM, waterContaminantPPM;
     private TextView reportTitle, contaminantTitle, waterTypeAndVirusPPMTitle, waterConditionAndOverallConditionTitle;
@@ -148,16 +149,28 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     @Override
     public void onClick(View v) {
         int i = v.getId();
+        boolean reportBoolean = switchButton.isChecked();
+
         if (i == R.id.button_submit && validCoordinate()) {
             Intent home_activity = new Intent(this, HomeActivity.class);
-            wsReports = user.getWaterSourceReport();
+            if (!reportBoolean) {
+                wsReports = user.getWaterSourceReport();
+                if (wsReports == null) {
+                    wsReports = new ArrayList<WaterSourceReport>();
+                }
 
-            if (wsReports == null) {
-                wsReports = new ArrayList<WaterSourceReport>();
+                wsReports.add(compileWaterSourceReport());
+                user.setWaterSourceReports(wsReports);
+
+            } else {
+                wpReports = user.getWaterPurityReport();
+                if (wpReports == null) {
+                    wpReports = new ArrayList<WaterPurityReport>();
+                }
+
+                wpReports.add(compileWaterPurityReport());
+                user.setWaterPurityReports(wpReports);
             }
-
-            wsReports.add(compileWaterSourceReport());
-            user.setWaterSourceReports(wsReports);
 
             FirebaseDatabase db = FirebaseDatabase.getInstance();
             final DatabaseReference dbRef = db.getReference();
@@ -244,10 +257,14 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
      * @return int the number of reports.
      */
     public static int getReportNumber() {
-        if (user.getWaterSourceReport() == null) {
+        if (user.getWaterSourceReport() == null && user.getWaterPurityReport() == null) {
             return 1;
+        } else if (user.getWaterPurityReport() == null) {
+            return user.getWaterSourceReport().size() + 1;
+        } else if (user.getWaterSourceReport() == null) {
+            return user.getWaterPurityReport().size() + 1;
         }
-        return user.getWaterSourceReport().size() + 1;
+        return user.getWaterSourceReport().size() + user.getWaterPurityReport().size() + 1;
     }
 
     /**
