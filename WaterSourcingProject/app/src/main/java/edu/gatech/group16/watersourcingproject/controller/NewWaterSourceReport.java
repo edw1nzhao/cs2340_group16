@@ -28,6 +28,7 @@ import java.util.Date;
 import java.util.List;
 
 import edu.gatech.group16.watersourcingproject.R;
+import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
 import edu.gatech.group16.watersourcingproject.model.Enums.OverallCondition;
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterType;
@@ -93,6 +94,10 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         waterCondition.setAdapter(adaptWaterCondition);
         overallCondition.setAdapter(adaptOverallCondition);
 
+        //Hides Toggle Button if the account type is USER
+        if (user.getAccountType() == AccountType.USER) {
+            switchButton.setVisibility(View.INVISIBLE);
+        }
         //Setting initial state of switch button
         switchButton.setChecked(false);
 
