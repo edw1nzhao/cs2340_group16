@@ -86,6 +86,10 @@
     <string name="login">Login</string>
     <string name="newAccountLogin">No account yet? Create one</string>
     <string name="cancel">Cancel</string>
+    <string name="title_activity_historical_report">HistoricalReportActivity</string>
+    <string name="title_activity_historical_report_parameters">HistoricalReportParametersActivity
+    </string>
+    <string name="label_historical_report">Historical Report Settings</string>
 
 
     <!-- Strings related to home screen -->

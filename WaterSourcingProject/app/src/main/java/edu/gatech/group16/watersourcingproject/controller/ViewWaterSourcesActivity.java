@@ -128,6 +128,11 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                         .show();
 
                                 break;
+                            case R.id.action_empty:
+                                Intent intent = new Intent(ViewWaterSourcesActivity.this, HistoricalReportParametersActivity.class);
+                                intent.putExtra("USER", user);
+                                startActivity(intent);
+                                break;
                             case R.id.action_my_reports:
                                 ArrayAdapter<String> newAdapter2 = new ArrayAdapter<>(ViewWaterSourcesActivity.this,
                                         android.R.layout.simple_list_item_1, android.R.id.text1, finalReportNums);
