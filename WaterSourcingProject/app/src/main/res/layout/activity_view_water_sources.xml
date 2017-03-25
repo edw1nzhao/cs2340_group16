@@ -38,49 +38,40 @@
             android:weightSum="1"
             tools:ignore="UselessParent">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/view_ws_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorPrimaryDark"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme" />
-
-            <Spinner
-                android:id="@+id/spinner_report_options"
-                android:layout_width="197dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:gravity="bottom|right"
-                android:popupBackground="@color/colorPrimary"
-                android:visibility="visible"
-                tools:ignore="RtlHardcoded" />
-
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:id="@+id/listview_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="508dp"
+                android:layout_weight="0.19">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/view_ws_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/colorPrimaryDark"
+                    android:minHeight="?attr/actionBarSize"
+                    android:theme="?attr/actionBarTheme" />
+
+                <Spinner
+                    android:id="@+id/spinner_report_options"
+                    android:layout_width="220dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="14dp"
+                    android:gravity="bottom|right"
+                    android:visibility="visible"
+                    tools:ignore="RtlHardcoded" />
 
                 <ListView
                     android:id="@+id/report_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
                     android:layout_below="@+id/view_ws_toolbar"
                     android:divider="#FFFFFF"
                     android:dividerHeight="2dp"
                     tools:ignore="NotSibling" />
-
-                <!--<android.support.design.widget.FloatingActionButton-->
-                <!--android:src="@drawable/ic_collapse_00008"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:clickable="true"-->
-                <!--app:fabSize="mini"-->
-                <!--android:id="@+id/floatingActionButton"-->
-                <!--android:layout_marginEnd="14dp"-->
-                <!--android:layout_alignTop="@+id/linearLayout"-->
-                <!--android:layout_alignParentEnd="true"-->
-                <!--android:layout_marginTop="24dp"-->
-                <!--android:layout_weight="1" />-->
 
             </RelativeLayout>
 

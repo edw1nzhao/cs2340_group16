@@ -5,6 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorPrimary">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/historical_report_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimaryDark"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,11 +21,11 @@
             android:id="@+id/title_historical_report"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="81dp"
             android:text="@string/label_historical_report"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/textview_location"

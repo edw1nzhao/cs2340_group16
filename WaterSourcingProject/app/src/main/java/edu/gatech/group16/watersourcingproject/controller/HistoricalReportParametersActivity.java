@@ -3,6 +3,7 @@ package edu.gatech.group16.watersourcingproject.controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ public class HistoricalReportParametersActivity extends AppCompatActivity implem
     private User user;
     private Spinner ppmSpinner, yearSpinner;
     private EditText latitude, longitude;
+    private Toolbar toolbar;
     private List<String> ppmOptions = new ArrayList<>();
     private List<Integer> yearOptions = new ArrayList<>();
 
@@ -32,6 +34,7 @@ public class HistoricalReportParametersActivity extends AppCompatActivity implem
         longitude = (EditText) findViewById(R.id.text_longitude);
         ppmSpinner = (Spinner) findViewById(R.id.spinner_ppm);
         yearSpinner = (Spinner) findViewById(R.id.spinner_year);
+        toolbar = (Toolbar) findViewById(R.id.historical_report_toolbar);
 
         ppmOptions.add("Virus PPM");
         ppmOptions.add("Contaminant PPM");
@@ -44,6 +47,20 @@ public class HistoricalReportParametersActivity extends AppCompatActivity implem
         }
         ArrayAdapter<Integer> adaptYear = new ArrayAdapter(this, android.R.layout.simple_spinner_item, yearOptions);
         yearSpinner.setAdapter(adaptYear);
+
+        //Sets toolbar functionality on top of activity
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HistoricalReportParametersActivity.this, HomeActivity.class);
+                intent.putExtra("USER", user);
+                startActivity(intent);
+            }
+        });
 
     }
     @Override
