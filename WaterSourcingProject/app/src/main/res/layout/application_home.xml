@@ -6,68 +6,39 @@
     android:background="@color/colorPrimary"
     tools:context="edu.gatech.group16.watersourcingproject.controller.HomeActivity">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        app:fabSize="mini"
-        app:srcCompat="@android:drawable/ic_menu_manage" />
-
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp" />
-
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/logout_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|right"
-            android:layout_weight="0.12"
-            android:background="@color/colorButton"
-            android:text="@string/logout_button"
-            tools:ignore="RtlHardcoded" />
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        android:padding="15dp">
 
         <TextView
             android:id="@+id/label_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:text="@string/user_profile"
             android:textSize="30sp" />
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/name_field"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.12"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/label_name"
+            tools:ignore="NestedWeights" />
 
-            <TextView
-                android:id="@+id/name_field"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_name"
-                tools:ignore="NestedWeights" />
-
-            <TextView
-                android:id="@+id/email_field"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/label_email" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/email_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/label_email" />
 
         <TextView
             android:id="@+id/account_field"
@@ -75,14 +46,40 @@
             android:layout_height="wrap_content"
             android:text="@string/label_account" />
 
-        <Button
-            android:id="@+id/save_changes"
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorButton"
-            android:text="@string/edit_user"
-            android:textSize="12sp" />
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_expand" />
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:visibility="invisible"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_menu_manage" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:visibility="invisible"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/presence_offline" />
     </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView

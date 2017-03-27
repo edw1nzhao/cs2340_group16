@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,10 +21,12 @@ import edu.gatech.group16.watersourcingproject.model.User;
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView nameField;
     private TextView emailField;
-    private TextView passwordField;
     private TextView accountTypeField;
     private User user;
     private BottomNavigationView botNavbar;
+    private FloatingActionButton fab;
+    private FloatingActionButton fabEdit;
+    private FloatingActionButton fabLogout;
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -38,13 +41,28 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.application_home);
 
-        findViewById(R.id.logout_button).setOnClickListener(this);
-        findViewById(R.id.save_changes).setOnClickListener(this);
-
-        botNavbar = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-
         user = (User) getIntent().getSerializableExtra("USER");
 
+        userInfoSetup();
+        uiSetup();
+    }
+
+    /**
+     * OnClick method that will listen for clicks on the
+     * view.
+     *
+     *
+     * @param v Takes in a view.
+     */
+    @Override
+    public void onClick(View v) {
+    }
+
+    /**
+     * Sets up user information to be displayed
+     *
+     */
+    private void userInfoSetup() {
         nameField = (TextView) findViewById(R.id.name_field);
         emailField = (TextView) findViewById(R.id.email_field);
         accountTypeField = (TextView) findViewById(R.id.account_field);
@@ -52,6 +70,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         nameField.setText("Name:  " + user.getName());
         emailField.setText("Email:  " + user.getEmail());
         accountTypeField.setText("Account Type:  " + user.getAccountType().toString());
+    }
+
+    /**
+     * Sets up all of the necessary ui for this screen.
+     *
+     */
+    private void uiSetup() {
+        fabSetup();
+        botNavbar = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         botNavbar.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -78,45 +105,49 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
                 });
 
-//        Date date = new Date();
-//        List<WaterSourceReport> reportList = new ArrayList<>();
-//        Location location = new Location("LOCATION");
-//        location.setLatitude(1.2345d);
-//        location.setLongitude(1.2345d);
-//        String loc = location.toString();
-//        reportList.add(new WaterSourceReport(001, date, loc, WaterType.BOTTLED, WaterCondition.POTABLE, user.getName()));
-
-
     }
-
     /**
-     * OnClick method that will listen for clicks on the
-     * view that is taken in and proceed with actions.
+     * Fab setup
      *
-     *
-     * @param v Takes in a view that will contain buttons
-     *          for the onClick method to listen to.
      */
-    @Override
-    public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.logout_button) {
-            Intent logoutIntent = new Intent(this, LoginActivity.class);
-            startActivity(logoutIntent);
-            this.finish();
-        } else if (i == R.id.save_changes) {
-            Intent editUser = new Intent(this, EditProfileActivity.class);
-            editUser.putExtra("USER", user);
-            startActivity(editUser);
-        }
-//        } else if (i == R.id.available_button) {
-//            Intent editUser = new Intent(this,ViewWaterSourcesActivity.class);
-//            editUser.putExtra("USER", user);
-//            startActivity(editUser);
-//        } else if (i == R.id.new_waterReport) {
-//            Intent editUser = new Intent(this, NewWaterSourceReport.class);
-//            editUser.putExtra("USER", user);
-//            startActivity(editUser);
-//        }
+    private void fabSetup() {
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fabEdit = (FloatingActionButton) findViewById(R.id.fabEdit);
+        fabLogout = (FloatingActionButton) findViewById(R.id.fabLogout);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            boolean open = false;
+            @Override
+            public void onClick(View v) {
+                if (!open) {
+                    fabEdit.show();
+                    fabLogout.show();
+                    open = true;
+                } else {
+                    fabEdit.hide();
+                    fabLogout.hide();
+                    open = false;
+                }
+            }
+        });
+
+        fabEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent editUser = new Intent(HomeActivity.this, EditProfileActivity.class);
+                editUser.putExtra("USER", user);
+                startActivity(editUser);
+                HomeActivity.this.finish();
+            }
+        });
+
+        fabLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logoutIntent = new Intent(HomeActivity.this, LoginActivity.class);
+                startActivity(logoutIntent);
+                HomeActivity.this.finish();
+            }
+        });
     }
 }
