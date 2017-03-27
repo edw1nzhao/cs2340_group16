@@ -32,8 +32,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     private Toolbar toolbar;
     private User user;
 
-    private final List<User> users = new ArrayList<User>();
-
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
@@ -46,29 +44,35 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_activity);
-        uiSetup();
-        dataSetup();
-    }
-    private void dataSetup() {
-        user = (User) getIntent().getSerializableExtra("USER");
 
+        user = (User) getIntent().getSerializableExtra("USER");
+        dataSetup();
+        uiSetup();
+    }
+
+    /**
+     * Sets up data for the screen.
+     */
+    private void dataSetup() {
         nameField.setHint(user.getName());
         emailField.setHint(user.getEmail());
         passwordField.setHint("******");
     }
 
+    /**
+     * Sets up ui for the screen.
+     */
     private void uiSetup() {
+        findViewById(R.id.edit_button_save).setOnClickListener(this);
+
         emailField = (EditText) findViewById(R.id.edit_text_email);
         nameField = (EditText) findViewById(R.id.edit_text_name);
         passwordField = (EditText) findViewById(R.id.edit_text_password);
-
-        findViewById(R.id.edit_button_save).setOnClickListener(this);
-
         toolbar = (Toolbar) findViewById(R.id.edit_profile_toolbar);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

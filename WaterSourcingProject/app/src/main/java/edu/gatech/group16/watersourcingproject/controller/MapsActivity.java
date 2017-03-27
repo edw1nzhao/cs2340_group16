@@ -1,9 +1,7 @@
 package edu.gatech.group16.watersourcingproject.controller;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -37,17 +35,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        uiSetup();
-        dataSetup();
-    }
-
-    /**
-     * Sets up data needed for this page
-     */
-    private void dataSetup() {
         user = (User) getIntent().getSerializableExtra("USER");
-    }
 
+        uiSetup();
+    }
     /**
      * Sets up all of the necessary ui for this screen.
      */

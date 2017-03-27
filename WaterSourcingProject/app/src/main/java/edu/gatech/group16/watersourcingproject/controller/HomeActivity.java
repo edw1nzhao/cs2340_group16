@@ -40,7 +40,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.application_home);
-
+        user = (User) getIntent().getSerializableExtra("USER");
 
         dataSetup();
         uiSetup();
@@ -62,7 +62,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
      *
      */
     private void dataSetup() {
-        user = (User) getIntent().getSerializableExtra("USER");
 
         nameField = (TextView) findViewById(R.id.name_field);
         emailField = (TextView) findViewById(R.id.email_field);

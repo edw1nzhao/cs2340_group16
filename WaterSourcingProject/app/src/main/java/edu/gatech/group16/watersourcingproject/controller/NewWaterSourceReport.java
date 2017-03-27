@@ -63,9 +63,10 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_ws_report);
+        user = (User) getIntent().getSerializableExtra("USER");
 
-        dataSetup();
         uiSetup();
+        dataSetup();
     }
 
     private void uiSetup() {
@@ -138,8 +139,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     }
 
     private void dataSetup() {
-        user = (User) getIntent().getSerializableExtra("USER");
-
         // Fills the spinners with ENUM
         ArrayAdapter<WaterCondition> adaptWaterCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalConditions);
         ArrayAdapter<WaterType> adaptWaterType = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalTypes);
