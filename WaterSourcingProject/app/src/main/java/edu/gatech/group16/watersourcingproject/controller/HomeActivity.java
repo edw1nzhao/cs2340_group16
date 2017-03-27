@@ -41,9 +41,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.application_home);
 
-        user = (User) getIntent().getSerializableExtra("USER");
 
-        userInfoSetup();
+        dataSetup();
         uiSetup();
     }
 
@@ -62,7 +61,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
      * Sets up user information to be displayed
      *
      */
-    private void userInfoSetup() {
+    private void dataSetup() {
+        user = (User) getIntent().getSerializableExtra("USER");
+
         nameField = (TextView) findViewById(R.id.name_field);
         emailField = (TextView) findViewById(R.id.email_field);
         accountTypeField = (TextView) findViewById(R.id.account_field);

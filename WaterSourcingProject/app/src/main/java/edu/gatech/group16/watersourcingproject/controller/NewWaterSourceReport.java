@@ -63,8 +63,12 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_ws_report);
-        user = (User) getIntent().getSerializableExtra("USER");
 
+        dataSetup();
+        uiSetup();
+    }
+
+    private void uiSetup() {
         //Shared UI
         switchButton = (Switch) findViewById(R.id.report_switch);
         reportTitle = (TextView) findViewById(R.id.text_report_title);
@@ -72,6 +76,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         waterLocationLongitude = (EditText) findViewById(R.id.text_longitude);
         waterTypeAndVirusPPMTitle = (TextView) findViewById(R.id.title_water_type_and_virus_ppm);
         waterConditionAndOverallConditionTitle = (TextView) findViewById(R.id.title_water_condition_and_overall_condition);
+
 
         //Water Source Report UI
         waterType = (Spinner) findViewById(R.id.spinner_water_type);
@@ -84,17 +89,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         waterContaminantPPM = (EditText) findViewById(R.id.text_contaminant_ppm);
 
         findViewById(R.id.button_submit).setOnClickListener(this);
-
-
-        // Fills the spinners with ENUM
-        ArrayAdapter<WaterCondition> adaptWaterCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalConditions);
-        ArrayAdapter<WaterType> adaptWaterType = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalTypes);
-        ArrayAdapter<OverallCondition> adaptOverallCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterPurityReport.legalOverallConditions);
-
-        waterType.setAdapter(adaptWaterType);
-        waterCondition.setAdapter(adaptWaterCondition);
-        overallCondition.setAdapter(adaptOverallCondition);
-
         //Hides Toggle Button if the account type is USER
         if (user.getAccountType() == AccountType.USER) {
             switchButton.setVisibility(View.INVISIBLE);
@@ -141,6 +135,19 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                 }
             }
         });
+    }
+
+    private void dataSetup() {
+        user = (User) getIntent().getSerializableExtra("USER");
+
+        // Fills the spinners with ENUM
+        ArrayAdapter<WaterCondition> adaptWaterCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalConditions);
+        ArrayAdapter<WaterType> adaptWaterType = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalTypes);
+        ArrayAdapter<OverallCondition> adaptOverallCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterPurityReport.legalOverallConditions);
+
+        waterType.setAdapter(adaptWaterType);
+        waterCondition.setAdapter(adaptWaterCondition);
+        overallCondition.setAdapter(adaptOverallCondition);
     }
 
     /**

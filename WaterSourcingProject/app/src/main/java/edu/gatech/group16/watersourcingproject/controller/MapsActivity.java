@@ -37,14 +37,26 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        reportInfo = (TextView) findViewById(R.id.textview_report_info);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+        uiSetup();
+        dataSetup();
+    }
 
+    /**
+     * Sets up data needed for this page
+     */
+    private void dataSetup() {
+        user = (User) getIntent().getSerializableExtra("USER");
+    }
+
+    /**
+     * Sets up all of the necessary ui for this screen.
+     */
+    private void uiSetup() {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        user = (User) getIntent().getSerializableExtra("USER");
+        reportInfo = (TextView) findViewById(R.id.textview_report_info);
 
         toolbar = (Toolbar) findViewById(R.id.map_toolbar);
         setSupportActionBar(toolbar);
@@ -59,7 +71,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });
     }
-
 
     /**
      * Manipulates the map once available.

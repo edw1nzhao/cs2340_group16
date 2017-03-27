@@ -26,16 +26,11 @@ import edu.gatech.group16.watersourcingproject.model.User;
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button saveButton;
-    private Button cancelButton;
     private EditText emailField;
     private EditText nameField;
     private EditText passwordField;
     private Toolbar toolbar;
     private User user;
-    private FirebaseAuth mAuth;
-
-
 
     private final List<User> users = new ArrayList<User>();
 
@@ -51,21 +46,29 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_activity);
-
-        findViewById(R.id.edit_button_save).setOnClickListener(this);
-
-        emailField = (EditText) findViewById(R.id.edit_text_email);
-        nameField = (EditText) findViewById(R.id.edit_text_name);
-        passwordField = (EditText) findViewById(R.id.edit_text_password);
+        uiSetup();
+        dataSetup();
+    }
+    private void dataSetup() {
         user = (User) getIntent().getSerializableExtra("USER");
 
         nameField.setHint(user.getName());
         emailField.setHint(user.getEmail());
         passwordField.setHint("******");
+    }
+
+    private void uiSetup() {
+        emailField = (EditText) findViewById(R.id.edit_text_email);
+        nameField = (EditText) findViewById(R.id.edit_text_name);
+        passwordField = (EditText) findViewById(R.id.edit_text_password);
+
+        findViewById(R.id.edit_button_save).setOnClickListener(this);
+
         toolbar = (Toolbar) findViewById(R.id.edit_profile_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +78,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             }
         });
     }
-
     /**
      * OnClick method that will listen for clicks on the
      * view that is taken in and proceed with actions.
@@ -107,8 +109,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
-                    String uid2 = mAuth.getInstance().getCurrentUser().getUid();
-                    Log.d("FUCKTHIS", uid2);
                     String uid = user.getUid();
                     List<User> listUsers = new ArrayList<>();
 
