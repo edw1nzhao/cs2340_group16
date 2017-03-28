@@ -120,7 +120,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         findViewById(R.id.email_create_account_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
-
     }
 
     /**
@@ -152,30 +151,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private void signIn(String email, String password) {
         Log.d(TAG, "signIn:" + email);
 
-        ////////////////////////////////////////// TEMP///////////////////////////////////////
-        if (email.equals("asdfasdf@gmail.com") && password.equals("asdfasdf")) {
-            User u = new User();
-            u.setUid("HIASDF");
-            u.setAccountType(AccountType.MANAGER);
-            u.setEmail("asdf@gmail.com");
-            u.setPassword("heya");
-            Intent home_activity = new Intent(this, HomeActivity.class);
-            home_activity.putExtra("USER", u);
-            startActivity(home_activity);
-            finish();
-        }
-        ////////////////////////////////////////// TEMP///////////////////////////////////////
-
-
-
-
         if (!validForm()) {
             return;
         }
 
         final String tempEmail = email;
         final Intent home_activity = new Intent(this, HomeActivity.class);
-
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(
                 this, new OnCompleteListener<AuthResult>() {
@@ -193,7 +174,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 } else {
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
                     final DatabaseReference dbRef = db.getReference();
-
 
                     dbRef.child("users").addValueEventListener(new ValueEventListener() {
                         @Override

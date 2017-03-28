@@ -46,8 +46,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_edit_profile_activity);
 
         user = (User) getIntent().getSerializableExtra("USER");
-        dataSetup();
         uiSetup();
+        dataSetup();
     }
 
     /**
