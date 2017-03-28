@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.vision.text.Text;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GridLabelRenderer;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -29,6 +30,7 @@ import edu.gatech.group16.watersourcingproject.model.WaterPurityReport;
 public class HistoricalReportActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView graphInfo;
+    private GraphView graphView;
     private User user;
     private String selectedPPM, latitude, longitude, selectedLocation;
     private int selectedYear;
@@ -91,6 +93,19 @@ public class HistoricalReportActivity extends AppCompatActivity {
         selectedPPM = getIntent().getExtras().getString("PPM");
         selectedYear = Integer.parseInt(getIntent().getExtras().getString("YEAR"));
         selectedLocation = latitude + "," + longitude;
+
+        //Sets graph x-axis and y-axis labels
+        graphView = (GraphView) findViewById(R.id.graph);
+        GridLabelRenderer gridLabel = graphView.getGridLabelRenderer();
+        gridLabel.setHorizontalAxisTitle("Month");
+        gridLabel.setVerticalAxisTitle("PPM");
+        graphView.getViewport().setMaxX(13);
+        graphView.getViewport().setXAxisBoundsManual(true);
+//        if (selectedPPM == "Virus PPM") {
+//            gridLabel.setVerticalAxisTitle("Virus PPM");
+//        } else if (selectedPPM == "Contaminant PPM"){
+//            gridLabel.setVerticalAxisTitle("Contaminant PPM");
+//        }
 
         //PM arraylist initialization
         january = new ArrayList<Integer>();
