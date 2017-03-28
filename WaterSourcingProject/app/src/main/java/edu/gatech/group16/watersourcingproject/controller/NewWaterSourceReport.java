@@ -89,6 +89,21 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         contaminantTitle = (TextView) findViewById(R.id.title_contaminant_ppm);
         waterContaminantPPM = (EditText) findViewById(R.id.text_contaminant_ppm);
 
+        //Toolbar initialisation
+        toolbar = (Toolbar) findViewById(R.id.new_report_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(NewWaterSourceReport.this, HomeActivity.class);
+                intent.putExtra("USER", user);
+                startActivity(intent);
+            }
+        });
+
         findViewById(R.id.button_submit).setOnClickListener(this);
         //Hides Toggle Button if the account type is USER
         if (user.getAccountType() == AccountType.USER) {
