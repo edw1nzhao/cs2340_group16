@@ -56,7 +56,7 @@ public class HistoricalReportParametersActivity extends AppCompatActivity implem
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HistoricalReportParametersActivity.this, HomeActivity.class);
+                Intent intent = new Intent(HistoricalReportParametersActivity.this, ViewWaterSourcesActivity.class);
                 intent.putExtra("USER", user);
                 startActivity(intent);
             }
