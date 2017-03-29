@@ -60,62 +60,62 @@ public class HistoricalReportActivity extends AppCompatActivity {
 
         ////////////////////////////////TEST ONE////////////////////////////////////////////////////////////////////////////
         List<WaterPurityReport> testList = new ArrayList<WaterPurityReport>();
-        testList.add(new WaterPurityReport(1, new Date(2017, 0, 5), "45,45", OverallCondition.SAFE, "Tomonari", 10, 10));
-        testList.add(new WaterPurityReport(1, new Date(2017, 0, 10), "45,45", OverallCondition.SAFE, "Tomonari", 30, 30));
-        testList.add(new WaterPurityReport(1, new Date(2017, 1, 5), "45,45", OverallCondition.SAFE, "Tomonari", 50, 50));
-        testList.add(new WaterPurityReport(1, new Date(2017, 1, 10), "45,45", OverallCondition.SAFE, "Tomonari", 70, 70));
-        testList.add(new WaterPurityReport(1, new Date(2017, 2, 5), "45,45", OverallCondition.SAFE, "Tomonari", 90, 90));
-        testList.add(new WaterPurityReport(1, new Date(2017, 2, 10), "45,45", OverallCondition.SAFE, "Tomonari", 110, 110));
-        testList.add(new WaterPurityReport(1, new Date(2017, 3, 5), "45,45", OverallCondition.SAFE, "Tomonari", 130, 130));
-        testList.add(new WaterPurityReport(1, new Date(2017, 3, 10), "45,45", OverallCondition.SAFE, "Tomonari", 150, 150));
-        testList.add(new WaterPurityReport(1, new Date(2017, 4, 5), "45,45", OverallCondition.SAFE, "Tomonari", 170, 170));
-        testList.add(new WaterPurityReport(1, new Date(2017, 4, 10), "45,45", OverallCondition.SAFE, "Tomonari", 190, 190));
-        testList.add(new WaterPurityReport(1, new Date(2017, 5, 5), "45,45", OverallCondition.SAFE, "Tomonari", 210, 210));
-        testList.add(new WaterPurityReport(1, new Date(2017, 5, 10), "45,45", OverallCondition.SAFE, "Tomonari", 230, 230));
-        testList.add(new WaterPurityReport(1, new Date(2017, 6, 5), "45,45", OverallCondition.SAFE, "Tomonari", 250, 250));
-        testList.add(new WaterPurityReport(1, new Date(2017, 6, 10), "45,45", OverallCondition.SAFE, "Tomonari", 270, 270));
-        testList.add(new WaterPurityReport(1, new Date(2017, 7, 5), "45,45", OverallCondition.SAFE, "Tomonari", 290, 290));
-        testList.add(new WaterPurityReport(1, new Date(2017, 7, 10), "45,45", OverallCondition.SAFE, "Tomonari", 310, 310));
-        testList.add(new WaterPurityReport(1, new Date(2017, 8, 5), "45,45", OverallCondition.SAFE, "Tomonari", 330, 330));
-        testList.add(new WaterPurityReport(1, new Date(2017, 8, 10), "45,45", OverallCondition.SAFE, "Tomonari", 350, 350));
-        testList.add(new WaterPurityReport(1, new Date(2017, 9, 5), "45,45", OverallCondition.SAFE, "Tomonari", 370, 370));
-        testList.add(new WaterPurityReport(1, new Date(2017, 9, 10), "45,45", OverallCondition.SAFE, "Tomonari", 390, 390));
-        testList.add(new WaterPurityReport(1, new Date(2017, 10, 5), "45,45", OverallCondition.SAFE, "Tomonari", 410, 410));
-        testList.add(new WaterPurityReport(1, new Date(2017, 10, 10), "45,45", OverallCondition.SAFE, "Tomonari", 430, 430));
-        testList.add(new WaterPurityReport(1, new Date(2017, 11, 5), "45,45", OverallCondition.SAFE, "Tomonari", 450, 450));
-        testList.add(new WaterPurityReport(1, new Date(2017, 11, 10), "45,45", OverallCondition.SAFE, "Tomonari", 470, 470));
-        testList.add(new WaterPurityReport(1, new Date(2017, 11, 10), "45,45", OverallCondition.SAFE, "Tomonari", 470, 470));
+        testList.add(new WaterPurityReport(1, new Date(117, 0, 5), "45,45", OverallCondition.SAFE, "Tomonari", 10, 10));
+        testList.add(new WaterPurityReport(1, new Date(117, 0, 10), "45,45", OverallCondition.SAFE, "Tomonari", 30, 30));
+        testList.add(new WaterPurityReport(1, new Date(117, 1, 5), "45,45", OverallCondition.SAFE, "Tomonari", 50, 50));
+        testList.add(new WaterPurityReport(1, new Date(117, 1, 10), "45,45", OverallCondition.SAFE, "Tomonari", 70, 70));
+        testList.add(new WaterPurityReport(1, new Date(117, 2, 5), "45,45", OverallCondition.SAFE, "Tomonari", 90, 90));
+        testList.add(new WaterPurityReport(1, new Date(117, 2, 10), "45,45", OverallCondition.SAFE, "Tomonari", 110, 110));
+        testList.add(new WaterPurityReport(1, new Date(117, 3, 5), "45,45", OverallCondition.SAFE, "Tomonari", 130, 130));
+        testList.add(new WaterPurityReport(1, new Date(117, 3, 10), "45,45", OverallCondition.SAFE, "Tomonari", 150, 150));
+        testList.add(new WaterPurityReport(1, new Date(117, 4, 5), "45,45", OverallCondition.SAFE, "Tomonari", 170, 170));
+        testList.add(new WaterPurityReport(1, new Date(117, 4, 10), "45,45", OverallCondition.SAFE, "Tomonari", 190, 190));
+        testList.add(new WaterPurityReport(1, new Date(117, 5, 5), "45,45", OverallCondition.SAFE, "Tomonari", 210, 210));
+        testList.add(new WaterPurityReport(1, new Date(117, 5, 10), "45,45", OverallCondition.SAFE, "Tomonari", 230, 230));
+        testList.add(new WaterPurityReport(1, new Date(117, 6, 5), "45,45", OverallCondition.SAFE, "Tomonari", 250, 250));
+        testList.add(new WaterPurityReport(1, new Date(117, 6, 10), "45,45", OverallCondition.SAFE, "Tomonari", 270, 270));
+        testList.add(new WaterPurityReport(1, new Date(117, 7, 5), "45,45", OverallCondition.SAFE, "Tomonari", 290, 290));
+        testList.add(new WaterPurityReport(1, new Date(117, 7, 10), "45,45", OverallCondition.SAFE, "Tomonari", 310, 310));
+        testList.add(new WaterPurityReport(1, new Date(117, 8, 5), "45,45", OverallCondition.SAFE, "Tomonari", 330, 330));
+        testList.add(new WaterPurityReport(1, new Date(117, 8, 10), "45,45", OverallCondition.SAFE, "Tomonari", 350, 350));
+        testList.add(new WaterPurityReport(1, new Date(117, 9, 5), "45,45", OverallCondition.SAFE, "Tomonari", 370, 370));
+        testList.add(new WaterPurityReport(1, new Date(117, 9, 10), "45,45", OverallCondition.SAFE, "Tomonari", 390, 390));
+        testList.add(new WaterPurityReport(1, new Date(117, 10, 5), "45,45", OverallCondition.SAFE, "Tomonari", 410, 410));
+        testList.add(new WaterPurityReport(1, new Date(117, 10, 10), "45,45", OverallCondition.SAFE, "Tomonari", 430, 430));
+        testList.add(new WaterPurityReport(1, new Date(117, 11, 5), "45,45", OverallCondition.SAFE, "Tomonari", 450, 450));
+        testList.add(new WaterPurityReport(1, new Date(117, 11, 10), "45,45", OverallCondition.SAFE, "Tomonari", 470, 470));
+        testList.add(new WaterPurityReport(1, new Date(117, 11, 10), "45,45", OverallCondition.SAFE, "Tomonari", 470, 470));
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         ////////////////////////////////TEST TWO////////////////////////////////////////////////////////////////////////////
         List<WaterPurityReport> testList2 = new ArrayList<WaterPurityReport>();
         Random randypants = new Random();
-        testList2.add(new WaterPurityReport(1, new Date(2017, 0, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 0, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 1, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 1, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 2, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 2, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 3, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 3, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 4, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 4, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 5, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 5, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 6, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 6, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 7, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 7, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 8, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 8, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 9, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 9, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 10, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 10, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 11, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 11, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        testList2.add(new WaterPurityReport(1, new Date(2017, 11, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 0, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 0, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 1, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 1, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 2, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 2, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 3, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 3, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 4, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 4, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 5, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 5, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 6, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 6, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 7, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 7, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 8, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 8, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 9, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 9, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 10, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 10, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 11, 5), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 11, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+        testList2.add(new WaterPurityReport(1, new Date(117, 11, 10), "45,45", OverallCondition.SAFE, "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -157,7 +157,7 @@ public class HistoricalReportActivity extends AppCompatActivity {
 
         //Storing ppm values for each month
         if (selectedPPM == "Virus PPM") {
-            for (WaterPurityReport item: testList2) {
+            for (WaterPurityReport item: user.getWaterPurityReport()) {
                 //////////////////////////////////////////////////////////////////////////////
                 //Note: To test change the line above to one of the options below:
                 //- for (WaterPurityReport item: testList))
@@ -165,8 +165,11 @@ public class HistoricalReportActivity extends AppCompatActivity {
                 //- for (WaterPurityReport item: user.getWaterPurityReport()))
                 //////////////////////////////////////////////////////////////////////////////
                 Log.d("BOOLEAN", "" + selectedLocation.equals(item.getLocation()));
+                Log.d("Boolean2", "" + (selectedYear  == convertYearToCorrectFormat((item.getDate().getYear()))));
+                Log.d("YEAR", "" + selectedYear);
                 Log.d("RN", "" + item.getReportNumber());
-                if (selectedYear == item.getDate().getYear() && selectedLocation.equals("" + item.getLocation())) {
+
+                if (selectedYear == convertYearToCorrectFormat(item.getDate().getYear()) && selectedLocation.equals("" + item.getLocation())) {
                     if (item.getDate().getMonth() == 0) {
                         january.add(item.getVirusPPM());
                     } else if (item.getDate().getMonth() == 1) {
@@ -196,12 +199,14 @@ public class HistoricalReportActivity extends AppCompatActivity {
             }
 
         } else {
-            for (WaterPurityReport item: testList2) {
+            for (WaterPurityReport item: user.getWaterPurityReport()) {
                 Log.d("BOOLEAN", "" + selectedLocation.equals(item.getLocation()));
+                Log.d("Boolean2", "" + (selectedYear  == convertYearToCorrectFormat(item.getDate().getYear())));
+                Log.d("YEAR", "" + selectedYear);
                 Log.d("RN", "" + item.getReportNumber());
-                if (selectedYear == item.getDate().getYear() && selectedLocation.equals(""+item.getLocation())) {
+                if (selectedYear == convertYearToCorrectFormat(item.getDate().getYear()) && selectedLocation.equals("" + item.getLocation())) {
                     //////////////////////////////////////////////////////////////////////////////
-                    //Note: Change the line above to:
+                    //Note: To test change the line above to one of the options below:
                     //- for (WaterPurityReport item: testList))
                     //- for (WaterPurityReport item: testList2))
                     //- for (WaterPurityReport item: user.getWaterPurityReport()))
@@ -251,17 +256,17 @@ public class HistoricalReportActivity extends AppCompatActivity {
         graphParams = (TextView) findViewById(R.id.textview_parameters);
         graphParams.setText("\nLocation: " + latitude + "," + longitude);
         graphInfo.setText("\nJanuary: " + calculateAverage(january)
-                        + "\t\t\t\t\t\t\tJuly: " + calculateAverage(july)
-                        + "\n\t\t\tFebruary: " + calculateAverage(february)
-                        + "\t\t\t\t\t\t\tAugust: " + calculateAverage(july)
-                        + "\n\t\t\t\tMarch: " + calculateAverage(march)
-                        + "\t\t\t\t\t\t\t\tSeptember: " + calculateAverage(september)
-                        + "\nApril: " + calculateAverage(april)
-                        + "\t\t\t\t\t\t\t\t\tOctober: " + calculateAverage(october)
-                        + "\n\t\t\tMay: " + calculateAverage(may)
-                        + "\t\t\t\t\t\t\t\t\tNovember: " + calculateAverage(november)
-                        + "\n\t\t\tJune: " + calculateAverage(june)
-                        + "\t\t\t\t\t\t\t\t\tDecember: " + calculateAverage(december));
+                + "\t\t\t\t\t\t\tJuly: " + calculateAverage(july)
+                + "\n\t\t\tFebruary: " + calculateAverage(february)
+                + "\t\t\t\t\t\t\tAugust: " + calculateAverage(july)
+                + "\n\t\t\t\tMarch: " + calculateAverage(march)
+                + "\t\t\t\t\t\t\t\tSeptember: " + calculateAverage(september)
+                + "\nApril: " + calculateAverage(april)
+                + "\t\t\t\t\t\t\t\t\tOctober: " + calculateAverage(october)
+                + "\n\t\t\tMay: " + calculateAverage(may)
+                + "\t\t\t\t\t\t\t\t\tNovember: " + calculateAverage(november)
+                + "\n\t\t\tJune: " + calculateAverage(june)
+                + "\t\t\t\t\t\t\t\t\tDecember: " + calculateAverage(december));
 
         //Test average is correct
         Log.d("JanuaryAvg ", "" + calculateAverage(january));
@@ -325,6 +330,9 @@ public class HistoricalReportActivity extends AppCompatActivity {
             return Math.round(sum / list.size());
         }
         return sum;
+    }
+    public int convertYearToCorrectFormat(int year) {
+        return 1900 + year;
     }
 
 }
