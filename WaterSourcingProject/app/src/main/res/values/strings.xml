@@ -90,6 +90,7 @@
     <string name="title_activity_historical_report_parameters">HistoricalReportParametersActivity
     </string>
     <string name="label_historical_report">Historical Report Settings</string>
+    <string name="title_activity_report_details">Report Details Activity</string>
 
 
     <!-- Strings related to home screen -->

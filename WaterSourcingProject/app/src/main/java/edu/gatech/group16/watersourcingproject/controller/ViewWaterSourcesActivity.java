@@ -211,45 +211,41 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                 });
 
         // ListView Item Click Listener
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) {
                 if (viewingOptionSpinner.getSelectedItem().toString() == "Water Source Reports") {
                     WaterSourceReport clickedItem = sourceReportList.get(position);
-                    Toast.makeText(getApplicationContext(),
-                            "Submitted By: " + clickedItem.getSubmittedBy()
-                                    + "\n\nDate: " + clickedItem.getDate()
-                                    + "\n\nLocation: " + clickedItem.getLocation()
-                                    + "\n\nWater Type: " + clickedItem.getWaterType()
-                                    + "\n\nWater Condition: " + clickedItem.getWaterCondition() + "\n\n" , Toast.LENGTH_SHORT)
-                            .show();
+//                    Toast.makeText(getApplicationContext(),
+//                            "Submitted By: " + clickedItem.getSubmittedBy()
+//                                    + "\n\nDate: " + clickedItem.getDate()
+//                                    + "\n\nLocation: " + clickedItem.getLocation()
+//                                    + "\n\nWater Type: " + clickedItem.getWaterType()
+//                                    + "\n\nWater Condition: " + clickedItem.getWaterCondition() + "\n\n" , Toast.LENGTH_SHORT)
+//                            .show();
+                    Intent newActivity = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
+                    newActivity.putExtra("USER", user);
+                    newActivity.putExtra("POSITION", position);
+                    newActivity.putExtra("REPORT", clickedItem);
+                    newActivity.putExtra("REPORT TYPE", "WaterSourceReport");
+                    startActivity(newActivity);
                 } else if (viewingOptionSpinner.getSelectedItem().toString() == "Water Purity Reports") {
                     WaterPurityReport clickedItem = purityReportList.get(position);
-                    Toast.makeText(getApplicationContext(),
-                            "Submitted By: " + clickedItem.getSubmittedBy()
-                                    + "\n\nDate: " + clickedItem.getDate()
-                                    + "\n\nLocation: " + clickedItem.getLocation()
-                                    + "\n\nOverall Condition: " + clickedItem.getOverallCondition()
-                                    + "\n\nVirus PPM: " + clickedItem.getVirusPPM()
-                                    + "\n\nContaminant PPM: " + clickedItem.getContaminantPPM() + "\n\n" , Toast.LENGTH_SHORT)
-                            .show();
+//                    Toast.makeText(getApplicationContext(),
+//                            "Submitted By: " + clickedItem.getSubmittedBy()
+//                                    + "\n\nDate: " + clickedItem.getDate()
+//                                    + "\n\nLocation: " + clickedItem.getLocation()
+//                                    + "\n\nOverall Condition: " + clickedItem.getOverallCondition()
+//                                    + "\n\nVirus PPM: " + clickedItem.getVirusPPM()
+//                                    + "\n\nContaminant PPM: " + clickedItem.getContaminantPPM() + "\n\n" , Toast.LENGTH_SHORT)
+//                            .show();
+                    Intent newActivity2 = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
+                    newActivity2.putExtra("USER", user);
+                    newActivity2.putExtra("POSITION", position);
+                    newActivity2.putExtra("REPORT", clickedItem);
+                    newActivity2.putExtra("REPORT TYPE", "WaterPurityReport");
+                    startActivity(newActivity2);
                 }
-
-//                switch(position) {
-//                    case 0:
-//                        Intent newActivity1 = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
-//                        newActivity1.putExtra("USER", user);
-//                        newActivity1.putExtra("POSITION", position);
-//                        startActivity(newActivity1);
-//                        break;
-//                    default:
-//                        Intent newActivity2 = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
-//                        newActivity2.putExtra("USER", user);
-//                        newActivity2.putExtra("POSITION", position);
-//                        startActivity(newActivity2);
-//                        break;
-//                }
             }
         });
     }

@@ -80,7 +80,11 @@
             android:name=".controller.ViewWaterSourcesActivity"
             android:label="@string/title_activity_view_water_sources"
             android:theme="@style/AppTheme" />
-        <!-- <activity android:name=".controller.ReportDetailsActivity"></activity> -->
+        <activity
+            android:name=".controller.ReportDetailsActivity"
+            android:label="@string/title_activity_report_details"
+            android:theme="@style/FullscreenTheme" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -103,7 +107,7 @@
         <activity
             android:name=".controller.HistoricalReportParametersActivity"
             android:label="@string/title_activity_historical_report_parameters"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
