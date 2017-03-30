@@ -32,7 +32,7 @@ import edu.gatech.group16.watersourcingproject.model.WaterPurityReport;
 
 public class HistoricalReportActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private TextView graphInfo, graphParams;
+    private TextView graphInfo, graphParams, janText, febText, marText, aprText, mayText, junText, julText, augText, sepText, octText, novText, decText;
     private GraphView graphView;
     private User user;
     private String selectedPPM, latitude, longitude, selectedLocation;
@@ -57,6 +57,7 @@ public class HistoricalReportActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
         ////////////////////////////////TEST ONE////////////////////////////////////////////////////////////////////////////
         List<WaterPurityReport> testList = new ArrayList<WaterPurityReport>();
@@ -139,6 +140,22 @@ public class HistoricalReportActivity extends AppCompatActivity {
         graphView.getViewport().setMaxX(13);
         graphView.getViewport().setXAxisBoundsManual(true);
         gridLabel.setVerticalAxisTitle(selectedPPM);
+
+        //Month PPM Textviews
+        janText = (TextView) findViewById(R.id.january);
+        febText = (TextView) findViewById(R.id.february);
+        marText = (TextView) findViewById(R.id.march);
+        aprText = (TextView) findViewById(R.id.april);
+        mayText = (TextView) findViewById(R.id.may);
+        junText = (TextView) findViewById(R.id.june);
+        julText = (TextView) findViewById(R.id.july);
+        augText = (TextView) findViewById(R.id.august);
+        sepText = (TextView) findViewById(R.id.september);
+        octText = (TextView) findViewById(R.id.october);
+        novText = (TextView) findViewById(R.id.november);
+        decText = (TextView) findViewById(R.id.december);
+
+
 
         //PM arraylist initialization
         january = new ArrayList<Integer>();
@@ -245,7 +262,6 @@ public class HistoricalReportActivity extends AppCompatActivity {
         allMonths.addAll(august); allMonths.addAll(september); allMonths.addAll(october);
         allMonths.addAll(november); allMonths.addAll(december);
 
-        graphInfo = (TextView) findViewById(R.id.textview_graph_info);
         try {
             graphView.getViewport().setMaxY(Math.ceil(Collections.max(allMonths)));
             graphView.getViewport().setYAxisBoundsManual(true);
@@ -255,18 +271,18 @@ public class HistoricalReportActivity extends AppCompatActivity {
         }
         graphParams = (TextView) findViewById(R.id.textview_parameters);
         graphParams.setText("\nLocation: " + latitude + "," + longitude);
-        graphInfo.setText("\nJanuary: " + calculateAverage(january)
-                + "\t\t\t\t\t\t\tJuly: " + calculateAverage(july)
-                + "\n\t\t\tFebruary: " + calculateAverage(february)
-                + "\t\t\t\t\t\t\tAugust: " + calculateAverage(july)
-                + "\n\t\t\t\tMarch: " + calculateAverage(march)
-                + "\t\t\t\t\t\t\t\tSeptember: " + calculateAverage(september)
-                + "\nApril: " + calculateAverage(april)
-                + "\t\t\t\t\t\t\t\t\tOctober: " + calculateAverage(october)
-                + "\n\t\t\tMay: " + calculateAverage(may)
-                + "\t\t\t\t\t\t\t\t\tNovember: " + calculateAverage(november)
-                + "\n\t\t\tJune: " + calculateAverage(june)
-                + "\t\t\t\t\t\t\t\t\tDecember: " + calculateAverage(december));
+        janText.setText("January: " + calculateAverage(january));
+        febText.setText("February: " + calculateAverage(february));
+        marText.setText("March: " + calculateAverage(march));
+        aprText.setText("April: " + calculateAverage(april));
+        mayText.setText("May: " + calculateAverage(may));
+        junText.setText("June: " + calculateAverage(june));
+        julText.setText("July: " + calculateAverage(july));
+        augText.setText("August: " + calculateAverage(august));
+        sepText.setText("September: " + calculateAverage(september));
+        octText.setText("October: " + calculateAverage(october));
+        novText.setText("November: " + calculateAverage(november));
+        decText.setText("December: " + calculateAverage(december));
 
         //Test average is correct
         Log.d("JanuaryAvg ", "" + calculateAverage(january));
