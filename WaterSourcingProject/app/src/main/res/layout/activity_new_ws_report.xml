@@ -159,7 +159,7 @@
                 android:layout_marginTop="0dp"
                 android:ems="10"
                 android:hint="@string/latitude"
-                android:inputType="numberDecimal" />
+                android:inputType="phone" />
 
             <EditText
                 android:id="@+id/text_longitude"
@@ -169,7 +169,7 @@
                 android:layout_marginTop="0dp"
                 android:ems="10"
                 android:hint="@string/longitude"
-                android:inputType="numberDecimal" />
+                android:inputType="phone" />
 
         </LinearLayout>
     </RelativeLayout>
