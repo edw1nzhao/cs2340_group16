@@ -121,8 +121,6 @@ public class HistoricalReportActivity extends AppCompatActivity {
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //Print the lists of test PPM values for reference
-        Log.d("TestList", "" + testList);
-        Log.d("TestList2", "" + testList2);
 
         //Graph parameters chose by the MANAGER
         user = (User) getIntent().getSerializableExtra("USER");
@@ -181,10 +179,7 @@ public class HistoricalReportActivity extends AppCompatActivity {
                 //- for (WaterPurityReport item: testList2))
                 //- for (WaterPurityReport item: user.getWaterPurityReport()))
                 //////////////////////////////////////////////////////////////////////////////
-                Log.d("BOOLEAN", "" + selectedLocation.equals(item.getLocation()));
-                Log.d("Boolean2", "" + (selectedYear  == convertYearToCorrectFormat((item.getDate().getYear()))));
-                Log.d("YEAR", "" + selectedYear);
-                Log.d("RN", "" + item.getReportNumber());
+                
 
                 if (selectedYear == convertYearToCorrectFormat(item.getDate().getYear()) && selectedLocation.equals("" + item.getLocation())) {
                     if (item.getDate().getMonth() == 0) {
@@ -217,10 +212,6 @@ public class HistoricalReportActivity extends AppCompatActivity {
 
         } else {
             for (WaterPurityReport item: user.getWaterPurityReport()) {
-                Log.d("BOOLEAN", "" + selectedLocation.equals(item.getLocation()));
-                Log.d("Boolean2", "" + (selectedYear  == convertYearToCorrectFormat(item.getDate().getYear())));
-                Log.d("YEAR", "" + selectedYear);
-                Log.d("RN", "" + item.getReportNumber());
                 if (selectedYear == convertYearToCorrectFormat(item.getDate().getYear()) && selectedLocation.equals("" + item.getLocation())) {
                     //////////////////////////////////////////////////////////////////////////////
                     //Note: To test change the line above to one of the options below:
@@ -284,34 +275,34 @@ public class HistoricalReportActivity extends AppCompatActivity {
         novText.setText("November: " + calculateAverage(november));
         decText.setText("December: " + calculateAverage(december));
 
-        //Test average is correct
-        Log.d("JanuaryAvg ", "" + calculateAverage(january));
-        Log.d("FebruaryAvg ", "" + calculateAverage(february));
-        Log.d("MarchAvg ", "" + calculateAverage(march));
-        Log.d("AprilAvg ", "" + calculateAverage(april));
-        Log.d("MayAvg ", "" + calculateAverage(may));
-        Log.d("JuneAvg ", "" + calculateAverage(june));
-        Log.d("JulyAvg ", "" + calculateAverage(july));
-        Log.d("AugustAvg ", "" + calculateAverage(august));
-        Log.d("SeptemberAvg ", "" + calculateAverage(september));
-        Log.d("OctoberAvg ", "" + calculateAverage(october));
-        Log.d("NovemberAvg ", "" + calculateAverage(november));
-        Log.d("DecemberAvg ", "" + calculateAverage(december));
+        // //Test average is correct
+        // Log.d("JanuaryAvg ", "" + calculateAverage(january));
+        // Log.d("FebruaryAvg ", "" + calculateAverage(february));
+        // Log.d("MarchAvg ", "" + calculateAverage(march));
+        // Log.d("AprilAvg ", "" + calculateAverage(april));
+        // Log.d("MayAvg ", "" + calculateAverage(may));
+        // Log.d("JuneAvg ", "" + calculateAverage(june));
+        // Log.d("JulyAvg ", "" + calculateAverage(july));
+        // Log.d("AugustAvg ", "" + calculateAverage(august));
+        // Log.d("SeptemberAvg ", "" + calculateAverage(september));
+        // Log.d("OctoberAvg ", "" + calculateAverage(october));
+        // Log.d("NovemberAvg ", "" + calculateAverage(november));
+        // Log.d("DecemberAvg ", "" + calculateAverage(december));
 
-        //Test ppm values are added correctly for each month
-        Log.d("January ", "" + january);
-        Log.d("February ", "" + february);
-        Log.d("March ", "" + march);
-        Log.d("April ", "" + april);
-        Log.d("May ", "" + may);
-        Log.d("June ", "" + june);
-        Log.d("July ", "" + july);
-        Log.d("August ", "" + august);
-        Log.d("September ", "" + september);
-        Log.d("October ", "" + october);
-        Log.d("November ", "" + november);
-        Log.d("December ", "" + december);
-        Log.d("All months ", "" + allMonths);
+        // //Test ppm values are added correctly for each month
+        // Log.d("January ", "" + january);
+        // Log.d("February ", "" + february);
+        // Log.d("March ", "" + march);
+        // Log.d("April ", "" + april);
+        // Log.d("May ", "" + may);
+        // Log.d("June ", "" + june);
+        // Log.d("July ", "" + july);
+        // Log.d("August ", "" + august);
+        // Log.d("September ", "" + september);
+        // Log.d("October ", "" + october);
+        // Log.d("November ", "" + november);
+        // Log.d("December ", "" + december);
+        // Log.d("All months ", "" + allMonths);
 
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
                 new DataPoint(1, calculateAverage(january)),

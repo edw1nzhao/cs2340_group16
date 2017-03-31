@@ -52,7 +52,7 @@ public class ReportDetailsActivity extends AppCompatActivity {
         user = (User) getIntent().getSerializableExtra("USER");
         position =  (int) getIntent().getSerializableExtra("POSITION");
         reportType = (String) getIntent().getSerializableExtra("REPORT TYPE");
-        Log.d("FUCK", reportType);
+       
 
         //Shared UI
         reportNumber = (TextView) findViewById(R.id.val_reportNum);

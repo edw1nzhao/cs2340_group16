@@ -191,14 +191,12 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
             } else {
                 wpReports = user.getWaterPurityReport();
-                Log.d("FUCK4", "" + wpReports);
+                
                 if (wpReports == null) {
                     wpReports = new ArrayList<WaterPurityReport>();
                 }
-                Log.d("FUCK5", "" + wpReports);
+               
                 wpReports.add(compileWaterPurityReport());
-                Log.d("FUCK6", "" + wpReports);
-                Log.d("FUCK7", "" + wpReports.get(0).getClass());
                 user.setWaterPurityReports(wpReports);
             }
 
@@ -275,7 +273,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         int vPPM = Integer.parseInt(waterVirusPPM.getText().toString());
         int cPPM = Integer.parseInt(waterContaminantPPM.getText().toString());
         String submittedBy = user.getName();
-        Log.d("FUCK2", location);
         WaterPurityReport purityReport = new WaterPurityReport(reportNumber, currentDate, location, condition, submittedBy, vPPM, cPPM);
         return purityReport;
     }

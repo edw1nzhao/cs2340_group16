@@ -149,7 +149,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * @param password String password
      */
     private void signIn(String email, String password) {
-        Log.d(TAG, "signIn:" + email);
 
         if (!validForm()) {
             return;

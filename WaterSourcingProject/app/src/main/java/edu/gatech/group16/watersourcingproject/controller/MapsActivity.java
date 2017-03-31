@@ -100,10 +100,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         //Adds Google Map Markers for all Water Purity Reports.
         try {
-            Log.d("FUCK", "" + user.getWaterPurityReport());
-            Log.d("FUCK3", "" + user.getWaterSourceReport());
             for (WaterPurityReport report: user.getWaterPurityReport()) {
-                Log.d("FUCK8", "" + report.getLocation());
                 String[] split = report.getLocation().split(",");
                 LatLng location = new LatLng(Double.parseDouble(split[0]), Double.parseDouble(split[1]));
                 String snippetText = "Report Number: " + report.getReportNumber()

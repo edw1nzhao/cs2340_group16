@@ -123,7 +123,6 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
      * @return boolean gives back false if not signed in.
      */
     private boolean createAccount(String email, String password) {
-        Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
             return valid;
         }
