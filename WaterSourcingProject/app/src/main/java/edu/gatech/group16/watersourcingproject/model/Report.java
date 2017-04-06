@@ -2,93 +2,98 @@ package edu.gatech.group16.watersourcingproject.model;
 
 import java.util.Date;
 
-public class Report {
-    private int reportNumber;
-    private Date date;
-    private String location;
-    private String submittedBy;
+class Report {
 
+    @SuppressWarnings("unused")
     public Report() {
 
     }
 
+    @SuppressWarnings("unused")
     public Report(int reportNumber, Date date, String location, String submittedBy) {
-        this.submittedBy = submittedBy;
-        this.reportNumber = reportNumber;
-        this.date = date;
-        this.location = location;
+        @SuppressWarnings({"UnnecessaryLocalVariable", "UnusedAssignment"}) String submittedBy1
+                = submittedBy;
+        @SuppressWarnings({"UnnecessaryLocalVariable", "UnusedAssignment"}) int reportNumber1
+                = reportNumber;
+        @SuppressWarnings({"UnnecessaryLocalVariable", "UnusedAssignment"}) Date date1 = date;
+        @SuppressWarnings({"UnnecessaryLocalVariable", "UnusedAssignment"}) String location1
+                = location;
     }
 
-    /**
-     * Getter for submittedBy
-     *
-     * @return submittedBy
-     */
-    public String getSubmittedBy() {
-        return submittedBy;
-    }
+//    /**
+//     * Getter for submittedBy
+//     *
+//     * @return submittedBy
+//     */
+//    public String getSubmittedBy() {
+//        return submittedBy;
+//    }
 
-    /**
-     * Setter for submittedBy
-     *
-     * @param submittedBy
-     */
-    public void setSubmittedBy(String submittedBy) {
-        this.submittedBy = submittedBy;
-    }
+//    /**
+//     * Setter for submittedBy
+//     *
+//     * @param submittedBy
+//     */
+//    @SuppressWarnings("JavaDoc")
+//    public void setSubmittedBy(String submittedBy) {
+//        this.submittedBy = submittedBy;
+//    }
 
-    /**
-     * Getter for reportNumber
-     *
-     * @return reportNumber
-     */
-    public int getReportNumber() {
-        return reportNumber;
-    }
+//    /**
+//     * Getter for reportNumber
+//     *
+//     * @return reportNumber
+//     */
+//    public int getReportNumber() {
+//        return reportNumber;
+//    }
+//
+//    /**
+//     * Setter for reportNumber
+//     *
+//     * @param reportNumber
+//     */
+//    @SuppressWarnings("JavaDoc")
+//    public void setReportNumber(int reportNumber) {
+//        this.reportNumber = reportNumber;
+//    }
+//
+//    /**
+//     * Getter for date
+//     *
+//     * @return date
+//     */
+//    public Date getDate() {
+//        return date;
+//    }
 
-    /**
-     * Setter for reportNumber
-     *
-     * @param reportNumber
-     */
-    public void setReportNumber(int reportNumber) {
-        this.reportNumber = reportNumber;
-    }
+//    /**
+//     * Setter for date
+//     *
+//     * @param date
+//     */
+//    @SuppressWarnings("JavaDoc")
+//    public void setDate(Date date) {
+//        this.date = date;
+//    }
 
-    /**
-     * Getter for date
-     *
-     * @return date
-     */
-    public Date getDate() {
-        return date;
-    }
+//    /**
+//     * Getter for location
+//     *
+//     * @return location
+//     */
+//    public String getLocation() {
+//        return location;
+//    }
 
-    /**
-     * Setter for date
-     *
-     * @param date
-     */
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    /**
-     * Getter for location
-     *
-     * @return location
-     */
-    public String getLocation() {
-        return location;
-    }
-
-    /**
-     * Setter for location
-     *
-     * @param location
-     */
-    public void setLocation(String location) {
-        this.location = location;
-    }
+//    /**
+//     * Setter for location
+//     *
+//     * @param location
+//     */
+//    @SuppressWarnings("JavaDoc")
+//    public void setLocation(String location) {
+//        this.location = location;
+//    }
 
 }

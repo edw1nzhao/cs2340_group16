@@ -8,9 +8,12 @@ import java.util.List;
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
 import edu.gatech.group16.watersourcingproject.model.Enums.WaterType;
 
+@SuppressWarnings("JavaDoc")
 public class WaterSourceReport implements Serializable {
-    public static List<WaterType> legalTypes = Arrays.asList(WaterType.values());
-    public static List<WaterCondition> legalConditions = Arrays.asList(WaterCondition.values());
+    public static final List<WaterType> legalTypes
+            = Arrays.asList(WaterType.values());
+    public static final List<WaterCondition> legalConditions
+            = Arrays.asList(WaterCondition.values());
 
     private int reportNumber;
     private Date date;
@@ -24,6 +27,7 @@ public class WaterSourceReport implements Serializable {
      * Empty constructor for Firebase
      *
      */
+    @SuppressWarnings("unused")
     public WaterSourceReport() {
 
     }
@@ -38,6 +42,7 @@ public class WaterSourceReport implements Serializable {
      * @param waterCondition water condition
      * @param submittedBy submitted by
      */
+    @SuppressWarnings("ConstructorWithTooManyParameters")
     public WaterSourceReport(int reportNumber, Date date, String location,
                              WaterType waterType, WaterCondition waterCondition,
                              String submittedBy) {
@@ -64,6 +69,7 @@ public class WaterSourceReport implements Serializable {
      *
      * @param submittedBy user submitted by
      */
+    @SuppressWarnings("unused")
     public void setSubmittedBy(String submittedBy) {
         this.submittedBy = submittedBy;
     }
@@ -82,6 +88,7 @@ public class WaterSourceReport implements Serializable {
      *
      * @param reportNumber given report number
      */
+    @SuppressWarnings("unused")
     public void setReportNumber(int reportNumber) {
         this.reportNumber = reportNumber;
     }
@@ -100,6 +107,7 @@ public class WaterSourceReport implements Serializable {
      *
      * @param date current date
      */
+    @SuppressWarnings("unused")
     public void setDate(Date date) {
         this.date = date;
     }
@@ -118,6 +126,7 @@ public class WaterSourceReport implements Serializable {
      *
      * @param location current location
      */
+    @SuppressWarnings("unused")
     public void setLocation(String location) {
         this.location = location;
     }
@@ -136,6 +145,7 @@ public class WaterSourceReport implements Serializable {
      *
      * @param waterType the watertype
      */
+    @SuppressWarnings("unused")
     public void setWaterType(WaterType waterType) {
         this.waterType = waterType;
     }
@@ -154,7 +164,10 @@ public class WaterSourceReport implements Serializable {
      *
      * @param waterCondition
      */
-    public void setWaterCondition(WaterCondition waterCondition) { this.waterCondition = waterCondition; }
+    @SuppressWarnings({"unused", "JavaDoc"})
+    public void setWaterCondition(WaterCondition waterCondition) {
+        this.waterCondition = waterCondition;
+    }
 
     @Override
     public String toString() {

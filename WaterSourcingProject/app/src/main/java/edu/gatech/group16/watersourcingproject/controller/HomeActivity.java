@@ -1,5 +1,6 @@
 package edu.gatech.group16.watersourcingproject.controller;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,13 +19,9 @@ import edu.gatech.group16.watersourcingproject.model.User;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
+@SuppressWarnings({"unused", "CyclicClassDependency"})
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView nameField;
-    private TextView emailField;
-    private TextView accountTypeField;
     private User user;
-    private BottomNavigationView botNavbar;
-    private FloatingActionButton fab;
     private FloatingActionButton fabEdit;
     private FloatingActionButton fabLogout;
 
@@ -40,6 +37,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.application_home);
+        //noinspection ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
 
         dataSetup();
@@ -61,14 +59,17 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
      * Sets up user information to be displayed
      *
      */
+    @SuppressWarnings("FeatureEnvy")
+    @SuppressLint("SetTextI18n")
     private void dataSetup() {
 
-        nameField = (TextView) findViewById(R.id.name_field);
-        emailField = (TextView) findViewById(R.id.email_field);
-        accountTypeField = (TextView) findViewById(R.id.account_field);
+        TextView nameField = (TextView) findViewById(R.id.name_field);
+        TextView emailField = (TextView) findViewById(R.id.email_field);
+        TextView accountTypeField = (TextView) findViewById(R.id.account_field);
 
         nameField.setText("Name:  " + user.getName());
         emailField.setText("Email:  " + user.getEmail());
+        //noinspection ChainedMethodCall
         accountTypeField.setText("Account Type:  " + user.getAccountType().toString());
     }
 
@@ -78,24 +79,29 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void uiSetup() {
         fabSetup();
-        botNavbar = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        BottomNavigationView botNavbar
+                = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         botNavbar.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
                             case R.id.action_viewMap:
-                                Intent mapIntent =  new Intent(HomeActivity.this, MapsActivity.class);
+                                Intent mapIntent
+                                        = new Intent(HomeActivity.this, MapsActivity.class);
                                 mapIntent.putExtra("USER", user);
                                 startActivity(mapIntent);
                                 break;
                             case R.id.action_newReport:
-                                Intent newReportIntent = new Intent(HomeActivity.this, NewWaterSourceReport.class);
+                                Intent newReportIntent
+                                        = new Intent(HomeActivity.this, NewWaterSourceReport.class);
                                 newReportIntent.putExtra("USER", user);
                                 startActivity(newReportIntent);
                                 break;
                             case R.id.action_viewReports:
-                                Intent viewReportIntent = new Intent(HomeActivity.this, ViewWaterSourcesActivity.class);
+                                Intent viewReportIntent
+                                        = new Intent(
+                                                HomeActivity.this, ViewWaterSourcesActivity.class);
                                 viewReportIntent.putExtra("USER", user);
                                 startActivity(viewReportIntent);
                                 break;
@@ -111,7 +117,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
      *
      */
     private void fabSetup() {
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fabEdit = (FloatingActionButton) findViewById(R.id.fabEdit);
         fabLogout = (FloatingActionButton) findViewById(R.id.fabLogout);
 

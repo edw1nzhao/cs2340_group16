@@ -1,3 +1,4 @@
+<!--suppress XmlUnusedNamespaceDeclaration -->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,7 +11,6 @@
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
     <TextView
-        android:id="@+id/fullscreen_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -35,7 +35,6 @@
             android:theme="?attr/actionBarTheme" />
 
         <LinearLayout
-            android:id="@+id/fullscreen_content_controls"
             style="?metaButtonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -45,7 +44,6 @@
             android:weightSum="1">
 
             <RelativeLayout
-                android:id="@+id/layout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -59,7 +57,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_marginTop="44dp"
                     android:background="@color/colorPrimary"
-                    android:text="@string/cancel" />
+                    android:text="@string/cancel"
+                    tools:ignore="RelativeOverlap,UnknownIdInLayout" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -70,7 +69,6 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/reg_label_accq"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="50dp"

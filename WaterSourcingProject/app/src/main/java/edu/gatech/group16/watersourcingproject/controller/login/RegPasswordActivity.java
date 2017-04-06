@@ -1,7 +1,6 @@
 package edu.gatech.group16.watersourcingproject.controller.login;
 
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -22,26 +21,18 @@ import com.google.firebase.auth.ProviderQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
-import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
-import edu.gatech.group16.watersourcingproject.model.Enums.WaterType;
 import edu.gatech.group16.watersourcingproject.model.User;
-import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
+@SuppressWarnings({"unused", "CyclicClassDependency", "JavaDoc"})
 public class RegPasswordActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "EMAIL/PASSWORD";
     private EditText passwordField;
     private FirebaseAuth mAuth;
     private User user;
-    private Toolbar toolbar;
-    private Button cancelButton;
     private boolean valid = false;
-    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    private final FirebaseDatabase db = FirebaseDatabase.getInstance();
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -56,17 +47,21 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_password);
 
-        cancelButton = (Button) findViewById(R.id.cancel_button);
+        Button cancelButton = (Button) findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(this);
         passwordField = (EditText) findViewById(R.id.reg_text_password);
+        //noinspection ChainedMethodCall
         findViewById(R.id.reg_button_signup).setOnClickListener(this);
 
+        //noinspection ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
 
         mAuth = FirebaseAuth.getInstance();
-        toolbar = (Toolbar) findViewById(R.id.password_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.password_toolbar);
         setSupportActionBar(toolbar);
+        //noinspection ConstantConditions,ChainedMethodCall
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //noinspection ChainedMethodCall
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,18 +81,22 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
      * @param v Takes in a view that will contain buttons
      *          for the onClick method to listen to.
      */
+    @SuppressWarnings("FeatureEnvy")
     @Override
     public void onClick(View v) {
         int i = v.getId();
 
         if (i == R.id.reg_button_signup) {
-            String uid = mAuth.getInstance().getCurrentUser().getUid();
+            @SuppressWarnings({"ConstantConditions", "ChainedMethodCall"}) String uid
+                    = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            //noinspection ChainedMethodCall
             user.setPassword(passwordField.getText().toString());
             user.setUid(uid);
 
             if (createAccount(user.getEmail(), user.getPassword())) {
                 DatabaseReference dbRef = db.getReference();
 
+                //noinspection ChainedMethodCall,ChainedMethodCall
                 dbRef.child("users").child(uid).setValue(user);
 
                 Intent intent = new Intent(this, HomeActivity.class);
@@ -127,22 +126,27 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
             return valid;
         }
 
+        //noinspection ChainedMethodCall
         mAuth.fetchProvidersForEmail(email).addOnCompleteListener(
                 this, new OnCompleteListener<ProviderQueryResult>() {
                     @Override
                     public void onComplete(@NonNull Task<ProviderQueryResult> task) {
                         Log.d(TAG, "userAlreadyExists:" + task.isSuccessful());
+                        //noinspection ConstantConditions,ChainedMethodCall,ChainedMethodCall
                         if (task.getResult().getProviders().size() != 1) {
                             sendEmailVerification();
                             valid = true;
                         } else {
+                            //noinspection ChainedMethodCall
                             Toast.makeText(RegPasswordActivity.this,
-                                    "User already exists. Try signing in!", Toast.LENGTH_SHORT).show();
+                                    "User already exists. Try signing " +
+                                            "in!", Toast.LENGTH_SHORT).show();
                             valid = false;
                         }
                     }
                 });
 
+        //noinspection ChainedMethodCall
         mAuth.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
@@ -150,15 +154,18 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
                     Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
                     if (!task.isSuccessful()) {
+                        //noinspection ChainedMethodCall
                         Toast.makeText(RegPasswordActivity.this, R.string.auth_failed,
                                 Toast.LENGTH_SHORT).show();
                         valid = false;
                     } else {
                         // Save user data after authentication is proven
 
-                        String uid = mAuth.getInstance().getCurrentUser().getUid();
+                        @SuppressWarnings({"ConstantConditions", "ChainedMethodCall"}) String uid
+                                = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         user.setUid(uid);
                         DatabaseReference dRef = db.getReference("users");
+                        //noinspection ChainedMethodCall
                         dRef.child(uid).setValue(RegPasswordActivity.this.user);
 
                         Intent loginIntent = new Intent(RegPasswordActivity.this,
@@ -179,11 +186,12 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
      */
     private boolean validateForm() {
         boolean valid = true;
-        String password = passwordField.getText().toString();
+        @SuppressWarnings("ChainedMethodCall") String password = passwordField.getText().toString();
         if (TextUtils.isEmpty(password)) {
             passwordField.setError("Required.");
             valid = false;
-        } else if (password.length() < 6 || password.length() > 23) {
+        } else //noinspection MagicNumber
+            if ((password.length() < 6) || (password.length() > 23)) {
             passwordField.setError("Password must be between 6 and 23 characters.");
             valid = false;
         } else {
@@ -200,16 +208,19 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
      */
     private void sendEmailVerification() {
         final FirebaseUser user = mAuth.getCurrentUser();
+        //noinspection ConstantConditions,ChainedMethodCall
         user.sendEmailVerification()
             .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
+                        //noinspection ChainedMethodCall
                         Toast.makeText(RegPasswordActivity.this,
                                 "Verification email sent to " + user.getEmail(),
                                 Toast.LENGTH_SHORT).show();
                     } else {
                         Log.e(TAG, "sendEmailVerification", task.getException());
+                        //noinspection ChainedMethodCall
                         Toast.makeText(RegPasswordActivity.this,
                                 "Failed to send verification email.",
                                 Toast.LENGTH_SHORT).show();

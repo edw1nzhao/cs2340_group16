@@ -1,12 +1,13 @@
+<!--suppress XmlUnusedNamespaceDeclaration -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_100"
     android:orientation="horizontal"
-    android:weightSum="4">
+    android:weightSum="4"
+    tools:ignore="Overdraw">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +35,6 @@
             <!-- Email Label -->
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/email_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -63,7 +63,6 @@
 
             <!-- Password Label -->
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/password_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
@@ -125,7 +124,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/signed_in_buttons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.10"
@@ -156,7 +154,6 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/detail"
             style="@style/ThemeOverlay.MyTextDetail"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"

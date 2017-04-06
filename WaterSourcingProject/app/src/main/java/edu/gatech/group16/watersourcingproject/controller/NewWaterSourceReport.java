@@ -1,5 +1,6 @@
 package edu.gatech.group16.watersourcingproject.controller;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Build;
@@ -7,13 +8,13 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,19 +38,27 @@ import edu.gatech.group16.watersourcingproject.model.User;
 import edu.gatech.group16.watersourcingproject.model.WaterPurityReport;
 import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
+@SuppressWarnings({"unused", "CyclicClassDependency", "JavaDoc"})
 public class NewWaterSourceReport extends AppCompatActivity implements OnClickListener {
 
     private static User user;
+    @SuppressWarnings("unused")
     private String currentDateTimeString;
-    private List<WaterSourceReport> wsReports;
-    private List<WaterPurityReport> wpReports;
-    private Spinner waterType, waterCondition, overallCondition;
-    private EditText waterLocationLatitude, waterLocationLongitude, waterVirusPPM, waterContaminantPPM;
-    private TextView reportTitle, contaminantTitle, waterTypeAndVirusPPMTitle, waterConditionAndOverallConditionTitle;
+    private Spinner waterType;
+    private Spinner waterCondition;
+    private Spinner overallCondition;
+    private EditText waterLocationLatitude;
+    private EditText waterLocationLongitude;
+    private EditText waterVirusPPM;
+    private EditText waterContaminantPPM;
+    private TextView reportTitle;
+    private TextView contaminantTitle;
+    private TextView waterTypeAndVirusPPMTitle;
+    private TextView waterConditionAndOverallConditionTitle;
     private Switch switchButton;
-    private Toolbar toolbar;
+    @SuppressWarnings("unused")
     private String oldEmail;
-    private final List<User> users = new ArrayList<User>();
+    private final List<User> users = new ArrayList<>();
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -63,6 +72,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_ws_report);
+        //noinspection AssignmentToStaticFieldFromInstanceMethod,ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
 
         uiSetup();
@@ -76,7 +86,8 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         waterLocationLatitude = (EditText) findViewById(R.id.text_latitude);
         waterLocationLongitude = (EditText) findViewById(R.id.text_longitude);
         waterTypeAndVirusPPMTitle = (TextView) findViewById(R.id.title_water_type_and_virus_ppm);
-        waterConditionAndOverallConditionTitle = (TextView) findViewById(R.id.title_water_condition_and_overall_condition);
+        waterConditionAndOverallConditionTitle
+                = (TextView) findViewById(R.id.title_water_condition_and_overall_condition);
 
 
         //Water Source Report UI
@@ -90,10 +101,13 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         waterContaminantPPM = (EditText) findViewById(R.id.text_contaminant_ppm);
 
         //Toolbar initialisation
-        toolbar = (Toolbar) findViewById(R.id.new_report_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.new_report_toolbar);
         setSupportActionBar(toolbar);
+        //noinspection ConstantConditions,ChainedMethodCall
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //noinspection ChainedMethodCall
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //noinspection ChainedMethodCall
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +118,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
             }
         });
 
+        //noinspection ChainedMethodCall
         findViewById(R.id.button_submit).setOnClickListener(this);
         //Hides Toggle Button if the account type is USER
         if (user.getAccountType() == AccountType.USER) {
@@ -115,6 +130,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         //Attaching changeListener() to switch button
         switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
+            @SuppressLint("SetTextI18n")
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -132,7 +148,9 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
                     contaminantTitle.setVisibility(View.VISIBLE);
                     waterContaminantPPM.setVisibility(View.VISIBLE);
-                    Toast.makeText(getApplicationContext(), "Toggle is ON", Toast.LENGTH_SHORT).show();
+                    //noinspection ChainedMethodCall
+                    Toast.makeText(getApplicationContext(),
+                            "Toggle is ON", Toast.LENGTH_SHORT).show();
                 } else {
                     //Updates UI for Water Source Report
                     reportTitle.setText("Water Source Report");
@@ -147,7 +165,9 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
                     contaminantTitle.setVisibility(View.INVISIBLE);
                     waterContaminantPPM.setVisibility(View.INVISIBLE);
-                    Toast.makeText(getApplicationContext(), "Toggle is OFF", Toast.LENGTH_SHORT).show();
+                    //noinspection ChainedMethodCall
+                    Toast.makeText(getApplicationContext(),
+                            "Toggle is OFF", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -155,9 +175,15 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
     private void dataSetup() {
         // Fills the spinners with ENUM
-        ArrayAdapter<WaterCondition> adaptWaterCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalConditions);
-        ArrayAdapter<WaterType> adaptWaterType = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterSourceReport.legalTypes);
-        ArrayAdapter<OverallCondition> adaptOverallCondition = new ArrayAdapter(this, android.R.layout.simple_spinner_item, WaterPurityReport.legalOverallConditions);
+        @SuppressWarnings("unchecked") SpinnerAdapter adaptWaterCondition
+                = new ArrayAdapter(this, android.R.layout.simple_spinner_item,
+                WaterSourceReport.legalConditions);
+        @SuppressWarnings("unchecked") SpinnerAdapter adaptWaterType
+                = new ArrayAdapter(this, android.R.layout.simple_spinner_item,
+                WaterSourceReport.legalTypes);
+        @SuppressWarnings("unchecked") SpinnerAdapter adaptOverallCondition
+                = new ArrayAdapter(this, android.R.layout.simple_spinner_item,
+                WaterPurityReport.legalOverallConditions);
 
         waterType.setAdapter(adaptWaterType);
         waterCondition.setAdapter(adaptWaterCondition);
@@ -172,28 +198,30 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
      * @param v Takes in a view that will contain buttons
      *          for the onClick method to listen to.
      */
+    @SuppressWarnings("FeatureEnvy")
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onClick(View v) {
         int i = v.getId();
         boolean reportBoolean = switchButton.isChecked();
 
-        if (i == R.id.button_submit && validCoordinate()) {
-            Intent home_activity = new Intent(this, HomeActivity.class);
+        if ((i == R.id.button_submit) && validCoordinate()) {
+            @SuppressWarnings("UnusedAssignment") Intent home_activity
+                    = new Intent(this, HomeActivity.class);
             if (!reportBoolean) {
-                wsReports = user.getWaterSourceReport();
+                List<WaterSourceReport> wsReports = user.getWaterSourceReport();
                 if (wsReports == null) {
-                    wsReports = new ArrayList<WaterSourceReport>();
+                    wsReports = new ArrayList<>();
                 }
 
                 wsReports.add(compileWaterSourceReport());
                 user.setWaterSourceReports(wsReports);
 
             } else {
-                wpReports = user.getWaterPurityReport();
+                List<WaterPurityReport> wpReports = user.getWaterPurityReport();
                 
                 if (wpReports == null) {
-                    wpReports = new ArrayList<WaterPurityReport>();
+                    wpReports = new ArrayList<>();
                 }
                
                 wpReports.add(compileWaterPurityReport());
@@ -204,11 +232,13 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
             final DatabaseReference dbRef = db.getReference();
             final Intent home_test = new Intent(this, HomeActivity.class);
 
+            //noinspection ChainedMethodCall
             dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                         User temp = postSnapshot.getValue(User.class);
+                        //noinspection ChainedMethodCall
                         snapshot.getRef().removeValue();
                         users.add(temp);
                     }
@@ -216,6 +246,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                     int i = 0;
                     int marker = -1;
                     for (User u: users) {
+                        //noinspection ChainedMethodCall
                         if (u.getEmail().equals(user.getEmail())) {
                             users.set(i, user);
                             marker = i;
@@ -225,7 +256,8 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
                     DatabaseReference dbRef = db.getReference();
-                    DatabaseReference newRef = dbRef.child("users").push();
+                    @SuppressWarnings("ChainedMethodCall") DatabaseReference newRef
+                            = dbRef.child("users").push();
                     User pushedUser = users.get(marker);
 
                     for (int j = 0; j < users.size(); j++) {
@@ -239,7 +271,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                 }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-                    return;
                 }
             });
         }
@@ -252,89 +283,104 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
      * @return wsReport a newly created water source report
      */
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public WaterSourceReport compileWaterSourceReport() {
+    private WaterSourceReport compileWaterSourceReport() {
         int reportNumber = getReportNumber();
         Date currentDate = new Date();
-        String location = waterLocationLatitude.getText().toString() + "," + waterLocationLongitude.getText().toString();
+        @SuppressWarnings("ChainedMethodCall") String location
+                = waterLocationLatitude.getText().toString() + ","
+                + waterLocationLongitude.getText().toString();
         WaterType type = (WaterType) waterType.getSelectedItem();
         WaterCondition condition = (WaterCondition) waterCondition.getSelectedItem();
         String submittedBy = user.getName();
 
-        WaterSourceReport wsReport = new WaterSourceReport(reportNumber, currentDate, location, type, condition, submittedBy);
-        return wsReport;
+        return new WaterSourceReport(
+                reportNumber, currentDate, location, type, condition, submittedBy);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public WaterPurityReport compileWaterPurityReport() {
+    private WaterPurityReport compileWaterPurityReport() {
         int reportNumber = getReportNumber();
         Date currentDate = new Date();
-        String location = waterLocationLatitude.getText().toString() + "," + waterLocationLongitude.getText().toString();
+        @SuppressWarnings("ChainedMethodCall") String location
+                = waterLocationLatitude.getText().toString()
+                + "," + waterLocationLongitude.getText().toString();
         OverallCondition condition = (OverallCondition) overallCondition.getSelectedItem();
-        int vPPM = Integer.parseInt(waterVirusPPM.getText().toString());
-        int cPPM = Integer.parseInt(waterContaminantPPM.getText().toString());
+        @SuppressWarnings("ChainedMethodCall") int vPPM
+                = Integer.parseInt(waterVirusPPM.getText().toString());
+        @SuppressWarnings("ChainedMethodCall") int cPPM
+                = Integer.parseInt(waterContaminantPPM.getText().toString());
         String submittedBy = user.getName();
-        WaterPurityReport purityReport = new WaterPurityReport(reportNumber, currentDate, location, condition, submittedBy, vPPM, cPPM);
-        return purityReport;
+        return new WaterPurityReport(
+                reportNumber, currentDate, location, condition, submittedBy, vPPM, cPPM);
     }
 
     /**
      * getReportNum method looks into users report size.
-     * TODO: Retrieve number of reports from Firebase variable.
      *
      * @return int the number of reports.
      */
-    public static int getReportNumber() {
-        if (user.getWaterSourceReport() == null && user.getWaterPurityReport() == null) {
+    @SuppressWarnings("FeatureEnvy")
+    private static int getReportNumber() {
+        if ((user.getWaterSourceReport() == null) && (user.getWaterPurityReport() == null)) {
             return 1;
         } else if (user.getWaterPurityReport() == null) {
+            //noinspection ChainedMethodCall
             return user.getWaterSourceReport().size() + 1;
         } else if (user.getWaterSourceReport() == null) {
+            //noinspection ChainedMethodCall
             return user.getWaterPurityReport().size() + 1;
         }
+        //noinspection ChainedMethodCall,ChainedMethodCall
         return user.getWaterSourceReport().size() + user.getWaterPurityReport().size() + 1;
     }
 
     /**
      * Location method that gets the user's location
      * Currently returns a fake location.
-     * TODO: Actually get the user location.
      *
      * @return Location returns the location of the user.
      */
+    @SuppressWarnings("unused")
     public static Location getUserLocation() {
         //TO DO: Retrieve actual location from phone.
         Location location = new Location("Temp Location");
+        //noinspection MagicNumber
         location.setLatitude(1.2345d);
+        //noinspection MagicNumber
         location.setLongitude(1.2345d);
         location.setAccuracy(100);
         location.setElapsedRealtimeNanos(0);
         return location;
     }
 
-    public boolean validCoordinate() {
-        String latitude = waterLocationLatitude.getText().toString();
-        String longitude = waterLocationLongitude.getText().toString();
+    private boolean validCoordinate() {
+        @SuppressWarnings("ChainedMethodCall") String latitude
+                = waterLocationLatitude.getText().toString();
+        @SuppressWarnings("ChainedMethodCall") String longitude
+                = waterLocationLongitude.getText().toString();
         boolean valid = true;
-        if (latitude.length() == 0) {
+        if (latitude.isEmpty()) {
             waterLocationLatitude.setError("Required.");
             valid = false;
         } else if (latitude.matches(".*[a-z].*")) {
             waterLocationLatitude.setError("Incorrect format.");
             valid = false;
-        } else if (Double.parseDouble(latitude) < -90 || Double.parseDouble(latitude) > 90) {
+        } else //noinspection MagicNumber,MagicNumber
+            if ((Double.parseDouble(latitude) < -90) || (Double.parseDouble(latitude) > 90)) {
             waterLocationLatitude.setError("Must be between 0° and (+/–)90°.");
             valid = false;
         } else {
             waterLocationLatitude.setError(null);
         }
 
-        if (longitude.length() == 0) {
+        if (longitude.isEmpty()) {
             waterLocationLongitude.setError("Required.");
             valid = false;
         } else if (longitude.matches(".*[a-z].*")) {
             waterLocationLongitude.setError("Incorrect format.");
             valid = false;
-        }else if (Double.parseDouble(longitude) < -180 || Double.parseDouble(longitude) > 180) {
+        }else //noinspection MagicNumber,MagicNumber
+            if ((Double.parseDouble(longitude) < -180) || (Double.parseDouble(longitude) > 180)) {
             waterLocationLongitude.setError("Must be between 0° and (+/–)180°.");
             valid = false;
         } else {

@@ -1,12 +1,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_100"
     android:orientation="vertical"
-    android:weightSum="4">
+    android:weightSum="4"
+    tools:ignore="Overdraw">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,14 +35,14 @@
                 tools:ignore="ContentDescription,NestedWeights" />
 
             <TextView
-                android:id="@+id/Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.65"
                 android:gravity="center"
                 android:text="Water Sourcing App"
                 android:textStyle="bold"
-                android:typeface="monospace" />
+                android:typeface="monospace"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 

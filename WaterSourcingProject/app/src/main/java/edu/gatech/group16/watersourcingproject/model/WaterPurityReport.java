@@ -1,17 +1,16 @@
 package edu.gatech.group16.watersourcingproject.model;
 
-import android.location.Location;
-
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import edu.gatech.group16.watersourcingproject.model.Enums.OverallCondition;
-import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
 
+@SuppressWarnings("JavaDoc")
 public class WaterPurityReport implements Serializable {
-    public static List<OverallCondition> legalOverallConditions = Arrays.asList(OverallCondition.values());
+    public static final List<OverallCondition> legalOverallConditions
+            = Arrays.asList(OverallCondition.values());
 
     private int reportNumber;
     private Date date;
@@ -25,6 +24,7 @@ public class WaterPurityReport implements Serializable {
      * Empty constructor for Firebase
      *
      */
+    @SuppressWarnings("unused")
     public WaterPurityReport() {
     }
 
@@ -39,6 +39,7 @@ public class WaterPurityReport implements Serializable {
      * @param virusPPM
      * @param contaminantPPM
      */
+    @SuppressWarnings({"JavaDoc", "ConstructorWithTooManyParameters"})
     public WaterPurityReport(int reportNumber, Date date, String location,
                              OverallCondition overallCondition, String submittedBy,
                              int virusPPM, int contaminantPPM) {
@@ -66,6 +67,7 @@ public class WaterPurityReport implements Serializable {
      *
      * @param submittedBy
      */
+    @SuppressWarnings({"unused", "JavaDoc"})
     public void setSubmittedBy(String submittedBy) {
         this.submittedBy = submittedBy;
     }
@@ -84,6 +86,7 @@ public class WaterPurityReport implements Serializable {
      *
      * @param reportNumber
      */
+    @SuppressWarnings({"unused", "JavaDoc"})
     public void setReportNumber(int reportNumber) {
         this.reportNumber = reportNumber;
     }
@@ -102,6 +105,7 @@ public class WaterPurityReport implements Serializable {
      *
      * @param date
      */
+    @SuppressWarnings({"unused", "JavaDoc"})
     public void setDate(Date date) {
         this.date = date;
     }
@@ -120,6 +124,7 @@ public class WaterPurityReport implements Serializable {
      *
      * @param location
      */
+    @SuppressWarnings({"unused", "JavaDoc"})
     public void setLocation(String location) {
         this.location = location;
     }
@@ -138,7 +143,10 @@ public class WaterPurityReport implements Serializable {
      *
      * @param overallCondition
      */
-    public void setOverallCondition(OverallCondition overallCondition) { this.overallCondition = overallCondition; }
+    @SuppressWarnings({"unused", "JavaDoc"})
+    public void setOverallCondition(OverallCondition overallCondition) {
+        this.overallCondition = overallCondition;
+    }
 
     /**
      * Getter for virusPPM
@@ -152,6 +160,7 @@ public class WaterPurityReport implements Serializable {
      *
      * @param virusPPM
      */
+    @SuppressWarnings({"unused", "JavaDoc"})
     public void setVirusPPM(int virusPPM) { this.virusPPM = virusPPM; }
 
     /**
@@ -166,6 +175,7 @@ public class WaterPurityReport implements Serializable {
      *
      * @param contaminantPPM
      */
+    @SuppressWarnings({"unused", "JavaDoc"})
     public void setContaminantPPM(int contaminantPPM) { this.contaminantPPM = contaminantPPM; }
 
     @Override

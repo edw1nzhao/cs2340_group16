@@ -6,20 +6,11 @@
     <string name="emailpassword_status_fmt">Email User: %1$s (verified: %2$b)</string>
 
 
-    <string name="sign_in">Sign In</string>
-    <string name="login_registration_button">Create Account</string>
-
-    <string name="title_text">Water Sourcing Project</string>
-
-    <string name="hint_email">Email</string>
-    <string name="hint_password">Password</string>
-
     <string name="label_nameq">What is your name?</string>
     <string name="label_emailq">What is your email?</string>
     <string name="label_accq">What account type?</string>
     <string name="label_passwordq">What is your password?</string>
     <string name="label_edit_title">Edit User Profile</string>
-    <string name="label_new_wsReport">New Water Report</string>
 
     <string name="label_name">NAME</string>
     <string name="label_email">EMAIL</string>
@@ -29,60 +20,41 @@
     <string name="label_contaminant_ppm"> Contaminant PPM</string>
 
     <string name="label_account">ACCOUNT TYPE</string>
-    <string name="label_view_report">Reports</string>
 
     <string name="label_reportNum">Report Number: </string>
     <string name="label_reportDate">Date: </string>
     <string name="label_reportLoc">Location: </string>
-    <string name="label_reportWT">Water Type: </string>
     <string name="label_reportAuth">Author: </string>
 
     <string name="button_continue">Continue</string>
     <string name="button_signup">Sign up!</string>
     <string name="button_submit">Submit</string>
     <string name="button_save">Save</string>
-    <string name="button_cancel">Cancel</string>
-    <string name="button_newWR">New Water Report</string>
-
-    <string name="button_user">User Reports</string>
-    <string name="button_all">All reports</string>
 
     <string name="sign_out">Sign Out</string>
     <string name="signed_out">Signed Out</string>
     <string name="verify_email">Verify Email</string>
     <string name="auth_failed">Authentication failed</string>
 
-    <string name="title_activity_logout">LogoutActivity</string>
-    <string name="logout_button">Logout</string>
-
     <string name="user_profile">User Profile</string>
-    <string name="edit_user">Edit User Profile</string>
-    <string name="available">View Available Water Sources</string>
 
     <string name="title_activity_registration">RegistrationActivity</string>
     <string name="title_activity_home">Home</string>
 
-    <string name="wsReport_reminder">Your location will be automatically stored for this report!</string>
     <string name="title_activity_edit_water_source_report">EditWaterSourceReport</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_activity_view_water_sources">ViewWaterSourcesActivity</string>
 
     <string name="text_newReport">New</string>
     <string name="text_viewMap">Map</string>
     <string name="text_viewReports">View Reports</string>
-    <string name="text_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
 
     <string name="all_reports">All Reports</string>
     <string name="my_reports">My Reports</string>
-    <string name="email">Email</string>
     <string name="latitude">Latitude</string>
     <string name="location">Location</string>
     <string name="longitude">Longitude</string>
-    <string name="waterPurity">Water Purity</string>
     <string name="waterSourceReport">Water Source Report</string>
-    <string name="waterSource">Water Source</string>
     <string name="login">Login</string>
     <string name="newAccountLogin">No account yet? Create one</string>
     <string name="cancel">Cancel</string>

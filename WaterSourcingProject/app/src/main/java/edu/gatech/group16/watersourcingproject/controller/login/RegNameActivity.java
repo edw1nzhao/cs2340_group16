@@ -1,26 +1,21 @@
 package edu.gatech.group16.watersourcingproject.controller.login;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import edu.gatech.group16.watersourcingproject.R;
-import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
 
+@SuppressWarnings({"unused", "CyclicClassDependency", "JavaDoc"})
 public class RegNameActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText nameField;
     private User user;
-    private Toolbar toolbar;
-    private Button cancelButton;
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -30,21 +25,26 @@ public class RegNameActivity extends AppCompatActivity implements View.OnClickLi
      * @param savedInstanceState Takes in a bundle that may contain an object
      *                           for use within this class
      */
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_name);
 
         nameField = (EditText) findViewById(R.id.reg_text_name);
-        cancelButton = (Button) findViewById(R.id.cancel_button);
+        Button cancelButton = (Button) findViewById(R.id.cancel_button);
 
         cancelButton.setOnClickListener(this);
+        //noinspection ChainedMethodCall
         findViewById(R.id.reg_button_continue).setOnClickListener(this);
 
+        //noinspection ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
 
-        toolbar = (Toolbar) findViewById(R.id.name_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.name_toolbar);
         setSupportActionBar(toolbar);
+        //noinspection ConstantConditions,ChainedMethodCall
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //noinspection ChainedMethodCall
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +71,7 @@ public class RegNameActivity extends AppCompatActivity implements View.OnClickLi
 
         if (i == R.id.reg_button_continue) {
             if (validForm()) {
+                //noinspection ChainedMethodCall
                 user.setName(nameField.getText().toString());
                 Intent intent = new Intent(this, RegEmailActivity.class);
                 intent.putExtra("USER", user);
@@ -90,9 +91,9 @@ public class RegNameActivity extends AppCompatActivity implements View.OnClickLi
      *
      * @return valid true or false depending on if the form inputted is valid.
      */
-    public boolean validForm() {
+    private boolean validForm() {
         boolean valid = true;
-        String name = nameField.getText().toString();
+        @SuppressWarnings("ChainedMethodCall") String name = nameField.getText().toString();
         if (TextUtils.isEmpty(name)) {
             nameField.setError("Required.");
             valid = false;

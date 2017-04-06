@@ -15,11 +15,13 @@ public enum WaterType implements Serializable {
     SPRING("Spring"),
     OTHER("Other");
 
-    private String waterType;
+    private final String waterType;
 
+    @SuppressWarnings("unused")
     WaterType(String accountType) {
         this.waterType = accountType;
     }
+    @SuppressWarnings({"unused", "JavaDoc"})
     public String getWaterType() {
         return waterType;
     }

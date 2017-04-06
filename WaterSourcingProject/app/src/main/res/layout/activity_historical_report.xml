@@ -3,11 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    tools:ignore="Overdraw">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
         <LinearLayout
             android:id="@+id/linearLayout5"
@@ -17,12 +19,12 @@
             android:layout_alignParentStart="true"
             android:layout_marginBottom="17dp"
             android:layout_marginLeft="60dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="RtlHardcoded">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
                 android:orientation="horizontal"
                 android:visibility="invisible">
 
@@ -32,7 +34,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.09"
                     android:text="January:"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/july"
@@ -40,14 +43,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.19"
                     android:text="July:"
-                    android:visibility="visible" />
+                    android:visibility="visible"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/textview_graph_info"
                 android:orientation="horizontal">
 
                 <TextView
@@ -55,21 +57,21 @@
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="February:" />
+                    android:text="February:"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/august"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.07"
-                    android:text="August:" />
+                    android:text="August:"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/textview_graph_info"
                 android:orientation="horizontal">
 
                 <TextView
@@ -77,21 +79,21 @@
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="March:" />
+                    android:text="March:"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/september"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.08"
-                    android:text="September" />
+                    android:text="September"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/textview_graph_info"
                 android:layout_marginTop="0dp"
                 android:orientation="horizontal">
 
@@ -100,21 +102,21 @@
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="April" />
+                    android:text="April"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/october"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.08"
-                    android:text="October:" />
+                    android:text="October:"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/textview_graph_info"
                 android:orientation="horizontal">
 
                 <TextView
@@ -122,21 +124,21 @@
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="May:" />
+                    android:text="May:"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/november"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.07"
-                    android:text="November:" />
+                    android:text="November:"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/textview_graph_info"
+                android:layout_height="0dp"
                 android:layout_weight="0.01"
                 android:orientation="horizontal">
 
@@ -145,14 +147,16 @@
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="June:" />
+                    android:text="June:"
+                    tools:ignore="HardcodedText,NestedWeights" />
 
                 <TextView
                     android:id="@+id/december"
                     android:layout_width="45dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.08"
-                    android:text="December" />
+                    android:text="December"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
         </LinearLayout>
@@ -181,7 +185,6 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/linearLayout5"
             android:layout_alignParentStart="true"
-            android:layout_weight="0.46"
             android:textAlignment="center"
             android:visibility="visible" />
 

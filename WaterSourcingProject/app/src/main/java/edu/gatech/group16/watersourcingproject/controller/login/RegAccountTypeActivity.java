@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.content.Intent;
+import android.widget.SpinnerAdapter;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
@@ -16,11 +17,11 @@ import edu.gatech.group16.watersourcingproject.model.User;
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
+@SuppressWarnings({"unused", "CyclicClassDependency"})
 public class RegAccountTypeActivity extends AppCompatActivity implements View.OnClickListener {
     private Spinner accTypeSpinner;
-    private User user = new User();
-    private Toolbar toolbar;
-    private Button cancelButton;
+    private final User user = new User();
+    @SuppressWarnings("unused")
     private static final String TAG = "AccountTypeReg";
 
     /**
@@ -37,16 +38,19 @@ public class RegAccountTypeActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_registration_account_type);
 
         accTypeSpinner = (Spinner) findViewById(R.id.reg_spin_acctype);
-        cancelButton = (Button) findViewById(R.id.cancel_button);
+        Button cancelButton = (Button) findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(this);
 
+        //noinspection ChainedMethodCall
         findViewById(R.id.reg_button_continue).setOnClickListener(this);
-        ArrayAdapter<AccountType> adaptAcc
+        @SuppressWarnings("unchecked") SpinnerAdapter adaptAcc
                 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, User.legalClass);
         accTypeSpinner.setAdapter(adaptAcc);
-        toolbar = (Toolbar) findViewById(R.id.type_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.type_toolbar);
         setSupportActionBar(toolbar);
+        //noinspection ConstantConditions,ChainedMethodCall
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //noinspection ChainedMethodCall
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

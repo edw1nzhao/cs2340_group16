@@ -22,11 +22,11 @@ import edu.gatech.group16.watersourcingproject.model.User;
 import edu.gatech.group16.watersourcingproject.model.WaterPurityReport;
 import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
-public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+@SuppressWarnings({"unused", "CyclicClassDependency", "JavaDoc"})
+public class MapsActivity extends AppCompatActivity
+        implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
-    private GoogleMap mMap;
     private User user = new User();
-    private Toolbar toolbar;
     private TextView reportInfo;
     private static final String TAG = "MapsActivity";
 
@@ -35,6 +35,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        //noinspection ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
 
         uiSetup();
@@ -43,15 +44,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      * Sets up all of the necessary ui for this screen.
      */
     private void uiSetup() {
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+        @SuppressWarnings("ChainedMethodCall") SupportMapFragment mapFragment
+                = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         reportInfo = (TextView) findViewById(R.id.textview_report_info);
 
-        toolbar = (Toolbar) findViewById(R.id.map_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.map_toolbar);
         setSupportActionBar(toolbar);
+        //noinspection ConstantConditions,ChainedMethodCall
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //noinspection ChainedMethodCall
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,15 +76,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    @SuppressWarnings("FeatureEnvy")
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
 
         //Adds Google Map Markers for all Water Source Reports.
+        //noinspection ProhibitedExceptionCaught
         try {
             for (WaterSourceReport report: user.getWaterSourceReport()) {
-                String[] split = report.getLocation().split(",");
-                LatLng location = new LatLng(Double.parseDouble(split[0]), Double.parseDouble(split[1]));
+                @SuppressWarnings("ChainedMethodCall") String[] split
+                        = report.getLocation().split(",");
+                LatLng location
+                        = new LatLng(Double.parseDouble(split[0]), Double.parseDouble(split[1]));
                 String snippetText = "Report Number: " + report.getReportNumber()
                         + "\n\nSubmitted By: " + report.getSubmittedBy()
                         + "\n\nDate: " + report.getDate()
@@ -89,9 +96,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         + "\n\nWater Condition: " + report.getWaterCondition() + "\n\n";
 
 
-                mMap.addMarker(new MarkerOptions().position(location).title("Report Number: " + report.getReportNumber()).snippet(snippetText));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
-                mMap.setOnMarkerClickListener(this);
+                //noinspection ChainedMethodCall,ChainedMethodCall,ChainedMethodCall
+                googleMap.addMarker(new MarkerOptions().position(location).title(
+                        "Report Number: " + report.getReportNumber()).snippet(snippetText));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+                googleMap.setOnMarkerClickListener(this);
                 //marker.showInfoWindow();
             }
         } catch (NullPointerException e) {
@@ -99,10 +108,13 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         //Adds Google Map Markers for all Water Purity Reports.
+        //noinspection ProhibitedExceptionCaught
         try {
             for (WaterPurityReport report: user.getWaterPurityReport()) {
-                String[] split = report.getLocation().split(",");
-                LatLng location = new LatLng(Double.parseDouble(split[0]), Double.parseDouble(split[1]));
+                @SuppressWarnings("ChainedMethodCall") String[] split
+                        = report.getLocation().split(",");
+                LatLng location
+                        = new LatLng(Double.parseDouble(split[0]), Double.parseDouble(split[1]));
                 String snippetText = "Report Number: " + report.getReportNumber()
                         + "\n\nSubmitted By: " + report.getSubmittedBy()
                         + "\n\nDate: " + report.getDate()
@@ -112,9 +124,18 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                         + "\n\nContaminant PPM: " + report.getContaminantPPM() + "\n\n";
 
 
-                mMap.addMarker(new MarkerOptions().position(location).title("Report Number: " + report.getReportNumber()).snippet(snippetText).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-                mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
-                mMap.setOnMarkerClickListener(this);
+                //noinspection ChainedMethodCall,ChainedMethodCall,
+                //ChainedMethodCall,ChainedMethodCall
+                //noinspection ChainedMethodCall,ChainedMethodCall,
+                // ChainedMethodCall,ChainedMethodCall
+                //noinspection ChainedMethodCall,ChainedMethodCall,ChainedMethodCall,ChainedMethodCall
+                googleMap.addMarker(
+                        new MarkerOptions().position(location).title(
+                                "Report Number: " + report.getReportNumber()).snippet(
+                                        snippetText).icon(BitmapDescriptorFactory.defaultMarker(
+                                                BitmapDescriptorFactory.HUE_GREEN)));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+                googleMap.setOnMarkerClickListener(this);
                 //marker.showInfoWindow();
             }
         } catch (NullPointerException e) {
@@ -124,6 +145,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+        //noinspection RedundantStringToString,ChainedMethodCall
         reportInfo.setText(marker.getSnippet().toString());
         return true;
     }

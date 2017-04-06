@@ -11,6 +11,7 @@ import edu.gatech.group16.watersourcingproject.R;
  * Created by Edwin Zhao on 2017/02/22.
  */
 
+@SuppressWarnings({"unused", "DefaultFileTemplate"})
 public class WelcomeActivity extends AppCompatActivity implements View.OnClickListener {
     /**
      * OnCreate method required to load activity and loads everything that
@@ -21,10 +22,12 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
      *                           for use within this class
      */
 
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_welcome);
+        //noinspection ChainedMethodCall
         findViewById(R.id.logo).setOnClickListener(this);
 //        findViewById(R.id.welcome_button_signin).setOnClickListener(this);
 //        findViewById(R.id.welcome_button_signup).setOnClickListener(this);

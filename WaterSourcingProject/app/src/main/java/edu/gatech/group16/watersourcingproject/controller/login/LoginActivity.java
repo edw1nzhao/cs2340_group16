@@ -1,8 +1,6 @@
 package edu.gatech.group16.watersourcingproject.controller.login;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
@@ -11,7 +9,6 @@ import android.content.Loader;
 import android.database.Cursor;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -23,7 +20,7 @@ import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,23 +31,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
-import edu.gatech.group16.watersourcingproject.controller.MapsActivity;
-import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
-import edu.gatech.group16.watersourcingproject.model.Enums.WaterCondition;
-import edu.gatech.group16.watersourcingproject.model.Enums.WaterType;
 import edu.gatech.group16.watersourcingproject.model.User;
-import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor>, OnClickListener {
+@SuppressWarnings({"unused", "CyclicClassDependency"})
+public class LoginActivity extends AppCompatActivity
+        implements LoaderCallbacks<Cursor>, OnClickListener {
 
     private static final String TAG = "EmailPassword";
 
@@ -59,12 +51,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText passwordField;
 
     private FirebaseAuth mAuth;
+    @SuppressWarnings("unused")
     private FirebaseDatabase mDatabase;
+    @SuppressWarnings("unused")
     private DatabaseReference dbReference;
 
+    @SuppressWarnings("unused")
     private User user;
     //Inside: is the list of userIDs from firebase
-    private final List<User> users = new ArrayList<User>();
+    @SuppressWarnings("unused")
+    private final List<User> users = new ArrayList<>();
 
     private FirebaseAuth.AuthStateListener mAuthListener;
 
@@ -117,8 +113,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         passwordField = (EditText) findViewById(R.id.field_password);
 
         // Buttons
+        //noinspection ChainedMethodCall
         findViewById(R.id.email_create_account_button).setOnClickListener(this);
+        //noinspection ChainedMethodCall
         findViewById(R.id.sign_out_button).setOnClickListener(this);
+        //noinspection ChainedMethodCall
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
     }
 
@@ -157,6 +156,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         final String tempEmail = email;
         final Intent home_activity = new Intent(this, HomeActivity.class);
 
+        //noinspection ChainedMethodCall
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(
                 this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -164,6 +164,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
                 if (!task.isSuccessful()) {
                     Log.w(TAG, "signInWithEmail:failed", task.getException());
+                    //noinspection ChainedMethodCall
                     Toast.makeText(LoginActivity.this, R.string.auth_failed,
                             Toast.LENGTH_SHORT).show();
                 }
@@ -174,14 +175,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
                     final DatabaseReference dbRef = db.getReference();
 
+                    //noinspection ChainedMethodCall
                     dbRef.child("users").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 User temp = postSnapshot.getValue(User.class);
+                                //noinspection ChainedMethodCall
                                 if (temp.getEmail().equals(tempEmail)) {
 
-                                    String count = dbRef.getKey();
+                                    @SuppressWarnings("UnusedAssignment") String count
+                                            = dbRef.getKey();
 
                                     //int position = Integer.parseInt(count);
                                     home_activity.putExtra("USER", temp);
@@ -206,23 +210,29 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Currently not called.
      * Sends email to user for email verification.
      */
+    @SuppressWarnings("unused")
     private void sendEmailVerification() {
+        //noinspection ChainedMethodCall
         findViewById(R.id.verify_email_button).setEnabled(false);
 
         final FirebaseUser user = mAuth.getCurrentUser();
+        //noinspection ConstantConditions,ChainedMethodCall
         user.sendEmailVerification()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         // Re-enable button
+                        //noinspection ChainedMethodCall
                         findViewById(R.id.verify_email_button).setEnabled(true);
 
                         if (task.isSuccessful()) {
+                            //noinspection ChainedMethodCall
                             Toast.makeText(LoginActivity.this,
                                     "Verification email sent to " + user.getEmail(),
                                     Toast.LENGTH_SHORT).show();
                         } else {
                             Log.e(TAG, "sendEmailVerification", task.getException());
+                            //noinspection ChainedMethodCall
                             Toast.makeText(LoginActivity.this,
                                     "Failed to send verification email.",
                                     Toast.LENGTH_SHORT).show();
@@ -237,7 +247,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      *
      * @param user takes in a firebase user to get the user information.
      */
-    private void updateUI(FirebaseUser user) {
+    private void updateUI(UserInfo user) {
         if (user != null) {
             mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
                     user.getEmail(), user.isEmailVerified()));
@@ -263,6 +273,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             startActivity(intent);
         } else if (i == R.id.email_sign_in_button) {
             if (validForm()) {
+                //noinspection ChainedMethodCall,ChainedMethodCall
                 signIn(emailField.getText().toString(), passwordField.getText().toString());
             }
         }
@@ -274,11 +285,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      *
      * @return valid true or false depending on if the form inputted is valid.
      */
-    public boolean validForm() {
+    private boolean validForm() {
         boolean valid = true;
-        String email = emailField.getText().toString();
-        String password = passwordField.getText().toString();
-        if (email.length() == 0) {
+        @SuppressWarnings("ChainedMethodCall") String email = emailField.getText().toString();
+        @SuppressWarnings("ChainedMethodCall") String password = passwordField.getText().toString();
+        if (email.isEmpty()) {
             emailField.setError("Required.");
             valid = false;
         } else if (email.length() < 6){
@@ -293,10 +304,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             emailField.setError(null);
         }
-        if (password.length() == 0) {
+        if (password.isEmpty()) {
             passwordField.setError("Required.");
             valid = false;
-        } else if (password.length() < 6 || password.length() > 23){
+        } else //noinspection MagicNumber
+            if ((password.length() < 6) || (password.length() > 23)){
             passwordField.setError("Incorrect password.");
             valid = false;
         } else {

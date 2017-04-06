@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconDipSize">
+        <ignore path="src/main/res/mipmap-hdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-mdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-xhdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-xxhdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-xxxhdpi/water_logo.png" />
+    </issue>
+    <issue id="IconDuplicatesConfig">
+        <ignore path="src/main/res/mipmap-hdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-mdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-xhdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-xxhdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-xxxhdpi/water_logo.png" />
+    </issue>
+</lint>

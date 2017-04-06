@@ -121,7 +121,8 @@
             android:layout_marginBottom="11dp"
             android:layout_alignBottom="@+id/new_report_toolbar"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="18dp" />
+            android:layout_marginEnd="18dp"
+            tools:ignore="HardcodedText,RtlHardcoded" />
 
         <TextView
             android:id="@+id/text_report_title"

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,12 +14,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.model.User;
 
+@SuppressWarnings({"unused", "CyclicClassDependency", "JavaDoc"})
 public class RegEmailActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText emailField;
     private User user;
-    private Toolbar toolbar;
-    private Button cancelButton;
-    private FirebaseAuth mAuth;
+    @SuppressWarnings("unused")
     FirebaseDatabase db = FirebaseDatabase.getInstance();
 
     /**
@@ -31,22 +29,27 @@ public class RegEmailActivity extends AppCompatActivity implements View.OnClickL
      * @param savedInstanceState Takes in a bundle that may contain an object
      *                           for use within this class
      */
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_email);
 
         emailField = (EditText) findViewById(R.id.reg_text_email);
-        cancelButton = (Button) findViewById(R.id.cancel_button);
+        Button cancelButton = (Button) findViewById(R.id.cancel_button);
         cancelButton.setOnClickListener(this);
 
+        //noinspection ChainedMethodCall
         findViewById(R.id.reg_button_continue).setOnClickListener(this);
 
+        //noinspection ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
-        mAuth = FirebaseAuth.getInstance();
+        @SuppressWarnings("UnusedAssignment") FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-        toolbar = (Toolbar) findViewById(R.id.email_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.email_toolbar);
         setSupportActionBar(toolbar);
+        //noinspection ConstantConditions,ChainedMethodCall
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //noinspection ChainedMethodCall
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +75,7 @@ public class RegEmailActivity extends AppCompatActivity implements View.OnClickL
 
         if (i == R.id.reg_button_continue) {
             if (validForm() ) {
+                //noinspection ChainedMethodCall
                 user.setEmail(emailField.getText().toString());
                 Intent intent = new Intent(this, RegPasswordActivity.class);
                 intent.putExtra("USER", user);
@@ -92,10 +96,10 @@ public class RegEmailActivity extends AppCompatActivity implements View.OnClickL
      *
      * @return valid true or false depending on if the form inputted is valid.
      */
-    public boolean validForm() {
-        String email = emailField.getText().toString();
+    private boolean validForm() {
+        @SuppressWarnings("ChainedMethodCall") String email = emailField.getText().toString();
         boolean valid = true;
-        if (email.length() == 0) {
+        if (email.isEmpty()) {
             emailField.setError("Required.");
             valid = false;
         } else if (email.length() < 6) {

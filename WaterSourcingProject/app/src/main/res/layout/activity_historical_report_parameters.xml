@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorPrimary"
+    tools:ignore="Overdraw">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/historical_report_toolbar"
@@ -35,7 +36,8 @@
             android:layout_marginEnd="10dp"
             android:layout_marginTop="39dp"
             android:layout_toStartOf="@+id/title_historical_report"
-            android:text="Location" />
+            android:text="Location"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
             android:id="@+id/location_layout"
@@ -75,7 +77,8 @@
             android:layout_alignStart="@+id/textview_location"
             android:layout_below="@+id/location_layout"
             android:layout_marginTop="26dp"
-            android:text="Virus PPM/Contaminant PPM" />
+            android:text="Virus PPM/Contaminant PPM"
+            tools:ignore="HardcodedText" />
 
         <Spinner
             android:id="@+id/spinner_ppm"
@@ -93,7 +96,8 @@
             android:layout_alignStart="@+id/spinner_ppm"
             android:layout_below="@+id/spinner_ppm"
             android:layout_marginTop="20dp"
-            android:text="Year" />
+            android:text="Year"
+            tools:ignore="HardcodedText" />
 
         <Spinner
             android:id="@+id/spinner_year"

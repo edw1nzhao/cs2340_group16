@@ -3,19 +3,19 @@ package edu.gatech.group16.watersourcingproject.model;
 import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@SuppressWarnings({"ClassWithTooManyDependents", "JavaDoc"})
 public class User implements Serializable {
-    public static List<AccountType> legalClass = Arrays.asList(AccountType.values());
-    public String name;
-    public String email;
-    public String password;
-    public AccountType accountType;
-    public List<WaterSourceReport> wsReport;
-    public List<WaterPurityReport> wpReport;
-    public String uid;
+    public static final List<AccountType> legalClass = Arrays.asList(AccountType.values());
+    private String name;
+    private String email;
+    private String password;
+    private AccountType accountType;
+    private List<WaterSourceReport> wsReport;
+    private List<WaterPurityReport> wpReport;
+    private String uid;
 
 
     /**
@@ -37,13 +37,16 @@ public class User implements Serializable {
      * @param wpReport
      * @param uid
      */
+    @SuppressWarnings({"JavaDoc", "ConstructorWithTooManyParameters"})
     public User(String email, String password, String name, AccountType accountType,
                 List<WaterSourceReport> wsReport, List<WaterPurityReport> wpReport, String uid) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.accountType = accountType;
+        //noinspection AssignmentToCollectionOrArrayFieldFromParameter
         this.wsReport = wsReport;
+        //noinspection AssignmentToCollectionOrArrayFieldFromParameter
         this.wpReport = wpReport;
         this.uid = uid;
     }
@@ -63,6 +66,7 @@ public class User implements Serializable {
      *
      * @param name
      */
+    @SuppressWarnings("JavaDoc")
     public void setName(String name) {
         this.name = name;
     }
@@ -81,6 +85,7 @@ public class User implements Serializable {
      *
      * @param email
      */
+    @SuppressWarnings("JavaDoc")
     public void setEmail(String email) {
         this.email = email;
     }
@@ -99,6 +104,7 @@ public class User implements Serializable {
      *
      * @param password
      */
+    @SuppressWarnings("JavaDoc")
     public void setPassword(String password) {
         this.password = password;
     }
@@ -117,6 +123,7 @@ public class User implements Serializable {
      *
      * @param accountType
      */
+    @SuppressWarnings("JavaDoc")
     public void setAccountType(AccountType accountType) {
         this.accountType = accountType;
     }
@@ -135,7 +142,9 @@ public class User implements Serializable {
      *
      * @param wsReport
      */
+    @SuppressWarnings("JavaDoc")
     public void setWaterSourceReports(List<WaterSourceReport> wsReport) {
+        //noinspection AssignmentToCollectionOrArrayFieldFromParameter
         this.wsReport = wsReport;
     }
 
@@ -153,7 +162,9 @@ public class User implements Serializable {
      *
      * @param wpReport
      */
+    @SuppressWarnings("JavaDoc")
     public void setWaterPurityReports(List<WaterPurityReport> wpReport) {
+        //noinspection AssignmentToCollectionOrArrayFieldFromParameter
         this.wpReport = wpReport;
     }
 
@@ -171,6 +182,7 @@ public class User implements Serializable {
      *
      * @param uid
      */
+    @SuppressWarnings("JavaDoc")
     public void setUid(String uid) {
         this.uid = uid;
     }

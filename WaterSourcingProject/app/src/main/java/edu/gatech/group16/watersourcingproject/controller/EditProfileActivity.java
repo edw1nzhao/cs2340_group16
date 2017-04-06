@@ -4,32 +4,27 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 
 import edu.gatech.group16.watersourcingproject.R;
-import edu.gatech.group16.watersourcingproject.controller.login.RegPasswordActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
 
+@SuppressWarnings({"unused", "CyclicClassDependency", "JavaDoc"})
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText emailField;
     private EditText nameField;
     private EditText passwordField;
-    private Toolbar toolbar;
     private User user;
 
     /**
@@ -45,6 +40,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile_activity);
 
+        //noinspection ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
         uiSetup();
         dataSetup();
@@ -63,15 +59,18 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
      * Sets up ui for the screen.
      */
     private void uiSetup() {
+        //noinspection ChainedMethodCall
         findViewById(R.id.edit_button_save).setOnClickListener(this);
 
         emailField = (EditText) findViewById(R.id.edit_text_email);
         nameField = (EditText) findViewById(R.id.edit_text_name);
         passwordField = (EditText) findViewById(R.id.edit_text_password);
-        toolbar = (Toolbar) findViewById(R.id.edit_profile_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.edit_profile_toolbar);
 
         setSupportActionBar(toolbar);
+        //noinspection ConstantConditions,ChainedMethodCall
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //noinspection ChainedMethodCall
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,18 +89,25 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
      * @param v Takes in a view that will contain buttons
      *          for the onClick method to listen to.
      */
+    @SuppressWarnings("FeatureEnvy")
     @Override
     public void onClick(View v) {
         int i = v.getId();
 
         if (i == R.id.edit_button_save) {
+            //noinspection ChainedMethodCall
             if (emailField.getText().length() != 0) {
+                //noinspection ChainedMethodCall
                 user.setEmail(emailField.getText().toString());
             }
+            //noinspection ChainedMethodCall
             if (passwordField.getText().length() != 0) {
+                //noinspection ChainedMethodCall
                 user.setPassword(passwordField.getText().toString());
             }
+            //noinspection ChainedMethodCall
             if (nameField.getText().length() != 0) {
+                //noinspection ChainedMethodCall
                 user.setName(nameField.getText().toString());
             }
 
@@ -110,15 +116,18 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             final DatabaseReference dbRef = db.getReference();
             final Intent home_activity = new Intent(this, HomeActivity.class);
 
+            //noinspection ChainedMethodCall
             dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     String uid = user.getUid();
-                    List<User> listUsers = new ArrayList<>();
+                    Collection<User> listUsers = new ArrayList<>();
 
                     for (DataSnapshot snap : snapshot.getChildren()) {
                         User temp = snap.getValue(User.class);
+                        //noinspection ChainedMethodCall
                         snapshot.getRef().removeValue();
+                        //noinspection ChainedMethodCall
                         if (temp.getUid().equals(uid)) {
                             temp = user;
                         }
@@ -128,8 +137,10 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference dRef = database.getReference("users");
+                    //noinspection StatementWithEmptyBody
                     for (int i = 0; i < listUsers.size(); i++) {
                     }
+                    //noinspection ChainedMethodCall
                     dRef.child(uid).setValue(EditProfileActivity.this.user);
 
                     home_activity.putExtra("USER", user);
@@ -142,7 +153,6 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 }
             });
 
-            return;
         }
     }
 }

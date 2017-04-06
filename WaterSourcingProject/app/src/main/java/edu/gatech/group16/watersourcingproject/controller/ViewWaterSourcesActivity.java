@@ -1,5 +1,6 @@
 package edu.gatech.group16.watersourcingproject.controller;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,15 +29,14 @@ import edu.gatech.group16.watersourcingproject.model.User;
 import edu.gatech.group16.watersourcingproject.model.WaterPurityReport;
 import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 
+@SuppressWarnings({"unused", "CyclicClassDependency", "JavaDoc"})
 public class ViewWaterSourcesActivity extends AppCompatActivity {
-    private List<String> list = new ArrayList<>();
+    @SuppressWarnings("unused")
+    private final List<String> list = new ArrayList<>();
     private ListView listView ;
     private User user;
     private Spinner viewingOptionSpinner;
-    private BottomNavigationView bottomNav;
-    private List<String> reportOptions = new ArrayList<>();
-    private Toolbar toolbar;
-    private String TAG = "ViewWaterSources";
+    private final List<String> reportOptions = new ArrayList<>();
     private List<WaterSourceReport> sourceReportList;
     private List<WaterPurityReport> purityReportList;
     private List<String> sourceReportTitles;
@@ -47,33 +49,43 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
      * @param savedInstanceState Takes in a bundle that may contain an object
      *                           for use within this class
      */
+    @SuppressWarnings({"FeatureEnvy", "OverlyLongMethod"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_water_sources);
+        //noinspection ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
         reportOptions.add("Water Source Reports");
         reportOptions.add("Water Purity Reports");
 
         // Get ListView object from xml
         listView = (ListView) findViewById(R.id.report_list);
-        bottomNav = (BottomNavigationView) findViewById(R.id.view_ws_bottom_navbar);
-        viewingOptionSpinner = (Spinner) findViewById(R.id.spinner_report_options);
+        BottomNavigationView bottomNav
+                = (BottomNavigationView) findViewById(R.id.view_ws_bottom_navbar);
+        viewingOptionSpinner
+                = (Spinner) findViewById(R.id.spinner_report_options);
 
         //Sets Spinner in for report viewing options
-        ArrayAdapter<String> adaptReportOptions = new ArrayAdapter(this, android.R.layout.simple_spinner_item, this.reportOptions);
+        @SuppressWarnings("unchecked") SpinnerAdapter adaptReportOptions
+                = new ArrayAdapter(
+                        this, android.R.layout.simple_spinner_item, this.reportOptions);
         viewingOptionSpinner.setAdapter(adaptReportOptions);
 
         //Hides "Historical Report" tab if the accountType is not MANAGER
         if (user.getAccountType() != AccountType.MANAGER) {
+            //noinspection ChainedMethodCall,ChainedMethodCall
             bottomNav.getMenu().findItem(R.id.action_empty).setTitle("");
+            //noinspection ChainedMethodCall,ChainedMethodCall
             bottomNav.getMenu().findItem(R.id.action_empty).setIcon(null);
         }
 
         //Collecting WaterSourceReports for the user
+        String TAG = "ViewWaterSources";
+        //noinspection ProhibitedExceptionCaught
         try {
             sourceReportList = user.getWaterSourceReport();
-            sourceReportTitles = new ArrayList<String>();
+            sourceReportTitles = new ArrayList<>();
 
             for (WaterSourceReport item: sourceReportList) {
                 sourceReportTitles.add("Report Number: " + item.getReportNumber());
@@ -84,9 +96,10 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         }
 
         //Collecting WaterPurityReports for the user
+        //noinspection ProhibitedExceptionCaught
         try {
             purityReportList = user.getWaterPurityReport();
-            purityReportTitles = new ArrayList<String>();
+            purityReportTitles = new ArrayList<>();
             for (WaterPurityReport item: purityReportList) {
                 purityReportTitles.add("Report Number: " + item.getReportNumber());
             }
@@ -96,10 +109,13 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
 
 
         //Sets toolbar functionality on top of activity
-        toolbar = (Toolbar) findViewById(R.id.view_ws_toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.view_ws_toolbar);
         setSupportActionBar(toolbar);
+        //noinspection ConstantConditions,ChainedMethodCall
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //noinspection ChainedMethodCall
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //noinspection ChainedMethodCall
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,18 +126,25 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
             }
         });
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, sourceReportTitles);
+        ListAdapter adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, sourceReportTitles);
         listView.setAdapter(adapter);
 
         viewingOptionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+            public void onItemSelected(
+                    AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                //noinspection StringEquality,ChainedMethodCall
                 if (viewingOptionSpinner.getSelectedItem().toString() == "Water Source Reports") {
-//                    ArrayAdapter<String> sourceAdapter = new ArrayAdapter<>(ViewWaterSourcesActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, sourceReportTitles);
-//                    listView.setAdapter(sourceAdapter);
-                    ArrayAdapter<String> sourceAdapter = new ArrayAdapter<String>(ViewWaterSourcesActivity.this, android.R.layout.simple_list_item_2, android.R.id.text1, sourceReportTitles) {
+                    @SuppressWarnings("NullableProblems") ListAdapter sourceAdapter
+                            = new ArrayAdapter<String>(ViewWaterSourcesActivity.this,
+                            android.R.layout.simple_list_item_2,
+                            android.R.id.text1, sourceReportTitles) {
+                        @NonNull
+                        @SuppressLint("SetTextI18n")
                         @Override
-                        public View getView(int position, View convertView, ViewGroup parent) {
+                        public View getView(
+                                int position, View convertView, @NonNull ViewGroup parent) {
                             View view = super.getView(position, convertView, parent);
                             TextView text1 = (TextView) view.findViewById(android.R.id.text1);
                             TextView text2 = (TextView) view.findViewById(android.R.id.text2);
@@ -131,12 +154,18 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                         }
                     };
                     listView.setAdapter(sourceAdapter);
-                } else if (viewingOptionSpinner.getSelectedItem().toString() == "Water Purity Reports") {
-//                    ArrayAdapter<String> purityAdapter = new ArrayAdapter<>(ViewWaterSourcesActivity.this, android.R.layout.simple_list_item_1, android.R.id.text1, purityReportTitles);
-//                    listView.setAdapter(purityAdapter);
-                    ArrayAdapter<String> purityAdapter = new ArrayAdapter<String>(ViewWaterSourcesActivity.this, android.R.layout.simple_list_item_2, android.R.id.text1, purityReportTitles) {
+                } else //noinspection StringEquality,ChainedMethodCall
+                    if (viewingOptionSpinner.getSelectedItem().toString()
+                            == "Water Purity Reports") {
+                    @SuppressWarnings("NullableProblems") ListAdapter purityAdapter
+                            = new ArrayAdapter<String>(ViewWaterSourcesActivity.this,
+                            android.R.layout.simple_list_item_2, android.R.id.text1,
+                            purityReportTitles) {
+                        @NonNull
+                        @SuppressLint("SetTextI18n")
                         @Override
-                        public View getView(int position, View convertView, ViewGroup parent) {
+                        public View getView(
+                                int position, View convertView, @NonNull ViewGroup parent) {
                             View view = super.getView(position, convertView, parent);
                             TextView text1 = (TextView) view.findViewById(android.R.id.text1);
                             TextView text2 = (TextView) view.findViewById(android.R.id.text2);
@@ -163,44 +192,64 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                         switch (item.getItemId()) {
                             case R.id.action_all_reports:
                                 viewingOptionSpinner.setSelection(0);
-                                ArrayAdapter<String> sourceAdapter1 = new ArrayAdapter<String>(ViewWaterSourcesActivity.this, android.R.layout.simple_list_item_2, android.R.id.text1, sourceReportTitles) {
+                                @SuppressWarnings("NullableProblems") ListAdapter sourceAdapter1
+                                        = new ArrayAdapter<String>(ViewWaterSourcesActivity.this,
+                                        android.R.layout.simple_list_item_2, android.R.id.text1,
+                                        sourceReportTitles) {
+                                    @NonNull
+                                    @SuppressLint("SetTextI18n")
                                     @Override
-                                    public View getView(int position, View convertView, ViewGroup parent) {
+                                    public View getView(int position, View convertView,
+                                                        @NonNull ViewGroup parent) {
                                         View view = super.getView(position, convertView, parent);
-                                        TextView text1 = (TextView) view.findViewById(android.R.id.text1);
-                                        TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+                                        TextView text1
+                                                = (TextView) view.findViewById(android.R.id.text1);
+                                        TextView text2
+                                                = (TextView) view.findViewById(android.R.id.text2);
                                         text1.setText(sourceReportTitles.get(position));
                                         text2.setText("Water Source Report");
                                         return view;
                                     }
                                 };
                                 listView.setAdapter(sourceAdapter1);
+                                //noinspection ChainedMethodCall
                                 Toast.makeText(getApplicationContext(),
                                         "Currently displaying all reports." , Toast.LENGTH_SHORT)
                                         .show();
                                 break;
                             case R.id.action_empty:
-                                Intent intent = new Intent(ViewWaterSourcesActivity.this, HistoricalReportParametersActivity.class);
+                                Intent intent = new Intent(
+                                        ViewWaterSourcesActivity.this,
+                                        HistoricalReportParametersActivity.class);
                                 intent.putExtra("USER", user);
                                 startActivity(intent);
                                 break;
                             case R.id.action_my_reports:
                                 viewingOptionSpinner.setSelection(0);
-                                ArrayAdapter<String> sourceAdapter2 = new ArrayAdapter<String>(ViewWaterSourcesActivity.this, android.R.layout.simple_list_item_2, android.R.id.text1, sourceReportTitles) {
+                                @SuppressWarnings("NullableProblems") ListAdapter sourceAdapter2
+                                        = new ArrayAdapter<String>(ViewWaterSourcesActivity.this,
+                                        android.R.layout.simple_list_item_2, android.R.id.text1,
+                                        sourceReportTitles) {
+                                    @NonNull
+                                    @SuppressLint("SetTextI18n")
                                     @Override
-                                    public View getView(int position, View convertView, ViewGroup parent) {
+                                    public View getView(int position, View convertView,
+                                                        @NonNull ViewGroup parent) {
                                         View view = super.getView(position, convertView, parent);
-                                        TextView text1 = (TextView) view.findViewById(android.R.id.text1);
-                                        TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+                                        TextView text1
+                                                = (TextView) view.findViewById(android.R.id.text1);
+                                        TextView text2
+                                                = (TextView) view.findViewById(android.R.id.text2);
                                         text1.setText(sourceReportTitles.get(position));
                                         text2.setText("Water Source Report");
                                         return view;
                                     }
                                 };
                                 listView.setAdapter(sourceAdapter2);
+                                //noinspection ChainedMethodCall
                                 Toast.makeText(getApplicationContext(),
-                                        "Currently displaying only your reports." , Toast.LENGTH_SHORT)
-                                        .show();
+                                        "Currently displaying only your " +
+                                                "reports.", Toast.LENGTH_SHORT).show();
                                 break;
                             default:
                                 break;
@@ -214,32 +263,24 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) {
+                //noinspection StringEquality,ChainedMethodCall
                 if (viewingOptionSpinner.getSelectedItem().toString() == "Water Source Reports") {
                     WaterSourceReport clickedItem = sourceReportList.get(position);
-//                    Toast.makeText(getApplicationContext(),
-//                            "Submitted By: " + clickedItem.getSubmittedBy()
-//                                    + "\n\nDate: " + clickedItem.getDate()
-//                                    + "\n\nLocation: " + clickedItem.getLocation()
-//                                    + "\n\nWater Type: " + clickedItem.getWaterType()
-//                                    + "\n\nWater Condition: " + clickedItem.getWaterCondition() + "\n\n" , Toast.LENGTH_SHORT)
-//                            .show();
-                    Intent newActivity = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
+
+                    Intent newActivity = new Intent(
+                            ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
                     newActivity.putExtra("USER", user);
                     newActivity.putExtra("POSITION", position);
                     newActivity.putExtra("REPORT", clickedItem);
                     newActivity.putExtra("REPORT TYPE", "WaterSourceReport");
                     startActivity(newActivity);
-                } else if (viewingOptionSpinner.getSelectedItem().toString() == "Water Purity Reports") {
+                } else //noinspection StringEquality,ChainedMethodCall
+                    if (viewingOptionSpinner.getSelectedItem().toString()
+                            == "Water Purity Reports") {
                     WaterPurityReport clickedItem = purityReportList.get(position);
-//                    Toast.makeText(getApplicationContext(),
-//                            "Submitted By: " + clickedItem.getSubmittedBy()
-//                                    + "\n\nDate: " + clickedItem.getDate()
-//                                    + "\n\nLocation: " + clickedItem.getLocation()
-//                                    + "\n\nOverall Condition: " + clickedItem.getOverallCondition()
-//                                    + "\n\nVirus PPM: " + clickedItem.getVirusPPM()
-//                                    + "\n\nContaminant PPM: " + clickedItem.getContaminantPPM() + "\n\n" , Toast.LENGTH_SHORT)
-//                            .show();
-                    Intent newActivity2 = new Intent(ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
+
+                    Intent newActivity2 = new Intent(
+                            ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
                     newActivity2.putExtra("USER", user);
                     newActivity2.putExtra("POSITION", position);
                     newActivity2.putExtra("REPORT", clickedItem);
