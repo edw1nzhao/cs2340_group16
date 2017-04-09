@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content">
 
                 <android.support.v7.widget.Toolbar
-                    android:id="@+id/edit_profile_toolbar"
+                    android:id="@+id/ban_user_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/colorPrimary"
