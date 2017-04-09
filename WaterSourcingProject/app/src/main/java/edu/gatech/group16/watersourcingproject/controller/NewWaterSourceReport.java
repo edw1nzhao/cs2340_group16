@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -237,8 +238,19 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
             dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
+                    String uid = user.getUid();
+                    Collection<User> listUsers = new ArrayList<>();
+
                     for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                         User temp = postSnapshot.getValue(User.class);
+                        //noinspection ChainedMethodCall
+                        snapshot.getRef().removeValue();
+                        //noinspection ChainedMethodCall
+                        if (temp.getUid().equals(uid)) {
+                            temp = user;
+                        }
+
+                        listUsers.add(temp);
                         //noinspection ChainedMethodCall
                         snapshot.getRef().removeValue();
                         users.add(temp);
@@ -256,15 +268,16 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                     }
 
                     FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference dbRef = db.getReference();
-                    @SuppressWarnings("ChainedMethodCall") DatabaseReference newRef
-                            = dbRef.child("users").push();
-                    User pushedUser = users.get(marker);
-
-                    for (int j = 0; j < users.size(); j++) {
-                        newRef.setValue(users.get(j));
-                    }
-                    newRef.setValue(pushedUser);
+                    DatabaseReference dbRef = db.getReference("users");
+//                    @SuppressWarnings("ChainedMethodCall") DatabaseReference newRef
+//                            = dbRef.child("users").push();
+//                    User pushedUser = users.get(marker);
+//
+//                    for (int j = 0; j < users.size(); j++) {
+//                        newRef.setValue(users.get(j));
+//                    }
+//                    newRef.setValue(pushedUser);
+                    dbRef.child(uid).setValue(NewWaterSourceReport.this.user);
 
                     home_test.putExtra("USER", user);
                     startActivity(home_test);
