@@ -61,7 +61,6 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:elevation="0dp"
-
             app:elevation="0dp"
             app:fabSize="mini"
             app:srcCompat="@drawable/ic_expand" />
@@ -75,7 +74,7 @@
 
             android:visibility="invisible"
             app:fabSize="mini"
-            app:srcCompat="@android:drawable/ic_menu_manage" />
+            app:srcCompat="@drawable/cog" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabLogout"
@@ -83,10 +82,20 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:elevation="0dp"
-
             android:visibility="invisible"
             app:fabSize="mini"
             app:srcCompat="@android:drawable/presence_offline" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:elevation="0dp"
+            android:visibility="invisible"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/admin" />
+
     </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView

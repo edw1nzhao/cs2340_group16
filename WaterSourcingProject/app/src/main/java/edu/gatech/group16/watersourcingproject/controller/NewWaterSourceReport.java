@@ -206,8 +206,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         boolean reportBoolean = switchButton.isChecked();
 
         if ((i == R.id.button_submit) && validCoordinate()) {
-            @SuppressWarnings("UnusedAssignment") Intent home_activity
-                    = new Intent(this, HomeActivity.class);
+            @SuppressWarnings("UnusedAssignment") Intent home_activity = new Intent(this, HomeActivity.class);
             if (!reportBoolean) {
                 List<WaterSourceReport> wsReports = user.getWaterSourceReport();
                 if (wsReports == null) {
@@ -218,14 +217,16 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                 user.setWaterSourceReports(wsReports);
 
             } else {
-                List<WaterPurityReport> wpReports = user.getWaterPurityReport();
-                
-                if (wpReports == null) {
-                    wpReports = new ArrayList<>();
+                if (validPPM()) {
+                    List<WaterPurityReport> wpReports = user.getWaterPurityReport();
+
+                    if (wpReports == null) {
+                        wpReports = new ArrayList<>();
+                    }
+
+                    wpReports.add(compileWaterPurityReport());
+                    user.setWaterPurityReports(wpReports);
                 }
-               
-                wpReports.add(compileWaterPurityReport());
-                user.setWaterPurityReports(wpReports);
             }
 
             FirebaseDatabase db = FirebaseDatabase.getInstance();
@@ -365,6 +366,11 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         } else if (latitude.matches(".*[a-z].*")) {
             waterLocationLatitude.setError("Incorrect format.");
             valid = false;
+        } else if (latitude.contains("+") || latitude.contains("*") || latitude.contains("#")
+                || latitude.contains(";") || latitude.contains(",") || latitude.contains("(")
+                || latitude.contains(")") || latitude.contains("/")) {
+            waterLocationLatitude.setError("Contains invalid character");
+            valid = false;
         } else //noinspection MagicNumber,MagicNumber
             if ((Double.parseDouble(latitude) < -90) || (Double.parseDouble(latitude) > 90)) {
             waterLocationLatitude.setError("Must be between 0° and (+/–)90°.");
@@ -379,12 +385,60 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         } else if (longitude.matches(".*[a-z].*")) {
             waterLocationLongitude.setError("Incorrect format.");
             valid = false;
-        }else //noinspection MagicNumber,MagicNumber
+         } else if (longitude.contains("+") || longitude.contains("*") || longitude.contains("#")
+                || longitude.contains(";") || longitude.contains(",") || longitude.contains("(")
+                || longitude.contains(")") || longitude.contains("/")) {
+            waterLocationLongitude.setError("Contains invalid character");
+            valid = false;
+        } else //noinspection MagicNumber,MagicNumber
             if ((Double.parseDouble(longitude) < -180) || (Double.parseDouble(longitude) > 180)) {
             waterLocationLongitude.setError("Must be between 0° and (+/–)180°.");
             valid = false;
         } else {
             waterLocationLongitude.setError(null);
+        }
+        return valid;
+    }
+
+    private boolean validPPM() {
+        String virusPPM = waterVirusPPM.getText().toString();
+        String contaminantPPM = waterContaminantPPM.getText().toString();
+        boolean valid = true;
+
+        if (virusPPM.isEmpty()) {
+            waterVirusPPM.setError("Required.");
+            valid = false;
+        } else if (virusPPM.matches(".*[a-zA-Z].*")) {
+            waterVirusPPM.setError("Incorrect format.");
+            valid = false;
+        } else if (virusPPM.contains("+") || virusPPM.contains("*") || virusPPM.contains("#")
+                || virusPPM.contains(";") || virusPPM.contains(",") || virusPPM.contains("(")
+                || virusPPM.contains(")") || virusPPM.contains("/")) {
+            waterVirusPPM.setError("Contains invalid character.");
+            valid = false;
+        } else if (Double.parseDouble(virusPPM) < 0) {
+            waterVirusPPM.setError("Virus PPM cannot be negative.");
+            valid = false;
+        } else {
+            waterVirusPPM.setError("Error");
+        }
+
+        if (contaminantPPM.isEmpty()) {
+            waterContaminantPPM.setError("Required.");
+            valid = false;
+        } else if (contaminantPPM.matches(".*[a-zA-Z].*")) {
+            waterContaminantPPM.setError("Incorrect format.");
+            valid = false;
+        } else if (contaminantPPM.contains("+") || contaminantPPM.contains("*") || contaminantPPM.contains("#")
+                || contaminantPPM.contains(";") || contaminantPPM.contains(",") || contaminantPPM.contains("(")
+                || contaminantPPM.contains(")") || contaminantPPM.contains("/")) {
+            waterContaminantPPM.setError("Contains invalid character.");
+            valid = false;
+        } else if (Double.parseDouble(contaminantPPM) < 0) {
+            waterContaminantPPM.setError("Virus PPM cannot be negative.");
+            valid = false;
+        } else {
+            waterContaminantPPM.setError("Error");
         }
         return valid;
     }

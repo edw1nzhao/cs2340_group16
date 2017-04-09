@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import edu.gatech.group16.watersourcingproject.R;
+import edu.gatech.group16.watersourcingproject.controller.admin.AdminActivity;
 import edu.gatech.group16.watersourcingproject.controller.login.LoginActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
 
@@ -24,6 +25,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private User user;
     private FloatingActionButton fabEdit;
     private FloatingActionButton fabLogout;
+    private FloatingActionButton fabAdmin;
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -62,7 +64,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressWarnings("FeatureEnvy")
     @SuppressLint("SetTextI18n")
     private void dataSetup() {
-
         TextView nameField = (TextView) findViewById(R.id.name_field);
         TextView emailField = (TextView) findViewById(R.id.email_field);
         TextView accountTypeField = (TextView) findViewById(R.id.account_field);
@@ -112,6 +113,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 });
 
     }
+
     /**
      * Fab setup
      *
@@ -120,6 +122,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fabEdit = (FloatingActionButton) findViewById(R.id.fabEdit);
         fabLogout = (FloatingActionButton) findViewById(R.id.fabLogout);
+        fabAdmin = (FloatingActionButton) findViewById(R.id.fabAdmin);
 
         fab.setOnClickListener(new View.OnClickListener() {
             boolean open = false;
@@ -128,10 +131,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 if (!open) {
                     fabEdit.show();
                     fabLogout.show();
+                    fabAdmin.show();
                     open = true;
                 } else {
                     fabEdit.hide();
                     fabLogout.hide();
+                    fabAdmin.hide();
                     open = false;
                 }
             }
@@ -152,6 +157,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View v) {
                 Intent logoutIntent = new Intent(HomeActivity.this, LoginActivity.class);
                 startActivity(logoutIntent);
+                HomeActivity.this.finish();
+            }
+        });
+
+        fabAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent adminIntent = new Intent(HomeActivity.this, AdminActivity.class);
+                startActivity(adminIntent);
                 HomeActivity.this.finish();
             }
         });

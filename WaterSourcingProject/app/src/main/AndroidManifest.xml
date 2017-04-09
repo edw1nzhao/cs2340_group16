@@ -112,6 +112,21 @@
             android:name=".controller.HistoricalReportParametersActivity"
             android:label="@string/title_activity_historical_report_parameters"
             android:theme="@style/AppTheme"/>
+
+        <activity
+            android:name=".controller.admin.AdminActivity"
+            android:label="@string/title_activity_admin"
+            android:theme="@style/AppTheme"/>
+
+        <activity
+            android:name=".controller.admin.BanUserActivity"
+            android:label="@string/title_activity_ban_user"
+            android:theme="@style/AppTheme"/>
+
+        <activity
+            android:name=".controller.admin.RemoveReportActivity"
+            android:label="@string/title_activity_remove_report"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
