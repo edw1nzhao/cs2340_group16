@@ -87,8 +87,7 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
         int i = v.getId();
 
         if (i == R.id.reg_button_signup) {
-            @SuppressWarnings({"ConstantConditions", "ChainedMethodCall"}) String uid
-                    = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             //noinspection ChainedMethodCall
             user.setPassword(passwordField.getText().toString());
             user.setUid(uid);
@@ -122,7 +121,7 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
      * @return boolean gives back false if not signed in.
      */
     private boolean createAccount(String email, String password) {
-        if (!validateForm()) {
+        if (!validateForm(passwordField.getText().toString())) {
             return valid;
         }
 
@@ -161,8 +160,7 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
                     } else {
                         // Save user data after authentication is proven
 
-                        @SuppressWarnings({"ConstantConditions", "ChainedMethodCall"}) String uid
-                                = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         user.setUid(uid);
                         DatabaseReference dRef = db.getReference("users");
                         //noinspection ChainedMethodCall
@@ -184,18 +182,18 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
      *
      * @return boolean gives back true if form is of correct syntax.
      */
-    private boolean validateForm() {
+    public static boolean validateForm(String pass) {
         boolean valid = true;
-        @SuppressWarnings("ChainedMethodCall") String password = passwordField.getText().toString();
-        if (TextUtils.isEmpty(password)) {
-            passwordField.setError("Required.");
+        @SuppressWarnings("ChainedMethodCall") String password = pass;
+        if (password.equals("")) {
+//            passwordField.setError("Required.");
             valid = false;
         } else //noinspection MagicNumber
             if ((password.length() < 6) || (password.length() > 23)) {
-            passwordField.setError("Password must be between 6 and 23 characters.");
+//            passwordField.setError("Password must be between 6 and 23 characters.");
             valid = false;
         } else {
-            passwordField.setError(null);
+//            passwordField.setError(null);
         }
 
         return valid;
