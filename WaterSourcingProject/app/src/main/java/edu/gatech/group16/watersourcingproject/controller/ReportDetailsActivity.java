@@ -102,7 +102,7 @@ public class ReportDetailsActivity extends AppCompatActivity {
                         = new Intent(ReportDetailsActivity.this, ViewWaterSourcesActivity.class);
                 intent.putExtra("USER", user);
                 startActivity(intent);
-
+                ReportDetailsActivity.this.finish();
             }
         });
     }

@@ -53,6 +53,7 @@ public class HistoricalReportActivity extends AppCompatActivity {
                         HistoricalReportActivity.this, HistoricalReportParametersActivity.class);
                 intent.putExtra("USER", user);
                 startActivity(intent);
+                HistoricalReportActivity.this.finish();
             }
         });
 

@@ -123,6 +123,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                 Intent intent = new Intent(ViewWaterSourcesActivity.this, HomeActivity.class);
                 intent.putExtra("USER", user);
                 startActivity(intent);
+                ViewWaterSourcesActivity.this.finish();
             }
         });
 
@@ -223,6 +224,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                         HistoricalReportParametersActivity.class);
                                 intent.putExtra("USER", user);
                                 startActivity(intent);
+                                ViewWaterSourcesActivity.this.finish();
                                 break;
                             case R.id.action_my_reports:
                                 viewingOptionSpinner.setSelection(0);
@@ -274,6 +276,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                     newActivity.putExtra("REPORT", clickedItem);
                     newActivity.putExtra("REPORT TYPE", "WaterSourceReport");
                     startActivity(newActivity);
+                    ViewWaterSourcesActivity.this.finish();
                 } else //noinspection StringEquality,ChainedMethodCall
                     if (viewingOptionSpinner.getSelectedItem().toString()
                             == "Water Purity Reports") {
@@ -286,6 +289,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                     newActivity2.putExtra("REPORT", clickedItem);
                     newActivity2.putExtra("REPORT TYPE", "WaterPurityReport");
                     startActivity(newActivity2);
+                    ViewWaterSourcesActivity.this.finish();
                 }
             }
         });

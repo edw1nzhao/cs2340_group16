@@ -63,6 +63,7 @@ public class MapsActivity extends AppCompatActivity
                 Intent intent = new Intent(MapsActivity.this, HomeActivity.class);
                 intent.putExtra("USER", user);
                 startActivity(intent);
+                MapsActivity.this.finish();
             }
         });
     }

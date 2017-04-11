@@ -220,14 +220,15 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     private void addWaterPurityReport() {
         final Intent home_activity = new Intent(this, HomeActivity.class);
 
+        final WaterPurityReport newRep = compileWaterPurityReport();
+
+
         if (validPPM()) {
             List<WaterPurityReport> wpReports = user.getWaterPurityReport();
 
             if (wpReports == null) {
                 wpReports = new ArrayList<>();
             }
-
-            final WaterPurityReport newRep = compileWaterPurityReport();
 
             wpReports.add(newRep);
             user.setWaterPurityReports(wpReports);
@@ -254,13 +255,23 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                                 User temp = postSnapshot.getValue(User.class);
 
                                 if (temp.getUid().equals(uid)) {
-                                    dbRefUser.child(uid).setValue(NewWaterSourceReport.this.user);
+                                    List<WaterPurityReport> newList;
+                                    try {
+                                        newList = (List<WaterPurityReport>) postSnapshot.child("waterPurityReport").getValue();
+                                        newList.add(newRep);
+                                    } catch (NullPointerException e) {
+                                        newList = new ArrayList<>();
+                                        newList.add(newRep);
+                                    }
+                                    user.setWaterPurityReports(newList);
+
+                                    dbRefUser.child(uid).child("waterPurityReport").setValue(newList);
                                 }
                             }
 
                             home_activity.putExtra("USER", user);
                             startActivity(home_activity);
-                            finish();
+                            NewWaterSourceReport.this.finish();
                         }
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
@@ -275,23 +286,10 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
             });
         }
     }
-
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void addWaterSourceReport() {
         final Intent home_activity = new Intent(NewWaterSourceReport.this, HomeActivity.class);
-
         final WaterSourceReport newRep = compileWaterSourceReport();
-
-//        List<WaterSourceReport> wsReports = user.getWaterSourceReport();
-//
-//        if (wsReports == null) {
-//            wsReports = new ArrayList<>();
-//        }
-//        Log.d("LOLOL", wsReports.size()+ "");
-//        wsReports.add(newRep);
-//        Log.d("LLOL", wsReports.size()+ "");
-
-       // user.setWaterSourceReports(wsReports);
 
         dbRefSource.child("count").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -319,7 +317,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                                 try {
                                     newList = (List<WaterSourceReport>) postSnapshot.child("waterSourceReport").getValue();
                                     newList.add(newRep);
-
                                 } catch (NullPointerException e) {
                                     newList = new ArrayList<>();
                                     newList.add(newRep);
@@ -353,8 +350,8 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
      * @return wsReport a newly created water source report
      */
     @RequiresApi(api = Build.VERSION_CODES.N)
-    private WaterSourceReport compileWaterSourceReport() {
 
+    private WaterSourceReport compileWaterSourceReport() {
         Date currentDate = new Date();
         @SuppressWarnings("ChainedMethodCall") String location
                 = waterLocationLatitude.getText().toString() + ","
@@ -369,15 +366,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private WaterPurityReport compileWaterPurityReport() {
-        reportNumber = Integer.parseInt(dbRefPurity.child("count").toString());
-        try {
-            reportNumber++;
-            dbRefPurity.child("count").setValue(reportNumber);
-        } catch (Exception e) {
-            dbRefPurity.child("count").setValue(1);
-            reportNumber = 1;
-        }
-
         Date currentDate = new Date();
         @SuppressWarnings("ChainedMethodCall") String location
                 = waterLocationLatitude.getText().toString()
@@ -388,29 +376,11 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         @SuppressWarnings("ChainedMethodCall") int cPPM
                 = Integer.parseInt(waterContaminantPPM.getText().toString());
         String submittedBy = user.getName();
+
         return new WaterPurityReport(
                 reportNumber, currentDate, location, condition, submittedBy, vPPM, cPPM, uid);
     }
 
-//    /**
-//     * getReportNum method looks into users report size.
-//     *
-//     * @return int the number of reports.
-//     */
-//    @SuppressWarnings("FeatureEnvy")
-//    private static int getReportNumber() {
-//        if ((user.getWaterSourceReport() == null) && (user.getWaterPurityReport() == null)) {
-//            return 1;
-//        } else if (user.getWaterPurityReport() == null) {
-//            //noinspection ChainedMethodCall
-//            return user.getWaterSourceReport().size() + 1;
-//        } else if (user.getWaterSourceReport() == null) {
-//            //noinspection ChainedMethodCall
-//            return user.getWaterPurityReport().size() + 1;
-//        }
-//        //noinspection ChainedMethodCall,ChainedMethodCall
-//        return user.getWaterSourceReport().size() + user.getWaterPurityReport().size() + 1;
-//    }
 
     /**
      * Location method that gets the user's location

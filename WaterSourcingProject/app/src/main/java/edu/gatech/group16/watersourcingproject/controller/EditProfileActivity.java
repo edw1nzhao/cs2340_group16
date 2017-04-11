@@ -131,7 +131,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
 
                     home_activity.putExtra("USER", user);
                     startActivity(home_activity);
-                    finish();
+                    EditProfileActivity.this.finish();
                 }
                 @Override
                 public void onCancelled(DatabaseError databaseError) {

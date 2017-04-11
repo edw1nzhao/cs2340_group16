@@ -72,6 +72,7 @@ public class HistoricalReportParametersActivity
                         HistoricalReportParametersActivity.this, ViewWaterSourcesActivity.class);
                 intent.putExtra("USER", user);
                 startActivity(intent);
+                HistoricalReportParametersActivity.this.finish();
             }
         });
 
@@ -95,6 +96,7 @@ public class HistoricalReportParametersActivity
             intent.putExtra("PPM", selectedPPM);
             intent.putExtra("YEAR", selectedYear);
             startActivity(intent);
+            HistoricalReportParametersActivity.this.finish();
         }
     }
 }
