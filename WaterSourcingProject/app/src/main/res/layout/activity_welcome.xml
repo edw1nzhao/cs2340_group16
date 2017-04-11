@@ -35,11 +35,11 @@
                 tools:ignore="ContentDescription,NestedWeights" />
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/imageView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.65"
-                app:srcCompat="@mipmap/Logo" />
+                app:srcCompat="@mipmap/logo" />
 
         </LinearLayout>
 
