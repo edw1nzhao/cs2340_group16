@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:text="@string/user_profile"
+            android:textColor="@color/colorDark"
             android:textSize="30sp" />
 
         <TextView
@@ -29,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/label_name"
+            android:textColor="@color/colorDark"
             tools:ignore="NestedWeights" />
 
         <TextView
@@ -36,13 +38,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/label_email" />
+            android:text="@string/label_email"
+            android:textColor="@color/colorDark" />
 
         <TextView
             android:id="@+id/account_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/label_account" />
+            android:text="@string/label_account"
+            android:textColor="@color/colorDark" />
 
     </LinearLayout>
 

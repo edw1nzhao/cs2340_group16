@@ -10,7 +10,7 @@
         android:id="@+id/historical_report_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimaryDark"
+        android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme" />
 
@@ -117,6 +117,7 @@
             android:layout_marginBottom="121dp"
             android:background="@color/colorButton"
             android:text="@string/button_submit"
+            android:textColor="@color/colorPrimary"
             tools:ignore="ButtonStyle" />
     </RelativeLayout>
 </FrameLayout>

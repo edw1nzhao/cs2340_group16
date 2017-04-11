@@ -39,7 +39,7 @@
                     android:id="@+id/edit_profile_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?attr/colorPrimary"
+                    android:background="@color/colorPrimary"
                     android:minHeight="?attr/actionBarSize"
                     android:theme="?attr/actionBarTheme" />
 
@@ -56,6 +56,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="50dp"
+                        android:textColor="@color/colorPrimaryDark"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
                     <LinearLayout
@@ -66,6 +67,7 @@
 
                         <TextView
                             android:text="@string/label_name"
+                            android:textColor="@color/colorPrimaryDark"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
@@ -75,12 +77,14 @@
                             android:inputType="textPersonName"
                             android:ems="10"
                             android:id="@+id/edit_text_name"
+                            android:textColor="@color/colorPrimaryDark"
                             tools:ignore="LabelFor" />
 
                         <TextView
                             android:text="@string/label_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:textColor="@color/colorPrimaryDark"
                             android:layout_marginTop="20dp" />
 
                         <EditText
@@ -89,11 +93,13 @@
                             android:inputType="textEmailAddress"
                             android:ems="10"
                             android:id="@+id/edit_text_email"
+                            android:textColor="@color/colorPrimaryDark"
                             tools:ignore="LabelFor" />
 
                         <TextView
                             android:text="@string/label_password"
                             android:layout_width="match_parent"
+                            android:textColor="@color/colorPrimaryDark"
                             android:layout_height="wrap_content" />
 
                         <EditText
@@ -102,6 +108,7 @@
                             android:inputType="textPassword"
                             android:ems="10"
                             android:id="@+id/edit_text_password"
+                            android:textColor="@color/colorPrimaryDark"
                             tools:ignore="LabelFor" />
 
                         <Button
@@ -112,6 +119,7 @@
                             android:layout_weight="1"
                             android:background="@color/colorButton"
                             android:text="@string/button_save"
+                            android:textColor="@color/colorPrimary"
                             tools:ignore="ButtonStyle" />
 
                     </LinearLayout>

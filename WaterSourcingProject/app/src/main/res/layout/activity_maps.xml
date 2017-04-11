@@ -40,7 +40,7 @@ tools:context="edu.gatech.group16.watersourcingproject.controller.HomeActivity">
                     android:id="@+id/map_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="?attr/colorPrimary"
+                    android:background="@color/colorPrimary"
                     android:minHeight="?attr/actionBarSize"
                     android:theme="?attr/actionBarTheme" />
 

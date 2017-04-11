@@ -30,7 +30,7 @@
             android:id="@+id/name_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="@color/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme" />
 
@@ -83,12 +83,13 @@
                             tools:ignore="LabelFor" />
 
                         <Button
-                            android:text="@string/button_continue"
+                            android:id="@+id/reg_button_continue"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/reg_button_continue"
+                            android:layout_marginTop="20dp"
                             android:background="@color/colorButton"
-                            android:layout_marginTop="20dp" />
+                            android:text="@string/button_continue"
+                            android:textColor="@color/colorPrimary" />
                     </LinearLayout>
 
                 </LinearLayout>

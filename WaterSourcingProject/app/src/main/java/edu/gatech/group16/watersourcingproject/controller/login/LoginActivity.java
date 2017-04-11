@@ -111,6 +111,10 @@ public class LoginActivity extends AppCompatActivity
         mStatusTextView = (TextView) findViewById(R.id.status);
         emailField = (EditText) findViewById(R.id.field_email);
         passwordField = (EditText) findViewById(R.id.field_password);
+        emailField.setTextColor(getResources().getColor(R.color.colorAccent));
+        emailField.setHintTextColor(getResources().getColor(R.color.colorAccent));
+        passwordField.setTextColor(getResources().getColor(R.color.colorAccent));
+        passwordField.setHintTextColor(getResources().getColor(R.color.colorAccent));
 
         // Buttons
         //noinspection ChainedMethodCall

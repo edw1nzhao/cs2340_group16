@@ -9,6 +9,7 @@
     android:weightSum="4"
     tools:ignore="Overdraw">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,7 +39,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                >
 
                 <EditText
                     android:id="@+id/field_email"
@@ -46,27 +48,19 @@
                     android:layout_height="wrap_content"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
-                    tools:ignore="HardcodedText" />
-            </android.support.design.widget.TextInputLayout>
-            <!--<EditText-->
-            <!--android:id="@+id/field_email"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_marginEnd="10dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@android:color/white"-->
-            <!--android:hint="@string/hint_email"-->
-            <!--android:inputType="textEmailAddress"-->
-            <!--android:padding="13dp"-->
-            <!--android:textColor="@android:color/black"-->
-            <!--android:textColorHint="@android:color/black" />-->
+                    android:textColor="@color/colorButton"
 
-            <!-- Password Label -->
+                    android:textColorHint="#6EB6FF"
+                    tools:ignore="HardcodedText" />
+
+            </android.support.design.widget.TextInputLayout>
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                >
 
                 <EditText
                     android:id="@+id/field_password"
@@ -74,20 +68,12 @@
                     android:layout_height="wrap_content"
                     android:hint="Password"
                     android:inputType="textPassword"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textColorHint="#6EB6FF"
+
+                    android:textColorLink="@color/colorAccent"
                     tools:ignore="HardcodedText" />
             </android.support.design.widget.TextInputLayout>
-            <!--<EditText-->
-            <!--android:id="@+id/field_password"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_marginStart="10dp"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@android:color/white"-->
-            <!--android:hint="@string/hint_password"-->
-            <!--android:inputType="textPassword"-->
-            <!--android:padding="13dp"-->
-            <!--android:textColor="@android:color/black"-->
-            <!--android:textColorHint="@android:color/black" />-->
         </LinearLayout>
 
         <LinearLayout
@@ -109,7 +95,8 @@
                     android:layout_marginTop="24dp"
                     android:background="@color/colorButton"
                     android:padding="12dp"
-                    android:text="@string/login" />
+                    android:text="@string/login"
+                    android:textColor="@color/colorPrimary" />
 
                 <TextView
                     android:id="@+id/email_create_account_button"
@@ -118,6 +105,7 @@
                     android:layout_marginBottom="24dp"
                     android:gravity="center"
                     android:text="@string/newAccountLogin"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp" />
             </LinearLayout>
 
@@ -157,6 +145,7 @@
             style="@style/ThemeOverlay.MyTextDetail"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
+            android:textColor="@color/colorPrimaryDark"
             tools:text="Firebase User ID: 123456789abc" />
 
         <TextView
@@ -165,6 +154,7 @@
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_weight="0.10"
+            android:textColor="@color/colorPrimaryDark"
             android:text="@string/signed_out" />
 
     </LinearLayout>

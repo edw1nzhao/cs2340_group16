@@ -1,9 +1,11 @@
 package edu.gatech.group16.watersourcingproject.controller.login;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 import edu.gatech.group16.watersourcingproject.R;
 
@@ -27,10 +29,15 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_welcome);
-        //noinspection ChainedMethodCall
+
         findViewById(R.id.logo).setOnClickListener(this);
-//        findViewById(R.id.welcome_button_signin).setOnClickListener(this);
-//        findViewById(R.id.welcome_button_signup).setOnClickListener(this);
+
+
+//        TextView tx = (TextView)findViewById(R.id.title);
+//        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/AvenirLTStd-Roman.ttf");
+//
+//        tx.setTypeface(custom_font);
+
     }
 
     /**
