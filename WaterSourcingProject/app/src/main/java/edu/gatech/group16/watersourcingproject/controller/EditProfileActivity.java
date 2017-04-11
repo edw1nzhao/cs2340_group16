@@ -123,23 +123,9 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                     String uid = user.getUid();
                     Collection<User> listUsers = new ArrayList<>();
 
-                    for (DataSnapshot snap : snapshot.getChildren()) {
-                        User temp = snap.getValue(User.class);
-                        //noinspection ChainedMethodCall
-                        snapshot.getRef().removeValue();
-                        //noinspection ChainedMethodCall
-                        if (temp.getUid().equals(uid)) {
-                            temp = user;
-                        }
-
-                        listUsers.add(temp);
-                    }
-
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference dRef = database.getReference("users");
-                    //noinspection StatementWithEmptyBody
-                    for (int i = 0; i < listUsers.size(); i++) {
-                    }
+
                     //noinspection ChainedMethodCall
                     dRef.child(uid).setValue(EditProfileActivity.this.user);
 

@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -41,6 +42,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.application_home);
         //noinspection ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
+
+        try {
+            Log.d("HOMEFIRST", user.getWaterSourceReport().size() + "");
+        } catch (NullPointerException e){
+            Log.d("NULLHOME", "AAAA");
+        }
 
         dataSetup();
         uiSetup();
@@ -92,12 +99,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                                         = new Intent(HomeActivity.this, MapsActivity.class);
                                 mapIntent.putExtra("USER", user);
                                 startActivity(mapIntent);
+                                HomeActivity.this.finish();
                                 break;
                             case R.id.action_newReport:
                                 Intent newReportIntent
                                         = new Intent(HomeActivity.this, NewWaterSourceReport.class);
                                 newReportIntent.putExtra("USER", user);
                                 startActivity(newReportIntent);
+                                HomeActivity.this.finish();
                                 break;
                             case R.id.action_viewReports:
                                 Intent viewReportIntent
@@ -105,6 +114,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                                                 HomeActivity.this, ViewWaterSourcesActivity.class);
                                 viewReportIntent.putExtra("USER", user);
                                 startActivity(viewReportIntent);
+                                HomeActivity.this.finish();
                                 break;
                         }
                         return true;

@@ -19,6 +19,7 @@ public class WaterPurityReport implements Serializable {
     private String submittedBy;
     private int virusPPM;
     private int contaminantPPM;
+    private String uid;
 
     /**
      * Empty constructor for Firebase
@@ -38,11 +39,12 @@ public class WaterPurityReport implements Serializable {
      * @param submittedBy
      * @param virusPPM
      * @param contaminantPPM
+     * @param uid
      */
     @SuppressWarnings({"JavaDoc", "ConstructorWithTooManyParameters"})
     public WaterPurityReport(int reportNumber, Date date, String location,
                              OverallCondition overallCondition, String submittedBy,
-                             int virusPPM, int contaminantPPM) {
+                             int virusPPM, int contaminantPPM, String uid) {
         //super(reportNumber, date, location, submittedBy);
         this.reportNumber = reportNumber;
         this.date = date;
@@ -51,6 +53,7 @@ public class WaterPurityReport implements Serializable {
         this.submittedBy = submittedBy;
         this.virusPPM = virusPPM;
         this.contaminantPPM = contaminantPPM;
+        this.uid = uid;
     }
 
     /**
@@ -170,6 +173,12 @@ public class WaterPurityReport implements Serializable {
      */
     public int getContaminantPPM() { return contaminantPPM; }
 
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+    public String getUid() {
+        return this.uid;
+    }
     /**
      * Setter for contaminantPPM
      *
@@ -187,7 +196,8 @@ public class WaterPurityReport implements Serializable {
                 ", waterCondition=" + overallCondition +
                 ", virusPPM=" + virusPPM +
                 ", contaminantPPM=" + contaminantPPM +
-                ", submittedBy='" + submittedBy + '\'' +
+                ", submittedBy='" + submittedBy +
+                ", uid='" + uid + '\'' +
                 '}';
     }
 }

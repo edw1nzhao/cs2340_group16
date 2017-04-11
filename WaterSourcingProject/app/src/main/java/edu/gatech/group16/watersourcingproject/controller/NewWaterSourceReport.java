@@ -8,6 +8,7 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,6 +20,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,14 +44,18 @@ import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 @SuppressWarnings({"unused", "CyclicClassDependency", "JavaDoc"})
 public class NewWaterSourceReport extends AppCompatActivity implements OnClickListener {
 
+    final FirebaseDatabase db = FirebaseDatabase.getInstance();
+    final DatabaseReference dbRef = db.getReference();
+    final DatabaseReference dbRefUser = db.getReference("users");
+    DatabaseReference dbRefPurity = db.getReference("purity_report");
+    DatabaseReference dbRefSource = db.getReference("source_report");
     private static User user;
-    @SuppressWarnings("unused")
     private String currentDateTimeString;
     private Spinner waterType;
     private Spinner waterCondition;
     private Spinner overallCondition;
-    private static EditText waterLocationLatitude;
-    private static EditText waterLocationLongitude;
+    private EditText waterLocationLatitude;
+    private EditText waterLocationLongitude;
     private EditText waterVirusPPM;
     private EditText waterContaminantPPM;
     private TextView reportTitle;
@@ -57,9 +63,10 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     private TextView waterTypeAndVirusPPMTitle;
     private TextView waterConditionAndOverallConditionTitle;
     private Switch switchButton;
-    @SuppressWarnings("unused")
     private String oldEmail;
+    private String uid;
     private final List<User> users = new ArrayList<>();
+    private int reportNumber;
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -73,7 +80,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_ws_report);
-        //noinspection AssignmentToStaticFieldFromInstanceMethod,ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
 
         uiSetup();
@@ -89,7 +95,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         waterTypeAndVirusPPMTitle = (TextView) findViewById(R.id.title_water_type_and_virus_ppm);
         waterConditionAndOverallConditionTitle
                 = (TextView) findViewById(R.id.title_water_condition_and_overall_condition);
-
 
         //Water Source Report UI
         waterType = (Spinner) findViewById(R.id.spinner_water_type);
@@ -134,7 +139,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
             @SuppressLint("SetTextI18n")
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
                 if (isChecked) {
                     //Updates UI for Water Purity Report
                     reportTitle.setText("Water Purity Report");
@@ -149,9 +153,6 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
                     contaminantTitle.setVisibility(View.VISIBLE);
                     waterContaminantPPM.setVisibility(View.VISIBLE);
-                    //noinspection ChainedMethodCall
-                    Toast.makeText(getApplicationContext(),
-                            "Toggle is ON", Toast.LENGTH_SHORT).show();
                 } else {
                     //Updates UI for Water Source Report
                     reportTitle.setText("Water Source Report");
@@ -166,26 +167,23 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
                     contaminantTitle.setVisibility(View.INVISIBLE);
                     waterContaminantPPM.setVisibility(View.INVISIBLE);
-                    //noinspection ChainedMethodCall
-                    Toast.makeText(getApplicationContext(),
-                            "Toggle is OFF", Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
     }
 
     private void dataSetup() {
-        // Fills the spinners with ENUM
-        @SuppressWarnings("unchecked") SpinnerAdapter adaptWaterCondition
-                = new ArrayAdapter(this, android.R.layout.simple_spinner_item,
+        SpinnerAdapter adaptWaterCondition
+                = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
                 WaterSourceReport.legalConditions);
-        @SuppressWarnings("unchecked") SpinnerAdapter adaptWaterType
-                = new ArrayAdapter(this, android.R.layout.simple_spinner_item,
+        SpinnerAdapter adaptWaterType
+                = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
                 WaterSourceReport.legalTypes);
         @SuppressWarnings("unchecked") SpinnerAdapter adaptOverallCondition
-                = new ArrayAdapter(this, android.R.layout.simple_spinner_item,
+                = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
                 WaterPurityReport.legalOverallConditions);
-
+        uid = user.getUid();
         waterType.setAdapter(adaptWaterType);
         waterCondition.setAdapter(adaptWaterCondition);
         overallCondition.setAdapter(adaptOverallCondition);
@@ -204,92 +202,150 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     @Override
     public void onClick(View v) {
         int i = v.getId();
-        boolean reportBoolean = switchButton.isChecked();
+        final boolean reportBoolean = switchButton.isChecked();
 
-        if ((i == R.id.button_submit) && validCoordinate(waterLocationLatitude.getText().toString(), waterLocationLongitude.getText().toString())) {
-            @SuppressWarnings("UnusedAssignment") Intent home_activity = new Intent(this, HomeActivity.class);
+        if ((i == R.id.button_submit) && validCoordinate()) {
             if (!reportBoolean) {
-                List<WaterSourceReport> wsReports = user.getWaterSourceReport();
-                if (wsReports == null) {
-                    wsReports = new ArrayList<>();
-                }
-
-                wsReports.add(compileWaterSourceReport());
-                user.setWaterSourceReports(wsReports);
-
+                addWaterSourceReport();
             } else {
-                if (validVirusPPM(waterVirusPPM.getText().toString()) && validContaminantPPM(waterContaminantPPM.getText().toString())) {
-                    List<WaterPurityReport> wpReports = user.getWaterPurityReport();
-
-                    if (wpReports == null) {
-                        wpReports = new ArrayList<>();
-                    }
-
-                    wpReports.add(compileWaterPurityReport());
-                    user.setWaterPurityReports(wpReports);
-                }
+               addWaterPurityReport();
             }
 
-            FirebaseDatabase db = FirebaseDatabase.getInstance();
-            final DatabaseReference dbRef = db.getReference();
-            final Intent home_test = new Intent(this, HomeActivity.class);
-
             //noinspection ChainedMethodCall
-            dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void addWaterPurityReport() {
+        final Intent home_activity = new Intent(this, HomeActivity.class);
+
+        if (validPPM()) {
+            List<WaterPurityReport> wpReports = user.getWaterPurityReport();
+
+            if (wpReports == null) {
+                wpReports = new ArrayList<>();
+            }
+
+            final WaterPurityReport newRep = compileWaterPurityReport();
+
+            wpReports.add(newRep);
+            user.setWaterPurityReports(wpReports);
+
+            dbRefPurity.child("count").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot snapshot) {
-                    String uid = user.getUid();
-                    Collection<User> listUsers = new ArrayList<>();
-
-                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-                        User temp = postSnapshot.getValue(User.class);
-                        //noinspection ChainedMethodCall
-                        snapshot.getRef().removeValue();
-                        //noinspection ChainedMethodCall
-                        if (temp.getUid().equals(uid)) {
-                            temp = user;
-                        }
-
-                        listUsers.add(temp);
-                        //noinspection ChainedMethodCall
-                        snapshot.getRef().removeValue();
-                        users.add(temp);
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    try {
+                        reportNumber = dataSnapshot.getValue(int.class);
+                        reportNumber++;
+                    } catch (NullPointerException e) {
+                        reportNumber = 1;
                     }
+                    newRep.setReportNumber(reportNumber);
 
-                    int i = 0;
-                    int marker = -1;
-                    for (User u: users) {
-                        //noinspection ChainedMethodCall
-                        if (u.getEmail().equals(user.getEmail())) {
-                            users.set(i, user);
-                            marker = i;
+                    dbRefPurity.child("count").setValue(reportNumber);
+                    dbRefPurity.child(String.valueOf(newRep.getReportNumber())).setValue(newRep);
+                    dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot snapshot) {
+                            String uid = user.getUid();
+
+                            for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                                User temp = postSnapshot.getValue(User.class);
+
+                                if (temp.getUid().equals(uid)) {
+                                    dbRefUser.child(uid).setValue(NewWaterSourceReport.this.user);
+                                }
+                            }
+
+                            home_activity.putExtra("USER", user);
+                            startActivity(home_activity);
+                            finish();
                         }
-                        i++;
-                    }
-
-                    FirebaseDatabase db = FirebaseDatabase.getInstance();
-                    DatabaseReference dbRef = db.getReference("users");
-//                    @SuppressWarnings("ChainedMethodCall") DatabaseReference newRef
-//                            = dbRef.child("users").push();
-//                    User pushedUser = users.get(marker);
-//
-//                    for (int j = 0; j < users.size(); j++) {
-//                        newRef.setValue(users.get(j));
-//                    }
-//                    newRef.setValue(pushedUser);
-                    dbRef.child(uid).setValue(NewWaterSourceReport.this.user);
-
-                    home_test.putExtra("USER", user);
-                    startActivity(home_test);
-                    finish();
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                        }
+                    });
                 }
+
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
+
                 }
             });
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    private void addWaterSourceReport() {
+        final Intent home_activity = new Intent(NewWaterSourceReport.this, HomeActivity.class);
+
+        final WaterSourceReport newRep = compileWaterSourceReport();
+
+//        List<WaterSourceReport> wsReports = user.getWaterSourceReport();
+//
+//        if (wsReports == null) {
+//            wsReports = new ArrayList<>();
+//        }
+//        Log.d("LOLOL", wsReports.size()+ "");
+//        wsReports.add(newRep);
+//        Log.d("LLOL", wsReports.size()+ "");
+
+       // user.setWaterSourceReports(wsReports);
+
+        dbRefSource.child("count").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                try {
+                    reportNumber = dataSnapshot.getValue(int.class);
+                    reportNumber++;
+                } catch (NullPointerException e) {
+                    reportNumber = 1;
+                }
+                newRep.setReportNumber(reportNumber);
+
+                dbRefSource.child("count").setValue(reportNumber);
+                dbRefSource.child(String.valueOf(newRep.getReportNumber())).setValue(newRep);
+                dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        String uid = user.getUid();
+
+                        for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                            User temp = postSnapshot.getValue(User.class);
+
+                            if (temp.getUid().equals(uid)) {
+                                List<WaterSourceReport> newList;
+                                try {
+                                    newList = (List<WaterSourceReport>) postSnapshot.child("waterSourceReport").getValue();
+                                    newList.add(newRep);
+
+                                } catch (NullPointerException e) {
+                                    newList = new ArrayList<>();
+                                    newList.add(newRep);
+                                }
+
+                                user.setWaterSourceReports(newList);
+                                dbRefUser.child(uid).child("waterSourceReport").setValue(newList);
+                            }
+                        }
+
+                        home_activity.putExtra("USER", user);
+                        startActivity(home_activity);
+                        NewWaterSourceReport.this.finish();
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
     /**
      * compileReport method which will create a new report and put
      * all of the
@@ -298,7 +354,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
      */
     @RequiresApi(api = Build.VERSION_CODES.N)
     private WaterSourceReport compileWaterSourceReport() {
-        int reportNumber = getReportNumber();
+
         Date currentDate = new Date();
         @SuppressWarnings("ChainedMethodCall") String location
                 = waterLocationLatitude.getText().toString() + ","
@@ -308,12 +364,20 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         String submittedBy = user.getName();
 
         return new WaterSourceReport(
-                reportNumber, currentDate, location, type, condition, submittedBy);
+                reportNumber, currentDate, location, type, condition, submittedBy, uid);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private WaterPurityReport compileWaterPurityReport() {
-        int reportNumber = getReportNumber();
+        reportNumber = Integer.parseInt(dbRefPurity.child("count").toString());
+        try {
+            reportNumber++;
+            dbRefPurity.child("count").setValue(reportNumber);
+        } catch (Exception e) {
+            dbRefPurity.child("count").setValue(1);
+            reportNumber = 1;
+        }
+
         Date currentDate = new Date();
         @SuppressWarnings("ChainedMethodCall") String location
                 = waterLocationLatitude.getText().toString()
@@ -325,28 +389,28 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                 = Integer.parseInt(waterContaminantPPM.getText().toString());
         String submittedBy = user.getName();
         return new WaterPurityReport(
-                reportNumber, currentDate, location, condition, submittedBy, vPPM, cPPM);
+                reportNumber, currentDate, location, condition, submittedBy, vPPM, cPPM, uid);
     }
 
-    /**
-     * getReportNum method looks into users report size.
-     *
-     * @return int the number of reports.
-     */
-    @SuppressWarnings("FeatureEnvy")
-    private static int getReportNumber() {
-        if ((user.getWaterSourceReport() == null) && (user.getWaterPurityReport() == null)) {
-            return 1;
-        } else if (user.getWaterPurityReport() == null) {
-            //noinspection ChainedMethodCall
-            return user.getWaterSourceReport().size() + 1;
-        } else if (user.getWaterSourceReport() == null) {
-            //noinspection ChainedMethodCall
-            return user.getWaterPurityReport().size() + 1;
-        }
-        //noinspection ChainedMethodCall,ChainedMethodCall
-        return user.getWaterSourceReport().size() + user.getWaterPurityReport().size() + 1;
-    }
+//    /**
+//     * getReportNum method looks into users report size.
+//     *
+//     * @return int the number of reports.
+//     */
+//    @SuppressWarnings("FeatureEnvy")
+//    private static int getReportNumber() {
+//        if ((user.getWaterSourceReport() == null) && (user.getWaterPurityReport() == null)) {
+//            return 1;
+//        } else if (user.getWaterPurityReport() == null) {
+//            //noinspection ChainedMethodCall
+//            return user.getWaterSourceReport().size() + 1;
+//        } else if (user.getWaterSourceReport() == null) {
+//            //noinspection ChainedMethodCall
+//            return user.getWaterPurityReport().size() + 1;
+//        }
+//        //noinspection ChainedMethodCall,ChainedMethodCall
+//        return user.getWaterSourceReport().size() + user.getWaterPurityReport().size() + 1;
+//    }
 
     /**
      * Location method that gets the user's location
@@ -367,116 +431,92 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         return location;
     }
 
-    public static boolean validCoordinate(String locationLat, String locationLong) {
+    private boolean validCoordinate() {
         @SuppressWarnings("ChainedMethodCall") String latitude
-                = locationLat;
-        @SuppressWarnings("ChainedMethodCall") String longitude = locationLong;
+                = waterLocationLatitude.getText().toString();
+        @SuppressWarnings("ChainedMethodCall") String longitude
+                = waterLocationLongitude.getText().toString();
         boolean valid = true;
         if (latitude.isEmpty()) {
-//            waterLocationLatitude.setError("Required.");
+            waterLocationLatitude.setError("Required.");
             valid = false;
         } else if (latitude.matches(".*[a-z].*")) {
-//            waterLocationLatitude.setError("Incorrect format.");
+            waterLocationLatitude.setError("Incorrect format.");
             valid = false;
         } else if (latitude.contains("+") || latitude.contains("*") || latitude.contains("#")
                 || latitude.contains(";") || latitude.contains(",") || latitude.contains("(")
                 || latitude.contains(")") || latitude.contains("/")) {
-//            waterLocationLatitude.setError("Contains invalid character");
+            waterLocationLatitude.setError("Contains invalid character");
             valid = false;
         } else //noinspection MagicNumber,MagicNumber
             if ((Double.parseDouble(latitude) < -90) || (Double.parseDouble(latitude) > 90)) {
-//            waterLocationLatitude.setError("Must be between 0° and (+/–)90°.");
+            waterLocationLatitude.setError("Must be between 0° and (+/–)90°.");
             valid = false;
         } else {
-//            waterLocationLatitude.setError(null);
+            waterLocationLatitude.setError(null);
         }
 
         if (longitude.isEmpty()) {
-//            waterLocationLongitude.setError("Required.");
+            waterLocationLongitude.setError("Required.");
             valid = false;
         } else if (longitude.matches(".*[a-z].*")) {
-//            waterLocationLongitude.setError("Incorrect format.");
+            waterLocationLongitude.setError("Incorrect format.");
             valid = false;
          } else if (longitude.contains("+") || longitude.contains("*") || longitude.contains("#")
                 || longitude.contains(";") || longitude.contains(",") || longitude.contains("(")
                 || longitude.contains(")") || longitude.contains("/")) {
-//            waterLocationLongitude.setError("Contains invalid character");
+            waterLocationLongitude.setError("Contains invalid character");
             valid = false;
         } else //noinspection MagicNumber,MagicNumber
             if ((Double.parseDouble(longitude) < -180) || (Double.parseDouble(longitude) > 180)) {
-//            waterLocationLongitude.setError("Must be between 0° and (+/–)180°.");
+            waterLocationLongitude.setError("Must be between 0° and (+/–)180°.");
             valid = false;
         } else {
-//            waterLocationLongitude.setError(null);
+            waterLocationLongitude.setError(null);
         }
         return valid;
     }
 
-    public static boolean validVirusPPM(String vPPM) {
-        String virusPPM = vPPM;
-//        String contaminantPPM = waterContaminantPPM.getText().toString();
+    private boolean validPPM() {
+        String virusPPM = waterVirusPPM.getText().toString();
+        String contaminantPPM = waterContaminantPPM.getText().toString();
         boolean valid = true;
 
         if (virusPPM.isEmpty()) {
-//            waterVirusPPM.setError("Required.");
+            waterVirusPPM.setError("Required.");
             valid = false;
         } else if (virusPPM.matches(".*[a-zA-Z].*")) {
-//            waterVirusPPM.setError("Incorrect format.");
+            waterVirusPPM.setError("Incorrect format.");
             valid = false;
         } else if (virusPPM.contains("+") || virusPPM.contains("*") || virusPPM.contains("#")
                 || virusPPM.contains(";") || virusPPM.contains(",") || virusPPM.contains("(")
                 || virusPPM.contains(")") || virusPPM.contains("/")) {
-//            waterVirusPPM.setError("Contains invalid character.");
+            waterVirusPPM.setError("Contains invalid character.");
             valid = false;
         } else if (Double.parseDouble(virusPPM) < 0) {
-//            waterVirusPPM.setError("Virus PPM cannot be negative.");
+            waterVirusPPM.setError("Virus PPM cannot be negative.");
             valid = false;
         } else {
-//            waterVirusPPM.setError("Error");
+            waterVirusPPM.setError("Error");
         }
 
-//        if (contaminantPPM.isEmpty()) {
-//            waterContaminantPPM.setError("Required.");
-//            valid = false;
-//        } else if (contaminantPPM.matches(".*[a-zA-Z].*")) {
-//            waterContaminantPPM.setError("Incorrect format.");
-//            valid = false;
-//        } else if (contaminantPPM.contains("+") || contaminantPPM.contains("*") || contaminantPPM.contains("#")
-//                || contaminantPPM.contains(";") || contaminantPPM.contains(",") || contaminantPPM.contains("(")
-//                || contaminantPPM.contains(")") || contaminantPPM.contains("/")) {
-//            waterContaminantPPM.setError("Contains invalid character.");
-//            valid = false;
-//        } else if (Double.parseDouble(contaminantPPM) < 0) {
-//            waterContaminantPPM.setError("Virus PPM cannot be negative.");
-//            valid = false;
-//        } else {
-//            waterContaminantPPM.setError("Error");
-//        }
-        return valid;
-    }
-
-    public static boolean validContaminantPPM(String cPPM) {
-        String contaminantPPM = cPPM;
-        boolean valid = true;
-
         if (contaminantPPM.isEmpty()) {
-//            waterContaminantPPM.setError("Required.");
+            waterContaminantPPM.setError("Required.");
             valid = false;
         } else if (contaminantPPM.matches(".*[a-zA-Z].*")) {
-//            waterContaminantPPM.setError("Incorrect format.");
+            waterContaminantPPM.setError("Incorrect format.");
             valid = false;
         } else if (contaminantPPM.contains("+") || contaminantPPM.contains("*") || contaminantPPM.contains("#")
                 || contaminantPPM.contains(";") || contaminantPPM.contains(",") || contaminantPPM.contains("(")
                 || contaminantPPM.contains(")") || contaminantPPM.contains("/")) {
-//            waterContaminantPPM.setError("Contains invalid character.");
+            waterContaminantPPM.setError("Contains invalid character.");
             valid = false;
         } else if (Double.parseDouble(contaminantPPM) < 0) {
-//            waterContaminantPPM.setError("Virus PPM cannot be negative.");
+            waterContaminantPPM.setError("Virus PPM cannot be negative.");
             valid = false;
         } else {
-//            waterContaminantPPM.setError("Error");
+            waterContaminantPPM.setError("Error");
         }
         return valid;
-
     }
 }

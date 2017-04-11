@@ -57,193 +57,193 @@ public class HistoricalReportActivity extends AppCompatActivity {
         });
 
 
-        ////////////////////////////////TEST ONE////////////////////
-        @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
-        Collection<WaterPurityReport> testList = new ArrayList<>();
-        //noinspection deprecation,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 0, 5), "45,45", OverallCondition.SAFE, "Tomonari", 10, 10));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 0, 10), "45,45", OverallCondition.SAFE, "Tomonari", 30, 30));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 1, 5), "45,45", OverallCondition.SAFE, "Tomonari", 50, 50));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 1, 10), "45,45", OverallCondition.SAFE, "Tomonari", 70, 70));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 2, 5), "45,45", OverallCondition.SAFE, "Tomonari", 90, 90));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 2, 10), "45,45", OverallCondition.SAFE, "Tomonari", 110, 110));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 3, 5), "45,45", OverallCondition.SAFE, "Tomonari", 130, 130));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 3, 10), "45,45", OverallCondition.SAFE, "Tomonari", 150, 150));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 4, 5), "45,45", OverallCondition.SAFE, "Tomonari", 170, 170));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 4, 10), "45,45", OverallCondition.SAFE, "Tomonari", 190, 190));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 5, 5), "45,45", OverallCondition.SAFE, "Tomonari", 210, 210));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 5, 10), "45,45", OverallCondition.SAFE, "Tomonari", 230, 230));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 6, 5), "45,45", OverallCondition.SAFE, "Tomonari", 250, 250));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 6, 10), "45,45", OverallCondition.SAFE, "Tomonari", 270, 270));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 7, 5), "45,45", OverallCondition.SAFE, "Tomonari", 290, 290));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 7, 10), "45,45", OverallCondition.SAFE, "Tomonari", 310, 310));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 8, 5), "45,45", OverallCondition.SAFE, "Tomonari", 330, 330));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 8, 10), "45,45", OverallCondition.SAFE, "Tomonari", 350, 350));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 9, 5), "45,45", OverallCondition.SAFE, "Tomonari", 370, 370));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 9, 10), "45,45", OverallCondition.SAFE, "Tomonari", 390, 390));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 10, 5), "45,45", OverallCondition.SAFE, "Tomonari", 410, 410));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 10, 10), "45,45", OverallCondition.SAFE, "Tomonari", 430, 430));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 11, 5), "45,45", OverallCondition.SAFE, "Tomonari", 450, 450));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 11, 10), "45,45", OverallCondition.SAFE, "Tomonari", 470, 470));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber,MagicNumber
-        testList.add(new WaterPurityReport(
-                1, new Date(117, 11, 10), "45,45", OverallCondition.SAFE, "Tomonari", 470, 470));
-        /////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////
-
-        ////////////////////////////////TEST TWO/////////////
-        @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
-        Collection<WaterPurityReport> testList2 = new ArrayList<>();
-        Random randypants = new Random();
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 0, 5), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 0, 10), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 1, 5), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 1, 10), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 2, 5), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 2, 10), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 3, 5), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 3, 10), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 4, 5), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 4, 10), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 5, 5), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 5, 10), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 6, 5), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 6, 10), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 7, 5), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 7, 10), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 8, 5), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 8, 10), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 9, 5), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 9, 10), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 10, 5), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 10, 10), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 11, 5), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 11, 10), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber,MagicNumber
-        testList2.add(new WaterPurityReport(
-                1, new Date(117, 11, 10), "45,45", OverallCondition.SAFE,
-                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
-        ////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////
+//        ////////////////////////////////TEST ONE////////////////////
+//        @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
+//        Collection<WaterPurityReport> testList = new ArrayList<>();
+//        //noinspection deprecation,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 0, 5), "45,45", OverallCondition.SAFE, "Tomonari", 10, 10));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 0, 10), "45,45", OverallCondition.SAFE, "Tomonari", 30, 30));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 1, 5), "45,45", OverallCondition.SAFE, "Tomonari", 50, 50));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 1, 10), "45,45", OverallCondition.SAFE, "Tomonari", 70, 70));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 2, 5), "45,45", OverallCondition.SAFE, "Tomonari", 90, 90));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 2, 10), "45,45", OverallCondition.SAFE, "Tomonari", 110, 110));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 3, 5), "45,45", OverallCondition.SAFE, "Tomonari", 130, 130));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 3, 10), "45,45", OverallCondition.SAFE, "Tomonari", 150, 150));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 4, 5), "45,45", OverallCondition.SAFE, "Tomonari", 170, 170));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 4, 10), "45,45", OverallCondition.SAFE, "Tomonari", 190, 190));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 5, 5), "45,45", OverallCondition.SAFE, "Tomonari", 210, 210));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 5, 10), "45,45", OverallCondition.SAFE, "Tomonari", 230, 230));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 6, 5), "45,45", OverallCondition.SAFE, "Tomonari", 250, 250));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 6, 10), "45,45", OverallCondition.SAFE, "Tomonari", 270, 270));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 7, 5), "45,45", OverallCondition.SAFE, "Tomonari", 290, 290));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 7, 10), "45,45", OverallCondition.SAFE, "Tomonari", 310, 310));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 8, 5), "45,45", OverallCondition.SAFE, "Tomonari", 330, 330));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 8, 10), "45,45", OverallCondition.SAFE, "Tomonari", 350, 350));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 9, 5), "45,45", OverallCondition.SAFE, "Tomonari", 370, 370));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 9, 10), "45,45", OverallCondition.SAFE, "Tomonari", 390, 390));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 10, 5), "45,45", OverallCondition.SAFE, "Tomonari", 410, 410));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 10, 10), "45,45", OverallCondition.SAFE, "Tomonari", 430, 430));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 11, 5), "45,45", OverallCondition.SAFE, "Tomonari", 450, 450));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 11, 10), "45,45", OverallCondition.SAFE, "Tomonari", 470, 470));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber,MagicNumber
+//        testList.add(new WaterPurityReport(
+//                1, new Date(117, 11, 10), "45,45", OverallCondition.SAFE, "Tomonari", 470, 470));
+//        /////////////////////////////////////////////////////
+//        /////////////////////////////////////////////////////
+//
+//        ////////////////////////////////TEST TWO/////////////
+//        @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
+//        Collection<WaterPurityReport> testList2 = new ArrayList<>();
+//        Random randypants = new Random();
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 0, 5), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 0, 10), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 1, 5), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 1, 10), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 2, 5), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 2, 10), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 3, 5), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 3, 10), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 4, 5), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 4, 10), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 5, 5), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 5, 10), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 6, 5), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 6, 10), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 7, 5), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 7, 10), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 8, 5), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 8, 10), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 9, 5), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 9, 10), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 10, 5), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 10, 10), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 11, 5), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 11, 10), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        //noinspection deprecation,MagicNumber,MagicNumber,MagicNumber,MagicNumber
+//        testList2.add(new WaterPurityReport(
+//                1, new Date(117, 11, 10), "45,45", OverallCondition.SAFE,
+//                "Tomonari", randypants.nextInt(500), randypants.nextInt(500)));
+//        ////////////////////////////////////////////////////////
+//        ////////////////////////////////////////////////////////
 
         //Print the lists of test PPM values for reference
 

@@ -21,7 +21,7 @@ public class WaterSourceReport implements Serializable {
     private WaterType waterType;
     private WaterCondition waterCondition;
     private String submittedBy;
-
+    private String uid;
 
     /**
      * Empty constructor for Firebase
@@ -45,7 +45,7 @@ public class WaterSourceReport implements Serializable {
     @SuppressWarnings("ConstructorWithTooManyParameters")
     public WaterSourceReport(int reportNumber, Date date, String location,
                              WaterType waterType, WaterCondition waterCondition,
-                             String submittedBy) {
+                             String submittedBy, String uid) {
         //super(reportNumber, date, location, submittedBy);
         this.reportNumber = reportNumber;
         this.date = date;
@@ -53,6 +53,7 @@ public class WaterSourceReport implements Serializable {
         this.waterType = waterType;
         this.waterCondition = waterCondition;
         this.submittedBy = submittedBy;
+        this.uid = uid;
     }
 
     /**
@@ -157,6 +158,14 @@ public class WaterSourceReport implements Serializable {
      */
     public WaterCondition getWaterCondition() {
         return waterCondition;
+    }
+
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+    public String getUid() {
+        return this.uid;
     }
 
     /**
