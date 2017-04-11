@@ -117,9 +117,6 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
 
         DatabaseReference dbRef = db.getReference();
 
-        //noinspection ChainedMethodCall,ChainedMethodCall
-        dbRef.child("users").child(uid).setValue(user);
-
         //noinspection ChainedMethodCall
         mAuth.fetchProvidersForEmail(email).addOnCompleteListener(
                 this, new OnCompleteListener<ProviderQueryResult>() {
@@ -155,13 +152,13 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
                     } else {
                         // Save user data after authentication is proven
 
-                        @SuppressWarnings({"ConstantConditions", "ChainedMethodCall"}) String uid
-                                = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                        @SuppressWarnings({"ConstantConditions", "ChainedMethodCall"})
+                        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                         user.setUid(uid);
+
                         DatabaseReference dRef = db.getReference("users");
                         //noinspection ChainedMethodCall
                         dRef.child(uid).setValue(RegPasswordActivity.this.user);
-
 
                         Intent loginIntent = new Intent(RegPasswordActivity.this,
                                 HomeActivity.class);

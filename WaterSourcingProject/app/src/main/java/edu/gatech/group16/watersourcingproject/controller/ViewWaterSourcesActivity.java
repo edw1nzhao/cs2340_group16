@@ -33,14 +33,20 @@ import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 public class ViewWaterSourcesActivity extends AppCompatActivity {
     @SuppressWarnings("unused")
     private final List<String> list = new ArrayList<>();
+    private final String TAG = "ViewWaterSources";
+
     private ListView listView ;
     private User user;
     private Spinner viewingOptionSpinner;
     private final List<String> reportOptions = new ArrayList<>();
+
     private List<WaterSourceReport> sourceReportList;
     private List<WaterPurityReport> purityReportList;
+
     private List<String> sourceReportTitles;
     private List<String> purityReportTitles;
+
+    private BottomNavigationView bottomNav;
     /**
      * OnCreate method required to load activity and loads everything that
      * is needed for the page while setting the view.
@@ -56,76 +62,9 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_water_sources);
         //noinspection ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
-        reportOptions.add("Water Source Reports");
-        reportOptions.add("Water Purity Reports");
 
-        // Get ListView object from xml
-        listView = (ListView) findViewById(R.id.report_list);
-        BottomNavigationView bottomNav
-                = (BottomNavigationView) findViewById(R.id.view_ws_bottom_navbar);
-        viewingOptionSpinner
-                = (Spinner) findViewById(R.id.spinner_report_options);
-
-        //Sets Spinner in for report viewing options
-        @SuppressWarnings("unchecked") SpinnerAdapter adaptReportOptions
-                = new ArrayAdapter(
-                        this, android.R.layout.simple_spinner_item, this.reportOptions);
-        viewingOptionSpinner.setAdapter(adaptReportOptions);
-
-        //Hides "Historical Report" tab if the accountType is not MANAGER
-        if (user.getAccountType() != AccountType.MANAGER) {
-            //noinspection ChainedMethodCall,ChainedMethodCall
-            bottomNav.getMenu().findItem(R.id.action_empty).setTitle("");
-            //noinspection ChainedMethodCall,ChainedMethodCall
-            bottomNav.getMenu().findItem(R.id.action_empty).setIcon(null);
-        }
-
-        //Collecting WaterSourceReports for the user
-        String TAG = "ViewWaterSources";
-        //noinspection ProhibitedExceptionCaught
-        try {
-            sourceReportList = user.getWaterSourceReport();
-            sourceReportTitles = new ArrayList<>();
-
-            for (WaterSourceReport item: sourceReportList) {
-                sourceReportTitles.add("Report Number: " + item.getReportNumber());
-
-            }
-        } catch (NullPointerException e){
-            Log.d(TAG, "No Water Source Reports");
-        }
-
-        //Collecting WaterPurityReports for the user
-        //noinspection ProhibitedExceptionCaught
-        try {
-            purityReportList = user.getWaterPurityReport();
-            purityReportTitles = new ArrayList<>();
-            for (WaterPurityReport item: purityReportList) {
-                purityReportTitles.add("Report Number: " + item.getReportNumber());
-            }
-        } catch (NullPointerException e) {
-            Log.d(TAG, "No Water Purity Reports");
-        }
-
-
-        //Sets toolbar functionality on top of activity
-        Toolbar toolbar = (Toolbar) findViewById(R.id.view_ws_toolbar);
-        setSupportActionBar(toolbar);
-        //noinspection ConstantConditions,ChainedMethodCall
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        //noinspection ChainedMethodCall
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        //noinspection ChainedMethodCall
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ViewWaterSourcesActivity.this, HomeActivity.class);
-                intent.putExtra("USER", user);
-                startActivity(intent);
-                ViewWaterSourcesActivity.this.finish();
-            }
-        });
+        uiSetup();
+        collectReports();
 
         ListAdapter adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1, sourceReportTitles);
@@ -185,6 +124,115 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
             }
         });
 
+
+
+        // ListView Item Click Listener
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) {
+                //noinspection StringEquality,ChainedMethodCall
+                if (viewingOptionSpinner.getSelectedItem().toString() == "Water Source Reports") {
+                    WaterSourceReport clickedItem = sourceReportList.get(position);
+
+                    Intent newActivity = new Intent(
+                            ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
+                    newActivity.putExtra("USER", user);
+                    newActivity.putExtra("POSITION", position);
+                    newActivity.putExtra("REPORT", clickedItem);
+                    newActivity.putExtra("REPORT TYPE", "WaterSourceReport");
+                    startActivity(newActivity);
+                    ViewWaterSourcesActivity.this.finish();
+                } else //noinspection StringEquality,ChainedMethodCall
+                    if (viewingOptionSpinner.getSelectedItem().toString()
+                            == "Water Purity Reports") {
+                    WaterPurityReport clickedItem = purityReportList.get(position);
+
+                    Intent newActivity2 = new Intent(
+                            ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
+                    newActivity2.putExtra("USER", user);
+                    newActivity2.putExtra("POSITION", position);
+                    newActivity2.putExtra("REPORT", clickedItem);
+                    newActivity2.putExtra("REPORT TYPE", "WaterPurityReport");
+                    startActivity(newActivity2);
+                    ViewWaterSourcesActivity.this.finish();
+                }
+            }
+        });
+    }
+
+    private void uiSetup() {
+        reportOptions.add("Water Source Reports");
+        reportOptions.add("Water Purity Reports");
+
+        // Get ListView object from xml
+        listView = (ListView) findViewById(R.id.report_list);
+        bottomNav = (BottomNavigationView) findViewById(R.id.view_ws_bottom_navbar);
+        viewingOptionSpinner = (Spinner) findViewById(R.id.spinner_report_options);
+
+        //Sets Spinner in for report viewing options
+        @SuppressWarnings("unchecked") SpinnerAdapter adaptReportOptions
+                = new ArrayAdapter(
+                this, android.R.layout.simple_spinner_item, this.reportOptions);
+        viewingOptionSpinner.setAdapter(adaptReportOptions);
+
+        //Hides "Historical Report" tab if the accountType is not MANAGER
+        if (user.getAccountType() != AccountType.MANAGER) {
+            //noinspection ChainedMethodCall,ChainedMethodCall
+            bottomNav.getMenu().findItem(R.id.action_empty).setTitle("");
+            //noinspection ChainedMethodCall,ChainedMethodCall
+            bottomNav.getMenu().findItem(R.id.action_empty).setIcon(null);
+        }
+
+        //Sets toolbar functionality on top of activity
+        Toolbar toolbar = (Toolbar) findViewById(R.id.view_ws_toolbar);
+        setSupportActionBar(toolbar);
+        //noinspection ConstantConditions,ChainedMethodCall
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //noinspection ChainedMethodCall
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //noinspection ChainedMethodCall
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ViewWaterSourcesActivity.this, HomeActivity.class);
+                intent.putExtra("USER", user);
+                startActivity(intent);
+                ViewWaterSourcesActivity.this.finish();
+            }
+        });
+    }
+
+    private void collectReports() {
+        //Collecting WaterSourceReports for the user
+        //noinspection ProhibitedExceptionCaught
+        try {
+            sourceReportList = user.getWaterSourceReport();
+            sourceReportTitles = new ArrayList<>();
+
+            for (WaterSourceReport item: sourceReportList) {
+                sourceReportTitles.add("Report Number: " + item.getReportNumber());
+
+            }
+        } catch (NullPointerException e){
+            Log.d(TAG, "No Water Source Reports");
+        }
+
+        //Collecting WaterPurityReports for the user
+        //noinspection ProhibitedExceptionCaught
+        try {
+            purityReportList = user.getWaterPurityReport();
+            purityReportTitles = new ArrayList<>();
+            for (WaterPurityReport item: purityReportList) {
+                purityReportTitles.add("Report Number: " + item.getReportNumber());
+            }
+        } catch (NullPointerException e) {
+            Log.d(TAG, "No Water Purity Reports");
+        }
+
+    }
+
+    private void bottomNav() {
         //Sets BottomNavigationView functionality
         bottomNav.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -260,38 +308,5 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                     }
 
                 });
-
-        // ListView Item Click Listener
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int position,long arg3) {
-                //noinspection StringEquality,ChainedMethodCall
-                if (viewingOptionSpinner.getSelectedItem().toString() == "Water Source Reports") {
-                    WaterSourceReport clickedItem = sourceReportList.get(position);
-
-                    Intent newActivity = new Intent(
-                            ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
-                    newActivity.putExtra("USER", user);
-                    newActivity.putExtra("POSITION", position);
-                    newActivity.putExtra("REPORT", clickedItem);
-                    newActivity.putExtra("REPORT TYPE", "WaterSourceReport");
-                    startActivity(newActivity);
-                    ViewWaterSourcesActivity.this.finish();
-                } else //noinspection StringEquality,ChainedMethodCall
-                    if (viewingOptionSpinner.getSelectedItem().toString()
-                            == "Water Purity Reports") {
-                    WaterPurityReport clickedItem = purityReportList.get(position);
-
-                    Intent newActivity2 = new Intent(
-                            ViewWaterSourcesActivity.this, ReportDetailsActivity.class);
-                    newActivity2.putExtra("USER", user);
-                    newActivity2.putExtra("POSITION", position);
-                    newActivity2.putExtra("REPORT", clickedItem);
-                    newActivity2.putExtra("REPORT TYPE", "WaterPurityReport");
-                    startActivity(newActivity2);
-                    ViewWaterSourcesActivity.this.finish();
-                }
-            }
-        });
     }
 }

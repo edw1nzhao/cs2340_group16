@@ -187,13 +187,7 @@ public class LoginActivity extends AppCompatActivity
                                 User temp = postSnapshot.getValue(User.class);
                                 //noinspection ChainedMethodCall
                                 if (temp.getEmail().equals(tempEmail)) {
-
-                                    @SuppressWarnings("UnusedAssignment") String count
-                                            = dbRef.getKey();
-
-                                    //int position = Integer.parseInt(count);
                                     home_activity.putExtra("USER", temp);
-                                    //home_activity.putExtra("POSITION", position);
                                     startActivity(home_activity);
                                     finish();
                                 }

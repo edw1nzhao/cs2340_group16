@@ -263,9 +263,9 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                                         newList = new ArrayList<>();
                                         newList.add(newRep);
                                     }
-                                    user.setWaterPurityReports(newList);
 
-                                    dbRefUser.child(uid).child("waterPurityReport").setValue(newList);
+                                    user.setWaterPurityReports(newList);
+                                    dbRefUser.child(uid).setValue(user);
                                 }
                             }
 
@@ -304,6 +304,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
                 dbRefSource.child("count").setValue(reportNumber);
                 dbRefSource.child(String.valueOf(newRep.getReportNumber())).setValue(newRep);
+
                 dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
@@ -322,8 +323,8 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                                     newList.add(newRep);
                                 }
 
-                                user.setWaterSourceReports(newList);
-                                dbRefUser.child(uid).child("waterSourceReport").setValue(newList);
+                                user.setWaterSourceReport(newList);
+                                dbRefUser.child(uid).setValue(user);
                             }
                         }
 

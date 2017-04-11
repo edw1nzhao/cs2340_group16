@@ -143,7 +143,7 @@ public class User implements Serializable {
      * @param wsReport
      */
     @SuppressWarnings("JavaDoc")
-    public void setWaterSourceReports(List<WaterSourceReport> wsReport) {
+    public void setWaterSourceReport(List<WaterSourceReport> wsReport) {
         //noinspection AssignmentToCollectionOrArrayFieldFromParameter
         this.wsReport = wsReport;
     }

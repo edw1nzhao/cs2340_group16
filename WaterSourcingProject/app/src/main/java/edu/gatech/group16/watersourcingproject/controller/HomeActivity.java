@@ -15,6 +15,7 @@ import android.widget.TextView;
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.controller.admin.AdminActivity;
 import edu.gatech.group16.watersourcingproject.controller.login.LoginActivity;
+import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
 import edu.gatech.group16.watersourcingproject.model.User;
 
 /**
@@ -42,12 +43,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.application_home);
         //noinspection ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
-
-        try {
-            Log.d("HOMEFIRST", user.getWaterSourceReport().size() + "");
-        } catch (NullPointerException e){
-            Log.d("NULLHOME", "AAAA");
-        }
 
         dataSetup();
         uiSetup();
@@ -87,40 +82,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void uiSetup() {
         fabSetup();
-        BottomNavigationView botNavbar
-                = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-        botNavbar.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.action_viewMap:
-                                Intent mapIntent
-                                        = new Intent(HomeActivity.this, MapsActivity.class);
-                                mapIntent.putExtra("USER", user);
-                                startActivity(mapIntent);
-                                HomeActivity.this.finish();
-                                break;
-                            case R.id.action_newReport:
-                                Intent newReportIntent
-                                        = new Intent(HomeActivity.this, NewWaterSourceReport.class);
-                                newReportIntent.putExtra("USER", user);
-                                startActivity(newReportIntent);
-                                HomeActivity.this.finish();
-                                break;
-                            case R.id.action_viewReports:
-                                Intent viewReportIntent
-                                        = new Intent(
-                                                HomeActivity.this, ViewWaterSourcesActivity.class);
-                                viewReportIntent.putExtra("USER", user);
-                                startActivity(viewReportIntent);
-                                HomeActivity.this.finish();
-                                break;
-                        }
-                        return true;
-                    }
-
-                });
+        bottomBar();
 
     }
 
@@ -134,6 +96,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         fabLogout = (FloatingActionButton) findViewById(R.id.fabLogout);
         fabAdmin = (FloatingActionButton) findViewById(R.id.fabAdmin);
 
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             boolean open = false;
             @Override
@@ -141,7 +105,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 if (!open) {
                     fabEdit.show();
                     fabLogout.show();
-                    fabAdmin.show();
+                    if (user.getAccountType() == AccountType.ADMINISTRATOR) {
+                        fabAdmin.show();
+                    }
                     open = true;
                 } else {
                     fabEdit.hide();
@@ -179,5 +145,42 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 HomeActivity.this.finish();
             }
         });
+    }
+
+    private void bottomBar() {
+        BottomNavigationView botNavbar
+                = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        botNavbar.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_viewMap:
+                                Intent mapIntent
+                                        = new Intent(HomeActivity.this, MapsActivity.class);
+                                mapIntent.putExtra("USER", user);
+                                startActivity(mapIntent);
+                                HomeActivity.this.finish();
+                                break;
+                            case R.id.action_newReport:
+                                Intent newReportIntent
+                                        = new Intent(HomeActivity.this, NewWaterSourceReport.class);
+                                newReportIntent.putExtra("USER", user);
+                                startActivity(newReportIntent);
+                                HomeActivity.this.finish();
+                                break;
+                            case R.id.action_viewReports:
+                                Intent viewReportIntent
+                                        = new Intent(
+                                        HomeActivity.this, ViewWaterSourcesActivity.class);
+                                viewReportIntent.putExtra("USER", user);
+                                startActivity(viewReportIntent);
+                                HomeActivity.this.finish();
+                                break;
+                        }
+                        return true;
+                    }
+
+                });
     }
 }
