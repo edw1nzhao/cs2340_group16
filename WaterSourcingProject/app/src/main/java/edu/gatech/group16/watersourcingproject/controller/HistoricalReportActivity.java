@@ -492,7 +492,7 @@ public class HistoricalReportActivity extends AppCompatActivity {
     }
 
     //Average PPM Calculator
-    private double calculateAverage(List<Integer> list) {
+    public static double calculateAverage(List<Integer> list) {
         double sum = 0;
         if (list != null) {
             if (list.size() == 1) {
