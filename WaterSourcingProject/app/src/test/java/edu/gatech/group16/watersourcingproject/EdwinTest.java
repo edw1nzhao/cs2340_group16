@@ -9,7 +9,7 @@ import java.util.List;
 import edu.gatech.group16.watersourcingproject.controller.HistoricalReportActivity;
 
 /**
- * Created by Tomonari on 4/10/2017.
+ * Created by Edwin Zhao on 4/10/2017.
  */
 
 public class EdwinTest {
@@ -17,9 +17,13 @@ public class EdwinTest {
     @Test
     public void testCalculateAverageOne() throws Exception {
         List<Integer> integerList = new ArrayList<>();
+        //noinspection MagicNumber
         integerList.add(200);
+        //noinspection MagicNumber
         integerList.add(200);
+        //noinspection MagicNumber
         integerList.add(200);
+        //noinspection MagicNumber,MagicNumber
         Assert.assertEquals(200.0, .01, HistoricalReportActivity.calculateAverage(integerList));
     }
 
@@ -28,8 +32,11 @@ public class EdwinTest {
     public void testCalculateAverageTwo() throws Exception {
         List<Integer> integerList = new ArrayList<>();
         integerList.add(100);
+        //noinspection MagicNumber
         integerList.add(200);
+        //noinspection MagicNumber
         integerList.add(300);
+        //noinspection MagicNumber,MagicNumber
         Assert.assertNotEquals(99.0, HistoricalReportActivity.calculateAverage(integerList), .001);
     }
 
@@ -37,6 +44,7 @@ public class EdwinTest {
     @Test
     public void testCalculateAverageNullInput() throws Exception {
         List<Integer> integerList = null;
-        Assert.assertEquals(0, HistoricalReportActivity.calculateAverage(integerList), .001);
+        //noinspection MagicNumber
+        Assert.assertEquals(0, HistoricalReportActivity.calculateAverage(null), .001);
     }
 }

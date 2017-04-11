@@ -9,13 +9,13 @@ import android.widget.Button;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
-import edu.gatech.group16.watersourcingproject.controller.MapsActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
 
 /**
  * Created by Edwin Zhao on 2017/04/07.
  */
 
+@SuppressWarnings("CyclicClassDependency")
 public class AdminActivity extends AppCompatActivity implements View.OnClickListener {
     private Button banButton;
     private Button removeReportButton;
@@ -33,6 +33,7 @@ public class AdminActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        //noinspection ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
 
         setupUI();

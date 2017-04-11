@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Water Sourcing Project</string>
 
     <!-- Strings related to login -->
@@ -23,10 +23,10 @@
 
     <string name="label_account">ACCOUNT TYPE</string>
 
-    <string name="label_reportNum">Report Number: </string>
-    <string name="label_reportDate">Date: </string>
-    <string name="label_reportLoc">Location: </string>
-    <string name="label_reportAuth">Author: </string>
+    <string name="label_reportNum" tools:ignore="UnusedResources">Report Number: </string>
+    <string name="label_reportDate" tools:ignore="UnusedResources">Date: </string>
+    <string name="label_reportLoc" tools:ignore="UnusedResources">Location: </string>
+    <string name="label_reportAuth" tools:ignore="UnusedResources">Author: </string>
 
     <string name="button_continue">Continue</string>
     <string name="button_signup">Sign up!</string>
@@ -51,8 +51,8 @@
     <string name="text_viewReports">View Reports</string>
     <string name="title_activity_maps">Map</string>
 
-    <string name="all_reports">All Reports</string>
-    <string name="my_reports">My Reports</string>
+    <string name="all_reports" tools:ignore="UnusedResources">All Reports</string>
+    <string name="my_reports" tools:ignore="UnusedResources">My Reports</string>
     <string name="latitude">Latitude</string>
     <string name="location">Location</string>
     <string name="longitude">Longitude</string>

@@ -58,14 +58,6 @@
                         android:text="@string/remove_report"
                         android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="60dp">
-
-                    </LinearLayout>
-
                 </LinearLayout>
 
             </RelativeLayout>

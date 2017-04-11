@@ -7,13 +7,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import edu.gatech.group16.watersourcingproject.R;
-import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
 
 /**
  * Created by Edwin Zhao on 2017/04/07.
  */
 
+@SuppressWarnings("CyclicClassDependency")
 public class BanUserActivity extends AppCompatActivity implements View.OnClickListener {
     private User user;
     /**
@@ -28,6 +28,7 @@ public class BanUserActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ban_user);
+        //noinspection ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
 
         setupUI();

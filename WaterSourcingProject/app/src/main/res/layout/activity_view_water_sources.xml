@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
-    tools:context="edu.gatech.group16.watersourcingproject.controller.HomeActivity">
+    tools:context="edu.gatech.group16.watersourcingproject.controller.HomeActivity"
+    tools:ignore="UnusedResources">
 
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,

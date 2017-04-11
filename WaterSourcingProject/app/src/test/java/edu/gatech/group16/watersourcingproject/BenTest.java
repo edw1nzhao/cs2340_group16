@@ -6,7 +6,7 @@ import org.junit.Test;
 import edu.gatech.group16.watersourcingproject.controller.NewWaterSourceReport;
 
 /**
- * Created by Tomonari on 4/10/2017.
+ * Created by Edwin Zhao on 4/10/2017.
  */
 
 public class BenTest {

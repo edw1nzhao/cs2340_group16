@@ -7,13 +7,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import edu.gatech.group16.watersourcingproject.R;
-import edu.gatech.group16.watersourcingproject.controller.HomeActivity;
 import edu.gatech.group16.watersourcingproject.model.User;
 
 /**
  * Created by Edwin Zhao on 2017/04/07.
  */
 
+@SuppressWarnings("CyclicClassDependency")
 public class RemoveReportActivity extends AppCompatActivity implements View.OnClickListener {
     private User user;
 
@@ -29,6 +29,7 @@ public class RemoveReportActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_remove_report);
+        //noinspection ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.remove_report_toolbar);

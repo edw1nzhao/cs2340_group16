@@ -1,20 +1,14 @@
-package edu.gatech.group16.watersourcingproject;
-
-/**
- * Created by Tomonari on 4/10/2017.
+package edu.gatech.group16.watersourcingproject; /**
+ * Created by Edwin Zhao on 4/10/2017.
  */
+
 import org.junit.Test;
-import org.junit.Before;
 import org.junit.Assert;
-import org.junit.Assert.*;
-import org.junit.rules.Timeout;
 
-
-import java.util.ArrayList;
-import java.util.List;
 
 import edu.gatech.group16.watersourcingproject.controller.NewWaterSourceReport;
 
+@SuppressWarnings("JavaDoc")
 public class JustinTest {
 
     @SuppressWarnings({"unused", "JavaDoc"})

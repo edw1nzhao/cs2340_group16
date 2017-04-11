@@ -4,6 +4,7 @@
 //noinspection GradleCompatible
 //noinspection GradleCompatible
 //noinspection GradleCompatible
+//noinspection GradleCompatible
 apply plugin: 'com.android.application'
 
 android {

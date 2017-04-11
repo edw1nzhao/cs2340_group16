@@ -121,7 +121,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     String uid = user.getUid();
-                    Collection<User> listUsers = new ArrayList<>();
+                    @SuppressWarnings("UnusedAssignment") Collection<User> listUsers = new ArrayList<>();
 
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference dRef = database.getReference("users");

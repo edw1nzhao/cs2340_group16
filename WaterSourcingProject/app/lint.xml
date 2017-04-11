@@ -1,17 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
     <issue id="IconDipSize">
+        <ignore path="src/main/res/drawable-hdpi/admin.png" />
+        <ignore path="src/main/res/drawable-hdpi/cog.png" />
+        <ignore path="src/main/res/drawable-mdpi/admin.png" />
+        <ignore path="src/main/res/drawable-mdpi/cog.png" />
+        <ignore path="src/main/res/drawable-xhdpi/admin.png" />
+        <ignore path="src/main/res/drawable-xhdpi/cog.png" />
+        <ignore path="src/main/res/drawable-xxhdpi/admin.png" />
+        <ignore path="src/main/res/drawable-xxhdpi/cog.png" />
+        <ignore path="src/main/res/mipmap-hdpi/logo.png" />
         <ignore path="src/main/res/mipmap-hdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-mdpi/logo.png" />
         <ignore path="src/main/res/mipmap-mdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-xhdpi/logo.png" />
         <ignore path="src/main/res/mipmap-xhdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-xxhdpi/logo.png" />
         <ignore path="src/main/res/mipmap-xxhdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-xxxhdpi/logo.png" />
         <ignore path="src/main/res/mipmap-xxxhdpi/water_logo.png" />
     </issue>
     <issue id="IconDuplicatesConfig">
+        <ignore path="src/main/res/drawable-hdpi/admin.png" />
+        <ignore path="src/main/res/drawable-hdpi/cog.png" />
+        <ignore path="src/main/res/drawable-mdpi/admin.png" />
+        <ignore path="src/main/res/drawable-mdpi/cog.png" />
+        <ignore path="src/main/res/drawable-xhdpi/admin.png" />
+        <ignore path="src/main/res/drawable-xhdpi/cog.png" />
+        <ignore path="src/main/res/drawable-xxhdpi/admin.png" />
+        <ignore path="src/main/res/drawable-xxhdpi/cog.png" />
+        <ignore path="src/main/res/mipmap-hdpi/logo.png" />
         <ignore path="src/main/res/mipmap-hdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-mdpi/logo.png" />
         <ignore path="src/main/res/mipmap-mdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-xhdpi/logo.png" />
         <ignore path="src/main/res/mipmap-xhdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-xxhdpi/logo.png" />
         <ignore path="src/main/res/mipmap-xxhdpi/water_logo.png" />
+        <ignore path="src/main/res/mipmap-xxxhdpi/logo.png" />
         <ignore path="src/main/res/mipmap-xxxhdpi/water_logo.png" />
+    </issue>
+    <issue id="UnusedResources">
+        <ignore path="src/main/res/drawable-hdpi/ic_all_reports.png" />
+        <ignore path="src/main/res/drawable-hdpi/ic_historical_report.png" />
+        <ignore path="src/main/res/drawable-hdpi/ic_my_reports.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_all_reports.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_historical_report.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_my_reports.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ic_all_reports.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ic_historical_report.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ic_my_reports.png" />
+        <ignore path="src/main/res/drawable-xxhdpi/ic_all_reports.png" />
+        <ignore path="src/main/res/drawable-xxhdpi/ic_historical_report.png" />
+        <ignore path="src/main/res/drawable-xxhdpi/ic_my_reports.png" />
     </issue>
 </lint>

@@ -1,11 +1,9 @@
 package edu.gatech.group16.watersourcingproject.controller.login;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.TextView;
 
 import edu.gatech.group16.watersourcingproject.R;
 
@@ -30,6 +28,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
 
         setContentView(R.layout.activity_welcome);
 
+        //noinspection ChainedMethodCall
         findViewById(R.id.logo).setOnClickListener(this);
 
 

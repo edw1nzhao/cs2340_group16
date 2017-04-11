@@ -8,7 +8,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,9 +17,7 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,7 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -47,8 +43,8 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     final FirebaseDatabase db = FirebaseDatabase.getInstance();
     final DatabaseReference dbRef = db.getReference();
     final DatabaseReference dbRefUser = db.getReference("users");
-    DatabaseReference dbRefPurity = db.getReference("purity_report");
-    DatabaseReference dbRefSource = db.getReference("source_report");
+    final DatabaseReference dbRefPurity = db.getReference("purity_report");
+    final DatabaseReference dbRefSource = db.getReference("source_report");
     private static User user;
     private String currentDateTimeString;
     private Spinner waterType;
@@ -80,6 +76,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_ws_report);
+        //noinspection AssignmentToStaticFieldFromInstanceMethod,ChainedMethodCall
         user = (User) getIntent().getSerializableExtra("USER");
 
         uiSetup();
@@ -233,19 +230,25 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
             wpReports.add(newRep);
             user.setWaterPurityReports(wpReports);
 
+            //noinspection FeatureEnvy,ChainedMethodCall
             dbRefPurity.child("count").addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
+                    //noinspection ProhibitedExceptionCaught
                     try {
                         reportNumber = dataSnapshot.getValue(int.class);
                         reportNumber++;
                     } catch (NullPointerException e) {
                         reportNumber = 1;
                     }
+                    //noinspection LawOfDemeter
                     newRep.setReportNumber(reportNumber);
 
+                    //noinspection ChainedMethodCall
                     dbRefPurity.child("count").setValue(reportNumber);
+                    //noinspection ChainedMethodCall,LawOfDemeter
                     dbRefPurity.child(String.valueOf(newRep.getReportNumber())).setValue(newRep);
+                    //noinspection FeatureEnvy,ChainedMethodCall
                     dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot snapshot) {
@@ -254,9 +257,12 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                             for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                                 User temp = postSnapshot.getValue(User.class);
 
+                                //noinspection ChainedMethodCall
                                 if (temp.getUid().equals(uid)) {
                                     List<WaterPurityReport> newList;
+                                    //noinspection ProhibitedExceptionCaught
                                     try {
+                                        //noinspection ChainedMethodCall,unchecked
                                         newList = (List<WaterPurityReport>) postSnapshot.child("waterPurityReport").getValue();
                                         newList.add(newRep);
                                     } catch (NullPointerException e) {
@@ -265,6 +271,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                                     }
 
                                     user.setWaterPurityReports(newList);
+                                    //noinspection ChainedMethodCall
                                     dbRefUser.child(uid).setValue(user);
                                 }
                             }
@@ -291,20 +298,26 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         final Intent home_activity = new Intent(NewWaterSourceReport.this, HomeActivity.class);
         final WaterSourceReport newRep = compileWaterSourceReport();
 
+        //noinspection FeatureEnvy,ChainedMethodCall
         dbRefSource.child("count").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                //noinspection ProhibitedExceptionCaught
                 try {
                     reportNumber = dataSnapshot.getValue(int.class);
                     reportNumber++;
                 } catch (NullPointerException e) {
                     reportNumber = 1;
                 }
+                //noinspection LawOfDemeter
                 newRep.setReportNumber(reportNumber);
 
+                //noinspection ChainedMethodCall
                 dbRefSource.child("count").setValue(reportNumber);
+                //noinspection ChainedMethodCall,LawOfDemeter
                 dbRefSource.child(String.valueOf(newRep.getReportNumber())).setValue(newRep);
 
+                //noinspection FeatureEnvy,ChainedMethodCall
                 dbRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
@@ -313,9 +326,12 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                         for (DataSnapshot postSnapshot : snapshot.getChildren()) {
                             User temp = postSnapshot.getValue(User.class);
 
+                            //noinspection ChainedMethodCall
                             if (temp.getUid().equals(uid)) {
                                 List<WaterSourceReport> newList;
+                                //noinspection ProhibitedExceptionCaught
                                 try {
+                                    //noinspection ChainedMethodCall,unchecked
                                     newList = (List<WaterSourceReport>) postSnapshot.child("waterSourceReport").getValue();
                                     newList.add(newRep);
                                 } catch (NullPointerException e) {
@@ -324,6 +340,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
                                 }
 
                                 user.setWaterSourceReport(newList);
+                                //noinspection ChainedMethodCall
                                 dbRefUser.child(uid).setValue(user);
                             }
                         }
@@ -402,6 +419,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         return location;
     }
 
+    @SuppressWarnings("OverlyComplexMethod")
     private boolean validCoordinate() {
         @SuppressWarnings("ChainedMethodCall") String latitude
                 = waterLocationLatitude.getText().toString();
@@ -448,9 +466,10 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         return valid;
     }
 
+    @SuppressWarnings("OverlyComplexMethod")
     private boolean validPPM() {
-        String virusPPM = waterVirusPPM.getText().toString();
-        String contaminantPPM = waterContaminantPPM.getText().toString();
+        @SuppressWarnings("ChainedMethodCall") String virusPPM = waterVirusPPM.getText().toString();
+        @SuppressWarnings("ChainedMethodCall") String contaminantPPM = waterContaminantPPM.getText().toString();
         boolean valid = true;
 
         if (virusPPM.isEmpty()) {

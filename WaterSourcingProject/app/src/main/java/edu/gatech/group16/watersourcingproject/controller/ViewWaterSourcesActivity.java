@@ -33,7 +33,6 @@ import edu.gatech.group16.watersourcingproject.model.WaterSourceReport;
 public class ViewWaterSourcesActivity extends AppCompatActivity {
     @SuppressWarnings("unused")
     private final List<String> list = new ArrayList<>();
-    private final String TAG = "ViewWaterSources";
 
     private ListView listView ;
     private User user;
@@ -205,6 +204,8 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
 
     private void collectReports() {
         //Collecting WaterSourceReports for the user
+        //noinspection ProhibitedExceptionCaught
+        String TAG = "ViewWaterSources";
         //noinspection ProhibitedExceptionCaught
         try {
             sourceReportList = user.getWaterSourceReport();

@@ -109,13 +109,14 @@ public class RegPasswordActivity extends AppCompatActivity implements View.OnCli
         @SuppressWarnings({"ConstantConditions", "ChainedMethodCall"}) String uid
                 = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+        //noinspection ChainedMethodCall
         user.setPassword(passwordField.getText().toString());
         user.setUid(uid);
 
         String password = user.getPassword();
         String email = user.getEmail();
 
-        DatabaseReference dbRef = db.getReference();
+        @SuppressWarnings("UnusedAssignment") DatabaseReference dbRef = db.getReference();
 
         //noinspection ChainedMethodCall
         mAuth.fetchProvidersForEmail(email).addOnCompleteListener(
