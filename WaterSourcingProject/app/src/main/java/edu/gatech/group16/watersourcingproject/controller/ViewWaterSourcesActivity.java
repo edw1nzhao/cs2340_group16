@@ -108,7 +108,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                             return view;
                         }
                     };
-
+                    listView.setAdapter(null);
                     listView.setAdapter(sourceAdapter);
                 } else //noinspection StringEquality,ChainedMethodCall
                     if (viewingOptionSpinner.getSelectedItem().toString()
@@ -130,7 +130,8 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                             return view;
                         }
                     };
-                    listView.setAdapter(purityAdapter);
+                        listView.setAdapter(null);
+                        listView.setAdapter(purityAdapter);
                 }
             }
 
@@ -215,6 +216,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         @SuppressWarnings("unchecked") SpinnerAdapter adaptReportOptions
                 = new ArrayAdapter(
                 this, android.R.layout.simple_spinner_item, this.reportOptions);
+        viewingOptionSpinner.setAdapter(null);
         viewingOptionSpinner.setAdapter(adaptReportOptions);
 
         //Hides "Historical Report" tab if the accountType is not MANAGER
@@ -259,7 +261,6 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                     case R.id.action_all_reports:
                                         viewingOptionSpinner.setSelection(0);
                                         for (DataSnapshot snapshot: dataSnapshot.child("source_report").getChildren()) {
-                                            Log.d("CHEERIO", snapshot.getValue().toString());
                                             if (!snapshot.getValue().getClass().equals(java.lang.Long.class)) {
                                                 try {
                                                     sourceReportList.add(snapshot.getValue(WaterSourceReport.class));
@@ -285,13 +286,18 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                             for (WaterPurityReport pReport : purityReportList) {
                                                 purityReportTitles.add("Report Number: " + pReport.getReportNumber());
                                             }
+                                        } catch (NullPointerException e) {
+                                        }
 
+                                        try {
                                             for (WaterSourceReport sReport : sourceReportList) {
                                                 sourceReportTitles.add("Report Number: " + sReport.getReportNumber());
                                             }
                                         } catch (NullPointerException e) {
                                             Log.d("ViewWaterSources", "No WaterPurityReports");
                                         }
+                                        Log.d("CHEERIO", sourceReportList.size() + "");
+                                        Log.d("CHEERIO2", sourceReportTitles.size() + "");
 
                                         ListAdapter sourceAdapter1
                                                 = new ArrayAdapter<String>(ViewWaterSourcesActivity.this,
@@ -310,6 +316,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                                 return view;
                                             }
                                         };
+                                        listView.setAdapter(null);
                                         listView.setAdapter(sourceAdapter1);
                                         //noinspection ChainedMethodCall
                                         Toast.makeText(getApplicationContext(),
@@ -325,6 +332,22 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                         ViewWaterSourcesActivity.this.finish();
                                         break;
                                     case R.id.action_my_reports:
+                                        purityReportList = user.getWaterPurityReport();
+                                        sourceReportList = user.getWaterSourceReport();
+                                        try {
+                                            for (WaterPurityReport pReport : purityReportList) {
+                                                purityReportTitles.add("Report Number: " + pReport.getReportNumber());
+                                            }
+                                        } catch (NullPointerException e) {
+                                        }
+
+                                        try {
+                                            for (WaterSourceReport sReport : sourceReportList) {
+                                                sourceReportTitles.add("Report Number: " + sReport.getReportNumber());
+                                            }
+                                        } catch (NullPointerException e) {
+                                            Log.d("ViewWaterSources", "No WaterPurityReports");
+                                        }
                                         viewingOptionSpinner.setSelection(0);
                                         @SuppressWarnings("NullableProblems") ListAdapter sourceAdapter2
                                                 = new ArrayAdapter<String>(ViewWaterSourcesActivity.this,
@@ -345,6 +368,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                                 return view;
                                             }
                                         };
+                                        listView.setAdapter(null);
                                         listView.setAdapter(sourceAdapter2);
                                         //noinspection ChainedMethodCall
                                         Toast.makeText(getApplicationContext(),
