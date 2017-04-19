@@ -92,7 +92,10 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
             public void onItemSelected(
                     AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 //noinspection StringEquality,ChainedMethodCall
+                sourceReportTitles.clear();
+                purityReportTitles.clear();
 
+                userReportCollect();
                 if (viewingOptionSpinner.getSelectedItem().toString() == "Water Source Reports") {
                     ListAdapter sourceAdapter = new ArrayAdapter<String>(
                             ViewWaterSourcesActivity.this, android.R.layout.simple_list_item_2,
@@ -108,6 +111,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                             return view;
                         }
                     };
+
                     listView.setAdapter(null);
                     listView.setAdapter(sourceAdapter);
                 } else //noinspection StringEquality,ChainedMethodCall
@@ -247,6 +251,7 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
         });
     }
 
+
     private void bottomNav() {
         //Sets BottomNavigationView functionality
 
@@ -257,8 +262,13 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                         new BottomNavigationView.OnNavigationItemSelectedListener() {
                             @Override
                             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                                purityReportTitles.clear();
+                                sourceReportTitles.clear();
+
                                 switch (item.getItemId()) {
                                     case R.id.action_all_reports:
+                                        purityReportTitles.clear();
+                                        sourceReportTitles.clear();
                                         viewingOptionSpinner.setSelection(0);
                                         for (DataSnapshot snapshot: dataSnapshot.child("source_report").getChildren()) {
                                             if (!snapshot.getValue().getClass().equals(java.lang.Long.class)) {
@@ -289,14 +299,16 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                         } catch (NullPointerException e) {
                                         }
 
+                                        Log.d("CHEERIO", sourceReportList.size() + "");
+
                                         try {
+
                                             for (WaterSourceReport sReport : sourceReportList) {
                                                 sourceReportTitles.add("Report Number: " + sReport.getReportNumber());
                                             }
                                         } catch (NullPointerException e) {
                                             Log.d("ViewWaterSources", "No WaterPurityReports");
                                         }
-                                        Log.d("CHEERIO", sourceReportList.size() + "");
                                         Log.d("CHEERIO2", sourceReportTitles.size() + "");
 
                                         ListAdapter sourceAdapter1
@@ -316,7 +328,6 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                                 return view;
                                             }
                                         };
-                                        listView.setAdapter(null);
                                         listView.setAdapter(sourceAdapter1);
                                         //noinspection ChainedMethodCall
                                         Toast.makeText(getApplicationContext(),
@@ -324,6 +335,8 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                                 .show();
                                         break;
                                     case R.id.action_empty:
+                                        purityReportTitles.clear();
+                                        sourceReportTitles.clear();
                                         Intent intent = new Intent(
                                                 ViewWaterSourcesActivity.this,
                                                 HistoricalReportParametersActivity.class);
@@ -332,6 +345,8 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                         ViewWaterSourcesActivity.this.finish();
                                         break;
                                     case R.id.action_my_reports:
+                                        purityReportTitles.clear();
+                                        sourceReportTitles.clear();
                                         purityReportList = user.getWaterPurityReport();
                                         sourceReportList = user.getWaterSourceReport();
                                         try {
