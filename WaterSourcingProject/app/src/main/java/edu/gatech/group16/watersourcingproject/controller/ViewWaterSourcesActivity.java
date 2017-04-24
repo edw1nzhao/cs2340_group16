@@ -299,7 +299,6 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                         } catch (NullPointerException e) {
                                         }
 
-                                        Log.d("CHEERIO", sourceReportList.size() + "");
 
                                         try {
 
@@ -330,6 +329,12 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                         };
                                         listView.setAdapter(sourceAdapter1);
                                         //noinspection ChainedMethodCall
+                                        Intent intent = new Intent(
+                                                ViewWaterSourcesActivity.this,
+                                                ViewWaterSourcesActivity.class);
+                                        intent.putExtra("USER", user);
+                                        startActivity(intent);
+
                                         Toast.makeText(getApplicationContext(),
                                                 "Currently displaying all reports." , Toast.LENGTH_SHORT)
                                                 .show();
@@ -337,9 +342,9 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                     case R.id.action_empty:
                                         purityReportTitles.clear();
                                         sourceReportTitles.clear();
-                                        Intent intent = new Intent(
+                                        intent = new Intent(
                                                 ViewWaterSourcesActivity.this,
-                                                HistoricalReportParametersActivity.class);
+                                                ViewWaterSourcesActivity.class);
                                         intent.putExtra("USER", user);
                                         startActivity(intent);
                                         ViewWaterSourcesActivity.this.finish();
@@ -389,6 +394,13 @@ public class ViewWaterSourcesActivity extends AppCompatActivity {
                                         Toast.makeText(getApplicationContext(),
                                                 "Currently displaying only your " +
                                                         "reports.", Toast.LENGTH_SHORT).show();
+
+                                        intent = new Intent(
+                                                ViewWaterSourcesActivity.this,
+                                                ViewWaterSourcesActivity.class);
+
+                                        intent.putExtra("USER", user);
+                                        startActivity(intent);
                                         break;
                                     default:
                                         break;

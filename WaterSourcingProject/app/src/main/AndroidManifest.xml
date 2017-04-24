@@ -79,6 +79,8 @@
             android:label="@string/title_activity_edit_water_source_report"
             android:theme="@style/FullscreenTheme" />
         <activity
+            android:launchMode="singleTask"
+
             android:name=".controller.ViewWaterSourcesActivity"
             android:label="@string/title_activity_view_water_sources"
             android:theme="@style/AppTheme" />
