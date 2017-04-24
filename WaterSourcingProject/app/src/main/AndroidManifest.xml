@@ -129,6 +129,9 @@
             android:name=".controller.admin.RemoveReportActivity"
             android:label="@string/title_activity_remove_report"
             android:theme="@style/AppTheme"/>
+        <activity android:name=".controller.login.ForgotActivity"
+            android:label="Forgot Activity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

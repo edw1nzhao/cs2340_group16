@@ -127,6 +127,7 @@ public class LoginActivity extends AppCompatActivity
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         //noinspection ChainedMethodCall
         findViewById(R.id.email_sign_in_button).setOnClickListener(this);
+        findViewById(R.id.forgotButton).setOnClickListener(this);
     }
 
     /**
@@ -278,6 +279,10 @@ public class LoginActivity extends AppCompatActivity
                 //noinspection ChainedMethodCall,ChainedMethodCall
                 signIn(emailField.getText().toString(), passwordField.getText().toString());
             }
+        } else if (i == R.id.forgotButton) {
+            Intent intent = new Intent(this, ForgotActivity.class);
+            startActivity(intent);
+            LoginActivity.this.finish();
         }
     }
 
