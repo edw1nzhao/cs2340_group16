@@ -497,7 +497,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
             waterVirusPPM.setError("Virus PPM cannot be negative.");
             valid = false;
         } else {
-            waterVirusPPM.setError("Error");
+            waterVirusPPM.setError(null);
         }
 
         if (contaminantPPM.isEmpty()) {
@@ -512,10 +512,10 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
             waterContaminantPPM.setError("Contains invalid character.");
             valid = false;
         } else if (Double.parseDouble(contaminantPPM) < 0) {
-            waterContaminantPPM.setError("Virus PPM cannot be negative.");
+            waterContaminantPPM.setError("Contaminant PPM cannot be negative.");
             valid = false;
         } else {
-            waterContaminantPPM.setError("Error");
+            waterContaminantPPM.setError(null);
         }
         return valid;
     }
