@@ -31,6 +31,9 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         //noinspection ChainedMethodCall
         findViewById(R.id.logo).setOnClickListener(this);
 
+        GifImageView gifImageView = (GifImageView) findViewById(R.id.GifImageView);
+        gifImageView.setGifImageResource(R.drawable.oasis);
+
 
 //        TextView tx = (TextView)findViewById(R.id.title);
 //        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/AvenirLTStd-Roman.ttf");
@@ -53,6 +56,7 @@ public class WelcomeActivity extends AppCompatActivity implements View.OnClickLi
         Intent loginIntent = new Intent(this, LoginActivity.class);
         startActivity(loginIntent);
         this.finish();
+
 //        if (i == R.id.welcome_button_signin) {
 //            Intent loginIntent = new Intent(this, LoginActivity.class);
 //            startActivity(loginIntent);

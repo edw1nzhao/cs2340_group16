@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View.OnClickListener;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -27,6 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import edu.gatech.group16.watersourcingproject.R;
 import edu.gatech.group16.watersourcingproject.model.Enums.AccountType;
@@ -61,8 +63,11 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
     private Switch switchButton;
     private String oldEmail;
     private String uid;
+    private Button locationButton;
     private final List<User> users = new ArrayList<>();
     private int reportNumber;
+
+
 
     /**
      * OnCreate method required to load activity and loads everything that
@@ -96,6 +101,8 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         //Water Source Report UI
         waterType = (Spinner) findViewById(R.id.spinner_water_type);
         waterCondition = (Spinner) findViewById(R.id.spinner_water_condition);
+        locationButton = (Button) findViewById(R.id.locationButton);
+
 
         //Water Purity Report UI
         overallCondition = (Spinner) findViewById(R.id.spinner_overall_condition);
@@ -123,6 +130,7 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
 
         //noinspection ChainedMethodCall
         findViewById(R.id.button_submit).setOnClickListener(this);
+        findViewById(R.id.locationButton).setOnClickListener(this);
         //Hides Toggle Button if the account type is USER
         if (user.getAccountType() == AccountType.USER) {
             switchButton.setVisibility(View.INVISIBLE);
@@ -204,12 +212,14 @@ public class NewWaterSourceReport extends AppCompatActivity implements OnClickLi
         if ((i == R.id.button_submit) && validCoordinate()) {
             if (!reportBoolean) {
                 addWaterSourceReport();
-            } else {
-               addWaterPurityReport();
             }
+           addWaterPurityReport();
+        } else if (i == R.id.locationButton) {
+            int randLong = ThreadLocalRandom.current().nextInt(31, 35 + 1);
+            int randLat = ThreadLocalRandom.current().nextInt(-86, -82 + 1);
 
-            //noinspection ChainedMethodCall
-
+            waterLocationLatitude.setText(Integer.toString(randLat));
+            waterLocationLongitude.setText(Integer.toString(randLong));
         }
     }
 

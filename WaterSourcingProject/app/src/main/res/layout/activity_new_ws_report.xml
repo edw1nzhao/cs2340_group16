@@ -23,8 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/title_contaminant_ppm"
-            android:layout_alignStart="@+id/title_water_type_and_virus_ppm"
-            android:layout_alignEnd="@+id/spinner_water_condition" />
+            android:layout_alignEnd="@+id/spinner_water_condition"
+            android:layout_alignStart="@+id/title_water_type_and_virus_ppm" />
 
         <EditText
             android:id="@+id/text_virus_ppm"
@@ -41,14 +41,14 @@
             android:id="@+id/text_contaminant_ppm"
             android:layout_width="125dp"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/title_contaminant_ppm"
+            android:layout_below="@+id/title_contaminant_ppm"
             android:ems="10"
             android:inputType="numberDecimal"
             android:textColor="#000000"
             android:textColorHint="#000000"
             android:visibility="invisible"
-            tools:ignore="LabelFor"
-            android:layout_below="@+id/title_contaminant_ppm"
-            android:layout_alignStart="@+id/title_contaminant_ppm" />
+            tools:ignore="LabelFor" />
 
         <Button
             android:id="@+id/button_submit"
@@ -106,21 +106,22 @@
             android:layout_alignStart="@+id/text_location"
             android:layout_below="@+id/linearLayout3"
             android:layout_marginTop="11dp"
-            android:text="@string/label_watercondition" />
+            android:text="@string/label_watercondition"
+            tools:ignore="UnknownId" />
 
         <Switch
             android:id="@+id/report_switch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/new_report_toolbar"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="11dp"
+            android:layout_marginEnd="18dp"
             android:layout_marginLeft="40dp"
             android:background="@color/colorPrimary"
             android:text="Select Report Type"
             android:textOff="WS"
             android:textOn="WP"
-            android:layout_marginBottom="11dp"
-            android:layout_alignBottom="@+id/new_report_toolbar"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="18dp"
             tools:ignore="HardcodedText,RtlHardcoded" />
 
         <TextView
@@ -138,41 +139,47 @@
             android:id="@+id/text_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="@string/location"
             android:layout_below="@+id/text_report_title"
+            android:layout_marginEnd="23dp"
+            android:layout_marginTop="28dp"
             android:layout_toStartOf="@+id/text_report_title"
-            android:layout_marginEnd="23dp" />
+            android:text="@string/location" />
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
+            android:layout_alignStart="@+id/text_location"
             android:layout_below="@+id/text_location"
+            android:layout_marginTop="23dp"
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/text_longitude"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2.17"
+                android:ems="10"
+                android:hint="@string/longitude"
+                android:inputType="phone" />
+
+            <EditText
                 android:id="@+id/text_latitude"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
+                android:layout_width="107dp"
+                android:layout_height="match_parent"
                 android:layout_marginStart="45dp"
                 android:layout_marginTop="0dp"
                 android:ems="10"
                 android:hint="@string/latitude"
                 android:inputType="phone" />
 
-            <EditText
-                android:id="@+id/text_longitude"
-                android:layout_width="120dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="0dp"
-                android:ems="10"
-                android:hint="@string/longitude"
-                android:inputType="phone" />
-
+            <Button
+                android:id="@+id/locationButton"
+                android:layout_width="93dp"
+                android:layout_height="match_parent"
+                android:text="Current Location"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
+
     </RelativeLayout>
 
 </LinearLayout>

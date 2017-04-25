@@ -27,19 +27,27 @@
             <ImageView
                 android:id="@+id/logo"
                 android:layout_width="match_parent"
-                android:layout_height="401dp"
+                android:layout_height="0dp"
                 android:layout_weight="0.65"
                 android:contentDescription=""
                 android:padding="30dp"
                 app:srcCompat="@mipmap/water_logo"
                 tools:ignore="ContentDescription,NestedWeights" />
 
-            <ImageView
+
+            <edu.gatech.group16.watersourcingproject.controller.login.GifImageView
+                android:id="@+id/GifImageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.65"
-                app:srcCompat="@mipmap/logo"
-                tools:ignore="ContentDescription" />
+                android:layout_gravity="center_horizontal"
+                android:foregroundGravity="center_horizontal" />
+
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="0.65"-->
+                <!--app:srcCompat="@mipmap/logo"-->
+                <!--tools:ignore="ContentDescription" />-->
 
         </LinearLayout>
 
